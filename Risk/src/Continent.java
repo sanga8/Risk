@@ -1,7 +1,6 @@
 
 public class Continent {
 
-	qefsgdxhc
 	
 	
 }
