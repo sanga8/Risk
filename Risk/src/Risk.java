@@ -6,9 +6,9 @@ public class Risk{
   
   public static void main(String[] args){
 
-	Menu fenetre = new Menu();
-	fenetre.setVisible(true);
+	Menu menu = new Menu();
 	
+	  
 			
 	  }
 }
