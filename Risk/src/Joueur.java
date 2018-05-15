@@ -2,19 +2,19 @@ import java.util.HashMap;
 
 public class Joueur {
 	private String name;
-	private int armées;
+	private int armees;
 	
-	private HashMap<String, Territoire> territoiresPossédés;
-    private HashMap<String, Continent> continentsPossédés;
+	private HashMap<String, Territoire> territoiresPossedes;
+    private HashMap<String, Continent> continentsPossedes;
 	
     public Joueur(String name, int armies) {
     	
 		this.name = name;
-		this.armées = armées;
+		this.armees = armees;
 		
 		
-		territoiresPossédés = new HashMap<String, Territoire>();
-		continentsPossédés = new HashMap<String, Continent>();
+		territoiresPossedes = new HashMap<String, Territoire>();
+		continentsPossedes = new HashMap<String, Continent>();
 		
 		
 		
@@ -28,27 +28,27 @@ public class Joueur {
 		this.name = name;
 	}
 
-	public int getArmées() {
-		return armées;
+	public int getArmees() {
+		return armees;
 	}
 
-	public void setArmées(int armées) {
-		this.armées = armées;
+	public void setArmees(int armees) {
+		this.armees = armees;
 	}
 
-	public HashMap<String, Territoire> getTerritoiresPossédés() {
-		return territoiresPossédés;
+	public HashMap<String, Territoire> getTerritoiresPossedes() {
+		return territoiresPossedes;
 	}
 
-	public void setTerritoiresPossédés(HashMap<String, Territoire> territoiresPossédés) {
-		this.territoiresPossédés = territoiresPossédés;
+	public void setTerritoiresPossedes(HashMap<String, Territoire> territoiresPossedes) {
+		this.territoiresPossedes = territoiresPossedes;
 	}
 
-	public HashMap<String, Continent> getContinentsPossédés() {
-		return continentsPossédés;
+	public HashMap<String, Continent> getContinentsPossedes() {
+		return continentsPossedes;
 	}
 
-	public void setContinentsPossédés(HashMap<String, Continent> continentsPossédés) {
-		this.continentsPossédés = continentsPossédés;
+	public void setContinentsPossedes(HashMap<String, Continent> continentsPossedes) {
+		this.continentsPossedes = continentsPossedes;
 	}
 }

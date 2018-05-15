@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Territoire {
 	
 	private String name;
-	private int armées;
+	private int armees;
 	private ArrayList<Territoire> territoiresAdjacents;
 	private Joueur occupant;
 	
 	public Territoire(String name) {
 		
 		this.name = name;
-		armées = 0;
+		armees = 0;
 		System.out.println("Territoire: " + name);
 	}
 
@@ -22,12 +22,12 @@ public class Territoire {
 		this.name = name;
 	}
 
-	public int getArmées() {
-		return armées;
+	public int getArmees() {
+		return armees;
 	}
 
-	public void setArmées(int armées) {
-		this.armées = armées;
+	public void setArmees(int armees) {
+		this.armees = armees;
 	}
 
 	public ArrayList<Territoire> getTerritoiresAdjacents() {
