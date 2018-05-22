@@ -16,6 +16,8 @@ public class Joueur {
 		territoiresPossedes = new HashMap<String, Territoire>();
 		continentsPossedes = new HashMap<String, Continent>();
 		
+		//hello
+		
 		
 		
     }
