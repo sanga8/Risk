@@ -22,9 +22,10 @@ public class Menu implements MouseListener {
 	private JFrame f;
 
 	private JPanel menu;
-	
+	private JPanel jeu;
 
 	private JLabel background;
+	private JLabel map;
 
 	int nbJoueurs;
 
@@ -44,15 +45,17 @@ public class Menu implements MouseListener {
 	private JTextField joueur5TextField;
 	private JTextField joueur6TextField;
 
+	private JLabel go;
+
 	public Menu() {
 
 		f = new JFrame();
 		f.setTitle("RISK");
 		f.setUndecorated(true);
-		f.setPreferredSize(new Dimension(1920, 1080)); 
+		f.setPreferredSize(new Dimension(1920, 1080));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setResizable(false);
-		
+
 		f.setLayout(null);
 		f.setContentPane(menu());
 		f.pack();
@@ -68,24 +71,22 @@ public class Menu implements MouseListener {
 		// BACKGROUND
 		background = new JLabel();
 		background.setIcon(new ImageIcon("Images/Fond.png"));
-		
-		background.setBounds(0, 0, 1920 , 1080);
+
+		background.setBounds(0, 0, 1920, 1080);
 
 		// BOUTON JOUER
 		jouer = new JLabel();
 		jouer.setIcon(new ImageIcon("Images/Jouer.png"));
 		jouer.setBounds(780, 350, 350, 224);
 		jouer.addMouseListener(this);
-		menu.add(jouer);
+		background.add(jouer);
 
 		// BOUTON QUITTER
 		close = new JLabel();
 		close.setBounds(780, 650, 350, 224);
 		close.setIcon(new ImageIcon("Images/Quitter.png"));
 		close.addMouseListener(this);
-		menu.add(close);
-
-		
+		background.add(close);
 
 		// NOMBRE DE JOUEURS
 		deuxJ = new JLabel("Deux Joueurs");
@@ -95,30 +96,30 @@ public class Menu implements MouseListener {
 		troisJ = new JLabel("Trois Joueurs");
 		troisJ.setIcon(new ImageIcon("Images/Troisbtn.png"));
 		troisJ.setBounds(530, 320, 260, 166);
-		
+
 		quatreJ = new JLabel("Quatre Joueurs");
 		quatreJ.setIcon(new ImageIcon("Images/Quatrebtn.png"));
 		quatreJ.setBounds(830, 320, 260, 166);
-		
+
 		cinqJ = new JLabel("Cinq Joueurs");
 		cinqJ.setIcon(new ImageIcon("Images/Cinqbtn.png"));
 		cinqJ.setBounds(1130, 320, 260, 166);
-		
+
 		sixJ = new JLabel("Six Joueurs");
 		sixJ.setIcon(new ImageIcon("Images/Sixbtn.png"));
 		sixJ.setBounds(1430, 320, 260, 166);
-		
+
 		deuxJ.setVisible(false);
 		troisJ.setVisible(false);
 		quatreJ.setVisible(false);
 		cinqJ.setVisible(false);
 		sixJ.setVisible(false);
-		
-		menu.add(deuxJ);
-		menu.add(troisJ);
-		menu.add(quatreJ);
-		menu.add(cinqJ);
-		menu.add(sixJ);
+
+		background.add(deuxJ);
+		background.add(troisJ);
+		background.add(quatreJ);
+		background.add(cinqJ);
+		background.add(sixJ);
 
 		deuxJ.addMouseListener(this);
 		troisJ.addMouseListener(this);
@@ -127,27 +128,64 @@ public class Menu implements MouseListener {
 		sixJ.addMouseListener(this);
 
 		// NOMS DES JOUEURS
-		joueur1TextField = new JTextField(" Joueur 1 ");
-		joueur2TextField = new JTextField(" Joueur 2 ");
-		joueur3TextField = new JTextField(" Joueur 3 ");
-		joueur4TextField = new JTextField(" Joueur 4 ");
-		joueur5TextField = new JTextField(" Joueur 5 ");
-		joueur6TextField = new JTextField(" Joueur 6 ");
+		joueur1TextField = new JTextField("Arthas Menethil");
+		joueur2TextField = new JTextField("Joueur 2");
+		joueur3TextField = new JTextField("Joueur 3");
+		joueur4TextField = new JTextField("Joueur 4");
+		joueur5TextField = new JTextField("Joueur 5");
+		joueur6TextField = new JTextField("Joueur 6");
+		joueur1TextField.setBounds(750, 600, 190, 75);
+		joueur2TextField.setBounds(750, 700, 190, 75);
+		joueur3TextField.setBounds(750, 800, 190, 75);
+		joueur4TextField.setBounds(1000, 600, 190, 75);
+		joueur5TextField.setBounds(1000, 700, 190, 75);
+		joueur6TextField.setBounds(1000, 800, 190, 75);
+		joueur1TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		joueur2TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		joueur3TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		joueur4TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		joueur5TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		joueur6TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		joueur1TextField.setVisible(false);
 		joueur2TextField.setVisible(false);
 		joueur3TextField.setVisible(false);
 		joueur4TextField.setVisible(false);
 		joueur5TextField.setVisible(false);
 		joueur6TextField.setVisible(false);
-		menu.add(joueur1TextField);
-		menu.add(joueur2TextField);
-		menu.add(joueur3TextField);
-		menu.add(joueur4TextField);
-		menu.add(joueur5TextField);
-		menu.add(joueur6TextField);
-		
+		background.add(joueur1TextField);
+		background.add(joueur2TextField);
+		background.add(joueur3TextField);
+		background.add(joueur4TextField);
+		background.add(joueur5TextField);
+		background.add(joueur6TextField);
+
+		go = new JLabel("");
+		go.setIcon(new ImageIcon("Images/Commencer.png"));
+		go.setBounds(830, 850, 350, 224);
+		go.setVisible(false);
+		go.addMouseListener(this);
+		background.add(go);
+
 		menu.add(background);
 		return menu;
+	}
+	
+	private JPanel jeu() {
+		jeu = new JPanel();
+		
+		//background = new JLabel();
+		//background.setBounds(0, 0, 1920, 1080);
+		//background.setIcon(new ImageIcon("Images/Fond.png"));
+		//jeu.add(background);
+		
+		map = new JLabel();
+		map.setBounds(20, 20, 1920, 880);
+		map.setIcon(new ImageIcon("Images/map.jpg"));
+		jeu.add(map);
+		
+		System.out.println("CHARGEMENT DU JEU");
+
+		return jeu;
 	}
 
 	// EVENT MOUSE LISTENER
@@ -159,13 +197,19 @@ public class Menu implements MouseListener {
 			quatreJ.setVisible(true);
 			cinqJ.setVisible(true);
 			sixJ.setVisible(true);
-			
+			go.setVisible(true);
 			jouer.setVisible(false);
 			close.setVisible(false);
 		}
 		if (e.getSource() == close) {
 			System.exit(0);
 		}
+		if (e.getSource() == go) {
+			f.remove(menu);
+			f.setContentPane(jeu());
+			f.revalidate();
+		}
+
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
 			joueur1TextField.setVisible(true);
@@ -202,7 +246,7 @@ public class Menu implements MouseListener {
 			joueur5TextField.setVisible(true);
 			joueur6TextField.setVisible(false);
 		}
-		
+
 		if (e.getSource() == sixJ) {
 			nbJoueurs = 6;
 			joueur1TextField.setVisible(true);
@@ -211,9 +255,10 @@ public class Menu implements MouseListener {
 			joueur4TextField.setVisible(true);
 			joueur5TextField.setVisible(true);
 			joueur6TextField.setVisible(true);
-			
+
 		}
 	}
+
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
