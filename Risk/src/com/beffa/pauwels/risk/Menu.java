@@ -1,3 +1,4 @@
+package com.beffa.pauwels.risk;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -44,6 +45,13 @@ public class Menu implements MouseListener {
 	private JTextField joueur4TextField;
 	private JTextField joueur5TextField;
 	private JTextField joueur6TextField;
+	
+	private JTextArea nom1;
+	private JTextArea nom2;
+	private JTextArea nom3;
+	private JTextArea nom4;
+	private JTextArea nom5;
+	private JTextArea nom6;
 
 	private JLabel go;
 
@@ -70,7 +78,7 @@ public class Menu implements MouseListener {
 
 		// BACKGROUND
 		background = new JLabel();
-		background.setIcon(new ImageIcon("Images/Fond.png"));
+		background.setIcon(new ImageIcon("Images/fondRisk.jpg"));
 
 		background.setBounds(0, 0, 1920, 1080);
 
@@ -129,7 +137,7 @@ public class Menu implements MouseListener {
 
 		// NOMS DES JOUEURS
 		joueur1TextField = new JTextField("Arthas Menethil");
-		joueur2TextField = new JTextField("Joueur 2");
+		joueur2TextField = new JTextField("Rand al'Thor");
 		joueur3TextField = new JTextField("Joueur 3");
 		joueur4TextField = new JTextField("Joueur 4");
 		joueur5TextField = new JTextField("Joueur 5");
@@ -169,21 +177,85 @@ public class Menu implements MouseListener {
 		menu.add(background);
 		return menu;
 	}
-	
+
 	private JPanel jeu() {
 		jeu = new JPanel();
+		jeu.setLayout(null);
 		
-		//background = new JLabel();
-		//background.setBounds(0, 0, 1920, 1080);
-		//background.setIcon(new ImageIcon("Images/Fond.png"));
-		//jeu.add(background);
-		
+		background = new JLabel();
+		background.setBounds(0, 0, 1920, 1080);
+		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
+		jeu.add(background);
+
 		map = new JLabel();
-		map.setBounds(20, 20, 1920, 880);
-		map.setIcon(new ImageIcon("Images/map.jpg"));
-		jeu.add(map);
+		map.setBounds(5, 5, 1910, 920);
+		map.setIcon(new ImageIcon("Images/map3.png"));
+		background.add(map);
+
+		nom1 = new JTextArea();
+		nom1.setEditable(false);
+		nom1.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		nom1.setOpaque(false);
+		nom1.setText(joueur1TextField.getText());
+		nom1.setBounds(80, 930, 190, 75);
 		
-		System.out.println("CHARGEMENT DU JEU");
+		
+		nom2 = new JTextArea();
+		nom2.setEditable(false);
+		nom2.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		nom2.setOpaque(false);
+		nom2.setText(joueur2TextField.getText());
+		nom2.setBounds(80, 980, 190, 75);
+		
+		nom3 = new JTextArea();
+		nom3.setEditable(false);
+		nom3.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		nom3.setOpaque(false);
+		nom3.setText(joueur3TextField.getText());
+		nom3.setBounds(80, 1030, 190, 75);
+		
+		nom4 = new JTextArea();
+		nom4.setEditable(false);
+		nom4.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		nom4.setOpaque(false);
+		nom4.setText(joueur4TextField.getText());
+		nom4.setBounds(330, 930, 190, 75);
+		
+		nom5 = new JTextArea();
+		nom5.setEditable(false);
+		nom5.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		nom5.setOpaque(false);
+		nom5.setText(joueur5TextField.getText());
+		nom5.setBounds(330, 980, 190, 75);
+		
+		nom6 = new JTextArea();
+		nom6.setEditable(false);
+		nom6.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		nom6.setOpaque(false);
+		nom6.setText(joueur6TextField.getText());
+		nom6.setBounds(330, 1030, 190, 75);
+
+		background.add(nom1);
+		background.add(nom2);
+
+		if (nbJoueurs == 3) {
+			background.add(nom3);
+		}
+		if (nbJoueurs == 4) {
+			background.add(nom3);
+			background.add(nom4);
+		}
+		if (nbJoueurs == 5) {
+			background.add(nom3);
+			background.add(nom4);
+			background.add(nom5);
+		}
+		if (nbJoueurs == 6) {
+			background.add(nom3);
+			background.add(nom4);
+			background.add(nom5);
+			background.add(nom6);
+		}
 
 		return jeu;
 	}
@@ -258,7 +330,6 @@ public class Menu implements MouseListener {
 
 		}
 	}
-
 
 	@Override
 	public void mouseEntered(MouseEvent e) {

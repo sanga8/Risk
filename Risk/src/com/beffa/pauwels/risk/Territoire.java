@@ -1,3 +1,4 @@
+package com.beffa.pauwels.risk;
 import java.util.ArrayList;
 
 public class Territoire {
@@ -14,6 +15,24 @@ public class Territoire {
 		System.out.println("Territoire: " + name);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String getName() {
 		return name;
 	}

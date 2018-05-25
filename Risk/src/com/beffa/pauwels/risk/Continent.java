@@ -1,3 +1,4 @@
+package com.beffa.pauwels.risk;
 import java.util.ArrayList;
 
 public class Continent {
