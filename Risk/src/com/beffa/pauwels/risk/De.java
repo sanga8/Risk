@@ -13,12 +13,6 @@ public class De {
 	    
 	    public De() {}
 
-	    /**
-	     * Returns an integer array of values between 1 and 6 representing the
-	     * outcome of rolling the dice.  The number of values in the array should be
-	     * between 1 and 3, depending on the number of dice rolled by the player.  The 
-	     * number of dice rolled by the player is specified by the argument numberOfDice
-	     **/
 	    public int[] roll(int numberOfDice) {
 		
 			diceArray = new int[numberOfDice];
