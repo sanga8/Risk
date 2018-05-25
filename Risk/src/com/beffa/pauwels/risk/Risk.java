@@ -7,9 +7,9 @@ public class Risk{
   
   public static void main(String[] args){
 
-	//Menu menu = new Menu();
-	De de = new De();
-	de.roll(3);
+	Menu menu = new Menu();
+	//De de = new De();
+	
 			
 	  }
 }

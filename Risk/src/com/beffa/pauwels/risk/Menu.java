@@ -136,8 +136,8 @@ public class Menu implements MouseListener {
 		sixJ.addMouseListener(this);
 
 		// NOMS DES JOUEURS
-		joueur1TextField = new JTextField("Arthas Menethil");
-		joueur2TextField = new JTextField("Rand al'Thor");
+		joueur1TextField = new JTextField("Joueur 1");
+		joueur2TextField = new JTextField("Joueur 2");
 		joueur3TextField = new JTextField("Joueur 3");
 		joueur4TextField = new JTextField("Joueur 4");
 		joueur5TextField = new JTextField("Joueur 5");
