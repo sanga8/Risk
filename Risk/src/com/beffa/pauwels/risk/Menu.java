@@ -42,6 +42,11 @@ public class Menu implements MouseListener {
 	private JLabel cinqJ;
 	private JLabel sixJ;
 
+	private JLabel Btnplus;
+	private JLabel Btnmoins;
+	
+
+	
 	private JTextField joueur1TextField;
 	private JTextField joueur2TextField;
 	private JTextField joueur3TextField;
@@ -61,13 +66,8 @@ public class Menu implements MouseListener {
 	public Menu() {
 
 		f = new JFrame();
-		
 		Dimension d= Toolkit.getDefaultToolkit().getScreenSize();
-		int l = d.width;
-		int h = d.height;
-		//f.setSize(l,h);
 		f.setPreferredSize(d);
-		
 		f.setTitle("RISK");
 		f.setUndecorated(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -195,7 +195,12 @@ public class Menu implements MouseListener {
 		background.setBounds(0, 0, 1920, 1080);
 		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
 		jeu.add(background);
-
+		
+		Btnplus=new JLabel();
+		Btnplus.setBounds(800, 930, 190, 75);
+		Btnplus.setIcon(new ImageIcon("Btnplus.png"));
+		background.add(Btnplus);
+		
 		map = new JLabel();
 		map.setBounds(5, 5, 1910, 920);
 		map.setIcon(new ImageIcon("Images/map3.png"));
@@ -246,7 +251,7 @@ public class Menu implements MouseListener {
 
 		background.add(nom1);
 		background.add(nom2);
-
+		
 		if (nbJoueurs == 3) {
 			background.add(nom3);
 		}
@@ -265,7 +270,8 @@ public class Menu implements MouseListener {
 			background.add(nom5);
 			background.add(nom6);
 		}
-
+		
+		
 		return jeu;
 	}
 

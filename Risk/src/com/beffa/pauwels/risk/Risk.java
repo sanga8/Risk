@@ -28,7 +28,9 @@ public class Risk {
 	 * if (tourActif == menu.getNbJoueurs() && prochainTour == true) { tourActif
 	 * = 0; } else { tourActif++; } } }
 	 */
-
+	
+	//Methode avec l'aide d'Eliot Sadrin
+	//Création de territoire
 	public void creerTerritoires() {
 		// Territoires adjacents
 		String[] listeIS = { "Scandinavie", "Grande-Bretagne", "Groenland" };
@@ -39,7 +41,7 @@ public class Risk {
 		String[] listeEN = { "Grande-Bretagne", "Ukraine", "Europe de l'Ouest", "Europe du Sud", "Scandinavie" };
 		String[] listeUK = { "Scandinavie", "Europe du Nord", "Europe du Sud", "Oural", "Afganistan", "Moyen-Orient" };
 		String[] listeEG = { "Afrique de l'Est", "Afrique du Nord", "Moyen-Orient", "Europe du Sud" };
-		String[] listeAN = { "Europe de l'Ouest", "Europe du Sud", "Egypte", "Brésil", "Congo", "Afrique de l'Est" };
+		String[] listeAN = { "Europe de l'Ouest", "Europe du Sud", "Egypte", "Bresil", "Congo", "Afrique de l'Est" };
 		String[] listeAE = { "Egypte", "Moyen-Orient", "Afrique du Nord", "Congo", "Afrique du Sud", "Madagascar" };
 		String[] listeCO = { "Egypte", "Afrique du Nord", "Afrique du Sud", "Afrique de l'Est" };
 		String[] listeMA = { "Afrique de l'Est", "Afrique du Sud" };
@@ -47,15 +49,15 @@ public class Risk {
 		String[] listeMO = { "Egypte", "Afrique de l'Est", "Ukraine", "Europe du Sud", "Afganistan", "Inde" };
 		String[] listeIN = { "Moyen-Orient", "Afganistan", "Chine", "Siam" };
 		String[] listeAF = { "Ukraine", "Moyen-Orient", "Inde", "Oural", "Chine" };
-		String[] listeOU = { "Chine", "Afganistan", "Ukraine", "Sibérie" };
+		String[] listeOU = { "Chine", "Afganistan", "Ukraine", "Siberie" };
 		String[] listeSIB = { "Mongolie", "Chine", "Oural", "Irkutsk", "Yakouti" };
-		String[] listeSI = { "Inde", "Chine", "Indonésie" };
-		String[] listeCH = { "Sibérie", "Inde", "Afganistan", "Oural", "Siam", "Mongolie" };
-		String[] listeYA = { "Kamchatka", "Irkutsk", "Sibérie" };
-		String[] listeMON = { "Sibérie", "Chine", "Irkutsk", "Kamchatka", "Japon" };
+		String[] listeSI = { "Inde", "Chine", "Indonesie" };
+		String[] listeCH = { "Siberie", "Inde", "Afganistan", "Oural", "Siam", "Mongolie" };
+		String[] listeYA = { "Kamchatka", "Irkutsk", "Siberie" };
+		String[] listeMON = { "Siberie", "Chine", "Irkutsk", "Kamchatka", "Japon" };
 		String[] listeJA = { "Kamchatka", "Mongolie" };
 		String[] listeKA = { "Irkutsk", "Yakouti", "Mongolie", "Japon", "Alaska" };
-		String[] listeIR = { "Mongolie", "Kamchatka", "Yakouti", "Sibérie" };
+		String[] listeIR = { "Mongolie", "Kamchatka", "Yakouti", "Siberie" };
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
 		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
@@ -65,14 +67,14 @@ public class Risk {
 		String[] listeEDO = { "Etats de L'Est", "Amerique Centrale", "Ontario", "Alberta" };
 		String[] listeEDE = { "Etats de L'Ouest", "Amerique Centrale", "Ontario", "Quebec" };
 		String[] listeAC = { "Venezuela", "Etats de L'Est", "Etats de L'Ouest" };
-		String[] listeVE = { "Amerique Centrale", "Pérou", "Brésil" };
-		String[] listeBR = { "Argentine", "Afrique du Nord", "Pérou", "Venezuela" };
-		String[] listePE = { "Argentine", "Brésil", "Venezuela" };
-		String[] listeAR = { "Pérou", "Brésil" };
-		String[] listeIND = { "Nouvelle Guinée", "Siam", "Australie de l'Ouest" };
-		String[] listeNG = { "Indonésie", "Australie de l'Ouest", "Australie de l'Est" };
-		String[] listeADO = { "Australie de l'Est", "Nouvelle Guinée", "Indonésie" };
-		String[] listeADE = { "Australie de l'Ouest", "Nouvelle Guinée" };
+		String[] listeVE = { "Amerique Centrale", "Perou", "Bresil" };
+		String[] listeBR = { "Argentine", "Afrique du Nord", "Perou", "Venezuela" };
+		String[] listePE = { "Argentine", "Bresil", "Venezuela" };
+		String[] listeAR = { "Perou", "Bresil" };
+		String[] listeIND = { "Nouvelle Guinee", "Siam", "Australie de l'Ouest" };
+		String[] listeNG = { "Indonesie", "Australie de l'Ouest", "Australie de l'Est" };
+		String[] listeADO = { "Australie de l'Est", "Nouvelle Guinee", "Indonesie" };
+		String[] listeADE = { "Australie de l'Ouest", "Nouvelle Guinee" };
 
 		// Territoires
 
@@ -93,7 +95,7 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Inde", listeIN));
 		this.listeTerritoires.add(new Territoire("Afganistan", listeAF));
 		this.listeTerritoires.add(new Territoire("Oural", listeOU));
-		this.listeTerritoires.add(new Territoire("Sibérie", listeSIB));
+		this.listeTerritoires.add(new Territoire("Siberie", listeSIB));
 		this.listeTerritoires.add(new Territoire("Siam", listeSI));
 		this.listeTerritoires.add(new Territoire("Chine", listeCH));
 		this.listeTerritoires.add(new Territoire("Yakouti", listeYA));
@@ -111,11 +113,11 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Etats de L'Est", listeEDE));
 		this.listeTerritoires.add(new Territoire("Amerique Centrale", listeAC));
 		this.listeTerritoires.add(new Territoire("Venezuela", listeVE));
-		this.listeTerritoires.add(new Territoire("Brésil", listeBR));
-		this.listeTerritoires.add(new Territoire("Pérou", listePE));
+		this.listeTerritoires.add(new Territoire("Bresil", listeBR));
+		this.listeTerritoires.add(new Territoire("Perou", listePE));
 		this.listeTerritoires.add(new Territoire("Argentine", listeAR));
-		this.listeTerritoires.add(new Territoire("Indonésie", listeIND));
-		this.listeTerritoires.add(new Territoire("Nouvelle Guinée", listeNG));
+		this.listeTerritoires.add(new Territoire("Indonesie", listeIND));
+		this.listeTerritoires.add(new Territoire("Nouvelle Guinee", listeNG));
 		this.listeTerritoires.add(new Territoire("Australie de l'Ouest", listeADO));
 		this.listeTerritoires.add(new Territoire("Australie de l'Est", listeADE));
 
@@ -159,7 +161,7 @@ public class Risk {
 		this.listeContinents.add(new Continent(2, c3));// Asie
 		this.listeContinents.add(new Continent(3, c4));// Amerique du Nord
 		this.listeContinents.add(new Continent(4, c5));// Amerique du Sud
-		this.listeContinents.add(new Continent(5, c6));// Océanie
+		this.listeContinents.add(new Continent(5, c6));// Oceanie
 
 	}
 }
