@@ -2,8 +2,10 @@ package com.beffa.pauwels.risk;
 import java.util.HashMap;
 
 public class Joueur {
+	
 	private String name;
 	private int armees;
+	private int nbJoueurs;
 	
 	private boolean suivant;
 	
@@ -19,12 +21,14 @@ public class Joueur {
     
     
     
-    
-    
-    public void SwitchPLayer(){
-    	
-    	suivant = !suivant;	
-    }
+	public int getNbJoueurs() {
+		return nbJoueurs;
+	}
+
+	public void setNbJoueurs(int nbJoueurs) {
+		this.nbJoueurs = nbJoueurs;
+	}
+  
 
     
      

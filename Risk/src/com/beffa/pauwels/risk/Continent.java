@@ -1,30 +1,46 @@
 package com.beffa.pauwels.risk;
+
 import java.util.ArrayList;
 
 public class Continent {
-	private String name;
-	private int supply;
-	private ArrayList<Territoire> territoires;
+
+	public int idContinent;
 	
-	public Continent(String name, int bonusArmies, ArrayList<Territoire> memberCountries) {
-		this.name = name;
-		this.supply = supply;
-		territoires = territoires;
-		
-		System.out.println("Created continent: " + name + "\n Armées bonus: " + bonusArmies);
-    }
+	private ArrayList<Territoire> territoiresDuContinent;
 
 
-
-	public String getName() {
-	return name;
+	public Continent(int idContinent,ArrayList<Territoire> territoiresDuContinent) {
+		this.idContinent = idContinent;
+		this.territoiresDuContinent = territoiresDuContinent;
 	}
 
-	public int getBonusArmies() {
-	return supply;
+
+	//VERIFICATIONS
+	/**
+	 * Permet de savoir si un joueur controle un continent ou non
+	 *
+	 * @param joueur le joueur que l'on veut tester
+	 * @param rangTerritoire le rang de depart (toujours zero)
+	 * @return true ou false selon si le joueur controle le continent ou non
+	 */
+	
+	public boolean estControlePar(Joueur joueur, int rangTerritoire)
+	{
+		for(int i = 0;i<this.territoiresDuContinent.size();i++)
+		{
+			if(this.territoiresDuContinent.get(i).getProprietaire() != joueur)
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+	
+	
+	
+	public ArrayList<Territoire> getTerritoiresDuContinent() {
+		return territoiresDuContinent;
 	}
 
-	public ArrayList<Territoire> getMemberCountries() {
-	return territoires;
-	}
 }

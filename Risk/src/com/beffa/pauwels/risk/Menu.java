@@ -15,11 +15,14 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+
 public class Menu implements MouseListener {
+	
 	private JFrame f;
 
 	private JPanel menu;
@@ -58,9 +61,15 @@ public class Menu implements MouseListener {
 	public Menu() {
 
 		f = new JFrame();
+		
+		Dimension d= Toolkit.getDefaultToolkit().getScreenSize();
+		int l = d.width;
+		int h = d.height;
+		//f.setSize(l,h);
+		f.setPreferredSize(d);
+		
 		f.setTitle("RISK");
 		f.setUndecorated(true);
-		f.setPreferredSize(new Dimension(1920, 1080));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setResizable(false);
 
@@ -259,6 +268,11 @@ public class Menu implements MouseListener {
 
 		return jeu;
 	}
+
+	public int getNbJoueurs() {
+		return nbJoueurs;
+	}
+
 
 	// EVENT MOUSE LISTENER
 	@Override
