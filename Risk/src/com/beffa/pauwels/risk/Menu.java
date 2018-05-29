@@ -197,9 +197,14 @@ public class Menu implements MouseListener {
 		jeu.add(background);
 		
 		Btnplus=new JLabel();
-		Btnplus.setBounds(800, 930, 190, 75);
-		Btnplus.setIcon(new ImageIcon("Btnplus.png"));
+		Btnplus.setBounds(480, 960, 35, 35);
+		Btnplus.setIcon(new ImageIcon("Images/Btnplus.png"));
 		background.add(Btnplus);
+		
+		Btnmoins=new JLabel();
+		Btnmoins.setBounds(550, 960, 35, 35);
+		Btnmoins.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		background.add(Btnmoins);
 		
 		map = new JLabel();
 		map.setBounds(5, 5, 1910, 920);
@@ -211,7 +216,7 @@ public class Menu implements MouseListener {
 		nom1.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom1.setOpaque(false);
 		nom1.setText(joueur1TextField.getText());
-		nom1.setBounds(80, 930, 190, 75);
+		nom1.setBounds(90, 930, 190, 75);
 		
 		
 		nom2 = new JTextArea();
@@ -219,14 +224,14 @@ public class Menu implements MouseListener {
 		nom2.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom2.setOpaque(false);
 		nom2.setText(joueur2TextField.getText());
-		nom2.setBounds(80, 980, 190, 75);
+		nom2.setBounds(90, 980, 190, 75);
 		
 		nom3 = new JTextArea();
 		nom3.setEditable(false);
 		nom3.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom3.setOpaque(false);
 		nom3.setText(joueur3TextField.getText());
-		nom3.setBounds(80, 1030, 190, 75);
+		nom3.setBounds(90, 1030, 190, 75);
 		
 		nom4 = new JTextArea();
 		nom4.setEditable(false);
@@ -271,7 +276,7 @@ public class Menu implements MouseListener {
 			background.add(nom6);
 		}
 		
-		
+		jeu.repaint();
 		return jeu;
 	}
 

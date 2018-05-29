@@ -8,9 +8,7 @@ import javax.swing.JPanel;
 
 public class Risk {
 
-	int tourActif;
-	boolean prochainTour = false;
-	static boolean continuer;
+	int tour;
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
@@ -22,15 +20,24 @@ public class Risk {
 
 	}
 
-	/*
-	 * public void findeTour(){ for (int i = 1; i < menu.getNbJoueurs(); i++) {
-	 * 
-	 * if (tourActif == menu.getNbJoueurs() && prochainTour == true) { tourActif
-	 * = 0; } else { tourActif++; } } }
+	/**
+	 * GESTION DE TOUR
 	 */
-	
-	//Methode avec l'aide d'Eliot Sadrin
-	//Création de territoire
+	public void finDeTour() {
+		tour += tour;
+		while (listeJoueurs.get(tour) == null) {
+			tour++;
+			if (tour >= listeJoueurs.size()) {
+				tour = 0;
+			}
+		}
+		if (tour >= listeJoueurs.size()) {
+			tour = 0;
+		}
+	}
+
+	// Methode avec l'aide d'Eliot Sadrin
+	// Création de territoire
 	public void creerTerritoires() {
 		// Territoires adjacents
 		String[] listeIS = { "Scandinavie", "Grande-Bretagne", "Groenland" };
@@ -61,7 +68,8 @@ public class Risk {
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
 		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
-		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec","Groenland" };
+		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec",
+				"Groenland" };
 		String[] listeGR = { "Ontario", "Territoires du Nord", "Quebec", "Island" };
 		String[] listeQU = { "Etats de L'Est", "Ontario", "Groenland" };
 		String[] listeEDO = { "Etats de L'Est", "Amerique Centrale", "Ontario", "Alberta" };
@@ -121,9 +129,10 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Australie de l'Ouest", listeADO));
 		this.listeTerritoires.add(new Territoire("Australie de l'Est", listeADE));
 
-		//for (int i = 0; i < this.listeTerritoires.size(); i++) {
-		//	this.listeTerritoires.get(i).ajouterUniteTerritoire(new Unite(0, 1, 6, 2, 1, 2));
-		//}
+		// for (int i = 0; i < this.listeTerritoires.size(); i++) {
+		// this.listeTerritoires.get(i).ajouterUniteTerritoire(new Unite(0, 1,
+		// 6, 2, 1, 2));
+		// }
 
 		// Continents
 		ArrayList<Territoire> c1 = new ArrayList<Territoire>();
@@ -164,4 +173,5 @@ public class Risk {
 		this.listeContinents.add(new Continent(5, c6));// Oceanie
 
 	}
+
 }
