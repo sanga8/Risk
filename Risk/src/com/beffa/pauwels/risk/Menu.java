@@ -1,4 +1,5 @@
 package com.beffa.pauwels.risk;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -20,9 +21,8 @@ import java.awt.Toolkit;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
 public class Menu implements MouseListener {
-	
+
 	private JFrame f;
 
 	private JPanel menu;
@@ -30,6 +30,8 @@ public class Menu implements MouseListener {
 
 	private JLabel background;
 	private JLabel map;
+	
+	private JLabel findutour;
 
 	int nbJoueurs;
 
@@ -44,16 +46,14 @@ public class Menu implements MouseListener {
 
 	private JLabel Btnplus;
 	private JLabel Btnmoins;
-	
 
-	
 	private JTextField joueur1TextField;
 	private JTextField joueur2TextField;
 	private JTextField joueur3TextField;
 	private JTextField joueur4TextField;
 	private JTextField joueur5TextField;
 	private JTextField joueur6TextField;
-	
+
 	private JTextArea nom1;
 	private JTextArea nom2;
 	private JTextArea nom3;
@@ -61,12 +61,12 @@ public class Menu implements MouseListener {
 	private JTextArea nom5;
 	private JTextArea nom6;
 
-	private JLabel go;
+	private JLabel commencer;
 
 	public Menu() {
 
 		f = new JFrame();
-		Dimension d= Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		f.setPreferredSize(d);
 		f.setTitle("RISK");
 		f.setUndecorated(true);
@@ -176,12 +176,12 @@ public class Menu implements MouseListener {
 		background.add(joueur5TextField);
 		background.add(joueur6TextField);
 
-		go = new JLabel("");
-		go.setIcon(new ImageIcon("Images/Commencer.png"));
-		go.setBounds(830, 850, 350, 224);
-		go.setVisible(false);
-		go.addMouseListener(this);
-		background.add(go);
+		commencer = new JLabel("");
+		commencer.setIcon(new ImageIcon("Images/Commencer.png"));
+		commencer.setBounds(830, 850, 350, 224);
+		commencer.setVisible(false);
+		commencer.addMouseListener(this);
+		background.add(commencer);
 
 		menu.add(background);
 		return menu;
@@ -190,22 +190,27 @@ public class Menu implements MouseListener {
 	private JPanel jeu() {
 		jeu = new JPanel();
 		jeu.setLayout(null);
-		
+
 		background = new JLabel();
 		background.setBounds(0, 0, 1920, 1080);
 		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
 		jeu.add(background);
-		
-		Btnplus=new JLabel();
+
+		Btnplus = new JLabel();
 		Btnplus.setBounds(480, 960, 35, 35);
 		Btnplus.setIcon(new ImageIcon("Images/Btnplus.png"));
 		background.add(Btnplus);
-		
-		Btnmoins=new JLabel();
+
+		Btnmoins = new JLabel();
 		Btnmoins.setBounds(550, 960, 35, 35);
 		Btnmoins.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		background.add(Btnmoins);
 		
+		findutour = new JLabel();
+		findutour.setBounds(1780, 950, 100, 100);
+		findutour.setIcon(new ImageIcon("Images/findutour.png"));
+		background.add(findutour);
+
 		map = new JLabel();
 		map.setBounds(5, 5, 1910, 920);
 		map.setIcon(new ImageIcon("Images/map3.png"));
@@ -217,36 +222,35 @@ public class Menu implements MouseListener {
 		nom1.setOpaque(false);
 		nom1.setText(joueur1TextField.getText());
 		nom1.setBounds(90, 930, 190, 75);
-		
-		
+
 		nom2 = new JTextArea();
 		nom2.setEditable(false);
 		nom2.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom2.setOpaque(false);
 		nom2.setText(joueur2TextField.getText());
 		nom2.setBounds(90, 980, 190, 75);
-		
+
 		nom3 = new JTextArea();
 		nom3.setEditable(false);
 		nom3.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom3.setOpaque(false);
 		nom3.setText(joueur3TextField.getText());
 		nom3.setBounds(90, 1030, 190, 75);
-		
+
 		nom4 = new JTextArea();
 		nom4.setEditable(false);
 		nom4.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom4.setOpaque(false);
 		nom4.setText(joueur4TextField.getText());
 		nom4.setBounds(330, 930, 190, 75);
-		
+
 		nom5 = new JTextArea();
 		nom5.setEditable(false);
 		nom5.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom5.setOpaque(false);
 		nom5.setText(joueur5TextField.getText());
 		nom5.setBounds(330, 980, 190, 75);
-		
+
 		nom6 = new JTextArea();
 		nom6.setEditable(false);
 		nom6.setFont(new Font("Times New Roman", Font.PLAIN, 27));
@@ -256,7 +260,7 @@ public class Menu implements MouseListener {
 
 		background.add(nom1);
 		background.add(nom2);
-		
+
 		if (nbJoueurs == 3) {
 			background.add(nom3);
 		}
@@ -275,7 +279,7 @@ public class Menu implements MouseListener {
 			background.add(nom5);
 			background.add(nom6);
 		}
-		
+
 		jeu.repaint();
 		return jeu;
 	}
@@ -283,7 +287,6 @@ public class Menu implements MouseListener {
 	public int getNbJoueurs() {
 		return nbJoueurs;
 	}
-
 
 	// EVENT MOUSE LISTENER
 	@Override
@@ -294,14 +297,48 @@ public class Menu implements MouseListener {
 			quatreJ.setVisible(true);
 			cinqJ.setVisible(true);
 			sixJ.setVisible(true);
-			go.setVisible(true);
+			commencer.setVisible(true);
 			jouer.setVisible(false);
 			close.setVisible(false);
 		}
 		if (e.getSource() == close) {
 			System.exit(0);
 		}
-		if (e.getSource() == go) {
+		if (e.getSource() == commencer) {
+
+			// VERIFICATION NOMBRE DE JOUEURS
+			if (nbJoueurs == 2) {
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+			}
+			if (nbJoueurs == 3) {
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+			}
+			if (nbJoueurs == 4) {
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+			}
+			if (nbJoueurs == 5) {
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+
+			}
+			if (nbJoueurs == 6) {
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
+			}
+
 			f.remove(menu);
 			f.setContentPane(jeu());
 			f.revalidate();

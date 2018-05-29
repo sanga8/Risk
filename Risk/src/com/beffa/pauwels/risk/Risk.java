@@ -11,6 +11,7 @@ public class Risk {
 	int tour;
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
+	
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
@@ -21,7 +22,7 @@ public class Risk {
 	}
 
 	/**
-	 * GESTION DE TOUR
+	 *GESTION DE TOUR
 	 */
 	public void finDeTour() {
 		tour += tour;
@@ -36,6 +37,8 @@ public class Risk {
 		}
 	}
 
+	
+	
 	// Methode avec l'aide d'Eliot Sadrin
 	// Création de territoire
 	public void creerTerritoires() {
