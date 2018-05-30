@@ -18,15 +18,7 @@ public class Territoire {
 		this.territoiresAdjacents = territoiresAdjacents;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	public Joueur getProprietaire() {
 		return occupant;

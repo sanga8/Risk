@@ -159,12 +159,12 @@ public class Menu implements MouseListener {
 		joueur4TextField = new JTextField("Joueur 4");
 		joueur5TextField = new JTextField("Joueur 5");
 		joueur6TextField = new JTextField("Joueur 6");
-		joueur1TextField.setBounds(750, 600, 190, 75);
-		joueur2TextField.setBounds(750, 700, 190, 75);
-		joueur3TextField.setBounds(750, 800, 190, 75);
-		joueur4TextField.setBounds(1000, 600, 190, 75);
-		joueur5TextField.setBounds(1000, 700, 190, 75);
-		joueur6TextField.setBounds(1000, 800, 190, 75);
+		joueur1TextField.setBounds(740, 600, 190, 75);
+		joueur2TextField.setBounds(740, 700, 190, 75);
+		joueur3TextField.setBounds(740, 800, 190, 75);
+		joueur4TextField.setBounds(990, 600, 190, 75);
+		joueur5TextField.setBounds(990, 700, 190, 75);
+		joueur6TextField.setBounds(990, 800, 190, 75);
 		joueur1TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		joueur2TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		joueur3TextField.setFont(new Font("Times New Roman", Font.PLAIN, 27));
@@ -187,7 +187,7 @@ public class Menu implements MouseListener {
 		// COMMENCER
 		commencer = new JLabel("");
 		commencer.setIcon(new ImageIcon("Images/Commencer.png"));
-		commencer.setBounds(870, 850, 350, 224);
+		commencer.setBounds(850, 900, 220, 147);
 		commencer.setVisible(false);
 		commencer.addMouseListener(this);
 		background.add(commencer);
@@ -197,7 +197,7 @@ public class Menu implements MouseListener {
 		warning.setEditable(false);
 		warning.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		warning.setOpaque(false);
-		warning.setBounds(800, 900, 400, 50);
+		warning.setBounds(790, 540, 400, 50);
 		warning.setVisible(false);
 		background.add(warning);
 
@@ -476,7 +476,9 @@ public class Menu implements MouseListener {
 		if (e.getSource() == close) {
 			close.setIcon(new ImageIcon("Images/QuitterHover.png"));
 		}
-
+		if (e.getSource() == commencer) {
+			commencer.setIcon(new ImageIcon("Images/CommencerHover.png"));
+		}
 		if (e.getSource() == deuxJ) {
 			deuxJ.setIcon(new ImageIcon("Images/DeuxbtnHover.png"));
 		}
@@ -503,7 +505,9 @@ public class Menu implements MouseListener {
 		if (e.getSource() == close) {
 			close.setIcon(new ImageIcon("Images/Quitter.png"));
 		}
-
+		if (e.getSource() == commencer) {
+			commencer.setIcon(new ImageIcon("Images/Commencer.png"));
+		}
 		if (e.getSource() == deuxJ) {
 			deuxJ.setIcon(new ImageIcon("Images/Deuxbtn.png"));
 		}
