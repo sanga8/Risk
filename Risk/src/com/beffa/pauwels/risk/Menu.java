@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
@@ -31,9 +32,12 @@ public class Menu implements MouseListener {
 	private JLabel background;
 	private JLabel map;
 
+	private boolean verifnom;
+	private boolean verifj;
+
 	private JLabel findutour;
 
-	int nbJoueurs;
+	int nbJoueurs = 0;
 
 	private JLabel jouer;
 	private JLabel close;
@@ -62,6 +66,8 @@ public class Menu implements MouseListener {
 	private JTextArea nom4;
 	private JTextArea nom5;
 	private JTextArea nom6;
+
+	private JTextArea warning;
 
 	private JLabel commencer;
 
@@ -178,12 +184,22 @@ public class Menu implements MouseListener {
 		background.add(joueur5TextField);
 		background.add(joueur6TextField);
 
+		// COMMENCER
 		commencer = new JLabel("");
 		commencer.setIcon(new ImageIcon("Images/Commencer.png"));
-		commencer.setBounds(830, 850, 350, 224);
+		commencer.setBounds(870, 850, 350, 224);
 		commencer.setVisible(false);
 		commencer.addMouseListener(this);
 		background.add(commencer);
+
+		// verifnom
+		warning = new JTextArea();
+		warning.setEditable(false);
+		warning.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		warning.setOpaque(false);
+		warning.setBounds(800, 900, 400, 50);
+		warning.setVisible(false);
+		background.add(warning);
 
 		menu.add(background);
 		return menu;
@@ -339,42 +355,67 @@ public class Menu implements MouseListener {
 		}
 		if (e.getSource() == commencer) {
 
-			// VERIFICATION NOMBRE DE JOUEURS
-			if (nbJoueurs == 2) {
+			// verifnomICATION LONGUEUR DES NOMS
+			ArrayList<JTextField> j = new ArrayList<JTextField>();
+			j.add(joueur1TextField);
+			j.add(joueur2TextField);
+			j.add(joueur3TextField);
+			j.add(joueur4TextField);
+			j.add(joueur5TextField);
+			j.add(joueur6TextField);
+			
+			
+			verifNom(j);
+			verifj(nbJoueurs);
+			
+			
+			switch (nbJoueurs) {
+
+			case 2:
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-			}
-			if (nbJoueurs == 3) {
+			case 3:
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-			}
-			if (nbJoueurs == 4) {
+			case 4:
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-			}
-			if (nbJoueurs == 5) {
+			case 5:
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
-
-			}
-			if (nbJoueurs == 6) {
+			case 6:
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
 				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
+				break;
+			default:
+			}
+			
+			if (verifj == false) {
+				warning.removeAll();
+				warning.setText("Choisissez le nombre de joueurs");
+				warning.setVisible(true);
+				return;
+			} else if (verifnom == false) {
+				warning.removeAll();
+				warning.setText("Réduisez la taille de vos noms");
+				warning.setVisible(true);
+				return;
+			} else {
+				f.remove(menu);
+				f.setContentPane(jeu());
+				f.revalidate();
 			}
 
-			f.remove(menu);
-			f.setContentPane(jeu());
-			f.revalidate();
 		}
 
 		if (e.getSource() == deuxJ) {
@@ -487,6 +528,23 @@ public class Menu implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+	}
+
+	// VERIFICATIONS
+	public boolean verifj(int nbJoueurs) {
+		if (nbJoueurs < 2) {
+			return verifj = false;
+		}
+		return verifj = true;
+	}
+
+	public boolean verifNom(ArrayList<JTextField> j) {
+		for (int i = 0; i < j.size(); i++) {
+			if (j.get(i).getText().length() >= 10) {
+				return verifnom = false;
+			}
+		}
+		return verifnom = true;
 	}
 
 }
