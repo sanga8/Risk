@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Joueur {
 
-	private String name;
+	private String nom;
 	private int idJoueur;
 	private int armees;
 	private int nbJoueurs;
@@ -13,8 +13,8 @@ public class Joueur {
 	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
 	private ArrayList<Continent> continentsPossedes = new ArrayList<Continent>();
 
-	public Joueur(String name, int idJoueur) {
-		this.name = name;
+	public Joueur(String nom, int idJoueur) {
+		this.nom = nom;
 		this.idJoueur = idJoueur;
 	}
 
@@ -42,12 +42,15 @@ public class Joueur {
 		this.territoiresPossedes.remove(territoire);
 	}
 
-	public int getNbJoueurs() {
-		return nbJoueurs;
+	public String getNom() {
+		return nom;
+	}
+	public int getIdJoueur() {
+		return idJoueur;
 	}
 
-	public void setNbJoueurs(int nbJoueurs) {
-		this.nbJoueurs = nbJoueurs;
-	}
+
+	
+	
 
 }

@@ -8,37 +8,36 @@ import javax.swing.JPanel;
 
 public class Risk {
 
-	int tour;
+	int tour = 0;
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
-	
+
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
 	public Risk() {
-
 		Menu menu = new Menu();
 
 	}
 
 	/**
-	 *GESTION DE TOUR
+	 * GESTION DE TOUR
 	 */
 	public void finDeTour() {
-		tour += tour;
+		tour++;
+
+		if (tour >= listeJoueurs.size()) {
+			tour = 0;
+		}
+
 		while (listeJoueurs.get(tour) == null) {
 			tour++;
 			if (tour >= listeJoueurs.size()) {
 				tour = 0;
 			}
 		}
-		if (tour >= listeJoueurs.size()) {
-			tour = 0;
-		}
 	}
 
-	
-	
 	// Methode avec l'aide d'Eliot Sadrin
 	// Création de territoire
 	public void creerTerritoires() {
