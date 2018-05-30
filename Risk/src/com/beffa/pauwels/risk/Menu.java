@@ -37,7 +37,7 @@ public class Menu implements MouseListener {
 
 	private JLabel findutour;
 
-	int nbJoueurs = 0;
+	int nbJoueurs;
 
 	private JLabel jouer;
 	private JLabel close;
@@ -363,43 +363,43 @@ public class Menu implements MouseListener {
 			j.add(joueur4TextField);
 			j.add(joueur5TextField);
 			j.add(joueur6TextField);
-			
-			
+
 			verifNom(j);
 			verifj(nbJoueurs);
-			
-			
-			switch (nbJoueurs) {
 
-			case 2:
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-			case 3:
+			if (nbJoueurs == 2) {
+
+				Main.risk.listeJoueurs.add(new Joueur(j.get(0).getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(j.get(1).getText(), 2));
+			}
+			if (nbJoueurs == 3) {
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-			case 4:
+			}
+			if (nbJoueurs == 4) {
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-			case 5:
+			}
+			if (nbJoueurs == 5) {
+
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
-			case 6:
+			}
+			if (nbJoueurs == 6) {
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
 				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
-				break;
-			default:
 			}
-			
+
 			if (verifj == false) {
 				warning.removeAll();
 				warning.setText("Choisissez le nombre de joueurs");
@@ -531,8 +531,8 @@ public class Menu implements MouseListener {
 	}
 
 	// VERIFICATIONS
-	public boolean verifj(int nbJoueurs) {
-		if (nbJoueurs < 2) {
+	public boolean verifj(int nj) {
+		if (nj < 2) {
 			return verifj = false;
 		}
 		return verifj = true;

@@ -19,13 +19,13 @@ public class Risk {
 		Menu menu = new Menu();
 
 	}
-
+	
 	/**
 	 * GESTION DE TOUR
 	 */
 	public void finDeTour() {
+		
 		tour++;
-
 		if (tour >= listeJoueurs.size()) {
 			tour = 0;
 		}
