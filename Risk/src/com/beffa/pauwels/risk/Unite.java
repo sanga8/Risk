@@ -3,12 +3,16 @@ package com.beffa.pauwels.risk;
 public class Unite {
 	
 	private int puissance;
+	private int resultatDe;
+	private int type;
 	private String nom;
 	
-	public Unite(int parametrePuissance, String nomUnite) {
+	public Unite(int puissance, int resultatDe, int type, String nom) {
 		
-		puissance = parametrePuissance;
-		nom = nomUnite;
+		this.puissance = puissance;
+		this.resultatDe = resultatDe;
+		this.type = type;
+		this.nom = nom;
 		
 	}
 
@@ -29,7 +33,21 @@ public class Unite {
 		this.nom = nom;
 	}
 
+	public int getType() {
+		return type;
+	}
 
-	
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getResultatDe() {
+		return resultatDe;
+	}
+
+	public void setResultatDe(int resultatDe) {
+		this.resultatDe = resultatDe;
+	}
+
 
 }
