@@ -369,8 +369,8 @@ public class Menu implements MouseListener {
 
 			if (nbJoueurs == 2) {
 
-				Main.risk.listeJoueurs.add(new Joueur(j.get(0).getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(j.get(1).getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 			}
 			if (nbJoueurs == 3) {
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));

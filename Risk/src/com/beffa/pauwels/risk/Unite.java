@@ -3,14 +3,15 @@ package com.beffa.pauwels.risk;
 public class Unite {
 	
 	private int puissance;
-	private int resultatDe;
+	private int resultatDe=0;
 	private int type;
+	private int mouvement;
 	private String nom;
 	
-	public Unite(int puissance, int resultatDe, int type, String nom) {
+	public Unite(int puissance, int mouvement,  int type, String nom) {
 		
 		this.puissance = puissance;
-		this.resultatDe = resultatDe;
+		this.mouvement = mouvement;
 		this.type = type;
 		this.nom = nom;
 		

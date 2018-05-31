@@ -12,112 +12,122 @@ import java.util.List;
 public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
-	ArrayList<Unite> uniteBatailleDEF = new ArrayList<Unite>();
 
-	ArrayList<Integer> listeResultatDepaysATT = new ArrayList<Integer>();
-	ArrayList<Integer> listeResultatDepaysDEF = new ArrayList<Integer>();
+	//ArrayList<Integer> listeResultatDeTerritoireATT = new ArrayList<Integer>();
 
-	ArrayList<Pays> listeGagnant = new ArrayList<Pays>();
-
-	int nombreSoldats;
-	int nombreCavaliers;
-	int nombreCanons;
+	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;
 
-	public int determinerNombreATT(Pays p) {
-		if (p.nombreSoldats + p.nombreCavaliers + p.nombreCanons == 2) {
-			return 1;
-		}
+	/*
+	 * public int determinerNombreATT(Territoire p) { if (p.nombreSoldats +
+	 * p.nombreCavaliers + p.nombreCanons == 2) { return 1; }
+	 * 
+	 * else if (p.nombreSoldats + p.nombreCavaliers + p.nombreCanons == 2) {
+	 * return 2; }
+	 * 
+	 * else { return 3; } }
+	 */
 
-		else if (p.nombreSoldats + p.nombreCavaliers + p.nombreCanons == 2) {
-			return 2;
-		}
-
-		else {
-			return 3;
-		}
-	}
-
-	public void prendreUniteATT(Pays p) {
-		p.addSoldat(-1);
+	public void prendreSoldatATT(Territoire p) {
 		int count = 0;
 		for (int i = 0; i < p.getListeUnites().size(); i++) {
-			if (p.getListeUnites().get(i).getType() == 0 && count == 0) {
-
+			if (p.getListeUnites().get(i).getType() == 0 && count == 0 && p.getListeUnites().size() > 0) {
 				uniteBatailleATT.add(p.getListeUnites().get(i));
+				p.getListeUnites().remove(i);
 				count++;
 			}
 		}
-
 	}
 
-	public int determinerNombreDEF(Pays p) {
-		if (p.nombreSoldats + p.nombreCavaliers + p.nombreCanons == 1) {
-			return 1;
-		}
-
-		else {
-			return 2;
-		}
-
-	}
-
-	public void lanceDe() {
-		for (int i = 0; i < Pays.uniteBataille.size(); i++) {
-			this.uniteBatailleATT.get(i)
-					.setResultatDe((int) (Math.random() * 6 + uniteBatailleATT.get(i).getPuissance()));
-			this.uniteBatailleDEF.get(i)
-					.setResultatDe((int) (Math.random() * 6 + uniteBatailleDEF.get(i).getPuissance()));
-
-			listeResultatDepaysATT.add(this.uniteBatailleATT.get(i).getResultatDe());
-			listeResultatDepaysDEF.add(this.uniteBatailleDEF.get(i).getResultatDe());
-
+	public void prendreCavalierATT(Territoire p) {
+		int count = 0;
+		for (int i = 0; i < p.getListeUnites().size(); i++) {
+			if (p.getListeUnites().get(i).getType() == 1 && count == 0 && p.getListeUnites().size() > 0) {
+				uniteBatailleATT.add(p.getListeUnites().get(i));
+				p.getListeUnites().remove(i);
+				count++;
+			}
 		}
 	}
 
-	public void actualiserUnitePays(Unite unite) {
-
-		Pays.listeUnites.remove(unite);
-
-		if (unite.getType() == 0) {
-			this.addSoldat(-1);
-		} else if (unite.getType() == 1) {
-			this.addCavalier(-1);
-		} else if (unite.getType() == 2) {
-			this.addCanon(-1);
+	public void prendreCanonATT(Territoire p) {
+		int count = 0;
+		for (int i = 0; i < p.getListeUnites().size(); i++) {
+			if (p.getListeUnites().get(i).getType() == 2 && count == 0 && p.getListeUnites().size() > 0) {
+				uniteBatailleATT.add(p.getListeUnites().get(i));
+				p.getListeUnites().remove(i);
+				count++;
+			}
 		}
 	}
 
-	public Combat(Pays paysATT, Pays paysDEF) {
+	public void lanceDe(Territoire t) {
+		for (int i = 0; i < uniteBatailleATT.size(); i++) {
+			
+			this.uniteBatailleATT.get(i).setResultatDe((int) (Math.random() * 6 + uniteBatailleATT.get(i).getPuissance()));
+			
+			t.getListeUnites().get(i).setResultatDe((int) (Math.random() * 6 + t.getListeUnites().get(i).getPuissance()));
 
-		int nombreDEF = determinerNombreDEF(paysDEF);
-		int nombreATT = determinerNombreATT(paysATT);
+		}
+	}
+	
+	/*
+	 * public void actualiserUniteTerritoire(Unite unite) {
+	 * 
+	 * Territoire.listeUnites.remove(unite);
+	 * 
+	 * if (unite.getType() == 0) { this.addSoldat(-1); } else if
+	 * (unite.getType() == 1) { this.addCavalier(-1); } else if (unite.getType()
+	 * == 2) { this.addCanon(-1); } }
+	 */
+	
+	
+	public Combat(Territoire TerritoireATT, Territoire TerritoireDEF) {
+
+		int nombreDEF = determinerNombreDEF(TerritoireDEF);
+		int nombreATT = determinerNombreATT(TerritoireATT);
 
 		lanceDe();
 
-		Collections.sort(listeResultatDepaysATT);
-		Collections.sort(listeResultatDepaysDEF);
-		
-		resolutionCombat(paysATT, paysDEF);
+		Collections.sort(listeResultatDeTerritoireATT);
+		Collections.sort(listeResultatDeTerritoireDEF);
 
-		System.out.println(listeResultatDepaysATT.toString());
-		System.out.println(listeResultatDepaysDEF.toString());
+		resolutionCombat(TerritoireATT, TerritoireDEF);
 
-		actualiserUnitePays(paysATT);
+		System.out.println(listeResultatDeTerritoireATT.toString());
+		System.out.println(listeResultatDeTerritoireDEF.toString());
+
+		actualiserUniteTerritoire(TerritoireATT);
 
 	}
+	
+	public void combattre(Territoire TerritoireATT, Territoire TerritoireDEF){
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
-	public void resolutionCombat(Pays paysATT, Pays paysDEF) {
-		for (int i = 0; i < paysDEF.uniteBataille.size(); i++) {
+	public void resolutionCombat(Territoire TerritoireATT, Territoire TerritoireDEF) {
+		for (int i = 0; i < TerritoireDEF.uniteBataille.size(); i++) {
 
-			if (paysATT.uniteBataille.get(i).getResultatDe() > paysDEF.uniteBataille.get(i).getResultatDe()) {
-				listeGagnant.add(paysATT);
+			if (TerritoireATT.uniteBataille.get(i).getResultatDe() > TerritoireDEF.uniteBataille.get(i)
+					.getResultatDe()) {
+				listeGagnant.add(TerritoireATT);
 			}
 
 			else {
 
-				listeGagnant.add(paysDEF);
+				listeGagnant.add(TerritoireDEF);
 
 			}
 
@@ -143,7 +153,7 @@ public class Combat {
 	 * Collections.sort(defenseurs); Collections.reverse(defenseurs);
 	 * 
 	 * 
-	 * System.out.println("Défenseurs avant combat: " + defenseurs);
+	 * System.out.println("Dï¿½fenseurs avant combat: " + defenseurs);
 	 * System.out.println("Attaquants avant combat: " + attaquants);
 	 * 
 	 * 
@@ -162,7 +172,7 @@ public class Combat {
 	 * 
 	 * else if(attaquants.get(i) < defenseurs.get(i)) {
 	 * 
-	 * System.out.println("Egalité, comparez les priorités");
+	 * System.out.println("Egalitï¿½, comparez les prioritï¿½s");
 	 * 
 	 * 
 	 * }
@@ -171,8 +181,8 @@ public class Combat {
 	 * }
 	 * 
 	 * 
-	 * System.out.println("Défenseurs après combat: " + defenseurs);
-	 * System.out.println("Attaquants après combat: " + attaquants);
+	 * System.out.println("Dï¿½fenseurs aprï¿½s combat: " + defenseurs);
+	 * System.out.println("Attaquants aprï¿½s combat: " + attaquants);
 	 * 
 	 */
 
@@ -180,19 +190,19 @@ public class Combat {
 
 	// if (unite1.getPuissance() < unite2.getPuissance()) {
 
-	// System.out.println("Le " + unite2.getNom() + " bat le " + unite1.getNom());
+	// System.out.println("Le " + unite2.getNom() + " bat le " +
+	// unite1.getNom());
 	// }
 	// else if (unite1.getPuissance() > unite2.getPuissance()){
 	//
-	// System.out.println("Le " + unite1.getNom() + " bat le " + unite2.getNom());
+	// System.out.println("Le " + unite1.getNom() + " bat le " +
+	// unite2.getNom());
 
 	// }
 
 	// else if (unite1.getPuissance() == unite2.getPuissance()) {
 
-	// System.out.println("comparez les priorités");
+	// System.out.println("comparez les prioritï¿½s");
 	// }
 
 }
-
-
