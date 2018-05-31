@@ -12,23 +12,16 @@ import java.util.List;
 public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
-
-	//ArrayList<Integer> listeResultatDeTerritoireATT = new ArrayList<Integer>();
-
 	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;
-
-	/*
-	 * public int determinerNombreATT(Territoire p) { if (p.nombreSoldats +
-	 * p.nombreCavaliers + p.nombreCanons == 2) { return 1; }
-	 * 
-	 * else if (p.nombreSoldats + p.nombreCavaliers + p.nombreCanons == 2) {
-	 * return 2; }
-	 * 
-	 * else { return 3; } }
-	 */
-
+	
+	
+	
+	public Combat() {}
+	
+	//METTRE ARMEE TERRITOIRE DANS ARMEE COMBAT
+	
 	public void prendreSoldatATT(Territoire p) {
 		int count = 0;
 		for (int i = 0; i < p.getListeUnites().size(); i++) {
@@ -72,19 +65,10 @@ public class Combat {
 		}
 	}
 	
-	/*
-	 * public void actualiserUniteTerritoire(Unite unite) {
-	 * 
-	 * Territoire.listeUnites.remove(unite);
-	 * 
-	 * if (unite.getType() == 0) { this.addSoldat(-1); } else if
-	 * (unite.getType() == 1) { this.addCavalier(-1); } else if (unite.getType()
-	 * == 2) { this.addCanon(-1); } }
-	 */
 	
-	
-	public Combat(Territoire TerritoireATT, Territoire TerritoireDEF) {
-
+	//COMBATTRE
+	public void combattre(Territoire TerritoireATT, Territoire TerritoireDEF){
+		
 		int nombreDEF = determinerNombreDEF(TerritoireDEF);
 		int nombreATT = determinerNombreATT(TerritoireATT);
 
@@ -99,11 +83,6 @@ public class Combat {
 		System.out.println(listeResultatDeTerritoireDEF.toString());
 
 		actualiserUniteTerritoire(TerritoireATT);
-
-	}
-	
-	public void combattre(Territoire TerritoireATT, Territoire TerritoireDEF){
-		
 		
 		
 		
