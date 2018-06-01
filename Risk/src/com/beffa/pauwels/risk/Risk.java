@@ -54,10 +54,8 @@ public class Risk {
 		
 	}
 
-	public void attribuerTerritoire() {
-		
+	public void attribuerTerritoire() {	
 	Collections.shuffle(listeTerritoires);
-	
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			for (int j = 0; j < listeTerritoires.size(); j++) {
 				listeTerritoires.get(i).setOccupant(listeJoueurs.get(i));
