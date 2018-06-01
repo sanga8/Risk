@@ -79,7 +79,7 @@ public class Menu implements MouseListener {
 		f.setTitle("RISK");
 		f.setUndecorated(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setResizable(false);
+		f.setResizable(true);
 
 		f.setLayout(null);
 		f.setContentPane(menu());
