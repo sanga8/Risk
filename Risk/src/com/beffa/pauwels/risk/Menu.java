@@ -36,10 +36,43 @@ public class Menu implements MouseListener {
 
 	private JLabel action;
 
-	private JLabel Btnplus;
-	private JLabel Btnmoins;
+	private JLabel BtnplusSoldatRenfort;
+	private JLabel BtnplusCavalierRenfort;
+	private JLabel BtnplusCanonRenfort;
 
-	private ArrayList<JTextField> j;
+	private JLabel BtnmoinsSoldatRenfort;
+	private JLabel BtnmoinsCavalierRenfort;
+	private JLabel BtnmoinsCanonRenfort;
+
+	private JLabel BtnplusSoldatTerritoire;
+	private JLabel BtnplusCavalierTerritoire;
+	private JLabel BtnplusCanonTerritoire;
+
+	private JLabel BtnmoinsSoldatTerritoire;
+	private JLabel BtnmoinsCavalierTerritoire;
+	private JLabel BtnmoinsCanonTerritoire;
+
+	private JLabel BtnplusSoldatAction;
+	private JLabel BtnplusCavalierAction;
+	private JLabel BtnplusCanonAction;
+
+	private JLabel BtnmoinsSoldatAction;
+	private JLabel BtnmoinsCavalierAction;
+	private JLabel BtnmoinsCanonAction;
+
+	private JTextField SoldatRenfort;
+	private JTextField CavalierRenfort;
+	private JTextField CanonRenfort;
+
+	private JTextField SoldatTerritoire;
+	private JTextField CavalierTerritoire;
+	private JTextField CanonTerritoire;
+
+	private JTextField SoldatAction;
+	private JTextField CavalierAction;
+	private JTextField CanonAction;
+
+	/////
 
 	private JTextField joueur1TextField;
 	private JTextField joueur2TextField;
@@ -49,7 +82,9 @@ public class Menu implements MouseListener {
 	private JTextField joueur6TextField;
 
 	private JLabel contour;
-
+	private JLabel cadre;
+	
+	
 	private JTextArea nom1;
 	private JTextArea nom2;
 	private JTextArea nom3;
@@ -60,10 +95,12 @@ public class Menu implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
-	
-	private ArrayList<JLabel> hitboxes;
-	public Menu() {
 
+	private ArrayList<JLabel> hitboxes;
+	
+	Risk risk = new Risk();
+	public Menu() {
+		
 		f = new JFrame();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		f.setPreferredSize(d);
@@ -87,7 +124,6 @@ public class Menu implements MouseListener {
 		// BACKGROUND
 		background = new JLabel();
 		background.setIcon(new ImageIcon("Images/fondRisk.jpg"));
-
 		background.setBounds(0, 0, 1920, 1080);
 
 		// BOUTON JOUER
@@ -204,16 +240,120 @@ public class Menu implements MouseListener {
 		background.setBounds(0, 0, 1920, 1080);
 		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
 		jeu.add(background);
+		
+		
+		cadre = new JLabel();
+		cadre.setIcon(new ImageIcon("Images/cadre.png"));
+		cadre.setBounds(590, 925, 694, 146);
+		background.add(cadre);
+		
+		// BOUTTONS PLUS ET MOINS
+		// RENFORT
+		BtnplusSoldatRenfort = new JLabel();
+		BtnplusSoldatRenfort.setBounds(250, 24, 35, 35);
+		BtnplusSoldatRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusSoldatRenfort);
 
-		Btnplus = new JLabel();
-		Btnplus.setBounds(480, 960, 35, 35);
-		Btnplus.setIcon(new ImageIcon("Images/Btnplus.png"));
-		background.add(Btnplus);
+		BtnmoinsSoldatRenfort = new JLabel();
+		BtnmoinsSoldatRenfort.setBounds(180, 24, 35, 35);
+		BtnmoinsSoldatRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsSoldatRenfort);
 
-		Btnmoins = new JLabel();
-		Btnmoins.setBounds(550, 960, 35, 35);
-		Btnmoins.setIcon(new ImageIcon("Images/Btnmoins.png"));
-		background.add(Btnmoins);
+		BtnplusCavalierRenfort = new JLabel();
+		BtnplusCavalierRenfort.setBounds(770, 48, 35, 35);
+		BtnplusCavalierRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusCavalierRenfort);
+
+		BtnmoinsCavalierRenfort = new JLabel();
+		BtnmoinsCavalierRenfort.setBounds(700, 48, 35, 35);
+		BtnmoinsCavalierRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsCavalierRenfort);
+
+		BtnplusCanonRenfort = new JLabel();
+		BtnplusCanonRenfort.setBounds(770, 72, 35, 35);
+		BtnplusCanonRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusCanonRenfort);
+
+		BtnmoinsCanonRenfort = new JLabel();
+		BtnmoinsCanonRenfort.setBounds(700, 72, 35, 35);
+		BtnmoinsCanonRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsCanonRenfort);
+
+		// TERRITOIRE
+		BtnplusSoldatTerritoire = new JLabel();
+		BtnplusSoldatTerritoire.setBounds(960, 950, 35, 35);
+		BtnplusSoldatTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusSoldatTerritoire);
+
+		BtnmoinsSoldatTerritoire = new JLabel();
+		BtnmoinsSoldatTerritoire.setBounds(890, 950, 35, 35);
+		BtnmoinsSoldatTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsSoldatTerritoire);
+
+		BtnplusCavalierTerritoire = new JLabel();
+		BtnplusCavalierTerritoire.setBounds(960, 990, 35, 35);
+		BtnplusCavalierTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusCavalierTerritoire);
+
+		BtnmoinsCavalierTerritoire = new JLabel();
+		BtnmoinsCavalierTerritoire.setBounds(890, 990, 35, 35);
+		BtnmoinsCavalierTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsCavalierTerritoire);
+
+		BtnplusCanonTerritoire = new JLabel();
+		BtnplusCanonTerritoire.setBounds(960, 1030, 35, 35);
+		BtnplusCanonTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusCanonTerritoire);
+
+		BtnmoinsCanonTerritoire = new JLabel();
+		BtnmoinsCanonTerritoire.setBounds(890, 1030, 35, 35);
+		BtnmoinsCanonTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsCanonTerritoire);
+
+		// ACTION
+		BtnplusSoldatAction = new JLabel();
+		BtnplusSoldatAction.setBounds(1150, 950, 35, 35);
+		BtnplusSoldatAction.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusSoldatAction);
+
+		BtnmoinsSoldatAction = new JLabel();
+		BtnmoinsSoldatAction.setBounds(1080, 950, 35, 35);
+		BtnmoinsSoldatAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsSoldatAction);
+
+		BtnplusCavalierAction = new JLabel();
+		BtnplusCavalierAction.setBounds(1150, 990, 35, 35);
+		BtnplusCavalierAction.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusCavalierAction);
+
+		BtnmoinsCavalierAction = new JLabel();
+		BtnmoinsCavalierAction.setBounds(1080, 990, 35, 35);
+		BtnmoinsCavalierAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsCavalierAction);
+
+		BtnplusCanonAction = new JLabel();
+		BtnplusCanonAction.setBounds(1150, 1030, 35, 35);
+		BtnplusCanonAction.setIcon(new ImageIcon("Images/Btnplus.png"));
+		cadre.add(BtnplusCanonAction);
+
+		BtnmoinsCanonAction = new JLabel();
+		BtnmoinsCanonAction.setBounds(1080, 1030, 35, 35);
+		BtnmoinsCanonAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		cadre.add(BtnmoinsCanonAction);
+
+		// TEXTFIELD
+		// RENFORT
+		SoldatRenfort = new JTextField();
+		CavalierRenfort = new JTextField();
+		CanonRenfort = new JTextField();
+		// TERRITOIRE
+		SoldatTerritoire = new JTextField();
+		CavalierTerritoire = new JTextField();
+		CanonTerritoire = new JTextField();
+		// ACTION
+		SoldatAction = new JTextField();
+		CavalierAction = new JTextField();
+		CanonAction = new JTextField();
 
 		findutour = new JLabel();
 		findutour.setBounds(1780, 950, 100, 100);
@@ -293,7 +433,9 @@ public class Menu implements MouseListener {
 		contour = new JLabel();
 		contour.setIcon(new ImageIcon("Images/contour.png"));
 		contour.setBounds(80, 900, 210, 95);
-
+		
+		
+		
 		action = new JLabel();
 		action.setBounds(1580, 950, 100, 100);
 		action.setIcon(new ImageIcon("Images/findutour.png"));
@@ -339,26 +481,26 @@ public class Menu implements MouseListener {
 			System.exit(0);
 		}
 		if (e.getSource() == findutour) {
-			Main.risk.finDeTour();
-			if (Main.risk.tour == 0) {
+			risk.finDeTour();
+			if (risk.tour == 0) {
 				contour.setBounds(80, 900, 210, 95);
 			}
-			if (Main.risk.tour == 1) {
+			if (risk.tour == 1) {
 				contour.setBounds(80, 950, 210, 95);
 			}
 
-			if (Main.risk.tour == 2) {
+			if (risk.tour == 2) {
 				contour.setBounds(80, 1000, 210, 95);
 			}
 
-			if (Main.risk.tour == 3) {
+			if (risk.tour == 3) {
 				contour.setBounds(260, 900, 210, 95);
 			}
 
-			if (Main.risk.tour == 4) {
+			if (risk.tour == 4) {
 				contour.setBounds(260, 950, 210, 95);
 			}
-			if (Main.risk.tour == 5) {
+			if (risk.tour == 5) {
 				contour.setBounds(260, 1000, 210, 95);
 			}
 		}
@@ -393,51 +535,55 @@ public class Menu implements MouseListener {
 			}
 
 			if (nbJoueurs == 2) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 			}
 			if (nbJoueurs == 3) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 			}
 			if (nbJoueurs == 4) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 			}
 			if (nbJoueurs == 5) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
 			}
 			if (nbJoueurs == 6) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
-				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
 			}
 		}
-		if (e.getSource() == action) {
-
-		}
-		//ACTION
-		for (int i = 0; i < hitboxes.size(); i++) {
-			if (e.getSource() == hitboxes.get(i)) {
-				for (int j = 0; j < Main.risk.listeJoueurs.size(); j++) {
-					if (Main.risk.listeJoueurs.get(j).getIdJoueur() == Main.risk.tour+1) {
-//						if(hitboxes.get(i) == Main.risk.listeJoueurs.get(j).getTerritoiresPossedes()){}
-						
-						
-					}
-				}
-			}
-		}
+		/*
+		 * if (e.getSource() == action) {
+		 * 
+		 * }
+		 * 
+		 * // ACTION for (int i = 0; i < 42; i++) { if (e.getSource() ==
+		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size();
+		 * j++) { if (risk.listeJoueurs.get(j).getIdJoueur() ==
+		 * risk.tour + 1) { for (int h = 0; h < 42; h++) { if
+		 * (hitboxes.indexOf(h) ==
+		 * risk.listeJoueurs.get(j).getTerritoiresPossedes().indexOf(h)) {
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * } } } } } }
+		 */
 
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
