@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Combat {
@@ -60,7 +57,7 @@ public class Combat {
 		}
 	}
 
-	public void trieratq(ArrayList<Unite> liste) {
+	public void trierATT(ArrayList<Unite> liste) {
 		Collections.sort(liste, Comparator.comparing(Unite::getResultatDe));
 		Collections.reverse(liste);
 		for (int i = 0; i < liste.size(); i++) {
@@ -76,12 +73,12 @@ public class Combat {
 		}
 	}
 
-	public void choisirdef(ArrayList<Unite> liste) {
+	public void choisirDEF(ArrayList<Unite> liste) {
 		Collections.sort(liste, Comparator.comparing(Unite::getPrioriteDEF));
 
 	}
 
-	public void trierdef(ArrayList<Unite> liste) {
+	public void trierDEF(ArrayList<Unite> liste) {
 		if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
 			Collections.swap(liste, liste.get(0).getResultatDe(), liste.get(1).getResultatDe());
 		}
@@ -113,12 +110,12 @@ public class Combat {
 		 * les territoires réinitialiser les combats
 		 */
 
-		choisirdef(tDEF.listeUnites);
+		choisirDEF(tDEF.listeUnites);
 		lanceDe(tDEF.listeUnites);
-		trierdef(tDEF.listeUnites);
+		trierDEF(tDEF.listeUnites);
 
 		lanceDe(uniteBatailleATT);
-		trieratq(uniteBatailleATT);
+		trierATT(uniteBatailleATT);
 
 	}
 

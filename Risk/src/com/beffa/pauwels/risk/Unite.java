@@ -15,23 +15,27 @@ public class Unite {
 		//SOLDAT
 		if(type == 0){
 			this.puissance = 1;
-			this.mouvement = 1;
+			this.prioriteATQ = 2;
 			this.prioriteDEF = 1;
-			this.prioriteATQ = 1;
+			this.mouvement = 2;
+		
+			
 		}
 		//CAVALIER
 		if(type == 1){
 			this.puissance = 2;
-			this.mouvement = 2;
-			this.prioriteDEF = 2;
-			this.prioriteATQ = 2;
+			this.prioriteATQ = 1;
+			this.prioriteDEF = 3;
+			this.mouvement = 3;
+
 		}
 		//CANON
 		if(type == 2){
-			this.puissance = 3;
-			this.mouvement = 3;
-			this.prioriteDEF = 3;
+			this.puissance = 4;
 			this.prioriteATQ = 3;
+			this.prioriteDEF = 2;
+			this.mouvement = 1;
+
 		}
 
 		
