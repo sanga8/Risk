@@ -250,94 +250,94 @@ public class Menu implements MouseListener {
 		// BOUTTONS PLUS ET MOINS
 		// RENFORT
 		BtnplusSoldatRenfort = new JLabel();
-		BtnplusSoldatRenfort.setBounds(250, 24, 35, 35);
+		BtnplusSoldatRenfort.setBounds(250, 23, 35, 35);
 		BtnplusSoldatRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusSoldatRenfort);
 
 		BtnmoinsSoldatRenfort = new JLabel();
-		BtnmoinsSoldatRenfort.setBounds(180, 24, 35, 35);
+		BtnmoinsSoldatRenfort.setBounds(180, 23, 35, 35);
 		BtnmoinsSoldatRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsSoldatRenfort);
 
 		BtnplusCavalierRenfort = new JLabel();
-		BtnplusCavalierRenfort.setBounds(770, 48, 35, 35);
+		BtnplusCavalierRenfort.setBounds(250, 63, 35, 35);
 		BtnplusCavalierRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusCavalierRenfort);
 
 		BtnmoinsCavalierRenfort = new JLabel();
-		BtnmoinsCavalierRenfort.setBounds(700, 48, 35, 35);
+		BtnmoinsCavalierRenfort.setBounds(180, 63, 35, 35);
 		BtnmoinsCavalierRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsCavalierRenfort);
 
 		BtnplusCanonRenfort = new JLabel();
-		BtnplusCanonRenfort.setBounds(770, 72, 35, 35);
+		BtnplusCanonRenfort.setBounds(250, 103, 35, 35);
 		BtnplusCanonRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusCanonRenfort);
 
 		BtnmoinsCanonRenfort = new JLabel();
-		BtnmoinsCanonRenfort.setBounds(700, 72, 35, 35);
+		BtnmoinsCanonRenfort.setBounds(180, 103, 35, 35);
 		BtnmoinsCanonRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsCanonRenfort);
 
 		// TERRITOIRE
 		BtnplusSoldatTerritoire = new JLabel();
-		BtnplusSoldatTerritoire.setBounds(960, 950, 35, 35);
+		BtnplusSoldatTerritoire.setBounds(440, 23, 35, 35);
 		BtnplusSoldatTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusSoldatTerritoire);
 
 		BtnmoinsSoldatTerritoire = new JLabel();
-		BtnmoinsSoldatTerritoire.setBounds(890, 950, 35, 35);
+		BtnmoinsSoldatTerritoire.setBounds(370, 23, 35, 35);
 		BtnmoinsSoldatTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsSoldatTerritoire);
 
 		BtnplusCavalierTerritoire = new JLabel();
-		BtnplusCavalierTerritoire.setBounds(960, 990, 35, 35);
+		BtnplusCavalierTerritoire.setBounds(440, 63, 35, 35);
 		BtnplusCavalierTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusCavalierTerritoire);
 
 		BtnmoinsCavalierTerritoire = new JLabel();
-		BtnmoinsCavalierTerritoire.setBounds(890, 990, 35, 35);
+		BtnmoinsCavalierTerritoire.setBounds(370, 63, 35, 35);
 		BtnmoinsCavalierTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsCavalierTerritoire);
 
 		BtnplusCanonTerritoire = new JLabel();
-		BtnplusCanonTerritoire.setBounds(960, 1030, 35, 35);
+		BtnplusCanonTerritoire.setBounds(440, 103, 35, 35);
 		BtnplusCanonTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusCanonTerritoire);
 
 		BtnmoinsCanonTerritoire = new JLabel();
-		BtnmoinsCanonTerritoire.setBounds(890, 1030, 35, 35);
+		BtnmoinsCanonTerritoire.setBounds(370, 103, 35, 35);
 		BtnmoinsCanonTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsCanonTerritoire);
 
 		// ACTION
 		BtnplusSoldatAction = new JLabel();
-		BtnplusSoldatAction.setBounds(1150, 950, 35, 35);
+		BtnplusSoldatAction.setBounds(622, 23, 35, 35);
 		BtnplusSoldatAction.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusSoldatAction);
 
 		BtnmoinsSoldatAction = new JLabel();
-		BtnmoinsSoldatAction.setBounds(1080, 950, 35, 35);
+		BtnmoinsSoldatAction.setBounds(552, 23, 35, 35);
 		BtnmoinsSoldatAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsSoldatAction);
 
 		BtnplusCavalierAction = new JLabel();
-		BtnplusCavalierAction.setBounds(1150, 990, 35, 35);
+		BtnplusCavalierAction.setBounds(622, 63, 35, 35);
 		BtnplusCavalierAction.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusCavalierAction);
 
 		BtnmoinsCavalierAction = new JLabel();
-		BtnmoinsCavalierAction.setBounds(1080, 990, 35, 35);
+		BtnmoinsCavalierAction.setBounds(552, 63, 35, 35);
 		BtnmoinsCavalierAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsCavalierAction);
 
 		BtnplusCanonAction = new JLabel();
-		BtnplusCanonAction.setBounds(1150, 1030, 35, 35);
+		BtnplusCanonAction.setBounds(622, 103, 35, 35);
 		BtnplusCanonAction.setIcon(new ImageIcon("Images/Btnplus.png"));
 		cadre.add(BtnplusCanonAction);
 
 		BtnmoinsCanonAction = new JLabel();
-		BtnmoinsCanonAction.setBounds(1080, 1030, 35, 35);
+		BtnmoinsCanonAction.setBounds(552, 103, 35, 35);
 		BtnmoinsCanonAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
 		cadre.add(BtnmoinsCanonAction);
 
