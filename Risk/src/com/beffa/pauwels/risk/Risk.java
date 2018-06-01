@@ -40,16 +40,13 @@ public class Risk {
 				tour = 0;
 			}
 		}
+		
 	}
 	
-	public void initialisation(){
-		
+	public void initialisation(){	
 		attribuerTerritoire();
 		
-		tourplacementrenforts();
-		
-		
-		
+
 		
 	}
 	
