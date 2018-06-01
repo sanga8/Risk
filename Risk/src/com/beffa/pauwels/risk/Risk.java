@@ -3,6 +3,9 @@ package com.beffa.pauwels.risk;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Risk {
 
 	int tour = 0;
@@ -14,9 +17,6 @@ public class Risk {
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
-
-	
-	
 	public Risk() {
 		
 		Menu menu = new Menu();
@@ -28,10 +28,11 @@ public class Risk {
 		debutDesTours();
 		
 		finPartie();
-		
-		
 	}
 
+	
+	
+	
 	/**
 	 * GESTION DE TOUR
 	 */
@@ -46,7 +47,6 @@ public class Risk {
 				tour = 0;
 			}
 		}
-		
 	}
 	
 	
@@ -136,33 +136,34 @@ public class Risk {
 		String[] listeNG = { "Indonesie", "Australie de l'Ouest", "Australie de l'Est" };
 		String[] listeADO = { "Australie de l'Est", "Nouvelle Guinee", "Indonesie" };
 		String[] listeADE = { "Australie de l'Ouest", "Nouvelle Guinee" };
-
+		
+		
 		// Territoires
 
-		this.listeTerritoires.add(new Territoire("Island", listeIS));
-		this.listeTerritoires.add(new Territoire("Scandinavie", listeSC));
-		this.listeTerritoires.add(new Territoire("Grande-Bretagne", listeGB));
-		this.listeTerritoires.add(new Territoire("Europe de l'Ouest", listeEO));
-		this.listeTerritoires.add(new Territoire("Europe du Sud", listeES));
-		this.listeTerritoires.add(new Territoire("Europe du Nord", listeEN));
-		this.listeTerritoires.add(new Territoire("Ukraine", listeUK));
-		this.listeTerritoires.add(new Territoire("Egypte", listeEG));
-		this.listeTerritoires.add(new Territoire("Afrique du Nord", listeAN));
-		this.listeTerritoires.add(new Territoire("Afrique de l'Est", listeAE));
-		this.listeTerritoires.add(new Territoire("Congo", listeCO));
-		this.listeTerritoires.add(new Territoire("Afrique du Sud", listeAS));
-		this.listeTerritoires.add(new Territoire("Madagascar", listeMA));
-		this.listeTerritoires.add(new Territoire("Moyen-Orient", listeMO));
-		this.listeTerritoires.add(new Territoire("Inde", listeIN));
-		this.listeTerritoires.add(new Territoire("Afganistan", listeAF));
-		this.listeTerritoires.add(new Territoire("Oural", listeOU));
-		this.listeTerritoires.add(new Territoire("Siberie", listeSIB));
-		this.listeTerritoires.add(new Territoire("Siam", listeSI));
-		this.listeTerritoires.add(new Territoire("Chine", listeCH));
-		this.listeTerritoires.add(new Territoire("Yakouti", listeYA));
-		this.listeTerritoires.add(new Territoire("Mongolie", listeMON));
-		this.listeTerritoires.add(new Territoire("Japon", listeJA));
-		this.listeTerritoires.add(new Territoire("Kamchatka", listeKA));
+		this.listeTerritoires.add(new Territoire("Island", listeIS));					//h1
+		this.listeTerritoires.add(new Territoire("Scandinavie", listeSC));				//h2
+		this.listeTerritoires.add(new Territoire("Grande-Bretagne", listeGB));			//h3
+		this.listeTerritoires.add(new Territoire("Europe de l'Ouest", listeEO));		//h3
+		this.listeTerritoires.add(new Territoire("Europe du Sud", listeES));			//h3
+		this.listeTerritoires.add(new Territoire("Europe du Nord", listeEN));			//h3	
+		this.listeTerritoires.add(new Territoire("Ukraine", listeUK));					//h3
+		this.listeTerritoires.add(new Territoire("Egypte", listeEG));					//h3
+		this.listeTerritoires.add(new Territoire("Afrique du Nord", listeAN));			//h3
+		this.listeTerritoires.add(new Territoire("Afrique de l'Est", listeAE));			//h3
+		this.listeTerritoires.add(new Territoire("Congo", listeCO));					//h3
+		this.listeTerritoires.add(new Territoire("Afrique du Sud", listeAS));			//h3
+		this.listeTerritoires.add(new Territoire("Madagascar", listeMA));				//h3
+		this.listeTerritoires.add(new Territoire("Moyen-Orient", listeMO));				//h3
+		this.listeTerritoires.add(new Territoire("Inde", listeIN));						//h3	
+		this.listeTerritoires.add(new Territoire("Afganistan", listeAF));				//h3
+		this.listeTerritoires.add(new Territoire("Oural", listeOU));					//h3
+		this.listeTerritoires.add(new Territoire("Siberie", listeSIB));					//h3
+		this.listeTerritoires.add(new Territoire("Siam", listeSI));						//h3
+		this.listeTerritoires.add(new Territoire("Chine", listeCH));					//h3
+		this.listeTerritoires.add(new Territoire("Yakouti", listeYA));					//h3
+		this.listeTerritoires.add(new Territoire("Mongolie", listeMON));				//h3
+		this.listeTerritoires.add(new Territoire("Japon", listeJA));					//h3
+		this.listeTerritoires.add(new Territoire("Kamchatka", listeKA));				//h3
 		this.listeTerritoires.add(new Territoire("Irkutsk", listeIR));
 		this.listeTerritoires.add(new Territoire("Alaska", listeAL));
 		this.listeTerritoires.add(new Territoire("Territoires du Nord", listeTN));

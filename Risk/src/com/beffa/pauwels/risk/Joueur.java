@@ -7,8 +7,8 @@ public class Joueur {
 
 	private String nom;
 	private int idJoueur;
-	private int armees;
 
+	private ArrayList<Unite> renforts = new ArrayList<Unite>();
 	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
 	private ArrayList<Continent> continentsPossedes = new ArrayList<Continent>();
 
@@ -17,10 +17,6 @@ public class Joueur {
 		this.idJoueur = idJoueur;
 	}
 
-	
-	
-	
-	
 	public boolean Perdu() {
 		if (this.territoiresPossedes.size() == 0) {
 			return true;
@@ -48,12 +44,25 @@ public class Joueur {
 	public String getNom() {
 		return nom;
 	}
+
 	public int getIdJoueur() {
 		return idJoueur;
 	}
 
+	public ArrayList<Territoire> getTerritoiresPossedes() {
+		return territoiresPossedes;
+	}
 
-	
-	
+	public void setTerritoiresPossedes(ArrayList<Territoire> territoiresPossedes) {
+		this.territoiresPossedes = territoiresPossedes;
+	}
+
+	public ArrayList<Continent> getContinentsPossedes() {
+		return continentsPossedes;
+	}
+
+	public void setContinentsPossedes(ArrayList<Continent> continentsPossedes) {
+		this.continentsPossedes = continentsPossedes;
+	}
 
 }

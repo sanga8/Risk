@@ -9,7 +9,7 @@ public class Territoire {
 	private String nom;
 	private String[] territoiresAdjacents;
 	private Joueur occupant;
-
+	
 	ArrayList<Unite> listeUnites = new ArrayList<Unite>();
 
 	public Territoire(String nom, String[] territoiresAdjacents) {

@@ -35,13 +35,12 @@ public class Menu implements MouseListener {
 	private JLabel sixJ;
 
 	private JLabel action;
-	
+
 	private JLabel Btnplus;
 	private JLabel Btnmoins;
-	
-	
+
 	private ArrayList<JTextField> j;
-	
+
 	private JTextField joueur1TextField;
 	private JTextField joueur2TextField;
 	private JTextField joueur3TextField;
@@ -61,9 +60,8 @@ public class Menu implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
-	//CREATION HITBOX
-	private ArrayList<JLabel> hitboxes;
 	
+	private ArrayList<JLabel> hitboxes;
 	public Menu() {
 
 		f = new JFrame();
@@ -301,15 +299,19 @@ public class Menu implements MouseListener {
 		action.setIcon(new ImageIcon("Images/findutour.png"));
 		action.addMouseListener(this);
 		background.add(action);
-		
-		
-		hitboxes
-		
-		
-		
-		
-		
-		
+
+		// CREATION HIBOXES
+		hitboxes = new ArrayList<JLabel>();
+		for (int i = 0; i < 2; i++) {
+			hitboxes.add(new JLabel());
+			hitboxes.get(i).setIcon(new ImageIcon("Images/test.png"));
+			hitboxes.get(i).addMouseListener(this);
+			map.add(hitboxes.get(i));
+		}
+
+		hitboxes.get(0).setBounds(1580, 750, 40, 40);
+		hitboxes.get(1).setBounds(1780, 750, 40, 40);
+
 		background.add(contour);
 
 		jeu.repaint();
@@ -370,10 +372,10 @@ public class Menu implements MouseListener {
 			j.add(joueur4TextField);
 			j.add(joueur5TextField);
 			j.add(joueur6TextField);
-			
+
 			verifNom(j);
 			verifj(nbJoueurs);
-			
+
 			if (verifj == false) {
 				warning.removeAll();
 				warning.setText("Choisissez le nombre de joueurs");
@@ -389,7 +391,7 @@ public class Menu implements MouseListener {
 				f.setContentPane(jeu());
 				f.revalidate();
 			}
-			
+
 			if (nbJoueurs == 2) {
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
@@ -419,17 +421,24 @@ public class Menu implements MouseListener {
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
 				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
-			}	
+			}
 		}
 		if (e.getSource() == action) {
-			
-			
-			
-			
-			
-			
-			
+
 		}
+		//ACTION
+		for (int i = 0; i < hitboxes.size(); i++) {
+			if (e.getSource() == hitboxes.get(i)) {
+				for (int j = 0; j < Main.risk.listeJoueurs.size(); j++) {
+					if (Main.risk.listeJoueurs.get(j).getIdJoueur() == Main.risk.tour+1) {
+//						if(hitboxes.get(i) == Main.risk.listeJoueurs.get(j).getTerritoiresPossedes()){}
+						
+						
+					}
+				}
+			}
+		}
+
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
 			joueur1TextField.setVisible(true);
