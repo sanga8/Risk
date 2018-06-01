@@ -35,6 +35,7 @@ public class Menu implements MouseListener {
 	private JLabel sixJ;
 
 	private JLabel action;
+	private JLabel mouvement;
 
 	private JLabel BtnplusSoldatRenfort;
 	private JLabel BtnplusCavalierRenfort;
@@ -355,11 +356,9 @@ public class Menu implements MouseListener {
 		CavalierAction = new JTextField();
 		CanonAction = new JTextField();
 
-		findutour = new JLabel();
-		findutour.setBounds(1780, 950, 100, 100);
-		findutour.setIcon(new ImageIcon("Images/findutour.png"));
-		findutour.addMouseListener(this);
-		background.add(findutour);
+
+		
+		
 
 		map = new JLabel();
 		map.setBounds(5, 5, 1910, 920);
@@ -437,11 +436,23 @@ public class Menu implements MouseListener {
 		
 		
 		action = new JLabel();
-		action.setBounds(1580, 950, 100, 100);
-		action.setIcon(new ImageIcon("Images/findutour.png"));
+		action.setBounds(1380, 950, 100, 100);
+		action.setIcon(new ImageIcon("Images/action.png"));
 		action.addMouseListener(this);
 		background.add(action);
-
+		
+		mouvement = new JLabel();
+		mouvement.setBounds(1580, 950, 100, 100);
+		mouvement.setIcon(new ImageIcon("Images/mouvement.png"));
+		mouvement.addMouseListener(this);
+		background.add(mouvement);
+		
+		findutour = new JLabel();
+		findutour.setBounds(1780, 950, 100, 100);
+		findutour.setIcon(new ImageIcon("Images/findutour.png"));
+		findutour.addMouseListener(this);
+		background.add(findutour);
+		
 		// CREATION HIBOXES
 		hitboxes = new ArrayList<JLabel>();
 		for (int i = 0; i < 2; i++) {
