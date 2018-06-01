@@ -6,12 +6,17 @@ import java.util.Collections;
 public class Risk {
 
 	int tour = 0;
-
+	boolean premierTour = true;
+	
+	
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
+
+	
+	
 	public Risk() {
 		
 		Menu menu = new Menu();
@@ -44,7 +49,13 @@ public class Risk {
 		
 	}
 	
+	
+	
 	public void initialisation(){	
+		
+		
+		
+		
 		
 		attribuerTerritoire();
 		

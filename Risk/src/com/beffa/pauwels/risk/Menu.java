@@ -34,6 +34,8 @@ public class Menu implements MouseListener {
 	private JLabel cinqJ;
 	private JLabel sixJ;
 
+	private JLabel action;
+	
 	private JLabel Btnplus;
 	private JLabel Btnmoins;
 	
@@ -59,7 +61,9 @@ public class Menu implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
-
+	//CREATION HITBOX
+	private ArrayList<JLabel> hitboxes;
+	
 	public Menu() {
 
 		f = new JFrame();
@@ -292,6 +296,20 @@ public class Menu implements MouseListener {
 		contour.setIcon(new ImageIcon("Images/contour.png"));
 		contour.setBounds(80, 900, 210, 95);
 
+		action = new JLabel();
+		action.setBounds(1580, 950, 100, 100);
+		action.setIcon(new ImageIcon("Images/findutour.png"));
+		action.addMouseListener(this);
+		background.add(action);
+		
+		
+		hitboxes
+		
+		
+		
+		
+		
+		
 		background.add(contour);
 
 		jeu.repaint();
@@ -373,33 +391,21 @@ public class Menu implements MouseListener {
 			}
 			
 			if (nbJoueurs == 2) {
-				int index;
-				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
-					Main.risk.listeJoueurs.remove(index);
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 			}
 			if (nbJoueurs == 3) {
-				int index;
-				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
-					Main.risk.listeJoueurs.remove(index);
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 			}
 			if (nbJoueurs == 4) {
-				int index;
-				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
-					Main.risk.listeJoueurs.remove(index);
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 			}
 			if (nbJoueurs == 5) {
-				int index;
-				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
-					Main.risk.listeJoueurs.remove(index);
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
@@ -407,20 +413,23 @@ public class Menu implements MouseListener {
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
 			}
 			if (nbJoueurs == 6) {
-				int index;
-				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
-					Main.risk.listeJoueurs.remove(index);
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
 				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
 				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
 				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
 				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
 				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
-			}
-			
-
+			}	
 		}
-
+		if (e.getSource() == action) {
+			
+			
+			
+			
+			
+			
+			
+		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
 			joueur1TextField.setVisible(true);
