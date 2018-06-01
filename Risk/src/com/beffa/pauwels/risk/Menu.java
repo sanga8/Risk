@@ -1,25 +1,11 @@
 package com.beffa.pauwels.risk;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.*;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Toolkit;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Menu implements MouseListener {
@@ -50,7 +36,9 @@ public class Menu implements MouseListener {
 
 	private JLabel Btnplus;
 	private JLabel Btnmoins;
-
+	
+	
+	private ArrayList<JTextField> j;
 	private JTextField joueur1TextField;
 	private JTextField joueur2TextField;
 	private JTextField joueur3TextField;
@@ -355,8 +343,8 @@ public class Menu implements MouseListener {
 		}
 		if (e.getSource() == commencer) {
 
-			// verifnomICATION LONGUEUR DES NOMS
-			ArrayList<JTextField> j = new ArrayList<JTextField>();
+			// VERIFICATION LONGUEUR DES NOMS
+			j = new ArrayList<JTextField>();
 			j.add(joueur1TextField);
 			j.add(joueur2TextField);
 			j.add(joueur3TextField);
@@ -366,7 +354,7 @@ public class Menu implements MouseListener {
 
 			verifNom(j);
 			verifj(nbJoueurs);
-
+			
 			if (nbJoueurs == 2) {
 
 				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));

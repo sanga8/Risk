@@ -29,15 +29,13 @@ public class Risk {
 				tour = 0;
 			}
 		}
+		System.out.println("Tour du joueur" + tour);
 	}
 	
-	public void initialisation(){
-		
+	public void initialisation(){	
 		attribuerTerritoire();
 		
-		
-		
-		
+
 	}
 
 	public void attribuerTerritoire() {
