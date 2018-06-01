@@ -2,10 +2,6 @@ package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 public class Risk {
 
 	int tour = 0;

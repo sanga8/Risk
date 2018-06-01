@@ -28,7 +28,7 @@ public class Continent {
 	{
 		for(int i = 0;i<this.territoiresDuContinent.size();i++)
 		{
-			if(this.territoiresDuContinent.get(i).getProprietaire() != joueur)
+			if(this.territoiresDuContinent.get(i).getOccupant() != joueur)
 			{
 				return false;
 			}
