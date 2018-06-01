@@ -8,7 +8,6 @@ public class Joueur {
 	private String nom;
 	private int idJoueur;
 	private int armees;
-	private int nbJoueurs;
 
 	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
 	private ArrayList<Continent> continentsPossedes = new ArrayList<Continent>();
@@ -18,6 +17,10 @@ public class Joueur {
 		this.idJoueur = idJoueur;
 	}
 
+	
+	
+	
+	
 	public boolean Perdu() {
 		if (this.territoiresPossedes.size() == 0) {
 			return true;

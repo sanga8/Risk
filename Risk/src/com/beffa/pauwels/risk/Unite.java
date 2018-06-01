@@ -8,15 +8,34 @@ public class Unite {
 	private int resultatDe=0;
 	private int type;
 	private int mouvement;
-	private String nom;
 	
-	public Unite(int puissance, int mouvement,  int type, int prioriteATQ,int prioriteDEF, String nom) {
-		this.prioriteDEF = prioriteDEF;
-		this.prioriteATQ = prioriteATQ;
-		this.puissance = puissance;
-		this.mouvement = mouvement;
-		this.type = type;
-		this.nom = nom;
+	
+	public Unite(int type) {
+		this.type= type;
+		//SOLDAT
+		if(type == 0){
+			this.puissance = 1;
+			this.mouvement = 1;
+			this.prioriteDEF = 1;
+			this.prioriteATQ = 1;
+		}
+		//CAVALIER
+		if(type == 1){
+			this.puissance = 2;
+			this.mouvement = 2;
+			this.prioriteDEF = 2;
+			this.prioriteATQ = 2;
+		}
+		//CANON
+		if(type == 2){
+			this.puissance = 3;
+			this.mouvement = 3;
+			this.prioriteDEF = 3;
+			this.prioriteATQ = 3;
+		}
+
+		
+		
 	}
 
 	public int getPuissance() {
@@ -25,15 +44,6 @@ public class Unite {
 
 	public void setPuissance(int puissance) {
 		this.puissance = puissance;
-	}
-		
-	
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	public int getType() {

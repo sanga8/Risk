@@ -86,24 +86,7 @@ public class Combat {
 			Collections.swap(liste, liste.get(0).getResultatDe(), liste.get(1).getResultatDe());
 		}
 	}
-
-	// COMBATTRE
-	public void combattre(Territoire tATT, Territoire tDEF) {
-		/*
-		 * choisir unités défenses lancer les dés trier les dés trier par prio
-		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
-		 * les territoires réinitialiser les combats
-		 */
-
-		choisirdef(tDEF.listeUnites);
-		lanceDe(tDEF.listeUnites);
-		trierdef(tDEF.listeUnites);
-
-		lanceDe(uniteBatailleATT);
-		trieratq(uniteBatailleATT);
-
-	}
-
+	
 	public void resoudre(ArrayList<Unite> liste, Territoire tDEF) {
 		for (int i = 0; i < tDEF.listeUnites.size(); i++) {
 			if (liste.get(i).getResultatDe() > tDEF.listeUnites.get(i).getResultatDe()) {
@@ -122,6 +105,23 @@ public class Combat {
 			}
 		}
 	}
+	// COMBATTRE
+	public void combattre(Territoire tATT, Territoire tDEF) {
+		/*
+		 * choisir unités défenses lancer les dés trier les dés trier par prio
+		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
+		 * les territoires réinitialiser les combats
+		 */
+
+		choisirdef(tDEF.listeUnites);
+		lanceDe(tDEF.listeUnites);
+		trierdef(tDEF.listeUnites);
+
+		lanceDe(uniteBatailleATT);
+		trieratq(uniteBatailleATT);
+
+	}
+
 	
 	
 	

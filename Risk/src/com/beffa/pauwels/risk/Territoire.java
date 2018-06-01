@@ -14,18 +14,28 @@ public class Territoire {
 	public Territoire(String nom, String[] territoiresAdjacents) {
 		this.nom = nom;
 		this.territoiresAdjacents = territoiresAdjacents;
+		
 	}
 
-	public Joueur getProprietaire() {
+	
+	
+	public String[] getTerritoiresAdjacents() {
+		return territoiresAdjacents;
+	}
+
+	public void setTerritoiresAdjacents(String[] territoiresAdjacents) {
+		this.territoiresAdjacents = territoiresAdjacents;
+	}
+
+	public Joueur getOccupant() {
 		return occupant;
 	}
 
-	public void setProprietaire(Joueur occupant) {
+	public void setOccupant(Joueur occupant) {
 		this.occupant = occupant;
 	}
-
-	public void addUnite(Territoire t, Unite u) {
-		t.listeUnites.add(u);
+	public void addUnite(Unite u) {
+		listeUnites.add(u);
 	}
 
 	public ArrayList<Unite> getListeUnites() {

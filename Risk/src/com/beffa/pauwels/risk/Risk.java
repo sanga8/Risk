@@ -34,6 +34,24 @@ public class Risk {
 			}
 		}
 	}
+	
+	public void initialisation(){
+		
+		attribuerTerritoire();
+		
+		
+		
+		
+	}
+
+	public void attribuerTerritoire() {
+		for (int i = 0; i < listeJoueurs.size(); i++) {
+			for (int j = 0; j < listeTerritoires.size(); j++) {
+				listeTerritoires.get(i).setOccupant(listeJoueurs.get(i));
+				listeTerritoires.get(i).addUnite(new Unite(0));
+			}
+		}
+	}
 
 	// Methode avec l'aide d'Eliot Sadrin
 	// Création de territoire
@@ -127,11 +145,6 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Nouvelle Guinee", listeNG));
 		this.listeTerritoires.add(new Territoire("Australie de l'Ouest", listeADO));
 		this.listeTerritoires.add(new Territoire("Australie de l'Est", listeADE));
-
-		// for (int i = 0; i < this.listeTerritoires.size(); i++) {
-		// this.listeTerritoires.get(i).ajouterUniteTerritoire(new Unite(0, 1,
-		// 6, 2, 1, 2));
-		// }
 
 		// Continents
 		ArrayList<Territoire> c1 = new ArrayList<Territoire>();
