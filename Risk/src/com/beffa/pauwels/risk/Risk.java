@@ -1,6 +1,7 @@
 package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Risk {
 
@@ -13,6 +14,16 @@ public class Risk {
 
 	public Risk() {
 		Menu menu = new Menu();
+		
+		creerTerritoires();
+		
+		initialisation();
+		
+		debutDesTours();
+		
+		finPartie();
+		
+		
 	}
 
 	/**
@@ -35,18 +46,37 @@ public class Risk {
 		
 		attribuerTerritoire();
 		
+		tourplacementrenforts();
+		
 		
 		
 		
 	}
+	
+	public void tourplacementrenforts() {
+		
+	}
 
 	public void attribuerTerritoire() {
+		
+	Collections.shuffle(listeTerritoires);
+	
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			for (int j = 0; j < listeTerritoires.size(); j++) {
 				listeTerritoires.get(i).setOccupant(listeJoueurs.get(i));
 				listeTerritoires.get(i).addUnite(new Unite(0));
 			}
 		}
+	}
+	
+	
+	public void debutDesTours(){
+		
+		
+	}
+	
+	public void finPartie() {
+		
 	}
 
 	// Methode avec l'aide d'Eliot Sadrin
