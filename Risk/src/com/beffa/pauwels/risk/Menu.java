@@ -39,6 +39,7 @@ public class Menu implements MouseListener {
 	
 	
 	private ArrayList<JTextField> j;
+	
 	private JTextField joueur1TextField;
 	private JTextField joueur2TextField;
 	private JTextField joueur3TextField;
@@ -343,51 +344,18 @@ public class Menu implements MouseListener {
 		}
 		if (e.getSource() == commencer) {
 
-			// VERIFICATION LONGUEUR DES NOMS
-			j = new ArrayList<JTextField>();
+			// VERIFICATION LONGUEUR DES NOM
+			ArrayList<JTextField> j = new ArrayList<JTextField>();
 			j.add(joueur1TextField);
 			j.add(joueur2TextField);
 			j.add(joueur3TextField);
 			j.add(joueur4TextField);
 			j.add(joueur5TextField);
 			j.add(joueur6TextField);
-
+			
 			verifNom(j);
 			verifj(nbJoueurs);
 			
-			if (nbJoueurs == 2) {
-
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-			}
-			if (nbJoueurs == 3) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-			}
-			if (nbJoueurs == 4) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-			}
-			if (nbJoueurs == 5) {
-
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
-			}
-			if (nbJoueurs == 6) {
-				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
-				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
-			}
-
 			if (verifj == false) {
 				warning.removeAll();
 				warning.setText("Choisissez le nombre de joueurs");
@@ -403,6 +371,53 @@ public class Menu implements MouseListener {
 				f.setContentPane(jeu());
 				f.revalidate();
 			}
+			
+			if (nbJoueurs == 2) {
+				int index;
+				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
+					Main.risk.listeJoueurs.remove(index);
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+			}
+			if (nbJoueurs == 3) {
+				int index;
+				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
+					Main.risk.listeJoueurs.remove(index);
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+			}
+			if (nbJoueurs == 4) {
+				int index;
+				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
+					Main.risk.listeJoueurs.remove(index);
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+			}
+			if (nbJoueurs == 5) {
+				int index;
+				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
+					Main.risk.listeJoueurs.remove(index);
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+			}
+			if (nbJoueurs == 6) {
+				int index;
+				while((index = Main.risk.listeJoueurs.lastIndexOf("A")) >= 0)
+					Main.risk.listeJoueurs.remove(index);
+				Main.risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
+				Main.risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				Main.risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				Main.risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				Main.risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+				Main.risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
+			}
+			
 
 		}
 

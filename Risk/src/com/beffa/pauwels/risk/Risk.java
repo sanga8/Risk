@@ -19,6 +19,8 @@ public class Risk {
 	 * GESTION DE TOUR
 	 */
 	public void finDeTour() {
+		System.out.println("Nbjoueurs = "+ listeJoueurs.size());
+		System.out.println("Tour = "+ tour);
 		tour++;
 		if (tour >= listeJoueurs.size()) {
 			tour = 0;
@@ -29,7 +31,7 @@ public class Risk {
 				tour = 0;
 			}
 		}
-		System.out.println("Tour du joueur" + tour);
+		
 	}
 	
 	public void initialisation(){	
