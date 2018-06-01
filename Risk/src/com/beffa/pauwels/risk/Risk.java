@@ -13,6 +13,7 @@ public class Risk {
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
 	public Risk() {
+		
 		Menu menu = new Menu();
 		
 		creerTerritoires();
@@ -44,13 +45,16 @@ public class Risk {
 	}
 	
 	public void initialisation(){	
+		
 		attribuerTerritoire();
 		
-
+		tourplacementrenforts();
 		
 	}
 	
 	public void tourplacementrenforts() {
+		
+		
 		
 	}
 
