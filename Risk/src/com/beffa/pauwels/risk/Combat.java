@@ -60,30 +60,39 @@ public class Combat {
 	public void trierATT(ArrayList<Unite> liste) {
 		Collections.sort(liste, Comparator.comparing(Unite::getResultatDe));
 		Collections.reverse(liste);
-		for (int i = 0; i < liste.size(); i++) {
+
+		for (int i = 0; i < liste.size() - 1; i++) {
 			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe()
 					&& liste.get(i).getPrioriteATQ() > liste.get(i + 1).getPrioriteATQ()) {
-				Collections.swap(liste, liste.get(i).getPrioriteATQ(), liste.get(i + 1).getPrioriteATQ());
+				Collections.swap(liste, i, i + 1);
 			}
-			// EXCEPTION SI LES TROIS ONT LE MEME RESULTAT DE
-			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe()
-					&& liste.get(i + 1).getResultatDe() == liste.get(i + 2).getResultatDe()) {
-				Collections.sort(liste, Comparator.comparing(Unite::getPrioriteATQ));
+			if (liste.size() >= 3) {
+				// EXCEPTION SI LES TROIS ONT LE MEME RESULTAT DE
+				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe()
+						&& liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
+					Collections.sort(liste, Comparator.comparing(Unite::getPrioriteATQ));
+				}
 			}
 		}
 	}
 
 	public void choisirDEF(ArrayList<Unite> liste) {
 		Collections.sort(liste, Comparator.comparing(Unite::getPrioriteDEF));
-
+		if (liste.size() > 2) {
+			for (int i = liste.size() - 1; i > 1; i--) {
+				liste.remove(i);
+			}
+		}
 	}
 
 	public void trierDEF(ArrayList<Unite> liste) {
-		if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
-			Collections.swap(liste, liste.get(0).getResultatDe(), liste.get(1).getResultatDe());
+		if (liste.size() > 1) {
+			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
+				Collections.swap(liste, 0, 1);
+			}
 		}
 	}
-	
+
 	public void resoudre(ArrayList<Unite> liste, Territoire tDEF) {
 		for (int i = 0; i < tDEF.listeUnites.size(); i++) {
 			if (liste.get(i).getResultatDe() > tDEF.listeUnites.get(i).getResultatDe()) {
@@ -95,13 +104,14 @@ public class Combat {
 		if (liste.size() < tDEF.listeUnites.size()) {
 			for (int i = 0; i < liste.size(); i++) {
 				if (liste.get(i).getResultatDe() > tDEF.listeUnites.get(i).getResultatDe()) {
-						// troupe defenseur meurt
+					// troupe defenseur meurt
 				} else {// troupe attaquant meurt
 
 				}
 			}
 		}
 	}
+
 	// COMBATTRE
 	public void combattre(Territoire tATT, Territoire tDEF) {
 		/*
@@ -119,12 +129,6 @@ public class Combat {
 
 	}
 
-	
-	
-	
-	
-	
-	
 }
 
 /*

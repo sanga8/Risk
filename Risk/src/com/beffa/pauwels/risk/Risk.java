@@ -304,7 +304,9 @@ public class Risk {
 		for (int i = 38; i < 42; i++) {
 			c6.add(this.listeTerritoires.get(i));
 		}
-
+		
+		
+		
 		this.listeContinents.add(new Continent(0, c1));// Europe
 		this.listeContinents.add(new Continent(1, c2));// Afrique
 		this.listeContinents.add(new Continent(2, c3));// Asie

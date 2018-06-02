@@ -97,7 +97,16 @@ public class Menu extends JFrame implements MouseListener {
 	private JLabel commencer;
 	
 	private JLabel off;
+	
+	private JLabel jeton1;
+	private JLabel jeton2;
+	private JLabel jeton3;
+	private JLabel jeton4;
+	private JLabel jeton5;
+	private JLabel jeton6;
+	
 
+	
 	private ArrayList<JLabel> hitboxes;
 
 	public Risk risk; 
@@ -661,7 +670,6 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == commencer) {
-
 			// VERIFICATION LONGUEUR DES NOM
 			ArrayList<JTextField> j = new ArrayList<JTextField>();
 			j.add(joueur1TextField);
@@ -803,8 +811,6 @@ public class Menu extends JFrame implements MouseListener {
 			actualiserJTextFieldCanon(CanonRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-
-		
 		if (e.getSource() == BtnmoinsCavalierRenfort){
 			risk.echangerCavalierContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());	
 			actualiserJTextFieldCavalier(CavalierRenfort);
@@ -812,6 +818,20 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == BtnmoinsCanonRenfort){
 			risk.echangerCanonContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());	
+			actualiserJTextFieldCanon(CanonRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
+		}
+		if (e.getSource() == BtnplusSoldatTerritoire){
+			//risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),(risk.listeJoueurs.get(risk.tour).getTerritoiresPossedes().get(0).getListeUnites()));
+			actualiserJTextFieldSoldat(SoldatRenfort);
+		}
+		if (e.getSource() == BtnplusCavalierTerritoire){
+			
+			actualiserJTextFieldCavalier(CavalierRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
+		}
+		if (e.getSource() == BtnplusCanonTerritoire){
+			
 			actualiserJTextFieldCanon(CanonRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
@@ -911,4 +931,59 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
+	
+	
+	public void afficheJeton(int posX, int posY, int numeroJoueur)
+    {
+        if(numeroJoueur == 0) {
+        	jeton1 = new JLabel();
+        	jeton1.setBounds(posX, posY, 35, 35);
+        	jeton1.setIcon(new ImageIcon("Images/test.png"));
+        	jeton1.addMouseListener(this);
+    		map.add(jeton1);
+        }
+        if(numeroJoueur == 1) {
+        	jeton1 = new JLabel();
+        	jeton1.setBounds(posX, posY, 35, 35);
+        	jeton1.setIcon(new ImageIcon("Images/test.png"));
+        	jeton1.addMouseListener(this);
+    		map.add(jeton1);
+        }
+        if(numeroJoueur == 2) {
+        	jeton2 = new JLabel();
+        	jeton2.setBounds(posX, posY, 35, 35);
+        	jeton2.setIcon(new ImageIcon("Images/test.png"));
+        	jeton2.addMouseListener(this);
+    		map.add(jeton1);
+        }
+        if(numeroJoueur == 3) {
+        	jeton3 = new JLabel();
+        	jeton3.setBounds(posX, posY, 35, 35);
+        	jeton1.setIcon(new ImageIcon("Images/test.png"));
+        	jeton1.addMouseListener(this);
+    		map.add(jeton1);
+        }
+        if(numeroJoueur == 4) {
+        	jeton4 = new JLabel();
+        	jeton4.setBounds(posX, posY, 35, 35);
+        	jeton4.setIcon(new ImageIcon("Images/test.png"));
+        	jeton4.addMouseListener(this);
+    		map.add(jeton1);
+        }
+        if(numeroJoueur == 5) {
+        	jeton5 = new JLabel();
+        	jeton5.setBounds(posX, posY, 35, 35);
+        	jeton5.setIcon(new ImageIcon("Images/test.png"));
+        	jeton5.addMouseListener(this);
+    		map.add(jeton1);
+        }
+        if(numeroJoueur == 6) {
+        	jeton6 = new JLabel();
+        	jeton6.setBounds(posX, posY, 35, 35);
+        	jeton6.setIcon(new ImageIcon("Images/test.png"));
+        	jeton6.addMouseListener(this);
+    		map.add(jeton1);
+        }
+    }
+	
 }
