@@ -247,101 +247,119 @@ public class Menu implements MouseListener {
 		cadre.setBounds(590, 925, 694, 146);
 		background.add(cadre);
 
-		// BOUTTONS PLUS ET MOINS
+		//-------------------------- BOUTTONS PLUS ET MOINS-----------------------
 		// RENFORT
 		BtnplusSoldatRenfort = new JLabel();
 		BtnplusSoldatRenfort.setBounds(250, 23, 35, 35);
 		BtnplusSoldatRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusSoldatRenfort.addMouseListener(this);
 		cadre.add(BtnplusSoldatRenfort);
 
 		BtnmoinsSoldatRenfort = new JLabel();
 		BtnmoinsSoldatRenfort.setBounds(180, 23, 35, 35);
 		BtnmoinsSoldatRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsSoldatRenfort.addMouseListener(this);
 		cadre.add(BtnmoinsSoldatRenfort);
 
 		BtnplusCavalierRenfort = new JLabel();
 		BtnplusCavalierRenfort.setBounds(250, 63, 35, 35);
 		BtnplusCavalierRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusCavalierRenfort.addMouseListener(this);
 		cadre.add(BtnplusCavalierRenfort);
 
 		BtnmoinsCavalierRenfort = new JLabel();
 		BtnmoinsCavalierRenfort.setBounds(180, 63, 35, 35);
 		BtnmoinsCavalierRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsCavalierRenfort.addMouseListener(this);
 		cadre.add(BtnmoinsCavalierRenfort);
 
 		BtnplusCanonRenfort = new JLabel();
 		BtnplusCanonRenfort.setBounds(250, 103, 35, 35);
 		BtnplusCanonRenfort.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusCanonRenfort.addMouseListener(this);
 		cadre.add(BtnplusCanonRenfort);
 
 		BtnmoinsCanonRenfort = new JLabel();
 		BtnmoinsCanonRenfort.setBounds(180, 103, 35, 35);
 		BtnmoinsCanonRenfort.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsCanonRenfort.addMouseListener(this);
 		cadre.add(BtnmoinsCanonRenfort);
 
 		// TERRITOIRE
 		BtnplusSoldatTerritoire = new JLabel();
 		BtnplusSoldatTerritoire.setBounds(440, 23, 35, 35);
 		BtnplusSoldatTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusSoldatTerritoire.addMouseListener(this);
 		cadre.add(BtnplusSoldatTerritoire);
 
 		BtnmoinsSoldatTerritoire = new JLabel();
 		BtnmoinsSoldatTerritoire.setBounds(370, 23, 35, 35);
 		BtnmoinsSoldatTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsSoldatTerritoire.addMouseListener(this);
 		cadre.add(BtnmoinsSoldatTerritoire);
 
 		BtnplusCavalierTerritoire = new JLabel();
 		BtnplusCavalierTerritoire.setBounds(440, 63, 35, 35);
 		BtnplusCavalierTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusCavalierTerritoire.addMouseListener(this);
 		cadre.add(BtnplusCavalierTerritoire);
 
 		BtnmoinsCavalierTerritoire = new JLabel();
 		BtnmoinsCavalierTerritoire.setBounds(370, 63, 35, 35);
 		BtnmoinsCavalierTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsCavalierTerritoire.addMouseListener(this);
 		cadre.add(BtnmoinsCavalierTerritoire);
 
 		BtnplusCanonTerritoire = new JLabel();
 		BtnplusCanonTerritoire.setBounds(440, 103, 35, 35);
 		BtnplusCanonTerritoire.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusCanonTerritoire.addMouseListener(this);
 		cadre.add(BtnplusCanonTerritoire);
 
 		BtnmoinsCanonTerritoire = new JLabel();
 		BtnmoinsCanonTerritoire.setBounds(370, 103, 35, 35);
 		BtnmoinsCanonTerritoire.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsCanonTerritoire.addMouseListener(this);
 		cadre.add(BtnmoinsCanonTerritoire);
 
 		// ACTION
 		BtnplusSoldatAction = new JLabel();
 		BtnplusSoldatAction.setBounds(622, 23, 35, 35);
 		BtnplusSoldatAction.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusSoldatAction.addMouseListener(this);
 		cadre.add(BtnplusSoldatAction);
 
 		BtnmoinsSoldatAction = new JLabel();
 		BtnmoinsSoldatAction.setBounds(552, 23, 35, 35);
 		BtnmoinsSoldatAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsSoldatAction.addMouseListener(this);
 		cadre.add(BtnmoinsSoldatAction);
 
 		BtnplusCavalierAction = new JLabel();
 		BtnplusCavalierAction.setBounds(622, 63, 35, 35);
 		BtnplusCavalierAction.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusCavalierAction.addMouseListener(this);
 		cadre.add(BtnplusCavalierAction);
 
 		BtnmoinsCavalierAction = new JLabel();
 		BtnmoinsCavalierAction.setBounds(552, 63, 35, 35);
 		BtnmoinsCavalierAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsCavalierAction.addMouseListener(this);
 		cadre.add(BtnmoinsCavalierAction);
 
 		BtnplusCanonAction = new JLabel();
 		BtnplusCanonAction.setBounds(622, 103, 35, 35);
 		BtnplusCanonAction.setIcon(new ImageIcon("Images/Btnplus.png"));
+		BtnplusCanonAction.addMouseListener(this);
 		cadre.add(BtnplusCanonAction);
 
 		BtnmoinsCanonAction = new JLabel();
 		BtnmoinsCanonAction.setBounds(552, 103, 35, 35);
 		BtnmoinsCanonAction.setIcon(new ImageIcon("Images/Btnmoins.png"));
+		BtnmoinsCanonAction.addMouseListener(this);
 		cadre.add(BtnmoinsCanonAction);
 
-		// TEXTFIELD
+		// ----------------------TEXTFIELD-----------------------
 		// RENFORT
 		SoldatRenfort = new JTextField("0");
 		SoldatRenfort.setOpaque(false);
@@ -539,6 +557,7 @@ public class Menu implements MouseListener {
 		}
 		if (e.getSource() == findutour) {
 			risk.finDeTour();
+			actualiserJTextField(SoldatRenfort);
 			if (risk.tour == 0) {
 				contour.setBounds(80, 900, 210, 95);
 			}
@@ -592,34 +611,34 @@ public class Menu implements MouseListener {
 			}
 
 			if (nbJoueurs == 2) {
-				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 			}
 			if (nbJoueurs == 3) {
-				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 			}
 			if (nbJoueurs == 4) {
-				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 			}
 			if (nbJoueurs == 5) {
-				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 			}
 			if (nbJoueurs == 6) {
-				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 1));
-				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 2));
-				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 3));
-				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 4));
-				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 5));
-				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 6));
+				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
+				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
+				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
+				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
+				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
+				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 5));
 			}
 		}
 		/*
@@ -629,7 +648,7 @@ public class Menu implements MouseListener {
 		 * 
 		 * // ACTION for (int i = 0; i < 42; i++) { if (e.getSource() ==
 		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size(); j++)
-		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour + 1) { for
+		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) { for
 		 * (int h = 0; h < 42; h++) { if (hitboxes.indexOf(h) ==
 		 * risk.listeJoueurs.get(j).getTerritoiresPossedes().indexOf(h)) {
 		 * 
@@ -642,7 +661,6 @@ public class Menu implements MouseListener {
 		 */
 		if (e.getSource() == mouvement) {
 			
-
 		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
@@ -689,7 +707,11 @@ public class Menu implements MouseListener {
 			joueur4TextField.setVisible(true);
 			joueur5TextField.setVisible(true);
 			joueur6TextField.setVisible(true);
-
+		}
+		
+		if (e.getSource() == BtnplusSoldatRenfort){
+			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());	
+			actualiserJTextField(SoldatRenfort);
 		}
 	}
 
@@ -828,4 +850,11 @@ public class Menu implements MouseListener {
 		return Integer.toString(canon);
 	}
 
+	public void actualiserJTextField(JTextField textfield) {
+		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
+			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
+				textfield.setText(afficherNombreSoldat(risk.listeJoueurs.get(j).getRenforts()));
+			}
+		}
+	}
 }

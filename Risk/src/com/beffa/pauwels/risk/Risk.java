@@ -13,7 +13,6 @@ public class Risk {
 	boolean premierTour = true;
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
-
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
@@ -78,7 +77,11 @@ public class Risk {
 	
 	// CONVERSION DUNITE
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
-		l.add(new Unite(0));
+		for (int j = 0; j < listeJoueurs.size(); j++) {
+			if (listeJoueurs.get(j).getIdJoueur() == tour) {
+				l.add(new Unite(0));
+			}
+		}
 	}
 
 	public void echangerSoldatContreCavalier(ArrayList<Unite> l) {

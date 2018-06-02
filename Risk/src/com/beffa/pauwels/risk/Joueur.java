@@ -65,4 +65,17 @@ public class Joueur {
 		this.continentsPossedes = continentsPossedes;
 	}
 
+	public ArrayList<Unite> getRenforts() {
+		return renforts;
+	}
+
+	public void setRenforts(ArrayList<Unite> renforts) {
+		this.renforts = renforts;
+	}
+
+	public void setIdJoueur(int idJoueur) {
+		this.idJoueur = idJoueur;
+	}
+	
+
 }
