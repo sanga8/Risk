@@ -713,6 +713,19 @@ public class Menu implements MouseListener {
 			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());	
 			actualiserJTextField(SoldatRenfort);
 		}
+		if (e.getSource() == BtnplusCavalierRenfort){
+			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());	
+			actualiserJTextField(CavalierRenfort);
+		}
+		if (e.getSource() == BtnplusCanonRenfort){
+			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());	
+			actualiserJTextField(CanonRenfort);
+		}
+		
+		
+		
+		
+		
 	}
 
 	@Override

@@ -175,12 +175,7 @@ public class Risk {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
+
 	// Methode avec l'aide d'Eliot Sadrin
 	// Création de territoire
 	public void creerTerritoires() {
@@ -202,17 +197,17 @@ public class Risk {
 		String[] listeIN = { "Moyen-Orient", "Afganistan", "Chine", "Siam" };
 		String[] listeAF = { "Ukraine", "Moyen-Orient", "Inde", "Oural", "Chine" };
 		String[] listeOU = { "Chine", "Afganistan", "Ukraine", "Siberie" };
-		String[] listeSIB = { "Mongolie", "Chine", "Oural", "Irkutsk", "Yakouti" };
+		String[] listeSIB ={ "Mongolie", "Chine", "Oural", "Irkutsk", "Yakouti" };
 		String[] listeSI = { "Inde", "Chine", "Indonesie" };
 		String[] listeCH = { "Siberie", "Inde", "Afganistan", "Oural", "Siam", "Mongolie" };
 		String[] listeYA = { "Kamchatka", "Irkutsk", "Siberie" };
-		String[] listeMON = { "Siberie", "Chine", "Irkutsk", "Kamchatka", "Japon" };
+		String[] listeMON ={ "Siberie", "Chine", "Irkutsk", "Kamchatka", "Japon" };
 		String[] listeJA = { "Kamchatka", "Mongolie" };
 		String[] listeKA = { "Irkutsk", "Yakouti", "Mongolie", "Japon", "Alaska" };
 		String[] listeIR = { "Mongolie", "Kamchatka", "Yakouti", "Siberie" };
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
-		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
+		String[] listeALB ={ "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
 		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec",
 				"Groenland" };
 		String[] listeGR = { "Ontario", "Territoires du Nord", "Quebec", "Island" };
