@@ -1,9 +1,6 @@
 package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
-
-import javax.swing.JLabel;
-
 public class Territoire {
 
 	private String nom;

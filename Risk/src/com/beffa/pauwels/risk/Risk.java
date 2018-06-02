@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 public class Risk {
 
 	int tour = 0;
@@ -31,6 +28,7 @@ public class Risk {
 	 * GESTION DE TOUR
 	 */
 	public void finDeTour() {
+		System.out.println("Tour = " + tour);
 		tour++;
 		if (tour >= listeJoueurs.size()) {
 			tour = 0;
@@ -43,6 +41,15 @@ public class Risk {
 		}
 	}
 
+	public boolean sonTour() {
+		for (int j = 0; j < listeJoueurs.size(); j++) {
+			if (listeJoueurs.get(j).getIdJoueur() == tour) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public void initialisation() {
 
 		attribuerTerritoire();
@@ -52,7 +59,6 @@ public class Risk {
 	}
 
 	public void tourplacementrenforts() {
-
 	}
 
 	public void attribuerTerritoire() {
@@ -77,46 +83,48 @@ public class Risk {
 
 	// CONVERSION DUNITE
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
-		for (int j = 0; j < listeJoueurs.size(); j++) {
-			if (listeJoueurs.get(j).getIdJoueur() == tour) {
-				l.add(new Unite(0));
-			}
+		if (sonTour() == true) {
+			l.add(new Unite(0));
 		}
 	}
 
 	public void echangerSoldatContreCavalier(ArrayList<Unite> l) {
-		int c = 0;
-		for (int i = 0; i < l.size(); i++) {
-			if (l.get(i).getType() == 0) {
-				c++;
-				if (c == 7) {
-					Collections.sort(l, Comparator.comparing(Unite::getType));
-					for (int j = 0; j < 8; j++) {
-						if (l.get(i).getType() == 0) {
-							l.remove(j);
-						}
-					}
-					l.add(new Unite(3));
-					return;
+		if (sonTour() == true) {
+			int c = 0;
+			for (int i = 0; i < l.size(); i++) {
+				if (l.get(i).getType() == 0) {
+					c++;
 				}
+			}
+			if (c >= 3) {
+				Collections.sort(l, Comparator.comparing(Unite::getType));
+				for (int j = 0; j < 3; j++) {
+					if (l.get(j).getType() == 0) {
+						l.remove(j);
+					}
+				}
+				l.add(new Unite(1));
+				return;
 			}
 		}
 	}
 
 	public void echangerSoldatContreCanon(ArrayList<Unite> l) {
-		int c = 0;
-		for (int i = 0; i < l.size(); i++) {
-			if (l.get(i).getType() == 0) {
-				c++;
-			} else if (c == 7) {
+		if (sonTour() == true) {
+			int c = 0;
+			for (int i = 0; i < l.size(); i++) {
+				if (l.get(i).getType() == 0) {
+					c++;
+				}
+			}
+			if (c >= 7) {
+				Collections.sort(l, Comparator.comparing(Unite::getType));
 				for (int j = 0; j < 7; j++) {
-					for (int h = 0; h < l.size(); h++) {
-						if (l.get(h).getType() == 0) {
-							l.remove(h);
-						}
+					if (l.get(j).getType() == 0) {
+						l.remove(j);
 					}
 				}
-				l.add(new Unite(3));
+				l.add(new Unite(2));
 				return;
 			}
 		}

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.awt.Toolkit;
 import javax.swing.*;
 
-public class Menu implements MouseListener {
+public class Menu extends JFrame implements MouseListener {
 
 	private JFrame f;
 
@@ -95,26 +95,33 @@ public class Menu implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
+	
+	private JLabel off;
 
 	private ArrayList<JLabel> hitboxes;
 
-	Risk risk = new Risk();
+	public Risk risk; 
 
 	public Menu() {
-
-		f = new JFrame();
+		risk= new Risk();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		f.setPreferredSize(d);
-		f.setTitle("RISK");
-		f.setUndecorated(true);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setResizable(true);
+		this.setPreferredSize(d);
+		
+		//Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
+	    //int l = p.width;
+	    //int h = p.height;
+	    //this.setSize(l,h);
+		
+	    this.setTitle("RISK");
+	    this.setUndecorated(true);
+	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    this.setResizable(true);
 
-		f.setLayout(null);
-		f.setContentPane(menu());
-		f.pack();
-		f.setLocationRelativeTo(null);
-		f.setVisible(true);
+	    this.setLayout(null);
+	    this.setContentPane(menu());
+	    this.pack();
+	    this.setLocationRelativeTo(null);
+	    this.setVisible(true);
 
 	}
 
@@ -228,7 +235,7 @@ public class Menu implements MouseListener {
 		warning.setBounds(790, 540, 400, 50);
 		warning.setVisible(false);
 		background.add(warning);
-
+		
 		menu.add(background);
 		return menu;
 	}
@@ -516,6 +523,12 @@ public class Menu implements MouseListener {
 		findutour.setIcon(new ImageIcon("Images/findutour.png"));
 		findutour.addMouseListener(this);
 		background.add(findutour);
+		
+		off = new JLabel();
+		off.setBounds(-10, -10, 100, 100);
+		off.setIcon(new ImageIcon("Images/off.png"));
+		off.addMouseListener(this);
+		map.add(off);
 
 		// CREATION HIBOXES
 		hitboxes = new ArrayList<JLabel>();
@@ -552,7 +565,7 @@ public class Menu implements MouseListener {
 			jouer.setVisible(false);
 			close.setVisible(false);
 		}
-		if (e.getSource() == close) {
+		if (e.getSource() == close || e.getSource() == off) {
 			System.exit(0);
 		}
 		if (e.getSource() == findutour) {
@@ -607,9 +620,9 @@ public class Menu implements MouseListener {
 				warning.setVisible(true);
 				return;
 			} else {
-				f.remove(menu);
-				f.setContentPane(jeu());
-				f.revalidate();
+				this.remove(menu);
+				this.setContentPane(jeu());
+				this.revalidate();
 			}
 
 			if (nbJoueurs == 2) {
@@ -718,10 +731,12 @@ public class Menu implements MouseListener {
 		if (e.getSource() == BtnplusCavalierRenfort){
 			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());	
 			actualiserJTextFieldCavalier(CavalierRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
 		if (e.getSource() == BtnplusCanonRenfort){
 			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());	
 			actualiserJTextFieldCanon(CanonRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
 		
 		
@@ -847,7 +862,7 @@ public class Menu implements MouseListener {
 	public String afficherNombreCavalier(ArrayList<Unite> l) {
 		int cavalier = 0;
 		for (int i = 0; i < l.size(); i++) {
-			if (l.get(i).getType() == 0) {
+			if (l.get(i).getType() == 1) {
 				cavalier++;
 			}
 		}
@@ -857,7 +872,7 @@ public class Menu implements MouseListener {
 	public String afficherNombreCanon(ArrayList<Unite> l) {
 		int canon = 0;
 		for (int i = 0; i < l.size(); i++) {
-			if (l.get(i).getType() == 0) {
+			if (l.get(i).getType() == 2) {
 				canon++;
 			}
 		}
