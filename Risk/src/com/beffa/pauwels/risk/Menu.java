@@ -555,6 +555,71 @@ public class Menu extends JFrame implements MouseListener {
 	// EVENT MOUSE LISTENER
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+		if (e.getSource() == jouer) {
+			jouer.setIcon(new ImageIcon("Images/JouerHover.png"));
+		}
+		if (e.getSource() == close) {
+			close.setIcon(new ImageIcon("Images/QuitterHover.png"));
+		}
+		if (e.getSource() == commencer) {
+			commencer.setIcon(new ImageIcon("Images/CommencerHover.png"));
+		}
+		if (e.getSource() == deuxJ) {
+			deuxJ.setIcon(new ImageIcon("Images/DeuxbtnHover.png"));
+		}
+		if (e.getSource() == troisJ) {
+			troisJ.setIcon(new ImageIcon("Images/TroisbtnHover.png"));
+		}
+		if (e.getSource() == quatreJ) {
+			quatreJ.setIcon(new ImageIcon("Images/QuatrebtnHover.png"));
+		}
+		if (e.getSource() == cinqJ) {
+			cinqJ.setIcon(new ImageIcon("Images/CinqbtnHover.png"));
+		}
+		if (e.getSource() == sixJ) {
+			sixJ.setIcon(new ImageIcon("Images/SixbtnHover.png"));
+		}
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == jouer) {
+			jouer.setIcon(new ImageIcon("Images/Jouer.png"));
+		}
+		if (e.getSource() == close) {
+			close.setIcon(new ImageIcon("Images/Quitter.png"));
+		}
+		if (e.getSource() == commencer) {
+			commencer.setIcon(new ImageIcon("Images/Commencer.png"));
+		}
+		if (e.getSource() == deuxJ) {
+			deuxJ.setIcon(new ImageIcon("Images/Deuxbtn.png"));
+		}
+		if (e.getSource() == troisJ) {
+			troisJ.setIcon(new ImageIcon("Images/Troisbtn.png"));
+		}
+		if (e.getSource() == quatreJ) {
+			quatreJ.setIcon(new ImageIcon("Images/Quatrebtn.png"));
+		}
+		if (e.getSource() == cinqJ) {
+			cinqJ.setIcon(new ImageIcon("Images/Cinqbtn.png"));
+		}
+		if (e.getSource() == sixJ) {
+			sixJ.setIcon(new ImageIcon("Images/Sixbtn.png"));
+		}
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
 		if (e.getSource() == jouer) {
 			deuxJ.setVisible(true);
 			troisJ.setVisible(true);
@@ -738,74 +803,20 @@ public class Menu extends JFrame implements MouseListener {
 			actualiserJTextFieldCanon(CanonRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
+
+		
+		if (e.getSource() == BtnmoinsCavalierRenfort){
+			risk.echangerCavalierContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());	
+			actualiserJTextFieldCavalier(CavalierRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
+		}
+		if (e.getSource() == BtnmoinsCanonRenfort){
+			risk.echangerCanonContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());	
+			actualiserJTextFieldCanon(CanonRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
+		}
 		
 		
-		
-		
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-
-		if (e.getSource() == jouer) {
-			jouer.setIcon(new ImageIcon("Images/JouerHover.png"));
-		}
-		if (e.getSource() == close) {
-			close.setIcon(new ImageIcon("Images/QuitterHover.png"));
-		}
-		if (e.getSource() == commencer) {
-			commencer.setIcon(new ImageIcon("Images/CommencerHover.png"));
-		}
-		if (e.getSource() == deuxJ) {
-			deuxJ.setIcon(new ImageIcon("Images/DeuxbtnHover.png"));
-		}
-		if (e.getSource() == troisJ) {
-			troisJ.setIcon(new ImageIcon("Images/TroisbtnHover.png"));
-		}
-		if (e.getSource() == quatreJ) {
-			quatreJ.setIcon(new ImageIcon("Images/QuatrebtnHover.png"));
-		}
-		if (e.getSource() == cinqJ) {
-			cinqJ.setIcon(new ImageIcon("Images/CinqbtnHover.png"));
-		}
-		if (e.getSource() == sixJ) {
-			sixJ.setIcon(new ImageIcon("Images/SixbtnHover.png"));
-		}
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		if (e.getSource() == jouer) {
-			jouer.setIcon(new ImageIcon("Images/Jouer.png"));
-		}
-		if (e.getSource() == close) {
-			close.setIcon(new ImageIcon("Images/Quitter.png"));
-		}
-		if (e.getSource() == commencer) {
-			commencer.setIcon(new ImageIcon("Images/Commencer.png"));
-		}
-		if (e.getSource() == deuxJ) {
-			deuxJ.setIcon(new ImageIcon("Images/Deuxbtn.png"));
-		}
-		if (e.getSource() == troisJ) {
-			troisJ.setIcon(new ImageIcon("Images/Troisbtn.png"));
-		}
-		if (e.getSource() == quatreJ) {
-			quatreJ.setIcon(new ImageIcon("Images/Quatrebtn.png"));
-		}
-		if (e.getSource() == cinqJ) {
-			cinqJ.setIcon(new ImageIcon("Images/Cinqbtn.png"));
-		}
-		if (e.getSource() == sixJ) {
-			sixJ.setIcon(new ImageIcon("Images/Sixbtn.png"));
-		}
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
 	}
 
 	@Override

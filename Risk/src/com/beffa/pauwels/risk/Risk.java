@@ -97,18 +97,15 @@ public class Risk {
 				}
 			}
 			if (c >= 3) {
-				Collections.sort(l, Comparator.comparing(Unite::getType));
-				for (int j = 0; j < 3; j++) {
-					if (l.get(j).getType() == 0) {
-						l.remove(j);
-					}
+				l.removeIf(p -> p.getType()==0);
+				for(int h=0; h<c-3;h++){
+				l.add(new Unite(0));
 				}
 				l.add(new Unite(1));
 				return;
 			}
 		}
 	}
-
 	public void echangerSoldatContreCanon(ArrayList<Unite> l) {
 		if (sonTour() == true) {
 			int c = 0;
@@ -118,11 +115,9 @@ public class Risk {
 				}
 			}
 			if (c >= 7) {
-				Collections.sort(l, Comparator.comparing(Unite::getType));
-				for (int j = 0; j < 7; j++) {
-					if (l.get(j).getType() == 0) {
-						l.remove(j);
-					}
+				l.removeIf(p -> p.getType()==0);
+				for(int h=0; h<c-7;h++){
+				l.add(new Unite(0));
 				}
 				l.add(new Unite(2));
 				return;
