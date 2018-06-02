@@ -344,17 +344,78 @@ public class Menu implements MouseListener {
 
 		// TEXTFIELD
 		// RENFORT
-		SoldatRenfort = new JTextField();
-		CavalierRenfort = new JTextField();
-		CanonRenfort = new JTextField();
+		SoldatRenfort = new JTextField("0");
+		SoldatRenfort.setOpaque(false);
+		SoldatRenfort.setEditable(false);
+		SoldatRenfort.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		SoldatRenfort.setBounds(215, 23, 35, 35);
+		cadre.add(SoldatRenfort);
+		
+		CavalierRenfort = new JTextField("0");
+		CavalierRenfort.setOpaque(false);
+		CavalierRenfort.setEditable(false);
+		CavalierRenfort.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		CavalierRenfort.setBounds(215, 63, 35, 35);
+		cadre.add(CavalierRenfort);
+		
+		
+		CanonRenfort = new JTextField("0");
+		CanonRenfort.setOpaque(false);
+		CanonRenfort.setEditable(false);
+		CanonRenfort.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		CanonRenfort.setBounds(215, 103, 35, 35);
+		cadre.add(CanonRenfort);
+		
+		
 		// TERRITOIRE
-		SoldatTerritoire = new JTextField();
-		CavalierTerritoire = new JTextField();
-		CanonTerritoire = new JTextField();
+		SoldatTerritoire = new JTextField("0");
+		SoldatTerritoire.setOpaque(false);
+		SoldatTerritoire.setEditable(false);
+		SoldatTerritoire.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		SoldatTerritoire.setBounds(405, 23, 35, 35);
+		cadre.add(SoldatTerritoire);
+		
+		
+		CavalierTerritoire = new JTextField("0");
+		CavalierTerritoire.setOpaque(false);
+		CavalierTerritoire.setEditable(false);
+		CavalierTerritoire.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		CavalierTerritoire.setBounds(405, 63, 35, 35);
+		cadre.add(CavalierTerritoire);
+		
+		
+		CanonTerritoire = new JTextField("0");
+		CanonTerritoire.setOpaque(false);
+		CanonTerritoire.setEditable(false);
+		CanonTerritoire.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		CanonTerritoire.setBounds(405, 103, 35, 35);
+		cadre.add(CanonTerritoire);
+		
+		
 		// ACTION
-		SoldatAction = new JTextField();
-		CavalierAction = new JTextField();
-		CanonAction = new JTextField();
+		SoldatAction = new JTextField("0");
+		SoldatAction.setOpaque(false);
+		SoldatAction.setEditable(false);
+		SoldatAction.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		SoldatAction.setBounds(587, 23, 35, 35);
+		cadre.add(SoldatAction);
+		
+		
+		CavalierAction = new JTextField("0");
+		CavalierAction.setOpaque(false);
+		CavalierAction.setEditable(false);
+		CavalierAction.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		CavalierAction.setBounds(587, 63, 35, 35);
+		cadre.add(CavalierAction);
+		
+		CanonAction = new JTextField("0");
+		CanonAction.setOpaque(false);
+		CanonAction.setEditable(false);
+		CanonAction.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		CanonAction.setBounds(587, 103, 35, 35);
+		cadre.add(CanonAction);
+		
+		
 
 
 		
