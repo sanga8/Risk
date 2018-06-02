@@ -226,7 +226,7 @@ public class Menu extends JFrame implements MouseListener {
 		commencer.setVisible(false);
 		commencer.addMouseListener(this);
 		background.add(commencer);
-
+ 
 		// verifnom
 		warning = new JTextArea();
 		warning.setEditable(false);
