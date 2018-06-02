@@ -557,7 +557,9 @@ public class Menu implements MouseListener {
 		}
 		if (e.getSource() == findutour) {
 			risk.finDeTour();
-			actualiserJTextField(SoldatRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
+			actualiserJTextFieldCavalier(CavalierRenfort);
+			actualiserJTextFieldCanon(CanonRenfort);
 			if (risk.tour == 0) {
 				contour.setBounds(80, 900, 210, 95);
 			}
@@ -660,7 +662,7 @@ public class Menu implements MouseListener {
 		 * } } } } } }
 		 */
 		if (e.getSource() == mouvement) {
-			
+			afficherNombreUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
 		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
@@ -711,15 +713,15 @@ public class Menu implements MouseListener {
 		
 		if (e.getSource() == BtnplusSoldatRenfort){
 			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());	
-			actualiserJTextField(SoldatRenfort);
+			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
 		if (e.getSource() == BtnplusCavalierRenfort){
 			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());	
-			actualiserJTextField(CavalierRenfort);
+			actualiserJTextFieldCavalier(CavalierRenfort);
 		}
 		if (e.getSource() == BtnplusCanonRenfort){
 			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());	
-			actualiserJTextField(CanonRenfort);
+			actualiserJTextFieldCanon(CanonRenfort);
 		}
 		
 		
@@ -834,7 +836,6 @@ public class Menu implements MouseListener {
 	// RENVOI UN STRING DU NOMBRE DE TROUPES
 	public String afficherNombreSoldat(ArrayList<Unite> l) {
 		int soldat = 0;
-
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 0) {
 				soldat++;
@@ -863,10 +864,24 @@ public class Menu implements MouseListener {
 		return Integer.toString(canon);
 	}
 
-	public void actualiserJTextField(JTextField textfield) {
+	public void actualiserJTextFieldSoldat(JTextField textfield) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
 				textfield.setText(afficherNombreSoldat(risk.listeJoueurs.get(j).getRenforts()));
+			}
+		}
+	}
+	public void actualiserJTextFieldCavalier(JTextField textfield) {
+		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
+			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
+				textfield.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
+			}
+		}
+	}
+	public void actualiserJTextFieldCanon(JTextField textfield) {
+		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
+			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
+				textfield.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
 			}
 		}
 	}
