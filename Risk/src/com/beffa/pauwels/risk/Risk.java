@@ -76,7 +76,7 @@ public class Risk {
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
 	
-	// I / CONVERSION DUNITE
+	// CONVERSION DUNITE
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
 		l.add(new Unite(0));
 	}
@@ -141,7 +141,7 @@ public class Risk {
 		}
 	}
 
-	// II / TRANSFERER UNITE DUNE LISTE A LAUTRE
+	// TRANSFERER UNITE DUNE LISTE A LAUTRE
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 0) {

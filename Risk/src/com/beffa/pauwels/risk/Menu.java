@@ -84,8 +84,7 @@ public class Menu implements MouseListener {
 
 	private JLabel contour;
 	private JLabel cadre;
-	
-	
+
 	private JTextArea nom1;
 	private JTextArea nom2;
 	private JTextArea nom3;
@@ -98,10 +97,11 @@ public class Menu implements MouseListener {
 	private JLabel commencer;
 
 	private ArrayList<JLabel> hitboxes;
-	
+
 	Risk risk = new Risk();
+
 	public Menu() {
-		
+
 		f = new JFrame();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		f.setPreferredSize(d);
@@ -241,13 +241,12 @@ public class Menu implements MouseListener {
 		background.setBounds(0, 0, 1920, 1080);
 		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
 		jeu.add(background);
-		
-		
+
 		cadre = new JLabel();
 		cadre.setIcon(new ImageIcon("Images/cadre.png"));
 		cadre.setBounds(590, 925, 694, 146);
 		background.add(cadre);
-		
+
 		// BOUTTONS PLUS ET MOINS
 		// RENFORT
 		BtnplusSoldatRenfort = new JLabel();
@@ -350,23 +349,21 @@ public class Menu implements MouseListener {
 		SoldatRenfort.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		SoldatRenfort.setBounds(215, 23, 35, 35);
 		cadre.add(SoldatRenfort);
-		
+
 		CavalierRenfort = new JTextField("0");
 		CavalierRenfort.setOpaque(false);
 		CavalierRenfort.setEditable(false);
 		CavalierRenfort.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		CavalierRenfort.setBounds(215, 63, 35, 35);
 		cadre.add(CavalierRenfort);
-		
-		
+
 		CanonRenfort = new JTextField("0");
 		CanonRenfort.setOpaque(false);
 		CanonRenfort.setEditable(false);
 		CanonRenfort.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		CanonRenfort.setBounds(215, 103, 35, 35);
 		cadre.add(CanonRenfort);
-		
-		
+
 		// TERRITOIRE
 		SoldatTerritoire = new JTextField("0");
 		SoldatTerritoire.setOpaque(false);
@@ -374,24 +371,21 @@ public class Menu implements MouseListener {
 		SoldatTerritoire.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		SoldatTerritoire.setBounds(405, 23, 35, 35);
 		cadre.add(SoldatTerritoire);
-		
-		
+
 		CavalierTerritoire = new JTextField("0");
 		CavalierTerritoire.setOpaque(false);
 		CavalierTerritoire.setEditable(false);
 		CavalierTerritoire.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		CavalierTerritoire.setBounds(405, 63, 35, 35);
 		cadre.add(CavalierTerritoire);
-		
-		
+
 		CanonTerritoire = new JTextField("0");
 		CanonTerritoire.setOpaque(false);
 		CanonTerritoire.setEditable(false);
 		CanonTerritoire.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		CanonTerritoire.setBounds(405, 103, 35, 35);
 		cadre.add(CanonTerritoire);
-		
-		
+
 		// ACTION
 		SoldatAction = new JTextField("0");
 		SoldatAction.setOpaque(false);
@@ -399,27 +393,20 @@ public class Menu implements MouseListener {
 		SoldatAction.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		SoldatAction.setBounds(587, 23, 35, 35);
 		cadre.add(SoldatAction);
-		
-		
+
 		CavalierAction = new JTextField("0");
 		CavalierAction.setOpaque(false);
 		CavalierAction.setEditable(false);
 		CavalierAction.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		CavalierAction.setBounds(587, 63, 35, 35);
 		cadre.add(CavalierAction);
-		
+
 		CanonAction = new JTextField("0");
 		CanonAction.setOpaque(false);
 		CanonAction.setEditable(false);
 		CanonAction.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		CanonAction.setBounds(587, 103, 35, 35);
 		cadre.add(CanonAction);
-		
-		
-
-
-		
-		
 
 		map = new JLabel();
 		map.setBounds(5, 5, 1910, 920);
@@ -493,27 +480,25 @@ public class Menu implements MouseListener {
 		contour = new JLabel();
 		contour.setIcon(new ImageIcon("Images/contour.png"));
 		contour.setBounds(80, 900, 210, 95);
-		
-		
-		
+
 		action = new JLabel();
 		action.setBounds(1380, 950, 100, 100);
 		action.setIcon(new ImageIcon("Images/action.png"));
 		action.addMouseListener(this);
 		background.add(action);
-		
+
 		mouvement = new JLabel();
 		mouvement.setBounds(1580, 950, 100, 100);
 		mouvement.setIcon(new ImageIcon("Images/mouvement.png"));
 		mouvement.addMouseListener(this);
 		background.add(mouvement);
-		
+
 		findutour = new JLabel();
 		findutour.setBounds(1780, 950, 100, 100);
 		findutour.setIcon(new ImageIcon("Images/findutour.png"));
 		findutour.addMouseListener(this);
 		background.add(findutour);
-		
+
 		// CREATION HIBOXES
 		hitboxes = new ArrayList<JLabel>();
 		for (int i = 0; i < 2; i++) {
@@ -643,10 +628,9 @@ public class Menu implements MouseListener {
 		 * }
 		 * 
 		 * // ACTION for (int i = 0; i < 42; i++) { if (e.getSource() ==
-		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size();
-		 * j++) { if (risk.listeJoueurs.get(j).getIdJoueur() ==
-		 * risk.tour + 1) { for (int h = 0; h < 42; h++) { if
-		 * (hitboxes.indexOf(h) ==
+		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size(); j++)
+		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour + 1) { for
+		 * (int h = 0; h < 42; h++) { if (hitboxes.indexOf(h) ==
 		 * risk.listeJoueurs.get(j).getTerritoiresPossedes().indexOf(h)) {
 		 * 
 		 * 
@@ -656,7 +640,10 @@ public class Menu implements MouseListener {
 		 * 
 		 * } } } } } }
 		 */
+		if (e.getSource() == mouvement) {
+			
 
+		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
 			joueur1TextField.setVisible(true);
@@ -788,6 +775,57 @@ public class Menu implements MouseListener {
 			}
 		}
 		return verifnom = true;
+	}
+
+	// AFFICHE EN CONSOLE LES UNITES DUNE LISTE
+	public void afficherNombreUnite(ArrayList<Unite> l) {
+		int soldat = 0;
+		int cavalier = 0;
+		int canon = 0;
+		for (int i = 0; i < l.size(); i++) {
+			if (l.get(i).getType() == 0) {
+				soldat++;
+			}
+			if (l.get(i).getType() == 1) {
+				cavalier++;
+			}
+			if (l.get(i).getType() == 2) {
+				canon++;
+			}
+		}
+		System.out.println("Soldat: " + soldat + "Cavalier: " + cavalier + "Canon: " + canon);
+	}
+
+	// RENVOI UN STRING DU NOMBRE DE TROUPES
+	public String afficherNombreSoldat(ArrayList<Unite> l) {
+		int soldat = 0;
+
+		for (int i = 0; i < l.size(); i++) {
+			if (l.get(i).getType() == 0) {
+				soldat++;
+			}
+		}
+		return Integer.toString(soldat);
+	}
+
+	public String afficherNombreCavalier(ArrayList<Unite> l) {
+		int cavalier = 0;
+		for (int i = 0; i < l.size(); i++) {
+			if (l.get(i).getType() == 0) {
+				cavalier++;
+			}
+		}
+		return Integer.toString(cavalier);
+	}
+
+	public String afficherNombreCanon(ArrayList<Unite> l) {
+		int canon = 0;
+		for (int i = 0; i < l.size(); i++) {
+			if (l.get(i).getType() == 0) {
+				canon++;
+			}
+		}
+		return Integer.toString(canon);
 	}
 
 }
