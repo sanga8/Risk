@@ -1056,14 +1056,16 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[23].setBounds(1650, 90, 50, 50); // KAMCHATKA
 		hitboxes[24].setBounds(1490, 190, 50, 50); // IRKUTSK
 
-		hitboxes[25].setBounds(140, 110, 50, 50); // ALASKA
-		hitboxes[26].setBounds(104, 108, 50, 50); // TERRITOIRE DU NORD
-		hitboxes[27].setBounds(104, 108, 50, 50); // ALBERTA
-		hitboxes[28].setBounds(104, 108, 50, 50); // ONTARIO
-		hitboxes[29].setBounds(104, 108, 50, 50); // GROENLAND
-		hitboxes[30].setBounds(104, 108, 50, 50); // QUEBEC
-		hitboxes[31].setBounds(104, 108, 50, 50); // ETATS DE LOUEST
-		hitboxes[32].setBounds(104, 108, 50, 50); // ETATS DE LEST
+		hitboxes[25].setBounds(150, 120, 50, 50); // ALASKA
+		
+		hitboxes[26].setBounds(300, 110, 50, 50); // TERRITOIRE DU NORD	
+		hitboxes[27].setBounds(290, 180, 50, 50); // ALBERTA		
+		hitboxes[28].setBounds(400, 200, 50, 50); // ONTARIO		
+		hitboxes[29].setBounds(650, 90, 50, 50); // GROENLAND		
+		hitboxes[30].setBounds(540, 200, 50, 50); // QUEBEC
+		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST		
+		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST
+		
 		hitboxes[33].setBounds(104, 108, 50, 50);// AMERIQUE CENTRALE
 		hitboxes[34].setBounds(104, 108, 50, 50);// VENEZUELA
 		hitboxes[35].setBounds(104, 108, 50, 50);// BRESIL
