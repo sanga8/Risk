@@ -576,6 +576,7 @@ public class Menu extends JFrame implements MouseListener {
 				if (e.getSource() == hitboxes[i]) {
 					if (hitboxes[i].getName().equals(risk.listeTerritoires.get(i).getId2())) {
 						System.out.println(risk.listeTerritoires.get(i).getNom());
+						System.out.println(risk.listeTerritoires.get(i).getOccupant().getIdJoueur());
 					}
 				}
 			}

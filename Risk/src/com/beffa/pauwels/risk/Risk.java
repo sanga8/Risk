@@ -3,6 +3,7 @@ package com.beffa.pauwels.risk;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Risk {
 
@@ -68,19 +69,26 @@ public class Risk {
 	}
 	*/
 	
-	public void attriuerTerritoires() {
+	public void attribuerTerritoires() {
 		
 		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
 		
-		for (int i=0 ; i>listeTerritoires.size() ; i++) {
+		for (int i=0 ; i<listeTerritoires.size() ; i++) {
 			listeTerritoiresRandom.add(new Integer(i));
 		}
 		Collections.shuffle(listeTerritoiresRandom);
 		
+		int index = 0;
+		
 		for (int i=0 ; i<listeTerritoires.size() ; i++) {
-			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(this.listeJoueurs.get(i));
-			listeTerritoires.get(i).addUnite(new Unite(0));
+			this.listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(this.listeJoueurs.get(index));
+			listeTerritoires.get(index).addUnite(new Unite(0));
 			
+			index++;
+			
+			if (index >= this.listeJoueurs.size()) {
+				index = 0;
+			}
 		}
 	}
 	
