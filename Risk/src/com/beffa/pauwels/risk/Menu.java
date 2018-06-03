@@ -109,9 +109,8 @@ public class Menu extends JFrame implements MouseListener {
 
 	private JLabel[] hitboxes;
 	// private HashMap<String, JLabel> hitboxes;
-
+	
 	public Risk risk;
-
 	public Menu() {
 		risk = new Risk();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -551,22 +550,14 @@ public class Menu extends JFrame implements MouseListener {
 		}
 
 		setBoundsHitboxes();
-		
-		
-		
-		
-		
-		
-		
+
 		jeu.repaint();
 		return jeu;
 	}
 
-
 	public int getNbJoueurs() {
 		return nbJoueurs;
 	}
-
 
 	public void setNbJoueurs(int nbJoueurs) {
 		this.nbJoueurs = nbJoueurs;
@@ -712,7 +703,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == commencer) {
-			
+
 			// VERIFICATION LONGUEUR DES NOM
 			ArrayList<JTextField> j = new ArrayList<JTextField>();
 			j.add(joueur1TextField);
@@ -744,17 +735,23 @@ public class Menu extends JFrame implements MouseListener {
 			if (nbJoueurs == 2) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
+				risk.distribuerRenfortsDebut();
+				actualiserJTextFieldSoldat(SoldatRenfort);
 			}
 			if (nbJoueurs == 3) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
+				risk.distribuerRenfortsDebut();
+				actualiserJTextFieldSoldat(SoldatRenfort);
 			}
 			if (nbJoueurs == 4) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
+				risk.distribuerRenfortsDebut();
+				actualiserJTextFieldSoldat(SoldatRenfort);
 			}
 			if (nbJoueurs == 5) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
@@ -762,6 +759,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
+				risk.distribuerRenfortsDebut();
+				actualiserJTextFieldSoldat(SoldatRenfort);
 			}
 			if (nbJoueurs == 6) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
@@ -770,6 +769,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 5));
+				risk.distribuerRenfortsDebut();
+				actualiserJTextFieldSoldat(SoldatRenfort);
 			}
 		}
 		/*
@@ -907,7 +908,7 @@ public class Menu extends JFrame implements MouseListener {
 		int soldat = 0;
 		int cavalier = 0;
 		int canon = 0;
-		
+
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 0) {
 				soldat++;
@@ -1028,50 +1029,51 @@ public class Menu extends JFrame implements MouseListener {
 			map.add(jeton1);
 		}
 	}
-	public void setBoundsHitboxes(){
-		hitboxes[0].setBounds(800, 150, 50, 50); //ISLANDE
-		hitboxes[1].setBounds(940, 160, 50, 50); //SCANDINAVIE
-		hitboxes[2].setBounds(770, 250, 50, 50); //GRANDE BRETAGNE
-		hitboxes[3].setBounds(820,360, 50, 50);	//EUROPE DE OUEST
-		hitboxes[4].setBounds(945, 355, 50, 50);//EUROPE DU SUD
-		hitboxes[5].setBounds(940, 270, 50, 50);//EUROPE DU NORD
-		hitboxes[6].setBounds(1100, 230, 50, 50);//UKRAINE
-		hitboxes[7].setBounds(1005, 495, 50, 50); //EGYPTE
-		hitboxes[8].setBounds(860, 505, 50, 50); //AFRIQUE DU NORD
-		hitboxes[9].setBounds(1100, 595, 50, 50);	//AFRIQUE DE LEST
-		hitboxes[10].setBounds(1010, 640, 50, 50);	//CONGO
-		hitboxes[11].setBounds(1030, 750, 50, 50);	//AFRIQUE DU SUD
-		hitboxes[12].setBounds(1195, 760, 50, 50);	//MADAGASCAR
-		hitboxes[13].setBounds(1150, 450, 50, 50);	//MOYEN ORIENT
-		hitboxes[14].setBounds(1360, 450, 50, 50);	//INDE
-		hitboxes[15].setBounds(1260, 320, 50, 50);	//AFGANISTAN
-		hitboxes[16].setBounds(1290, 190, 50, 50);	//OURAL
-		hitboxes[17].setBounds(1390, 150, 50, 50); //SIBERIE
-		hitboxes[18].setBounds(1500, 480, 50, 50);	//SIAM
-		hitboxes[19].setBounds(1500, 370, 50, 50); //CHINE
-		hitboxes[20].setBounds(1500, 90, 50, 50); //YAKOUTI
-		hitboxes[21].setBounds(1500, 290, 50, 50); //MONGOLIE
-		hitboxes[22].setBounds(1700, 290, 50, 50);	//JAPON
-		hitboxes[23].setBounds(1650, 90, 50, 50);	//KAMCHATKA
-		hitboxes[24].setBounds(1490, 190, 50, 50);	//IRKUTSK
-		
-		hitboxes[25].setBounds(140, 110, 50, 50);	//ALASKA
-		hitboxes[26].setBounds(104, 108, 50, 50);	//TERRITOIRE DU NORD
-		hitboxes[27].setBounds(104, 108, 50, 50); //ALBERTA
-		hitboxes[28].setBounds(104, 108, 50, 50);	//ONTARIO
-		hitboxes[29].setBounds(104, 108, 50, 50);	//GROENLAND
-		hitboxes[30].setBounds(104, 108, 50, 50);	//QUEBEC
-		hitboxes[31].setBounds(104, 108, 50, 50); //ETATS DE LOUEST
-		hitboxes[32].setBounds(104, 108, 50, 50); //ETATS DE LEST
-		hitboxes[33].setBounds(104, 108, 50, 50);//AMERIQUE CENTRALE
-		hitboxes[34].setBounds(104, 108, 50, 50);//VENEZUELA
-		hitboxes[35].setBounds(104, 108, 50, 50);//BRESIL
-		hitboxes[36].setBounds(104, 108, 50, 50);//PEROU
-		hitboxes[37].setBounds(104, 108, 50, 50);//ARGENTINE
-		hitboxes[38].setBounds(104, 108, 50, 50);//INDONESIE
-		hitboxes[39].setBounds(104, 108, 50, 50);//NOUVELLE GUINEE
-		hitboxes[40].setBounds(104, 108, 50, 50); //AUSTRALIE DE LOUEST
-		hitboxes[41].setBounds(104, 108, 50, 50); //AUSTRALIE DE LEST
+
+	public void setBoundsHitboxes() {
+		hitboxes[0].setBounds(800, 150, 50, 50); // ISLANDE
+		hitboxes[1].setBounds(940, 160, 50, 50); // SCANDINAVIE
+		hitboxes[2].setBounds(770, 250, 50, 50); // GRANDE BRETAGNE
+		hitboxes[3].setBounds(820, 360, 50, 50); // EUROPE DE OUEST
+		hitboxes[4].setBounds(945, 355, 50, 50);// EUROPE DU SUD
+		hitboxes[5].setBounds(940, 270, 50, 50);// EUROPE DU NORD
+		hitboxes[6].setBounds(1100, 230, 50, 50);// UKRAINE
+		hitboxes[7].setBounds(1005, 495, 50, 50); // EGYPTE
+		hitboxes[8].setBounds(860, 505, 50, 50); // AFRIQUE DU NORD
+		hitboxes[9].setBounds(1100, 595, 50, 50); // AFRIQUE DE LEST
+		hitboxes[10].setBounds(1010, 640, 50, 50); // CONGO
+		hitboxes[11].setBounds(1030, 750, 50, 50); // AFRIQUE DU SUD
+		hitboxes[12].setBounds(1195, 760, 50, 50); // MADAGASCAR
+		hitboxes[13].setBounds(1150, 450, 50, 50); // MOYEN ORIENT
+		hitboxes[14].setBounds(1360, 450, 50, 50); // INDE
+		hitboxes[15].setBounds(1260, 320, 50, 50); // AFGANISTAN
+		hitboxes[16].setBounds(1290, 190, 50, 50); // OURAL
+		hitboxes[17].setBounds(1390, 150, 50, 50); // SIBERIE
+		hitboxes[18].setBounds(1500, 480, 50, 50); // SIAM
+		hitboxes[19].setBounds(1500, 370, 50, 50); // CHINE
+		hitboxes[20].setBounds(1500, 90, 50, 50); // YAKOUTI
+		hitboxes[21].setBounds(1500, 290, 50, 50); // MONGOLIE
+		hitboxes[22].setBounds(1700, 290, 50, 50); // JAPON
+		hitboxes[23].setBounds(1650, 90, 50, 50); // KAMCHATKA
+		hitboxes[24].setBounds(1490, 190, 50, 50); // IRKUTSK
+
+		hitboxes[25].setBounds(140, 110, 50, 50); // ALASKA
+		hitboxes[26].setBounds(104, 108, 50, 50); // TERRITOIRE DU NORD
+		hitboxes[27].setBounds(104, 108, 50, 50); // ALBERTA
+		hitboxes[28].setBounds(104, 108, 50, 50); // ONTARIO
+		hitboxes[29].setBounds(104, 108, 50, 50); // GROENLAND
+		hitboxes[30].setBounds(104, 108, 50, 50); // QUEBEC
+		hitboxes[31].setBounds(104, 108, 50, 50); // ETATS DE LOUEST
+		hitboxes[32].setBounds(104, 108, 50, 50); // ETATS DE LEST
+		hitboxes[33].setBounds(104, 108, 50, 50);// AMERIQUE CENTRALE
+		hitboxes[34].setBounds(104, 108, 50, 50);// VENEZUELA
+		hitboxes[35].setBounds(104, 108, 50, 50);// BRESIL
+		hitboxes[36].setBounds(104, 108, 50, 50);// PEROU
+		hitboxes[37].setBounds(104, 108, 50, 50);// ARGENTINE
+		hitboxes[38].setBounds(104, 108, 50, 50);// INDONESIE
+		hitboxes[39].setBounds(104, 108, 50, 50);// NOUVELLE GUINEE
+		hitboxes[40].setBounds(104, 108, 50, 50); // AUSTRALIE DE LOUEST
+		hitboxes[41].setBounds(104, 108, 50, 50); // AUSTRALIE DE LEST
 	}
 
 }
