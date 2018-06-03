@@ -19,6 +19,7 @@ public class Territoire {
 		this.id2=id2;
 		this.id = id;
 		this.territoiresAdjacents = territoiresAdjacents;
+		
 	}
 
 	public String[] getTerritoiresAdjacents() {

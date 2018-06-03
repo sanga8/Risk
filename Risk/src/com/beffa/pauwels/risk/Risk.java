@@ -7,6 +7,7 @@ import java.util.Comparator;
 public class Risk {
 
 	int tour = 0;
+	int attribueroccupant;
 	boolean premierTour = true;
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
@@ -15,7 +16,11 @@ public class Risk {
 
 	public Risk() {
 		creerTerritoires();
-
+		
+		
+		
+		
+		//attribuerTerritoire();
 		// debutDesTours();
 
 		// finPartie();
@@ -56,33 +61,7 @@ public class Risk {
 	public void tourplacementrenforts() {
 	}
 
-	/*
-	public void attribuerTerritoire() {
-		Collections.shuffle(listeTerritoires);
-		for (int i = 0; i < listeJoueurs.size(); i++) {
-			for (int j = 0; j < listeTerritoires.size(); j++) {
-				listeTerritoires.get(i).setOccupant(listeJoueurs.get(i));
-				listeTerritoires.get(i).addUnite(new Unite(0));
-			}
-		}
-	}
-	*/
 	
-	public void attriuerTerritoires() {
-		
-		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
-		
-		for (int i=0 ; i>listeTerritoires.size() ; i++) {
-			listeTerritoiresRandom.add(new Integer(i));
-		}
-		Collections.shuffle(listeTerritoiresRandom);
-		
-		for (int i=0 ; i<listeTerritoires.size() ; i++) {
-			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(this.listeJoueurs.get(i));
-			listeTerritoires.get(i).addUnite(new Unite(0));
-			
-		}
-	}
 	
 
 	public void distribuerRenfortsDebut() {
