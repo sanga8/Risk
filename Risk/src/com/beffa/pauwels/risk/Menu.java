@@ -772,8 +772,11 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 5));
 				risk.distribuerRenfortsDebut();
 				actualiserJTextFieldSoldat(SoldatRenfort);
+				risk.attribuerTerritoires();
 			}
 		}
+		
+		
 		/*
 		 * if (e.getSource() == action) {
 		 * 
