@@ -656,7 +656,6 @@ public class Menu extends JFrame implements MouseListener {
 		if (e.getSource() == sixJ) {
 			sixJ.setIcon(new ImageIcon("Images/Sixbtn.png"));
 		}
-
 	}
 
 	@Override
