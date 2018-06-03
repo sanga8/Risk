@@ -2,9 +2,11 @@ package com.beffa.pauwels.risk;
 
 import java.awt.Dimension;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.Toolkit;
 import javax.swing.*;
 
@@ -95,42 +97,38 @@ public class Menu extends JFrame implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
-	
+
 	private JLabel off;
-	
+
 	private JLabel jeton1;
 	private JLabel jeton2;
 	private JLabel jeton3;
 	private JLabel jeton4;
 	private JLabel jeton5;
 	private JLabel jeton6;
-	
 
-	
-	private ArrayList<JLabel> hitboxes;
+	private JLabel[] hitboxes;
+	// private HashMap<String, JLabel> hitboxes;
 
-	public Risk risk; 
+	public Risk risk;
 
 	public Menu() {
-		risk= new Risk();
+		risk = new Risk();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setPreferredSize(d);
-		
-		//Dimension p= Toolkit.getDefaultToolkit().getScreenSize();
-	    //int l = p.width;
-	    //int h = p.height;
-	    //this.setSize(l,h);
-		
-	    this.setTitle("RISK");
-	    this.setUndecorated(true);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setResizable(true);
+		int l = d.width;
+		int h = d.height;
 
-	    this.setLayout(null);
-	    this.setContentPane(menu());
-	    this.pack();
-	    this.setLocationRelativeTo(null);
-	    this.setVisible(true);
+		this.setTitle("RISK");
+		this.setUndecorated(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(true);
+
+		this.setLayout(null);
+		this.setContentPane(menu());
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 
 	}
 
@@ -235,7 +233,7 @@ public class Menu extends JFrame implements MouseListener {
 		commencer.setVisible(false);
 		commencer.addMouseListener(this);
 		background.add(commencer);
- 
+
 		// verifnom
 		warning = new JTextArea();
 		warning.setEditable(false);
@@ -244,7 +242,7 @@ public class Menu extends JFrame implements MouseListener {
 		warning.setBounds(790, 540, 400, 50);
 		warning.setVisible(false);
 		background.add(warning);
-		
+
 		menu.add(background);
 		return menu;
 	}
@@ -263,7 +261,8 @@ public class Menu extends JFrame implements MouseListener {
 		cadre.setBounds(590, 925, 694, 146);
 		background.add(cadre);
 
-		//-------------------------- BOUTTONS PLUS ET MOINS-----------------------
+		// -------------------------- BOUTTONS PLUS ET
+		// MOINS-----------------------
 		// RENFORT
 		BtnplusSoldatRenfort = new JLabel();
 		BtnplusSoldatRenfort.setBounds(250, 23, 35, 35);
@@ -514,6 +513,7 @@ public class Menu extends JFrame implements MouseListener {
 		contour = new JLabel();
 		contour.setIcon(new ImageIcon("Images/contour.png"));
 		contour.setBounds(80, 900, 210, 95);
+		background.add(contour);
 
 		action = new JLabel();
 		action.setBounds(1380, 950, 100, 100);
@@ -532,27 +532,32 @@ public class Menu extends JFrame implements MouseListener {
 		findutour.setIcon(new ImageIcon("Images/findutour.png"));
 		findutour.addMouseListener(this);
 		background.add(findutour);
-		
+
 		off = new JLabel();
 		off.setBounds(-10, -10, 100, 100);
 		off.setIcon(new ImageIcon("Images/off.png"));
 		off.addMouseListener(this);
 		map.add(off);
 
-		// CREATION HIBOXES
-		hitboxes = new ArrayList<JLabel>();
-		for (int i = 0; i < 2; i++) {
-			hitboxes.add(new JLabel());
-			hitboxes.get(i).setIcon(new ImageIcon("Images/test.png"));
-			hitboxes.get(i).addMouseListener(this);
-			map.add(hitboxes.get(i));
+		// CREATION HITBOXES
+		hitboxes = new JLabel[42];
+		for (int index = 0; index < 42; index++) {
+			hitboxes[index] = new JLabel(Integer.toString(index));
+			hitboxes[index].setName(Integer.toString(index));
+			hitboxes[index].addMouseListener(m);
+			hitboxes[index].setIcon(new ImageIcon("Images/test.png"));
+
+			map.add(hitboxes[index]);
 		}
 
-		hitboxes.get(0).setBounds(1580, 750, 40, 40);
-		hitboxes.get(1).setBounds(1780, 750, 40, 40);
-
-		background.add(contour);
-
+		setBoundsHitboxes();
+		
+		
+		
+		
+		
+		
+		
 		jeu.repaint();
 		return jeu;
 	}
@@ -561,11 +566,38 @@ public class Menu extends JFrame implements MouseListener {
 		return nbJoueurs;
 	}
 
-	// EVENT MOUSE LISTENER
+	// JETON MOUSE LISTENER
+	MouseListener m = new MouseListener() {
+		public void mouseClicked(MouseEvent e) {
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			for (int i = 0; i < 42; i++) {
+				if (e.getSource() == hitboxes[i]) {
+					if (hitboxes[i].getName().equals(risk.listeTerritoires.get(i).getId2())) {
+						System.out.println(risk.listeTerritoires.get(i).getNom());
+					}
+				}
+			}
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+	};
+
+	// BOUTONS MOUSE LISTENER
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
-		
 	}
 
 	@Override
@@ -629,6 +661,7 @@ public class Menu extends JFrame implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+
 		if (e.getSource() == jouer) {
 			deuxJ.setVisible(true);
 			troisJ.setVisible(true);
@@ -736,8 +769,8 @@ public class Menu extends JFrame implements MouseListener {
 		 * 
 		 * // ACTION for (int i = 0; i < 42; i++) { if (e.getSource() ==
 		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size(); j++)
-		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) { for
-		 * (int h = 0; h < 42; h++) { if (hitboxes.indexOf(h) ==
+		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) { for (int
+		 * h = 0; h < 42; h++) { if (hitboxes.indexOf(h) ==
 		 * risk.listeJoueurs.get(j).getTerritoiresPossedes().indexOf(h)) {
 		 * 
 		 * 
@@ -796,47 +829,46 @@ public class Menu extends JFrame implements MouseListener {
 			joueur5TextField.setVisible(true);
 			joueur6TextField.setVisible(true);
 		}
-		
-		if (e.getSource() == BtnplusSoldatRenfort){
-			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());	
+
+		if (e.getSource() == BtnplusSoldatRenfort) {
+			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnplusCavalierRenfort){
-			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());	
+		if (e.getSource() == BtnplusCavalierRenfort) {
+			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldCavalier(CavalierRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnplusCanonRenfort){
-			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());	
+		if (e.getSource() == BtnplusCanonRenfort) {
+			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldCanon(CanonRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnmoinsCavalierRenfort){
-			risk.echangerCavalierContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());	
+		if (e.getSource() == BtnmoinsCavalierRenfort) {
+			risk.echangerCavalierContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldCavalier(CavalierRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnmoinsCanonRenfort){
-			risk.echangerCanonContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());	
+		if (e.getSource() == BtnmoinsCanonRenfort) {
+			risk.echangerCanonContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldCanon(CanonRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnplusSoldatTerritoire){
-			//risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),(risk.listeJoueurs.get(risk.tour).getTerritoiresPossedes().get(0).getListeUnites()));
+		if (e.getSource() == BtnplusSoldatTerritoire) {
+			// risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),(risk.listeJoueurs.get(risk.tour).getTerritoiresPossedes().get(0).getListeUnites()));
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnplusCavalierTerritoire){
-			
+		if (e.getSource() == BtnplusCavalierTerritoire) {
+
 			actualiserJTextFieldCavalier(CavalierRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		if (e.getSource() == BtnplusCanonTerritoire){
-			
+		if (e.getSource() == BtnplusCanonTerritoire) {
+
 			actualiserJTextFieldCanon(CanonRenfort);
 			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
-		
-		
+
 	}
 
 	@Override
@@ -917,6 +949,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
+
 	public void actualiserJTextFieldCavalier(JTextField textfield) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
@@ -924,6 +957,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
+
 	public void actualiserJTextFieldCanon(JTextField textfield) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
@@ -931,59 +965,102 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-	
-	
-	public void afficheJeton(int posX, int posY, int numeroJoueur)
-    {
-        if(numeroJoueur == 0) {
-        	jeton1 = new JLabel();
-        	jeton1.setBounds(posX, posY, 35, 35);
-        	jeton1.setIcon(new ImageIcon("Images/test.png"));
-        	jeton1.addMouseListener(this);
-    		map.add(jeton1);
-        }
-        if(numeroJoueur == 1) {
-        	jeton1 = new JLabel();
-        	jeton1.setBounds(posX, posY, 35, 35);
-        	jeton1.setIcon(new ImageIcon("Images/test.png"));
-        	jeton1.addMouseListener(this);
-    		map.add(jeton1);
-        }
-        if(numeroJoueur == 2) {
-        	jeton2 = new JLabel();
-        	jeton2.setBounds(posX, posY, 35, 35);
-        	jeton2.setIcon(new ImageIcon("Images/test.png"));
-        	jeton2.addMouseListener(this);
-    		map.add(jeton1);
-        }
-        if(numeroJoueur == 3) {
-        	jeton3 = new JLabel();
-        	jeton3.setBounds(posX, posY, 35, 35);
-        	jeton1.setIcon(new ImageIcon("Images/test.png"));
-        	jeton1.addMouseListener(this);
-    		map.add(jeton1);
-        }
-        if(numeroJoueur == 4) {
-        	jeton4 = new JLabel();
-        	jeton4.setBounds(posX, posY, 35, 35);
-        	jeton4.setIcon(new ImageIcon("Images/test.png"));
-        	jeton4.addMouseListener(this);
-    		map.add(jeton1);
-        }
-        if(numeroJoueur == 5) {
-        	jeton5 = new JLabel();
-        	jeton5.setBounds(posX, posY, 35, 35);
-        	jeton5.setIcon(new ImageIcon("Images/test.png"));
-        	jeton5.addMouseListener(this);
-    		map.add(jeton1);
-        }
-        if(numeroJoueur == 6) {
-        	jeton6 = new JLabel();
-        	jeton6.setBounds(posX, posY, 35, 35);
-        	jeton6.setIcon(new ImageIcon("Images/test.png"));
-        	jeton6.addMouseListener(this);
-    		map.add(jeton1);
-        }
-    }
-	
+
+	public void afficheJeton(int posX, int posY, int numeroJoueur) {
+		if (numeroJoueur == 0) {
+			jeton1 = new JLabel();
+			jeton1.setBounds(posX, posY, 35, 35);
+			jeton1.setIcon(new ImageIcon("Images/test.png"));
+			jeton1.addMouseListener(this);
+			map.add(jeton1);
+		}
+		if (numeroJoueur == 1) {
+			jeton1 = new JLabel();
+			jeton1.setBounds(posX, posY, 35, 35);
+			jeton1.setIcon(new ImageIcon("Images/test.png"));
+			jeton1.addMouseListener(this);
+			map.add(jeton1);
+		}
+		if (numeroJoueur == 2) {
+			jeton2 = new JLabel();
+			jeton2.setBounds(posX, posY, 35, 35);
+			jeton2.setIcon(new ImageIcon("Images/test.png"));
+			jeton2.addMouseListener(this);
+			map.add(jeton1);
+		}
+		if (numeroJoueur == 3) {
+			jeton3 = new JLabel();
+			jeton3.setBounds(posX, posY, 35, 35);
+			jeton1.setIcon(new ImageIcon("Images/test.png"));
+			jeton1.addMouseListener(this);
+			map.add(jeton1);
+		}
+		if (numeroJoueur == 4) {
+			jeton4 = new JLabel();
+			jeton4.setBounds(posX, posY, 35, 35);
+			jeton4.setIcon(new ImageIcon("Images/test.png"));
+			jeton4.addMouseListener(this);
+			map.add(jeton1);
+		}
+		if (numeroJoueur == 5) {
+			jeton5 = new JLabel();
+			jeton5.setBounds(posX, posY, 35, 35);
+			jeton5.setIcon(new ImageIcon("Images/test.png"));
+			jeton5.addMouseListener(this);
+			map.add(jeton1);
+		}
+		if (numeroJoueur == 6) {
+			jeton6 = new JLabel();
+			jeton6.setBounds(posX, posY, 35, 35);
+			jeton6.setIcon(new ImageIcon("Images/test.png"));
+			jeton6.addMouseListener(this);
+			map.add(jeton1);
+		}
+	}
+	public void setBoundsHitboxes(){
+		hitboxes[0].setBounds(800, 150, 50, 50); //ISLANDE
+		hitboxes[1].setBounds(940, 160, 50, 50); //SCANDINAVIE
+		hitboxes[2].setBounds(770, 250, 50, 50); //GRANDE BRETAGNE
+		hitboxes[3].setBounds(820,360, 50, 50);	//EUROPE DE OUEST
+		hitboxes[4].setBounds(945, 355, 50, 50);//EUROPE DU SUD
+		hitboxes[5].setBounds(940, 270, 50, 50);//EUROPE DU NORD
+		hitboxes[6].setBounds(1100, 230, 50, 50);//UKRAINE
+		hitboxes[7].setBounds(1005, 495, 50, 50); //EGYPTE
+		hitboxes[8].setBounds(860, 505, 50, 50); //AFRIQUE DU NORD
+		hitboxes[9].setBounds(1100, 595, 50, 50);	//AFRIQUE DE LEST
+		hitboxes[10].setBounds(1010, 640, 50, 50);	//CONGO
+		hitboxes[11].setBounds(1030, 750, 50, 50);	//AFRIQUE DU SUD
+		hitboxes[12].setBounds(1195, 760, 50, 50);	//MADAGASCAR
+		hitboxes[13].setBounds(1150, 450, 50, 50);	//MOYEN ORIENT
+		hitboxes[14].setBounds(1360, 450, 50, 50);	//INDE
+		hitboxes[15].setBounds(1260, 320, 50, 50);	//AFGANISTAN
+		hitboxes[16].setBounds(1290, 190, 50, 50);	//OURAL
+		hitboxes[17].setBounds(1390, 150, 50, 50); //SIBERIE
+		hitboxes[18].setBounds(1500, 480, 50, 50);	//SIAM
+		hitboxes[19].setBounds(1500, 370, 50, 50); //CHINE
+		hitboxes[20].setBounds(1500, 90, 50, 50); //YAKOUTI
+		hitboxes[21].setBounds(1500, 290, 50, 50); //MONGOLIE
+		hitboxes[22].setBounds(1700, 290, 50, 50);	//JAPON
+		hitboxes[23].setBounds(1650, 90, 50, 50);	//KAMCHATKA
+		hitboxes[24].setBounds(1490, 190, 50, 50);	//IRKUTSK
+		
+		hitboxes[25].setBounds(140, 110, 50, 50);	//ALASKA
+		hitboxes[26].setBounds(104, 108, 50, 50);	//TERRITOIRE DU NORD
+		hitboxes[27].setBounds(104, 108, 50, 50); //ALBERTA
+		hitboxes[28].setBounds(104, 108, 50, 50);	//ONTARIO
+		hitboxes[29].setBounds(104, 108, 50, 50);	//GROENLAND
+		hitboxes[30].setBounds(104, 108, 50, 50);	//QUEBEC
+		hitboxes[31].setBounds(104, 108, 50, 50); //ETATS DE LOUEST
+		hitboxes[32].setBounds(104, 108, 50, 50); //ETATS DE LEST
+		hitboxes[33].setBounds(104, 108, 50, 50);//AMERIQUE CENTRALE
+		hitboxes[34].setBounds(104, 108, 50, 50);//VENEZUELA
+		hitboxes[35].setBounds(104, 108, 50, 50);//BRESIL
+		hitboxes[36].setBounds(104, 108, 50, 50);//PEROU
+		hitboxes[37].setBounds(104, 108, 50, 50);//ARGENTINE
+		hitboxes[38].setBounds(104, 108, 50, 50);//INDONESIE
+		hitboxes[39].setBounds(104, 108, 50, 50);//NOUVELLE GUINEE
+		hitboxes[40].setBounds(104, 108, 50, 50); //AUSTRALIE DE LOUEST
+		hitboxes[41].setBounds(104, 108, 50, 50); //AUSTRALIE DE LEST
+	}
+
 }

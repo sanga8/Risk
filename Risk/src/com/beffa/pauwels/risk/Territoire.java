@@ -1,24 +1,26 @@
 package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
+
 public class Territoire {
+
+
 
 	private String nom;
 	private int id;
+	private String id2;
 	private String[] territoiresAdjacents;
 	private Joueur occupant;
-	
+
 	ArrayList<Unite> listeUnites = new ArrayList<Unite>();
 
-	public Territoire(String nom, String[] territoiresAdjacents, int id) {
+	public Territoire(String nom, String[] territoiresAdjacents, int id, String id2) {
 		this.nom = nom;
-		this.id=id;
+		this.id2=id2;
+		this.id = id;
 		this.territoiresAdjacents = territoiresAdjacents;
-		
 	}
 
-	
-	
 	public String[] getTerritoiresAdjacents() {
 		return territoiresAdjacents;
 	}
@@ -34,6 +36,7 @@ public class Territoire {
 	public void setOccupant(Joueur occupant) {
 		this.occupant = occupant;
 	}
+
 	public void addUnite(Unite u) {
 		listeUnites.add(u);
 	}
@@ -42,10 +45,20 @@ public class Territoire {
 		return listeUnites;
 
 	}
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public int getId() {
 		return id;
 	}
+	public String getId2() {
+		return id2;
+	}
 
-	
 
 }
