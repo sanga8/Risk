@@ -3,6 +3,7 @@ package com.beffa.pauwels.risk;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Risk {
 
@@ -17,13 +18,9 @@ public class Risk {
 	public Risk() {
 		creerTerritoires();
 		
-		
-		
-		
-		//attribuerTerritoire();
-		// debutDesTours();
 
-		// finPartie();
+		
+
 	}
 
 	/**
@@ -56,12 +53,36 @@ public class Risk {
 
 		tourplacementrenforts();
 
+
 	}
 
 	public void tourplacementrenforts() {
+
 	}
 
-	
+
+
+
+	public void attribuerTerritoires() {		
+		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
+		for (int i=0 ; i<listeTerritoires.size() ; i++) {
+			listeTerritoiresRandom.add(new Integer(i));
+		}
+		Collections.shuffle(listeTerritoiresRandom);
+		int index = 0;
+		
+		for (int i=0 ; i<listeTerritoires.size() ; i++) {
+			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(listeJoueurs.get(index));
+			listeTerritoires.get(index).addUnite(new Unite(0));
+			
+			index++;
+			
+			if (index >= this.listeJoueurs.size()) {
+				index = 0;
+			}
+		}
+	}
+
 	
 
 	public void distribuerRenfortsDebut() {

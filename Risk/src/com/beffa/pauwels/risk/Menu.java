@@ -737,6 +737,7 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.distribuerRenfortsDebut();
 				actualiserJTextFieldSoldat(SoldatRenfort);
+				risk.attribuerTerritoires();
 				
 			}
 			if (nbJoueurs == 3) {
@@ -745,6 +746,7 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.distribuerRenfortsDebut();
 				actualiserJTextFieldSoldat(SoldatRenfort);
+				risk.attribuerTerritoires();
 				
 			}
 			if (nbJoueurs == 4) {
@@ -754,6 +756,7 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.distribuerRenfortsDebut();
 				actualiserJTextFieldSoldat(SoldatRenfort);
+				risk.attribuerTerritoires();
 				
 			}
 			if (nbJoueurs == 5) {
@@ -764,6 +767,7 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 				risk.distribuerRenfortsDebut();
 				actualiserJTextFieldSoldat(SoldatRenfort);
+				risk.attribuerTerritoires();
 				
 			}
 			if (nbJoueurs == 6) {
@@ -775,9 +779,11 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 5));
 				risk.distribuerRenfortsDebut();
 				actualiserJTextFieldSoldat(SoldatRenfort);
-				//risk.attribuerTerritoire();
+				risk.attribuerTerritoires();
 			}
 		}
+		
+		
 		/*
 		 * if (e.getSource() == action) {
 		 * 
