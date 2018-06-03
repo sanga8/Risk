@@ -18,7 +18,7 @@ public class Risk {
 
 		creerTerritoires();
 
-		//initialisation();
+		initialisation();
 
 		//debutDesTours();
 
@@ -53,7 +53,7 @@ public class Risk {
 
 	public void initialisation() {
 
-		attribuerTerritoire();
+		//attribuerTerritoire();
 		
 		distribuerRenfortsDebut();
 
@@ -80,6 +80,7 @@ public class Risk {
 			for(int i=0 ; i<40 ; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
+				
 			}
 		}
 		if(listeJoueurs.size() == 3) {
@@ -96,6 +97,9 @@ public class Risk {
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(3).getRenforts());
 			}
+			
+			System.out.println(listeJoueurs.get(1).getRenforts());
+
 		}
 		if(listeJoueurs.size() == 5) {
 			for(int i=0 ; i<25 ; i++) {
@@ -131,9 +135,7 @@ public class Risk {
 
 	// CONVERSION DUNITE
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
-		if (sonTour() == true) {
 			l.add(new Unite(0));
-		}
 	}
 
 	public void echangerSoldatContreCavalier(ArrayList<Unite> l) {
