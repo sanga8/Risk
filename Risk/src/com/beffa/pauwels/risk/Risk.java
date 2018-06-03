@@ -56,6 +56,7 @@ public class Risk {
 	public void tourplacementrenforts() {
 	}
 
+	/*
 	public void attribuerTerritoire() {
 		Collections.shuffle(listeTerritoires);
 		for (int i = 0; i < listeJoueurs.size(); i++) {
@@ -65,6 +66,24 @@ public class Risk {
 			}
 		}
 	}
+	*/
+	
+	public void attriuerTerritoires() {
+		
+		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
+		
+		for (int i=0 ; i>listeTerritoires.size() ; i++) {
+			listeTerritoiresRandom.add(new Integer(i));
+		}
+		Collections.shuffle(listeTerritoiresRandom);
+		
+		for (int i=0 ; i<listeTerritoires.size() ; i++) {
+			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(this.listeJoueurs.get(i));
+			listeTerritoires.get(i).addUnite(new Unite(0));
+			
+		}
+	}
+	
 
 	public void distribuerRenfortsDebut() {
 
@@ -111,11 +130,24 @@ public class Risk {
 	}
 
 	public void debutDesTours() {
+		ajoutAutoRenforts();
+		
 
 	}
 
 	public void finPartie() {
 
+	}
+	
+	public void ajoutAutoRenforts() {
+		int nbDeRenforts = 0;
+		
+		for(int i=0 ; i<nbDeRenforts ; i++) {
+			for(int j =0 ; j<listeJoueurs.size() ; i++) {
+				ajouterSoldatRenfort(listeJoueurs.get(j).getRenforts());
+			}
+			
+		}
 	}
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
@@ -218,6 +250,19 @@ public class Risk {
 			}
 		}
 	}
+	
+	public int nbTerritoirePossede(Joueur joueur) {
+		int conteur = 0;
+	for (int i = 0 ; i<listeTerritoires.size() ; i++) {
+		if (listeTerritoires.get(i).getOccupant().getIdJoueur() == joueur.getIdJoueur()) {
+			conteur++;
+		}
+	}
+		return conteur;
+		
+	}
+	
+	
 
 	// Methode avec l'aide d'Eliot Sadrin
 	// Création de territoire
