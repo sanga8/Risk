@@ -557,8 +557,13 @@ public class Menu extends JFrame implements MouseListener {
 		return jeu;
 	}
 
+
 	public int getNbJoueurs() {
 		return nbJoueurs;
+	}
+
+	public void setNbJoueurs(int nbJoueurs) {
+		this.nbJoueurs = nbJoueurs;
 	}
 
 	// EVENT MOUSE LISTENER
@@ -670,6 +675,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == commencer) {
+			
 			// VERIFICATION LONGUEUR DES NOM
 			ArrayList<JTextField> j = new ArrayList<JTextField>();
 			j.add(joueur1TextField);
@@ -865,6 +871,7 @@ public class Menu extends JFrame implements MouseListener {
 		int soldat = 0;
 		int cavalier = 0;
 		int canon = 0;
+		
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 0) {
 				soldat++;

@@ -11,6 +11,7 @@ public class Joueur {
 	private ArrayList<Unite> renforts = new ArrayList<Unite>();
 	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
 	private ArrayList<Continent> continentsPossedes = new ArrayList<Continent>();
+	
 
 	public Joueur(String nom, int idJoueur) {
 		this.nom = nom;

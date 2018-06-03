@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 public class Risk {
 
+
 	int tour = 0;
 	boolean premierTour = true;
 
@@ -53,6 +54,8 @@ public class Risk {
 	public void initialisation() {
 
 		attribuerTerritoire();
+		
+		distribuerRenfortsDebut();
 
 		tourplacementrenforts();
 
@@ -69,6 +72,10 @@ public class Risk {
 				listeTerritoires.get(i).addUnite(new Unite(0));
 			}
 		}
+	}
+	
+	public void distribuerRenfortsDebut() {
+
 	}
 
 	public void debutDesTours() {
