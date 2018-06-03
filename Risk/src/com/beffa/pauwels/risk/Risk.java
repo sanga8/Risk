@@ -136,7 +136,7 @@ public class Risk {
 	}
 
 	public void finPartie() {
-
+//commentaire
 	}
 	
 	public void ajoutAutoRenforts() {
