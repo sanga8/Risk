@@ -15,9 +15,6 @@ public class Risk {
 
 	public Risk() {
 		creerTerritoires();
-		distribuerRenfortsDebut();
-
-		// initialisation();
 
 		// debutDesTours();
 
@@ -51,10 +48,6 @@ public class Risk {
 	}
 
 	public void initialisation() {
-
-		// attribuerTerritoire();
-
-		distribuerRenfortsDebut();
 
 		tourplacementrenforts();
 
@@ -129,9 +122,7 @@ public class Risk {
 
 	// CONVERSION DUNITE
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
-		// if (sonTour() == true) {
 		l.add(new Unite(0));
-		// }
 	}
 
 	public void echangerSoldatContreCavalier(ArrayList<Unite> l) {
