@@ -478,7 +478,7 @@ public class Menu extends JFrame implements MouseListener {
 		nom4.setOpaque(false);
 		nom4.setText(joueur4TextField.getText());
 		nom4.setBounds(230, 930, 190, 75);
-
+		 
 		nom5 = new JTextArea();
 		nom5.setEditable(false);
 		nom5.setFont(new Font("Times New Roman", Font.PLAIN, 27));
