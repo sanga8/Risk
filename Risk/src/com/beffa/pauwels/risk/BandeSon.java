@@ -1,30 +1,26 @@
 package com.beffa.pauwels.risk;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-
-import javax.print.DocFlavor.URL;
+import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class BandeSon {
-	
-public void MusiqueMenu(){
-	
-	java.net.URL url = Main.class.getResource("Sons/AOE3_Theme.wav");
-	
-    final AudioClip clip = Applet.newAudioClip(url);
-    clip.play();
 
-		
-	}
-	public void StopMusique(){
-		java.net.URL url = Menu.class.getResource("AOE3_Theme.WAV");
-		
-	    final AudioClip clip = Applet.newAudioClip(url);
-	    clip.stop();
-		
-	}
+public class BandeSon{
 	
+	public static void main(String[] args) {
+		File Clap = new File("Sons/AOE3_Theme.wav");
+		PlaySound(Clap);
+	}
 
+	public static void PlaySound(File Sound) {
+        try {
+        	Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(Sound));
+            clip.start();
+
+
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 }

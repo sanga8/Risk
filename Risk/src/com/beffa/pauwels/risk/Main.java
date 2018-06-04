@@ -5,8 +5,7 @@ public class Main {
 	
 	public static void main(String[] args){
 	Menu menu = new Menu();
-	BandeSon ThemeMenu = new BandeSon();
-	ThemeMenu.MusiqueMenu();
+
 		
 	}
 	
