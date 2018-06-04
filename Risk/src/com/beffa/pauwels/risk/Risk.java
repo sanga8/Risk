@@ -10,6 +10,10 @@ public class Risk {
 	int tour = 0;
 	int attribueroccupant;
 	boolean premierTour = true;
+	boolean peutDeplacer = false;
+	
+	private Territoire d;
+	private Territoire a;
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
@@ -39,6 +43,15 @@ public class Risk {
 	public boolean sonTour() {
 		for (int j = 0; j < listeJoueurs.size(); j++) {
 			if (listeJoueurs.get(j).getIdJoueur() == tour) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean renfortTermine() {
+		for (int i = 0; i < listeJoueurs.size(); i++) {
+			if (listeJoueurs.get(i).getRenforts().size() == 0) {
 				return true;
 			}
 		}
@@ -136,6 +149,11 @@ public class Risk {
 	}
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
+	
+	public void refreshSelection(){
+		d = null;
+		a = null;
+	}
 
 	// CONVERSION DUNITE
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
@@ -205,7 +223,8 @@ public class Risk {
 		}
 	}
 
-	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE SELECTIONNE
+	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE
+	// SELECTIONNE
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 0) {
@@ -215,7 +234,6 @@ public class Risk {
 			}
 		}
 	}
-
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
@@ -236,41 +254,70 @@ public class Risk {
 			}
 		}
 	}
-	
-	//DEPLACEMENT DE TROUPES
-	
-	public boolean peutDeplacer() {
-		//même joueur ?
-		//adjacent ?
-		//au moins 2 troupes sur le territoire de départ
-		return true;
-		
+
+	// DEPLACEMENT DE TROUPES
+	public void deplacer(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		if (peutDeplacer == true) {
+			for (int i = 0; i < depart.size(); i++) {
+				if (depart.get(i).getType() == 0) {
+					depart.remove(i);
+					destination.add(new Unite(0));
+				}
+				if (depart.get(i).getType() == 1) {
+					depart.remove(i);
+					destination.add(new Unite(1));
+				}
+				if (depart.get(i).getType() == 2) {
+					depart.remove(i);
+					destination.add(new Unite(2));
+				}
+			}
+		}
 	}
-	
+
+	public boolean peutDeplacer(Territoire depart, Territoire destination) {
+		// son tour ?
+		if (sonTour() == true) {
+			// mï¿½me joueur ?
+			if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
+				for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
+					// adjacent ?
+					if (depart.territoiresAdjacents[i].equals(destination)) {
+						// au moins 2 troupes sur le territoire de dï¿½part
+						if (depart.getListeUnites().size() > 1) {
+							return  peutDeplacer = true;
+						}
+					}
+				}
+			}
+		}
+		return peutDeplacer = false;
+
+	}
+
 	public void deplacerSoldat(Territoire depart, Territoire destination) {
-		if (sonTour() == true && peutDeplacer() == true) {
+		if (peutDeplacer(depart, destination) == true) {
 			int c = 0;
 			for (int i = 0; i < depart.listeUnites.size(); i++) {
 				if (depart.listeUnites.get(i).getType() == 0) {
 					c++;
 				}
 			}
-				depart.listeUnites.removeIf(p -> p.getType() == 0);
-				for (int h = 0; h < c - 1; h++) {
-					depart.listeUnites.add(new Unite(0));
+			depart.listeUnites.removeIf(p -> p.getType() == 0);
+			for (int h = 0; h < c - 1; h++) {
+				depart.listeUnites.add(new Unite(0));
 			}
-		destination.listeUnites.add(new Unite(0));
-		return;
+			destination.listeUnites.add(new Unite(0));
+			return;
 		}
 	}
-	
-	
+
 	public void deplacerCavalier(Territoire depart, Territoire destination) {
-		
+
 	}
 
 	public void deplacerCanon(Territoire depart, Territoire destination) {
-	
+
 	}
 
 	public int nbTerritoirePossede(Joueur joueur) {
@@ -283,20 +330,6 @@ public class Risk {
 		return conteur;
 
 	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	// Methode avec l'aide d'Eliot Sadrin
 	// CrÃ©ation de territoire
@@ -431,4 +464,20 @@ public class Risk {
 
 	}
 
+	public Territoire getD() {
+		return d;
+	}
+
+	public void setD(Territoire d) {
+		this.d = d;
+	}
+
+	public Territoire getA() {
+		return a;
+	}
+
+	public void setA(Territoire a) {
+		this.a = a;
+	}
+	
 }
