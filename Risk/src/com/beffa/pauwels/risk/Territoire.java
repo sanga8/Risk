@@ -1,5 +1,6 @@
 package com.beffa.pauwels.risk;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class Territoire {
@@ -41,7 +42,7 @@ public class Territoire {
 	public void addUnite(Unite u) {
 		listeUnites.add(u);
 	}
-
+	
 	public ArrayList<Unite> getListeUnites() {
 		return listeUnites;
 
@@ -60,6 +61,7 @@ public class Territoire {
 	public String getId2() {
 		return id2;
 	}
+
 
 
 }

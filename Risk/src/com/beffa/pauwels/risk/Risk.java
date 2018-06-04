@@ -205,7 +205,7 @@ public class Risk {
 		}
 	}
 
-	// TRANSFERER UNITE DUNE LISTE A LAUTRE
+	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE SELECTIONNE
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 0) {
@@ -215,6 +215,7 @@ public class Risk {
 			}
 		}
 	}
+
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
@@ -234,6 +235,41 @@ public class Risk {
 				return;
 			}
 		}
+	}
+	
+	//DEPLACEMENT DE TROUPES
+	
+	public boolean peutDeplacer() {
+		//même joueur ?
+		//adjacent ?
+		//au moins 2 troupes sur le territoire de départ
+		return true;
+		
+	}
+	
+	public void deplacerSoldat(Territoire depart, Territoire destination) {
+		if (sonTour() == true && peutDeplacer() == true) {
+			int c = 0;
+			for (int i = 0; i < depart.listeUnites.size(); i++) {
+				if (depart.listeUnites.get(i).getType() == 0) {
+					c++;
+				}
+			}
+				depart.listeUnites.removeIf(p -> p.getType() == 0);
+				for (int h = 0; h < c - 1; h++) {
+					depart.listeUnites.add(new Unite(0));
+			}
+		destination.listeUnites.add(new Unite(0));
+		return;
+		}
+	}
+	
+	public void deplacerCavalier(Territoire depart, Territoire destination) {
+		
+	}
+
+	public void deplacerCanon(Territoire depart, Territoire destination) {
+	
 	}
 
 	public int nbTerritoirePossede(Joueur joueur) {
