@@ -265,7 +265,6 @@ public class Risk {
 	}
 	
 	
-	
 	public void deplacerCavalier(Territoire depart, Territoire destination) {
 		
 	}
