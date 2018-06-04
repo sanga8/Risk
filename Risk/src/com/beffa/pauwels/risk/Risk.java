@@ -128,7 +128,7 @@ public class Risk {
 	public void ajoutAutoRenforts() {
 		int nbDeRenforts = 0;
 		for (int i = 0; i < nbDeRenforts; i++) {
-			for (int j = 0; j < listeJoueurs.size(); i++) {
+			for (int j = 0; j < listeJoueurs.size(); j++) {
 				ajouterSoldatRenfort(listeJoueurs.get(j).getRenforts());
 			}
 
@@ -240,15 +240,13 @@ public class Risk {
 	//DEPLACEMENT DE TROUPES
 	
 	public boolean peutDeplacer() {
-		//même joueur ?
-		//adjacent ?
-		//au moins 2 troupes sur le territoire de départ
+
 		return true;
 		
 	}
 	
 	public void deplacerSoldat(Territoire depart, Territoire destination) {
-		if (sonTour() == true && peutDeplacer() == true) {
+		if (peutDeplacer() == true) {
 			int c = 0;
 			for (int i = 0; i < depart.listeUnites.size(); i++) {
 				if (depart.listeUnites.get(i).getType() == 0) {
@@ -285,16 +283,7 @@ public class Risk {
 	}
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 
@@ -330,8 +319,7 @@ public class Risk {
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
 		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
-		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec",
-				"Groenland" };
+		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec","Groenland" };
 		String[] listeGR = { "Ontario", "Territoires du Nord", "Quebec", "Island" };
 		String[] listeQU = { "Etats de L'Est", "Ontario", "Groenland" };
 		String[] listeEDO = { "Etats de L'Est", "Amerique Centrale", "Ontario", "Alberta" };
