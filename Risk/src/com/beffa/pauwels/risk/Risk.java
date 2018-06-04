@@ -17,9 +17,6 @@ public class Risk {
 
 	public Risk() {
 		creerTerritoires();
-		
-
-		
 
 	}
 
@@ -53,37 +50,28 @@ public class Risk {
 
 		tourplacementrenforts();
 
-
 	}
 
 	public void tourplacementrenforts() {
 
 	}
 
-
-
-
-	public void attribuerTerritoires() {		
+	public void attribuerTerritoires() {
 		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
-		for (int i=0 ; i<listeTerritoires.size() ; i++) {
+		for (int i = 0; i < listeTerritoires.size(); i++) {
 			listeTerritoiresRandom.add(new Integer(i));
 		}
 		Collections.shuffle(listeTerritoiresRandom);
 		int index = 0;
-		
-		for (int i=0 ; i<listeTerritoires.size() ; i++) {
+		for (int i = 0; i < listeTerritoires.size(); i++) {
 			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(listeJoueurs.get(index));
-			listeTerritoires.get(index).addUnite(new Unite(0));
-			
+
 			index++;
-			
 			if (index >= this.listeJoueurs.size()) {
 				index = 0;
 			}
 		}
 	}
-
-	
 
 	public void distribuerRenfortsDebut() {
 
@@ -131,22 +119,20 @@ public class Risk {
 
 	public void debutDesTours() {
 		ajoutAutoRenforts();
-		
 
 	}
 
 	public void finPartie() {
-//commentaire
+		// commentaire
 	}
-	
+
 	public void ajoutAutoRenforts() {
 		int nbDeRenforts = 0;
-		
-		for(int i=0 ; i<nbDeRenforts ; i++) {
-			for(int j =0 ; j<listeJoueurs.size() ; i++) {
+		for (int i = 0; i < nbDeRenforts; i++) {
+			for (int j = 0; j < listeJoueurs.size(); i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(j).getRenforts());
 			}
-			
+
 		}
 	}
 
@@ -229,6 +215,7 @@ public class Risk {
 				return;
 			}
 		}
+
 	}
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
@@ -250,19 +237,17 @@ public class Risk {
 			}
 		}
 	}
-	
+
 	public int nbTerritoirePossede(Joueur joueur) {
 		int conteur = 0;
-	for (int i = 0 ; i<listeTerritoires.size() ; i++) {
-		if (listeTerritoires.get(i).getOccupant().getIdJoueur() == joueur.getIdJoueur()) {
-			conteur++;
+		for (int i = 0; i < listeTerritoires.size(); i++) {
+			if (listeTerritoires.get(i).getOccupant().getIdJoueur() == joueur.getIdJoueur()) {
+				conteur++;
+			}
 		}
-	}
 		return conteur;
-		
+
 	}
-	
-	
 
 	// Methode avec l'aide d'Eliot Sadrin
 	// Création de territoire
