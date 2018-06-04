@@ -109,8 +109,9 @@ public class Menu extends JFrame implements MouseListener {
 
 	private JLabel[] hitboxes;
 	// private HashMap<String, JLabel> hitboxes;
-	
+
 	public Risk risk;
+
 	public Menu() {
 		risk = new Risk();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -576,7 +577,8 @@ public class Menu extends JFrame implements MouseListener {
 				if (e.getSource() == hitboxes[i]) {
 					if (hitboxes[i].getName().equals(risk.listeTerritoires.get(i).getId2())) {
 						System.out.println(risk.listeTerritoires.get(i).getNom());
-						System.out.println(risk.listeTerritoires.get(i).getOccupant().getIdJoueur());
+						System.out.println("Occupant: Joueur "+risk.listeTerritoires.get(i).getOccupant().getIdJoueur());
+						
 					}
 				}
 			}
@@ -677,9 +679,9 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == findutour) {
 			risk.finDeTour();
-			actualiserJTextFieldSoldat(SoldatRenfort);
-			actualiserJTextFieldCavalier(CavalierRenfort);
-			actualiserJTextFieldCanon(CanonRenfort);
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldCavalierRenfort(CavalierRenfort);
+			actualiserJTextFieldCanonRenfort(CanonRenfort);
 			if (risk.tour == 0) {
 				contour.setBounds(80, 900, 210, 95);
 			}
@@ -736,18 +738,18 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldat(SoldatRenfort);
+				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 				risk.attribuerTerritoires();
-				
+
 			}
 			if (nbJoueurs == 3) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldat(SoldatRenfort);
+				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 				risk.attribuerTerritoires();
-				
+
 			}
 			if (nbJoueurs == 4) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
@@ -755,9 +757,9 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldat(SoldatRenfort);
+				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 				risk.attribuerTerritoires();
-				
+
 			}
 			if (nbJoueurs == 5) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
@@ -766,9 +768,9 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldat(SoldatRenfort);
+				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 				risk.attribuerTerritoires();
-				
+
 			}
 			if (nbJoueurs == 6) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
@@ -778,12 +780,11 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 5));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldat(SoldatRenfort);
+				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 				risk.attribuerTerritoires();
 			}
 		}
-		
-		
+
 		/*
 		 * if (e.getSource() == action) {
 		 * 
@@ -804,7 +805,8 @@ public class Menu extends JFrame implements MouseListener {
 		 */
 		if (e.getSource() == mouvement) {
 			afficherNombreUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
-			System.out.println(risk.listeTerritoires.get(0).getOccupant().getIdJoueur());
+			if(risk.sonTour()){
+			afficherNombreUnite(risk.listeTerritoires.get(0).getListeUnites());}
 		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
@@ -855,41 +857,44 @@ public class Menu extends JFrame implements MouseListener {
 
 		if (e.getSource() == BtnplusSoldatRenfort) {
 			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldSoldat(SoldatRenfort);
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 		}
 		if (e.getSource() == BtnplusCavalierRenfort) {
 			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCavalier(CavalierRenfort);
-			actualiserJTextFieldSoldat(SoldatRenfort);
+			actualiserJTextFieldCavalierRenfort(CavalierRenfort);
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 		}
 		if (e.getSource() == BtnplusCanonRenfort) {
 			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCanon(CanonRenfort);
-			actualiserJTextFieldSoldat(SoldatRenfort);
+			actualiserJTextFieldCanonRenfort(CanonRenfort);
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 		}
 		if (e.getSource() == BtnmoinsCavalierRenfort) {
 			risk.echangerCavalierContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCavalier(CavalierRenfort);
-			actualiserJTextFieldSoldat(SoldatRenfort);
+			actualiserJTextFieldCavalierRenfort(CavalierRenfort);
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 		}
 		if (e.getSource() == BtnmoinsCanonRenfort) {
 			risk.echangerCanonContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCanon(CanonRenfort);
-			actualiserJTextFieldSoldat(SoldatRenfort);
+			actualiserJTextFieldCanonRenfort(CanonRenfort);
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
 		}
 		if (e.getSource() == BtnplusSoldatTerritoire) {
-			// risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),(risk.listeJoueurs.get(risk.tour).getTerritoiresPossedes().get(0).getListeUnites()));
-			actualiserJTextFieldSoldat(SoldatRenfort);
+			//for (int i = 0; i < 42; i++) {
+				//if (risk.listeTerritoires.get(i).getOccupant() == risk.listeJoueurs.get(risk.tour)) {
+					risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),
+							risk.listeTerritoires.get(0).getListeUnites());
+				//}
+			//}	
+			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldSoldatTerritoire(SoldatTerritoire);
 		}
-		if (e.getSource() == BtnplusCavalierTerritoire) {
 
-			actualiserJTextFieldCavalier(CavalierRenfort);
-			actualiserJTextFieldSoldat(SoldatRenfort);
+		if (e.getSource() == BtnplusCavalierTerritoire) {
 		}
+
 		if (e.getSource() == BtnplusCanonTerritoire) {
 
-			actualiserJTextFieldCanon(CanonRenfort);
-			actualiserJTextFieldSoldat(SoldatRenfort);
 		}
 
 	}
@@ -966,7 +971,7 @@ public class Menu extends JFrame implements MouseListener {
 		return Integer.toString(canon);
 	}
 
-	public void actualiserJTextFieldSoldat(JTextField textfield) {
+	public void actualiserJTextFieldSoldatRenfort(JTextField textfield) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
 				textfield.setText(afficherNombreSoldat(risk.listeJoueurs.get(j).getRenforts()));
@@ -974,7 +979,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 	}
 
-	public void actualiserJTextFieldCavalier(JTextField textfield) {
+	public void actualiserJTextFieldCavalierRenfort(JTextField textfield) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
 				textfield.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
@@ -982,7 +987,29 @@ public class Menu extends JFrame implements MouseListener {
 		}
 	}
 
-	public void actualiserJTextFieldCanon(JTextField textfield) {
+	public void actualiserJTextFieldCanonRenfort(JTextField textfield) {
+		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
+			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
+				textfield.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
+			}
+		}
+	}
+
+	public void actualiserJTextFieldSoldatTerritoire(JTextField textfield) {
+		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
+			textfield.setText(afficherNombreSoldat(risk.listeTerritoires.get(j).getListeUnites()));
+		}
+	}
+
+	public void actualiserJTextFieldCavalierTerritoire(JTextField textfield) {
+		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
+			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
+				textfield.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
+			}
+		}
+	}
+
+	public void actualiserJTextFieldCanonTerritoire(JTextField textfield) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
 				textfield.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
@@ -1070,15 +1097,15 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[24].setBounds(1490, 190, 50, 50); // IRKUTSK
 
 		hitboxes[25].setBounds(150, 120, 50, 50); // ALASKA
-		
-		hitboxes[26].setBounds(300, 110, 50, 50); // TERRITOIRE DU NORD	
-		hitboxes[27].setBounds(290, 180, 50, 50); // ALBERTA		
-		hitboxes[28].setBounds(400, 200, 50, 50); // ONTARIO		
-		hitboxes[29].setBounds(650, 90, 50, 50); // GROENLAND		
+
+		hitboxes[26].setBounds(300, 110, 50, 50); // TERRITOIRE DU NORD
+		hitboxes[27].setBounds(290, 180, 50, 50); // ALBERTA
+		hitboxes[28].setBounds(400, 200, 50, 50); // ONTARIO
+		hitboxes[29].setBounds(650, 90, 50, 50); // GROENLAND
 		hitboxes[30].setBounds(540, 200, 50, 50); // QUEBEC
-		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST		
+		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST
 		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST
-		
+
 		hitboxes[33].setBounds(104, 108, 50, 50);// AMERIQUE CENTRALE
 		hitboxes[34].setBounds(104, 108, 50, 50);// VENEZUELA
 		hitboxes[35].setBounds(104, 108, 50, 50);// BRESIL
