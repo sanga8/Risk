@@ -108,7 +108,12 @@ public class Menu extends JFrame implements MouseListener {
 	private JLabel jeton6;
 
 	private JLabel[] hitboxes;
+
 	// private HashMap<String, JLabel> hitboxes;
+
+	private boolean peutTransferer = false;
+	private int ceTerritoire;
+	private JTextArea informations;
 
 	public Risk risk;
 
@@ -451,42 +456,42 @@ public class Menu extends JFrame implements MouseListener {
 		nom1.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom1.setOpaque(false);
 		nom1.setText(joueur1TextField.getText());
-		nom1.setBounds(90, 930, 190, 75);
+		nom1.setBounds(50, 930, 190, 75);
 
 		nom2 = new JTextArea();
 		nom2.setEditable(false);
 		nom2.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom2.setOpaque(false);
 		nom2.setText(joueur2TextField.getText());
-		nom2.setBounds(90, 980, 190, 75);
+		nom2.setBounds(50, 980, 190, 75);
 
 		nom3 = new JTextArea();
 		nom3.setEditable(false);
 		nom3.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom3.setOpaque(false);
 		nom3.setText(joueur3TextField.getText());
-		nom3.setBounds(90, 1030, 190, 75);
+		nom3.setBounds(50, 1030, 190, 75);
 
 		nom4 = new JTextArea();
 		nom4.setEditable(false);
 		nom4.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom4.setOpaque(false);
 		nom4.setText(joueur4TextField.getText());
-		nom4.setBounds(270, 930, 190, 75);
+		nom4.setBounds(230, 930, 190, 75);
 
 		nom5 = new JTextArea();
 		nom5.setEditable(false);
 		nom5.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom5.setOpaque(false);
 		nom5.setText(joueur5TextField.getText());
-		nom5.setBounds(270, 980, 190, 75);
+		nom5.setBounds(230, 980, 190, 75);
 
 		nom6 = new JTextArea();
 		nom6.setEditable(false);
 		nom6.setFont(new Font("Times New Roman", Font.PLAIN, 27));
 		nom6.setOpaque(false);
 		nom6.setText(joueur6TextField.getText());
-		nom6.setBounds(270, 1030, 190, 75);
+		nom6.setBounds(230, 1030, 190, 75);
 
 		background.add(nom1);
 		background.add(nom2);
@@ -512,7 +517,7 @@ public class Menu extends JFrame implements MouseListener {
 
 		contour = new JLabel();
 		contour.setIcon(new ImageIcon("Images/contour.png"));
-		contour.setBounds(80, 900, 210, 95);
+		contour.setBounds(40, 900, 210, 95);
 		background.add(contour);
 
 		action = new JLabel();
@@ -538,7 +543,16 @@ public class Menu extends JFrame implements MouseListener {
 		off.setIcon(new ImageIcon("Images/off.png"));
 		off.addMouseListener(this);
 		map.add(off);
-
+		
+		informations = new JTextArea("");
+		informations.setBounds(375, 925, 215, 145);
+		informations.setOpaque(false);
+		informations.setEditable(false);
+		informations.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		background.add(informations);
+		
+		
+		
 		// CREATION HITBOXES
 		hitboxes = new JLabel[42];
 		for (int index = 0; index < 42; index++) {
@@ -549,7 +563,6 @@ public class Menu extends JFrame implements MouseListener {
 
 			map.add(hitboxes[index]);
 		}
-
 		setBoundsHitboxes();
 
 		jeu.repaint();
@@ -573,12 +586,24 @@ public class Menu extends JFrame implements MouseListener {
 
 		@Override
 		public void mousePressed(MouseEvent e) {
+
 			for (int i = 0; i < 42; i++) {
 				if (e.getSource() == hitboxes[i]) {
 					if (hitboxes[i].getName().equals(risk.listeTerritoires.get(i).getId2())) {
+						ceTerritoire = i;
+						informations.setText(risk.listeTerritoires.get(i).getNom()+"\n"+risk.listeTerritoires.get(i).getOccupant().getIdJoueur());
 						System.out.println(risk.listeTerritoires.get(i).getNom());
-						System.out.println("Occupant: Joueur "+risk.listeTerritoires.get(i).getOccupant().getIdJoueur());
-						
+						System.out.println("Occupant: " + risk.listeTerritoires.get(i).getOccupant().getIdJoueur());
+						afficherNombreUnite(risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+						System.out.println("ceTerritoire = " + ceTerritoire);
+						actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+
+						if (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() == risk.tour) {
+							peutTransferer = true;
+
+						} else {
+							peutTransferer = false;
+						}
 					}
 				}
 			}
@@ -679,29 +704,28 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == findutour) {
 			risk.finDeTour();
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
-			actualiserJTextFieldCavalierRenfort(CavalierRenfort);
-			actualiserJTextFieldCanonRenfort(CanonRenfort);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			if (risk.tour == 0) {
-				contour.setBounds(80, 900, 210, 95);
+				contour.setBounds(40, 900, 210, 95);
 			}
 			if (risk.tour == 1) {
-				contour.setBounds(80, 950, 210, 95);
+				contour.setBounds(40, 950, 210, 95);
 			}
 
 			if (risk.tour == 2) {
-				contour.setBounds(80, 1000, 210, 95);
+				contour.setBounds(40, 1000, 210, 95);
 			}
 
 			if (risk.tour == 3) {
-				contour.setBounds(260, 900, 210, 95);
+				contour.setBounds(220, 900, 210, 95);
 			}
 
 			if (risk.tour == 4) {
-				contour.setBounds(260, 950, 210, 95);
+				contour.setBounds(220, 950, 210, 95);
 			}
 			if (risk.tour == 5) {
-				contour.setBounds(260, 1000, 210, 95);
+				contour.setBounds(220, 1000, 210, 95);
 			}
 		}
 		if (e.getSource() == commencer) {
@@ -738,7 +762,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
 
 			}
@@ -747,7 +772,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur2TextField.getText(), 1));
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
 
 			}
@@ -757,7 +783,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur3TextField.getText(), 2));
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
 
 			}
@@ -768,7 +795,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur4TextField.getText(), 3));
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
 
 			}
@@ -780,7 +808,8 @@ public class Menu extends JFrame implements MouseListener {
 				risk.listeJoueurs.add(new Joueur(joueur5TextField.getText(), 4));
 				risk.listeJoueurs.add(new Joueur(joueur6TextField.getText(), 5));
 				risk.distribuerRenfortsDebut();
-				actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
 			}
 		}
@@ -805,8 +834,6 @@ public class Menu extends JFrame implements MouseListener {
 		 */
 		if (e.getSource() == mouvement) {
 			afficherNombreUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
-			if(risk.sonTour()){
-			afficherNombreUnite(risk.listeTerritoires.get(0).getListeUnites());}
 		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
@@ -857,43 +884,52 @@ public class Menu extends JFrame implements MouseListener {
 
 		if (e.getSource() == BtnplusSoldatRenfort) {
 			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 		}
 		if (e.getSource() == BtnplusCavalierRenfort) {
 			risk.echangerSoldatContreCavalier(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCavalierRenfort(CavalierRenfort);
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 		}
 		if (e.getSource() == BtnplusCanonRenfort) {
 			risk.echangerSoldatContreCanon(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCanonRenfort(CanonRenfort);
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 		}
 		if (e.getSource() == BtnmoinsCavalierRenfort) {
 			risk.echangerCavalierContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCavalierRenfort(CavalierRenfort);
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 		}
 		if (e.getSource() == BtnmoinsCanonRenfort) {
 			risk.echangerCanonContreSoldat(risk.listeJoueurs.get(risk.tour).getRenforts());
-			actualiserJTextFieldCanonRenfort(CanonRenfort);
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 		}
 		if (e.getSource() == BtnplusSoldatTerritoire) {
-			//for (int i = 0; i < 42; i++) {
-				//if (risk.listeTerritoires.get(i).getOccupant() == risk.listeJoueurs.get(risk.tour)) {
-					risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),
-							risk.listeTerritoires.get(0).getListeUnites());
-				//}
-			//}	
-			actualiserJTextFieldSoldatRenfort(SoldatRenfort);
-			actualiserJTextFieldSoldatTerritoire(SoldatTerritoire);
+			if (peutTransferer == true) {
+				risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+
+			}
 		}
 
 		if (e.getSource() == BtnplusCavalierTerritoire) {
+			if (peutTransferer == true) {
+				risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+
+			}
 		}
 
 		if (e.getSource() == BtnplusCanonTerritoire) {
+			if (peutTransferer == true) {
+				risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+
+			}
 
 		}
 
@@ -971,48 +1007,22 @@ public class Menu extends JFrame implements MouseListener {
 		return Integer.toString(canon);
 	}
 
-	public void actualiserJTextFieldSoldatRenfort(JTextField textfield) {
+	public void actualiserJTextFieldRenfort(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
-			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
-				textfield.setText(afficherNombreSoldat(risk.listeJoueurs.get(j).getRenforts()));
+			if(risk.listeJoueurs.get(j).getIdJoueur()==risk.tour){
+			textfield1.setText(afficherNombreSoldat(risk.listeJoueurs.get(j).getRenforts()));
+			textfield2.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
+			textfield3.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
 			}
 		}
 	}
 
-	public void actualiserJTextFieldCavalierRenfort(JTextField textfield) {
-		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
-			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
-				textfield.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
-			}
-		}
-	}
-
-	public void actualiserJTextFieldCanonRenfort(JTextField textfield) {
-		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
-			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
-				textfield.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
-			}
-		}
-	}
-
-	public void actualiserJTextFieldSoldatTerritoire(JTextField textfield) {
+	public void actualiserJTextFieldTerritoire(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
-			textfield.setText(afficherNombreSoldat(risk.listeTerritoires.get(j).getListeUnites()));
-		}
-	}
-
-	public void actualiserJTextFieldCavalierTerritoire(JTextField textfield) {
-		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
-			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
-				textfield.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
-			}
-		}
-	}
-
-	public void actualiserJTextFieldCanonTerritoire(JTextField textfield) {
-		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
-			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
-				textfield.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
+			if(risk.listeTerritoires.get(j).getId()==ceTerritoire){
+			textfield1.setText(afficherNombreSoldat(risk.listeTerritoires.get(j).getListeUnites()));
+			textfield2.setText(afficherNombreCavalier(risk.listeTerritoires.get(j).getListeUnites()));
+			textfield3.setText(afficherNombreCanon(risk.listeTerritoires.get(j).getListeUnites()));
 			}
 		}
 	}
@@ -1101,13 +1111,13 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[28].setBounds(400, 200, 50, 50); // ONTARIO
 		hitboxes[29].setBounds(650, 90, 50, 50); // GROENLAND
 		hitboxes[30].setBounds(540, 200, 50, 50); // QUEBEC
-		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST		
-		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST	
-		hitboxes[33].setBounds(290, 370, 50, 50);// AMERIQUE CENTRALE		
+		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST
+		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST
+		hitboxes[33].setBounds(290, 370, 50, 50);// AMERIQUE CENTRALE
 		hitboxes[34].setBounds(430, 480, 50, 50);// VENEZUELA
 		hitboxes[35].setBounds(580, 550, 50, 50);// BRESIL
 		hitboxes[36].setBounds(470, 600, 50, 50);// PEROU
-		hitboxes[37].setBounds(490, 680, 50, 50);// ARGENTINE	
+		hitboxes[37].setBounds(490, 680, 50, 50);// ARGENTINE
 		hitboxes[38].setBounds(1550, 620, 50, 50);// INDONESIE
 		hitboxes[39].setBounds(1700, 600, 50, 50);// NOUVELLE GUINEE
 		hitboxes[40].setBounds(1620, 750, 50, 50); // AUSTRALIE DE LOUEST

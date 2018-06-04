@@ -13,7 +13,6 @@ public class Territoire {
 	private Joueur occupant;
 
 	ArrayList<Unite> listeUnites = new ArrayList<Unite>();
-
 	public Territoire(String nom, String[] territoiresAdjacents, int id, String id2) {
 		this.nom = nom;
 		this.id2=id2;
