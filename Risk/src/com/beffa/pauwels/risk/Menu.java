@@ -1068,26 +1068,23 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[22].setBounds(1700, 290, 50, 50); // JAPON
 		hitboxes[23].setBounds(1650, 90, 50, 50); // KAMCHATKA
 		hitboxes[24].setBounds(1490, 190, 50, 50); // IRKUTSK
-
-		hitboxes[25].setBounds(150, 120, 50, 50); // ALASKA
-		
+		hitboxes[25].setBounds(140, 110, 50, 50); // ALASKA	
 		hitboxes[26].setBounds(300, 110, 50, 50); // TERRITOIRE DU NORD	
 		hitboxes[27].setBounds(290, 180, 50, 50); // ALBERTA		
 		hitboxes[28].setBounds(400, 200, 50, 50); // ONTARIO		
 		hitboxes[29].setBounds(650, 90, 50, 50); // GROENLAND		
 		hitboxes[30].setBounds(540, 200, 50, 50); // QUEBEC
 		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST		
-		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST
-		
-		hitboxes[33].setBounds(104, 108, 50, 50);// AMERIQUE CENTRALE
-		hitboxes[34].setBounds(104, 108, 50, 50);// VENEZUELA
-		hitboxes[35].setBounds(104, 108, 50, 50);// BRESIL
-		hitboxes[36].setBounds(104, 108, 50, 50);// PEROU
-		hitboxes[37].setBounds(104, 108, 50, 50);// ARGENTINE
-		hitboxes[38].setBounds(104, 108, 50, 50);// INDONESIE
-		hitboxes[39].setBounds(104, 108, 50, 50);// NOUVELLE GUINEE
-		hitboxes[40].setBounds(104, 108, 50, 50); // AUSTRALIE DE LOUEST
-		hitboxes[41].setBounds(104, 108, 50, 50); // AUSTRALIE DE LEST
+		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST	
+		hitboxes[33].setBounds(290, 370, 50, 50);// AMERIQUE CENTRALE		
+		hitboxes[34].setBounds(430, 480, 50, 50);// VENEZUELA
+		hitboxes[35].setBounds(580, 550, 50, 50);// BRESIL
+		hitboxes[36].setBounds(470, 600, 50, 50);// PEROU
+		hitboxes[37].setBounds(490, 680, 50, 50);// ARGENTINE	
+		hitboxes[38].setBounds(1550, 620, 50, 50);// INDONESIE
+		hitboxes[39].setBounds(1700, 600, 50, 50);// NOUVELLE GUINEE
+		hitboxes[40].setBounds(1620, 750, 50, 50); // AUSTRALIE DE LOUEST
+		hitboxes[41].setBounds(1780, 750, 50, 50); // AUSTRALIE DE LEST
 	}
 
 }
