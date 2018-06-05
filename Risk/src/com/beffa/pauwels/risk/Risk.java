@@ -147,7 +147,7 @@ public class Risk {
 	public void ajoutAutoRenforts() {
 		int nbDeRenforts = 0;
 		for (int i = 0; i < nbDeRenforts; i++) {
-			for (int j = 0; j < listeJoueurs.size(); i++) {
+			for (int j = 0; j < listeJoueurs.size(); j++) {
 				ajouterSoldatRenfort(listeJoueurs.get(j).getRenforts());
 			}
 
@@ -295,27 +295,17 @@ public class Risk {
 				}
 			}
 		}
-
 		return peutDeplacer = false;
 
 	}
-
-	public void deplacerSoldat(Territoire depart, Territoire destination) {
-		if (peutDeplacer(depart, destination) == true) {
-			int c = 0;
-			for (int i = 0; i < depart.listeUnites.size(); i++) {
-				if (depart.listeUnites.get(i).getType() == 0) {
-					c++;
-				}
-			}
-			depart.listeUnites.removeIf(p -> p.getType() == 0);
-			for (int h = 0; h < c - 1; h++) {
-				depart.listeUnites.add(new Unite(0));
-			}
-			destination.listeUnites.add(new Unite(0));
-			return;
-		}
-	}
+	/*
+	 * public void deplacerSoldat(Territoire depart, Territoire destination) {
+	 * int c = 0; for (int i = 0; i < depart.listeUnites.size(); i++) { if
+	 * (depart.listeUnites.get(i).getType() == 0) { c++; } }
+	 * depart.listeUnites.removeIf(p -> p.getType() == 0); for (int h = 0; h < c
+	 * - 1; h++) { depart.listeUnites.add(new Unite(0)); }
+	 * destination.listeUnites.add(new Unite(0)); return; } }
+	 */
 
 	public void deplacerCavalier(Territoire depart, Territoire destination) {
 

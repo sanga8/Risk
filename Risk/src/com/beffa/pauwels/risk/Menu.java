@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.awt.Toolkit;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 public class Menu extends JFrame implements MouseListener {
@@ -147,6 +151,7 @@ public class Menu extends JFrame implements MouseListener {
 		this.setVisible(true);
 
 	}
+	
 
 	private JPanel menu() {
 		menu = new JPanel();
@@ -154,7 +159,7 @@ public class Menu extends JFrame implements MouseListener {
 
 		// BACKGROUND
 		background = new JLabel();
-		background.setIcon(new ImageIcon("Images/fondRisk.jpg"));
+		background.setIcon(new ImageIcon("Images/FondMenu.jpg"));
 		background.setBounds(0, 0, 1920, 1080);
 
 		// BOUTON JOUER
@@ -241,6 +246,13 @@ public class Menu extends JFrame implements MouseListener {
 		background.add(joueur4TextField);
 		background.add(joueur5TextField);
 		background.add(joueur6TextField);
+		joueur1TextField.setBackground(Color.LIGHT_GRAY);
+		joueur2TextField.setBackground(Color.LIGHT_GRAY);
+		joueur3TextField.setBackground(Color.LIGHT_GRAY);
+		joueur4TextField.setBackground(Color.LIGHT_GRAY);
+		joueur5TextField.setBackground(Color.LIGHT_GRAY);
+		joueur6TextField.setBackground(Color.LIGHT_GRAY);
+
 
 		// COMMENCER
 		commencer = new JLabel("");
