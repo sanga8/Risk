@@ -63,14 +63,14 @@ public class Combat {
 
 		for (int i = 0; i < liste.size() - 1; i++) {
 			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe()
-					&& liste.get(i).getPrioriteATQ() > liste.get(i + 1).getPrioriteATQ()) {
+					&& liste.get(i).getPrioriteATT() > liste.get(i + 1).getPrioriteATT()) {
 				Collections.swap(liste, i, i + 1);
 			}
 			if (liste.size() >= 3) {
 				// EXCEPTION SI LES TROIS ONT LE MEME RESULTAT DE
 				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe()
 						&& liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
-					Collections.sort(liste, Comparator.comparing(Unite::getPrioriteATQ));
+					Collections.sort(liste, Comparator.comparing(Unite::getPrioriteATT));
 				}
 			}
 		}

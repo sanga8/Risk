@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.beffa.pauwels.risk.Joueur" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Joueur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="635" y="713"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.beffa.pauwels.risk.Territoire" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Territoire.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="442" width="234" x="376" y="1960"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.beffa.pauwels.risk.Continent" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Continent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="678" y="1221"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.beffa.pauwels.risk.Audio" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Audio.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3052" y="699"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.beffa.pauwels.risk.Main" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="854" y="-251"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.beffa.pauwels.risk.Plateau" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Plateau.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1451" y="-192"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.beffa.pauwels.risk.Combat" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Combat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="991" y="2154"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.beffa.pauwels.risk.Risk" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Risk.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="682" width="416" x="907" y="14"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.beffa.pauwels.risk.Menu" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Menu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2065" y="1199"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.beffa.pauwels.risk.Unite" project="Risk" 
+    file="/Risk/src/com/beffa/pauwels/risk/Unite.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="426" width="159" x="26" y="1884"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="11">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="12" name="risk"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <bendpoint x="608" y="1898"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="15" name="listeContinents"/>      
+      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="18" name="listeJoueurs"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="21" name="territoiresDuContinent"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <bendpoint x="1028" y="1176"/>    
+    <bendpoint x="1028" y="1898"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="24" name="combat"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="27" name="listeGagnant"/>      
+      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <bendpoint x="792" y="2604"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="30" name="uniteBatailleATT"/>      
+      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="33" name="continentsPossedes"/>      
+      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <bendpoint x="266" y="2296"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="36" name="territoiresPossedes"/>      
+      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="39" name="listeUnites"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <bendpoint x="648" y="1898"/>    
+    <bendpoint x="648" y="2296"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="42" name="d"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <bendpoint x="245" y="2296"/>    
+    <bendpoint x="245" y="2604"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="45" name="renforts"/>      
+      <multiplicity id="46" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="47">    
+    <bendpoint x="690" y="1898"/>    
+    <bendpoint x="690" y="2296"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="48" name="a"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
+    <bendpoint x="669" y="1898"/>    
+    <bendpoint x="669" y="2296"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="51" name="listeTerritoires"/>      
+      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="54" name="son"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <bendpoint x="287" y="2296"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="57" name="occupant"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
