@@ -18,7 +18,7 @@ public class Joueur {
 		this.idJoueur = idJoueur;
 	}
 
-	public boolean Perdu() {
+	public boolean perdu() {
 		if (this.territoiresPossedes.size() == 0) {
 			return true;
 		} else {
@@ -26,7 +26,7 @@ public class Joueur {
 		}
 	}
 
-	public boolean Gagne() {
+	public boolean gagne() {
 		if (this.territoiresPossedes.size() == 42) {
 			return true;
 		} else {

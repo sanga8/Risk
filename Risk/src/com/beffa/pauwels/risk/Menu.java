@@ -25,8 +25,8 @@ public class Menu extends JFrame implements MouseListener {
 	private JLabel background;
 	private JLabel map;
 
-	private boolean verifnom;
-	private boolean verifj;
+	private boolean verifNom;
+	private boolean verifNbJoueurMin;
 
 	private JLabel findutour;
 
@@ -261,7 +261,7 @@ public class Menu extends JFrame implements MouseListener {
 		commencer.addMouseListener(this);
 		background.add(commencer);
 
-		// verifnom
+		// verifNom
 		warning = new JTextArea();
 		warning.setEditable(false);
 		warning.setFont(new Font("Times New Roman", Font.PLAIN, 27));
@@ -798,14 +798,14 @@ public class Menu extends JFrame implements MouseListener {
 			j.add(joueur6TextField);
 
 			verifNom(j);
-			verifj(nbJoueurs);
+			verifNbJoueurMin(nbJoueurs);
 
-			if (verifj == false) {
+			if (verifNbJoueurMin == false) {
 				warning.removeAll();
 				warning.setText("Choisissez le nombre de joueurs");
 				warning.setVisible(true);
 				return;
-			} else if (verifnom == false) {
+			} else if (verifNom == false) {
 				warning.removeAll();
 				warning.setText("Réduisez la taille de vos noms");
 				warning.setVisible(true);
@@ -908,9 +908,11 @@ public class Menu extends JFrame implements MouseListener {
 		if (e.getSource() == action)
 		{
 			risk.refreshSelection(indications);
-			afficherNombreUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
-			afficherNombreUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
-			afficherNombreUnite(combat.uniteBatailleATT);
+			afficherNbUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
+			afficherNbUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
+			afficherNbUnite(combat.uniteBatailleATT);
+
+
 		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
@@ -1028,24 +1030,24 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	// VERIFICATIONS
-	public boolean verifj(int nj) {
+	public boolean verifNbJoueurMin(int nj) {
 		if (nj < 2) {
-			return verifj = false;
+			return verifNbJoueurMin = false;
 		}
-		return verifj = true;
+		return verifNbJoueurMin = true;
 	}
 
 	public boolean verifNom(ArrayList<JTextField> j) {
 		for (int i = 0; i < j.size(); i++) {
 			if (j.get(i).getText().length() >= 10) {
-				return verifnom = false;
+				return verifNom = false;
 			}
 		}
-		return verifnom = true;
+		return verifNom = true;
 	}
 
 	// AFFICHE EN CONSOLE LES UNITES DUNE LISTE
-	public void afficherNombreUnite(ArrayList<Unite> l) {
+	public void afficherNbUnite(ArrayList<Unite> l) {
 		int soldat = 0;
 		int cavalier = 0;
 		int canon = 0;
@@ -1065,7 +1067,7 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	// RENVOI UN STRING DU NOMBRE DE TROUPES
-	public String afficherNombreSoldat(ArrayList<Unite> l) {
+	public String afficherNbSoldat(ArrayList<Unite> l) {
 		int soldat = 0;
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 0) {
@@ -1075,7 +1077,7 @@ public class Menu extends JFrame implements MouseListener {
 		return Integer.toString(soldat);
 	}
 
-	public String afficherNombreCavalier(ArrayList<Unite> l) {
+	public String afficherNbCavalier(ArrayList<Unite> l) {
 		int cavalier = 0;
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 1) {
@@ -1085,7 +1087,7 @@ public class Menu extends JFrame implements MouseListener {
 		return Integer.toString(cavalier);
 	}
 
-	public String afficherNombreCanon(ArrayList<Unite> l) {
+	public String afficherNbCanon(ArrayList<Unite> l) {
 		int canon = 0;
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 2) {
@@ -1098,9 +1100,9 @@ public class Menu extends JFrame implements MouseListener {
 	public void actualiserJTextFieldRenfort(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
-				textfield1.setText(afficherNombreSoldat(risk.listeJoueurs.get(j).getRenforts()));
-				textfield2.setText(afficherNombreCavalier(risk.listeJoueurs.get(j).getRenforts()));
-				textfield3.setText(afficherNombreCanon(risk.listeJoueurs.get(j).getRenforts()));
+				textfield1.setText(afficherNbSoldat(risk.listeJoueurs.get(j).getRenforts()));
+				textfield2.setText(afficherNbCavalier(risk.listeJoueurs.get(j).getRenforts()));
+				textfield3.setText(afficherNbCanon(risk.listeJoueurs.get(j).getRenforts()));
 			}
 		}
 	}
@@ -1108,17 +1110,17 @@ public class Menu extends JFrame implements MouseListener {
 	public void actualiserJTextFieldTerritoire(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
 			if (risk.listeTerritoires.get(j).getId() == ceTerritoire) {
-				textfield1.setText(afficherNombreSoldat(risk.listeTerritoires.get(j).getListeUnites()));
-				textfield2.setText(afficherNombreCavalier(risk.listeTerritoires.get(j).getListeUnites()));
-				textfield3.setText(afficherNombreCanon(risk.listeTerritoires.get(j).getListeUnites()));
+				textfield1.setText(afficherNbSoldat(risk.listeTerritoires.get(j).getListeUnites()));
+				textfield2.setText(afficherNbCavalier(risk.listeTerritoires.get(j).getListeUnites()));
+				textfield3.setText(afficherNbCanon(risk.listeTerritoires.get(j).getListeUnites()));
 			}
 		}
 	}
 
 	public void actualiserJTextFieldAction(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
-		textfield1.setText(afficherNombreSoldat(combat.uniteBatailleATT));
-		textfield2.setText(afficherNombreCavalier(combat.uniteBatailleATT));
-		textfield3.setText(afficherNombreCanon(combat.uniteBatailleATT));
+		textfield1.setText(afficherNbSoldat(combat.uniteBatailleATT));
+		textfield2.setText(afficherNbCavalier(combat.uniteBatailleATT));
+		textfield3.setText(afficherNbCanon(combat.uniteBatailleATT));
 	}
 
 	public void afficheJeton(int posX, int posY, int numeroJoueur) {

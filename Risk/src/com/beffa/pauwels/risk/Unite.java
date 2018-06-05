@@ -3,7 +3,7 @@ package com.beffa.pauwels.risk;
 public class Unite {
 	
 	private int puissance;
-	private int prioriteATQ;
+	private int prioriteATT;
 	private int prioriteDEF; 
 	private int resultatDe=0;
 	private int type;
@@ -15,7 +15,7 @@ public class Unite {
 		//SOLDAT
 		if(type == 0){
 			this.puissance = 1;
-			this.prioriteATQ = 2;
+			this.prioriteATT = 2;
 			this.prioriteDEF = 1;
 			this.mouvement = 2;
 		
@@ -24,7 +24,7 @@ public class Unite {
 		//CAVALIER
 		if(type == 1){
 			this.puissance = 2;
-			this.prioriteATQ = 1;
+			this.prioriteATT = 1;
 			this.prioriteDEF = 3;
 			this.mouvement = 3;
 
@@ -32,7 +32,7 @@ public class Unite {
 		//CANON
 		if(type == 2){
 			this.puissance = 4;
-			this.prioriteATQ = 3;
+			this.prioriteATT = 3;
 			this.prioriteDEF = 2;
 			this.mouvement = 1;
 
@@ -66,12 +66,12 @@ public class Unite {
 		this.resultatDe = resultatDe;
 	}
 
-	public int getPrioriteATQ() {
-		return prioriteATQ;
+	public int getPrioriteATT() {
+		return prioriteATT;
 	}
 
-	public void setPrioriteATQ(int prioriteATQ) {
-		this.prioriteATQ = prioriteATQ;
+	public void setPrioriteATT(int prioriteATQ) {
+		this.prioriteATT = prioriteATQ;
 	}
 
 	public int getPrioriteDEF() {
