@@ -26,7 +26,7 @@ public class Menu extends JFrame implements MouseListener {
 	private JLabel map;
 
 	private boolean verifnom;
-	private boolean verifj;
+	private boolean verifNbJoueurMin;
 
 	private JLabel findutour;
 
@@ -780,9 +780,9 @@ public class Menu extends JFrame implements MouseListener {
 			j.add(joueur6TextField);
 
 			verifNom(j);
-			verifj(nbJoueurs);
+			verifNbJoueurMin(nbJoueurs);
 
-			if (verifj == false) {
+			if (verifNbJoueurMin == false) {
 				warning.removeAll();
 				warning.setText("Choisissez le nombre de joueurs");
 				warning.setVisible(true);
@@ -1010,11 +1010,11 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	// VERIFICATIONS
-	public boolean verifj(int nj) {
+	public boolean verifNbJoueurMin(int nj) {
 		if (nj < 2) {
-			return verifj = false;
+			return verifNbJoueurMin = false;
 		}
-		return verifj = true;
+		return verifNbJoueurMin = true;
 	}
 
 	public boolean verifNom(ArrayList<JTextField> j) {
