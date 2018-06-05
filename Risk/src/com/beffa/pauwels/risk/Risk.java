@@ -5,13 +5,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.JTextArea;
+
 public class Risk {
 
 	int tour = 0;
 	int attribueroccupant;
 	boolean premierTour = true;
 	boolean peutDeplacer = false;
-	
+
 	private Territoire d;
 	private Territoire a;
 
@@ -44,6 +46,8 @@ public class Risk {
 		for (int j = 0; j < listeJoueurs.size(); j++) {
 			if (listeJoueurs.get(j).getIdJoueur() == tour) {
 				return true;
+			} else {
+				return false;
 			}
 		}
 		return false;
@@ -51,8 +55,10 @@ public class Risk {
 
 	public boolean renfortTermine() {
 		for (int i = 0; i < listeJoueurs.size(); i++) {
-			if (listeJoueurs.get(i).getRenforts().size() == 0) {
-				return true;
+			if (listeJoueurs.get(i).getIdJoueur() == tour) {
+				if (listeJoueurs.get(i).getRenforts().size() == 0) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -149,8 +155,9 @@ public class Risk {
 	}
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
-	
-	public void refreshSelection(){
+
+	public void refreshSelection(JTextArea j) {
+		j.setText("");
 		d = null;
 		a = null;
 	}
@@ -276,21 +283,19 @@ public class Risk {
 	}
 
 	public boolean peutDeplacer(Territoire depart, Territoire destination) {
-		// son tour ?
-		if (sonTour() == true) {
-			// m�me joueur ?
-			if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
-				for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
-					// adjacent ?
-					if (depart.territoiresAdjacents[i].equals(destination)) {
-						// au moins 2 troupes sur le territoire de d�part
-						if (depart.getListeUnites().size() > 1) {
-							return  peutDeplacer = true;
-						}
+		// m�me joueur ?
+		if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
+			for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
+				// adjacent ?
+				if (depart.territoiresAdjacents[i].equals(destination)) {
+					// au moins 2 troupes sur le territoire de d�part
+					if (depart.getListeUnites().size() > 1) {
+						return peutDeplacer = true;
 					}
 				}
 			}
 		}
+
 		return peutDeplacer = false;
 
 	}
@@ -479,5 +484,5 @@ public class Risk {
 	public void setA(Territoire a) {
 		this.a = a;
 	}
-	
+
 }

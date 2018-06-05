@@ -541,6 +541,7 @@ public class Menu extends JFrame implements MouseListener {
 		mouvement.setBounds(1580, 950, 100, 100);
 		mouvement.setIcon(new ImageIcon("Images/mouvement.png"));
 		mouvement.addMouseListener(this);
+		mouvement.setVisible(false);
 		background.add(mouvement);
 
 		findutour = new JLabel();
@@ -608,32 +609,25 @@ public class Menu extends JFrame implements MouseListener {
 						ceTerritoire = i;
 						informations.setText(risk.listeTerritoires.get(i).getNom() + "\n" + "Joueur "
 								+ (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() + 1));
-
-						
-						if(risk.getD()==null)
-						{
-						 risk.setD(risk.listeTerritoires.get(i));
-							
-						}
-						else if(risk.getA() == null){
-							risk.setA(risk.listeTerritoires.get(i));
-						}
-						indications.setText("Territoire départ: " + risk.getD().getNom()+"    " + "Territoire arrivé: "+risk.getA().getNom());
-						
-						
-						
-						
-						/*
-						afficherNombreUnite(risk.listeTerritoires.get(ceTerritoire).getListeUnites());
-						System.out.println("ceTerritoire = " + ceTerritoire);
 						actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-						*/
+
+						if (risk.renfortTermine()) {
+							if (risk.getD() == null) {
+								risk.setD(risk.listeTerritoires.get(i));
+
+							} else if (risk.getA() == null) {
+								risk.setA(risk.listeTerritoires.get(i));
+							}
+						}
+						if (risk.getA() != null && risk.getD() != null) {
+							indications.setText("Territoire départ: " + risk.getD().getNom() + "    "
+									+ "Territoire arrivé: " + risk.getA().getNom());
+						}
 						if (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() == risk.tour) {
 							peutTransferer = true;
 
 						} else {
 							peutTransferer = false;
-
 						}
 					}
 				}
@@ -848,11 +842,10 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 
+		if (e.getSource() == action) {
+			risk.refreshSelection(indications);
+		}
 		/*
-		 * if (e.getSource() == action) {
-		 * 
-		 * }
-		 * 
 		 * // ACTION for (int i = 0; i < 42; i++) { if (e.getSource() ==
 		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size(); j++)
 		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) { for (int
@@ -867,17 +860,24 @@ public class Menu extends JFrame implements MouseListener {
 		 * } } } } } }
 		 */
 
-		if (risk.sonTour() == true && risk.renfortTermine() == true) {
+		if (risk.sonTour() == true && risk.renfortTermine() == true && risk.getA() != null && risk.getD() != null) {
+			mouvement.setVisible(true);
 			if (e.getSource() == mouvement) {
-					// risk.peutDeplacer()
-					risk.deplacer(combat.uniteBatailleATT, risk.listeTerritoires.get(ceTerritoire2).listeUnites);
-					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-					indications.setText("");
-				}
+				// if (risk.peutDeplacer(risk.getD(), risk.getA())) {
+				risk.deplacer(risk.getD().listeUnites, risk.getA().listeUnites);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+				mouvement.setVisible(false);
+				risk.refreshSelection(indications);
+				// } else {
+				// indications.setText("Vous ne pouvez pas vous déplacer");
+				// }
 			}
+		}
 
-		if (e.getSource() == action) {
+		if (e.getSource() == action)
+
+		{
 			afficherNombreUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
 			afficherNombreUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
 			afficherNombreUnite(combat.uniteBatailleATT);
