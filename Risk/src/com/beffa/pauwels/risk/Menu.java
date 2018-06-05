@@ -43,7 +43,10 @@ public class Menu extends JFrame implements MouseListener {
 
 	private JLabel action;
 	private JLabel mouvement;
-
+	
+	private JLabel mute;
+	private boolean isMute = false;
+	
 	private JLabel BtnplusSoldatRenfort;
 	private JLabel BtnplusCavalierRenfort;
 	private JLabel BtnplusCanonRenfort;
@@ -102,7 +105,9 @@ public class Menu extends JFrame implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
-
+	
+	private JLabel refresh;
+	
 	private JLabel off;
 
 	private JLabel jeton1;
@@ -118,12 +123,8 @@ public class Menu extends JFrame implements MouseListener {
 
 	private boolean peutTransferer = false;
 	private int ceTerritoire = 99;
-	private int ceTerritoire1 = 90;
-	private int ceTerritoire2 = 99;
 	private JTextArea informations;
 	private JTextArea indications;
-
-	private int count = 6;
 
 	public Risk risk;
 	public Audio son;
@@ -151,7 +152,6 @@ public class Menu extends JFrame implements MouseListener {
 		this.setVisible(true);
 
 	}
-	
 
 	private JPanel menu() {
 		menu = new JPanel();
@@ -253,7 +253,6 @@ public class Menu extends JFrame implements MouseListener {
 		joueur5TextField.setBackground(Color.LIGHT_GRAY);
 		joueur6TextField.setBackground(Color.LIGHT_GRAY);
 
-
 		// COMMENCER
 		commencer = new JLabel("");
 		commencer.setIcon(new ImageIcon("Images/Commencer.png"));
@@ -283,10 +282,17 @@ public class Menu extends JFrame implements MouseListener {
 		background.setBounds(0, 0, 1920, 1080);
 		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
 		jeu.add(background);
-
+		
+		mute = new JLabel();
+		mute.setBounds(1870, 5, 50, 50);
+		mute.setIcon(new ImageIcon("Images/mute.png"));
+		mute.addMouseListener(this);
+		background.add(mute);
+		
+		
 		cadre = new JLabel();
-		cadre.setIcon(new ImageIcon("Images/cadre.png"));
 		cadre.setBounds(590, 925, 694, 146);
+		cadre.setIcon(new ImageIcon("Images/cadre.png"));
 		background.add(cadre);
 
 		// -------------------------- BOUTTONS PLUS ET
@@ -539,29 +545,37 @@ public class Menu extends JFrame implements MouseListener {
 		}
 
 		contour = new JLabel();
-		contour.setIcon(new ImageIcon("Images/contour.png"));
 		contour.setBounds(40, 900, 210, 95);
+		contour.setIcon(new ImageIcon("Contour/contourRouge.png"));
 		background.add(contour);
 
 		action = new JLabel();
-		action.setBounds(1380, 950, 100, 100);
+		action.setBounds(1480, 950, 100, 100);
 		action.setIcon(new ImageIcon("Images/action.png"));
 		action.addMouseListener(this);
 		background.add(action);
 
 		mouvement = new JLabel();
-		mouvement.setBounds(1580, 950, 100, 100);
+		mouvement.setBounds(1620, 950, 100, 100);
 		mouvement.setIcon(new ImageIcon("Images/mouvement.png"));
 		mouvement.addMouseListener(this);
 		mouvement.setVisible(false);
 		background.add(mouvement);
 
 		findutour = new JLabel();
-		findutour.setBounds(1780, 950, 100, 100);
+		findutour.setBounds(1760, 950, 100, 100);
 		findutour.setIcon(new ImageIcon("Images/findutour.png"));
 		findutour.addMouseListener(this);
 		background.add(findutour);
-
+		
+		refresh = new JLabel();
+		refresh.setBounds(1340, 950, 100, 100);
+		refresh.setIcon(new ImageIcon("Images/refresh.png"));
+		refresh.addMouseListener(this);
+		background.add(refresh);
+		
+		
+		
 		off = new JLabel();
 		off.setBounds(-10, -10, 100, 100);
 		off.setIcon(new ImageIcon("Images/off.png"));
@@ -575,8 +589,8 @@ public class Menu extends JFrame implements MouseListener {
 		informations.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		background.add(informations);
 
-		indications = new JTextArea("");
-		indications.setBounds(630, 890, 600, 25);
+		indications = new JTextArea("Placez vos renforts");
+		indications.setBounds(630, 890, 900, 25);
 		indications.setOpaque(false);
 		indications.setEditable(false);
 		indications.setFont(new Font("Times New Roman", Font.PLAIN, 24));
@@ -588,8 +602,6 @@ public class Menu extends JFrame implements MouseListener {
 			hitboxes[index] = new JLabel(Integer.toString(index));
 			hitboxes[index].setName(Integer.toString(index));
 			hitboxes[index].addMouseListener(m);
-			hitboxes[index].setIcon(new ImageIcon("Images/test.png"));
-
 			map.add(hitboxes[index]);
 		}
 		setBoundsHitboxes();
@@ -748,24 +760,30 @@ public class Menu extends JFrame implements MouseListener {
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			if (risk.tour == 0) {
 				contour.setBounds(40, 900, 210, 95);
+				contour.setIcon(new ImageIcon("Contour/contourRouge.png"));
 			}
 			if (risk.tour == 1) {
 				contour.setBounds(40, 950, 210, 95);
+				contour.setIcon(new ImageIcon("Contour/contourBleu.png"));
 			}
 
 			if (risk.tour == 2) {
 				contour.setBounds(40, 1000, 210, 95);
+				contour.setIcon(new ImageIcon("Contour/contourVert.png"));
 			}
 
 			if (risk.tour == 3) {
 				contour.setBounds(220, 900, 210, 95);
+				contour.setIcon(new ImageIcon("Contour/contourOrange.png"));
 			}
 
 			if (risk.tour == 4) {
 				contour.setBounds(220, 950, 210, 95);
+				contour.setIcon(new ImageIcon("Contour/contourViolet.png"));
 			}
 			if (risk.tour == 5) {
 				contour.setBounds(220, 1000, 210, 95);
+				contour.setIcon(new ImageIcon("Contour/contourBlanc.png"));
 			}
 		}
 		if (e.getSource() == commencer) {
@@ -805,7 +823,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
-
+				attribuerCouleurs();
 			}
 			if (nbJoueurs == 3) {
 				risk.listeJoueurs.add(new Joueur(joueur1TextField.getText(), 0));
@@ -815,6 +833,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
+				attribuerCouleurs();
 
 			}
 			if (nbJoueurs == 4) {
@@ -826,6 +845,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
+				attribuerCouleurs();
 
 			}
 			if (nbJoueurs == 5) {
@@ -838,6 +858,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
+				attribuerCouleurs();
 
 			}
 			if (nbJoueurs == 6) {
@@ -851,45 +872,42 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				risk.attribuerTerritoires();
+				attribuerCouleurs();
+
 			}
 		}
 
-		if (e.getSource() == action) {
-			risk.refreshSelection(indications);
+		if (e.getSource() == mute){
+			son.stop();
+			mute.setIcon(new ImageIcon("Images/demute.png"));
+			if(isMute == true){
+				son.start();
+				mute.setIcon(new ImageIcon("Images/mute.png"));
+			}
+			isMute=true;
+			
 		}
-		/*
-		 * // ACTION for (int i = 0; i < 42; i++) { if (e.getSource() ==
-		 * hitboxes.get(i)) { for (int j = 0; j < risk.listeJoueurs.size(); j++)
-		 * { if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) { for (int
-		 * h = 0; h < 42; h++) { if (hitboxes.indexOf(h) ==
-		 * risk.listeJoueurs.get(j).getTerritoiresPossedes().indexOf(h)) {
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * } } } } } }
-		 */
+		
+/////////////////////////////////////////
 
-		if (risk.sonTour() == true && risk.renfortTermine() == true && risk.getA() != null && risk.getD() != null) {
-			mouvement.setVisible(true);
-			if (e.getSource() == mouvement) {
-				// if (risk.peutDeplacer(risk.getD(), risk.getA())) {
-				risk.deplacer(risk.getD().listeUnites, risk.getA().listeUnites);
-				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-				mouvement.setVisible(false);
-				risk.refreshSelection(indications);
-				// } else {
-				// indications.setText("Vous ne pouvez pas vous déplacer");
-				// }
+		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
+			indications.setText("Selectionnez deux territoires");
+			if (risk.getA() != null && risk.getD() != null) {
+				mouvement.setVisible(true);
+				if (e.getSource() == mouvement) {
+					// if (risk.peutDeplacer(risk.getD(), risk.getA())) {
+					risk.deplacer(risk.getD().listeUnites, risk.getA().listeUnites);
+					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+					mouvement.setVisible(false);
+					risk.refreshSelection(indications);
+				}
 			}
 		}
-
+		
 		if (e.getSource() == action)
-
 		{
+			risk.refreshSelection(indications);
 			afficherNombreUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
 			afficherNombreUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
 			afficherNombreUnite(combat.uniteBatailleATT);
@@ -1199,6 +1217,16 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[40].setBounds(1620, 750, 50, 50); // AUSTRALIE DE LOUEST
 		hitboxes[41].setBounds(1780, 750, 50, 50); // AUSTRALIE DE LEST
 
+	}
+
+	public void attribuerCouleurs() {
+		for (int i = 0; i < risk.listeTerritoires.size(); i++) {
+			for (int j = 0; j < risk.listeJoueurs.size(); j++) {
+				if (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() == j) {
+					hitboxes[i].setIcon(new ImageIcon("Jeton/Jeton" + j + ".png"));
+				}
+			}
+		}
 	}
 
 }

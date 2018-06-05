@@ -13,13 +13,17 @@ public class Risk {
 	int attribueroccupant;
 	boolean premierTour = true;
 	boolean peutDeplacer = false;
-
+	
+	
+	
+	
 	private Territoire d;
 	private Territoire a;
-
+	
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
+
 
 	public Risk() {
 		creerTerritoires();
@@ -33,6 +37,7 @@ public class Risk {
 		tour++;
 		if (tour >= listeJoueurs.size()) {
 			tour = 0;
+			premierTour = false;
 		}
 		while (listeJoueurs.get(tour) == null) {
 			tour++;
@@ -40,6 +45,7 @@ public class Risk {
 				tour = 0;
 			}
 		}
+		
 	}
 
 	public boolean sonTour() {
@@ -62,6 +68,18 @@ public class Risk {
 			}
 		}
 		return false;
+	}
+
+	public String changerCouleurTerritoire() {
+
+		for (int i = 0; i < listeTerritoires.size(); i++) {
+			for (int j = 0; j < listeJoueurs.size(); j++) {
+				if (listeTerritoires.get(i).getOccupant().getIdJoueur() == j) {
+					return ("Jeton"+j+".png");
+				}
+			}
+		}
+		return null;
 	}
 
 	public void initialisation() {
@@ -92,7 +110,6 @@ public class Risk {
 	}
 
 	public void distribuerRenfortsDebut() {
-
 		if (listeJoueurs.size() == 2) {
 			for (int i = 0; i < 40; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
