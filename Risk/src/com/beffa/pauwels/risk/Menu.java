@@ -121,7 +121,7 @@ public class Menu extends JFrame implements MouseListener {
 
 	// private HashMap<String, JLabel> hitboxes;
 
-	private boolean peutTransferer = false;
+	//private boolean peutTransferer = false;
 	private int ceTerritoire = 99;
 	private JTextArea informations;
 	private JTextArea indications;
@@ -646,12 +646,6 @@ public class Menu extends JFrame implements MouseListener {
 							indications.setText("Territoire départ: " + risk.getD().getNom() + "    "
 									+ "Territoire arrivé: " + risk.getA().getNom());
 						}
-						if (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() == risk.tour) {
-							peutTransferer = true;
-
-						} else {
-							peutTransferer = false;
-						}
 					}
 				}
 			}
@@ -894,7 +888,7 @@ public class Menu extends JFrame implements MouseListener {
 			mouvement.setVisible(true);
 			action.setVisible(true);
 			if (e.getSource() == mouvement) {
-				if (risk.peutDeplacerAttaquer(risk.getD(), risk.getA())) {
+				if (risk.peutDeplacer(risk.getD(), risk.getA())) {
 					risk.deplacer(risk.getD(), risk.getA());
 					mouvement.setVisible(false);
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
@@ -905,14 +899,16 @@ public class Menu extends JFrame implements MouseListener {
 				}
 			}
 			if (e.getSource() == action) {
-				if (risk.peutAttaquer == true) {
+				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
 					combat.setUniteBatailleATT(risk.getD().getListeUnitesAction());
 					combat.setUniteBatailleDEF(risk.getA().getListeUnites());
 					combat.combattre(risk.getD(), risk.getA());
-					mouvement.setVisible(false);
+					System.out.println("Combat terminé");
+					attribuerCouleurs();
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+					action.setVisible(false);
 				} else {
 					indications.setText("Vous ne pouvez pas attaquer ce territoire");
 				}
@@ -1008,7 +1004,7 @@ public class Menu extends JFrame implements MouseListener {
 			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 		}
 		if (e.getSource() == BtnplusSoldatTerritoire) {
-			if (peutTransferer == true) {
+			if (peutTransferer()) {
 				risk.transfererSoldat(risk.listeJoueurs.get(risk.tour).getRenforts(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1017,7 +1013,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusCavalierTerritoire) {
-			if (peutTransferer == true) {
+			if (peutTransferer() == true) {
 				risk.transfererCavalier(risk.listeJoueurs.get(risk.tour).getRenforts(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1025,7 +1021,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusCanonTerritoire) {
-			if (peutTransferer == true) {
+			if (peutTransferer() == true) {
 				risk.transfererCanon(risk.listeJoueurs.get(risk.tour).getRenforts(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1262,6 +1258,15 @@ public class Menu extends JFrame implements MouseListener {
 					hitboxes[i].setIcon(new ImageIcon("Jeton/Jeton" + j + ".png"));
 				}
 			}
+		}
+	}
+	
+	public boolean peutTransferer(){
+		if (risk.listeTerritoires.get(ceTerritoire).getOccupant().getIdJoueur() == risk.tour) {
+			return true;
+
+		} else {
+			return  false;
 		}
 	}
 

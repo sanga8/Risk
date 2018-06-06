@@ -299,20 +299,29 @@ public class Risk {
 		}
 	}
 
-	public boolean peutDeplacerAttaquer(Territoire depart, Territoire destination) {
+	public boolean peutDeplacer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
 					peutDeplacer = true;
 					return peutDeplacer = true;
-				} else {
-					peutAttaquer = true;
-					return peutAttaquer = true;
 				}
 			}
 		}
 		peutDeplacer = false;
 		return peutDeplacer = false;
+	}
+	public boolean peutAttaquer(Territoire depart, Territoire destination) {
+		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
+			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
+				if (depart.getOccupant().getIdJoueur() != destination.getOccupant().getIdJoueur()) {
+					peutAttaquer= true;
+					return peutAttaquer = true;
+				}
+			}
+		}
+		peutAttaquer = false;
+		return peutAttaquer = false;
 	}
 
 	public void deplacerSoldat(Territoire depart, Territoire destination) {
