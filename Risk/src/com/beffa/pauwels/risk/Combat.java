@@ -10,7 +10,7 @@ public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
 	ArrayList<Unite> uniteBatailleDEF = new ArrayList<Unite>();
-
+	
 	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;
@@ -125,7 +125,7 @@ public class Combat {
 		choisirDEF(uniteBatailleDEF);
 		lanceDe(uniteBatailleDEF);
 		trierDEF(uniteBatailleDEF);
-
+		
 		lanceDe(uniteBatailleATT);
 		trierATT(uniteBatailleATT);
 
@@ -163,6 +163,13 @@ public class Combat {
 		this.resultatDe = resultatDe;
 	}
 
+	
+	
+	
+	
+	
+	
+	
 }
 
 /*
