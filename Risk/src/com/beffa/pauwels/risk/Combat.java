@@ -195,6 +195,39 @@ public class Combat {
 				}
 		}
 	}
+	
+	public void majOccupant(Territoire tATT, Territoire tDEF) {
+		if (tDEF.listeUnites.size() == 0) {
+			tDEF.setOccupant(tATT.getOccupant());
+			
+			for(int i =0; i<uniteBatailleATT.size() ; i++) {
+				
+				if (uniteBatailleATT.get(i).getType() == 0) {
+					
+					tDEF.listeUnites.add(new Unite(0));
+					}
+				if (uniteBatailleATT.get(i).getType() == 1) {
+					
+					tDEF.listeUnites.add(new Unite(1));
+					}
+				if (uniteBatailleATT.get(i).getType() == 2) {
+					
+					tDEF.listeUnites.add(new Unite(2));
+					}
+			}
+		}
+	}
+	
+	public void resetCombat(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
+
+		for(int i=0; i<listeATT.size(); i++) {
+			listeATT.remove(i);
+		}
+		
+		for(int i=0; i<listeDEF.size(); i++) {
+			listeDEF.remove(i);
+		}
+	}
 
 	// COMBATTRE
 	public void combattre(Territoire tATT, Territoire tDEF) {
@@ -216,6 +249,9 @@ public class Combat {
 		resoudre(uniteBatailleATT,uniteBatailleDEF);
 		
 		majCombat(tATT, tDEF);
+		majOccupant(tATT, tDEF);
+		
+		resetCombat(uniteBatailleATT, uniteBatailleDEF);
 
 	}
 
