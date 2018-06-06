@@ -31,7 +31,7 @@ public class Risk {
 	}
 
 	/**
-	 * GESTION DE TOUR
+	 * GESTION DE TOUR 
 	 */
 	public void finDeTour() {
 		tour++;
