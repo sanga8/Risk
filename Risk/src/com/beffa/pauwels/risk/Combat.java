@@ -64,14 +64,12 @@ public class Combat {
 		Collections.reverse(liste);
 
 		for (int i = 0; i < liste.size() - 1; i++) {
-			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe()
-					&& liste.get(i).getPrioriteATT() > liste.get(i + 1).getPrioriteATT()) {
+			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe() && liste.get(i).getPrioriteATT() > liste.get(i + 1).getPrioriteATT()) {
 				Collections.swap(liste, i, i + 1);
 			}
 			if (liste.size() == 3) {
 				// EXCEPTION SI LES TROIS ONT LE MEME RESULTAT DE
-				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe()
-						&& liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
+				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe() && liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
 					Collections.sort(liste, Comparator.comparing(Unite::getPrioriteATT));
 				}
 			}
@@ -95,22 +93,27 @@ public class Combat {
 		}
 	}
 
-	public void resoudre(ArrayList<Unite> liste, Territoire tDEF) {
-		for (int i = 0; i < tDEF.listeUnites.size(); i++) {
-			if (liste.get(i).getResultatDe() > tDEF.listeUnites.get(i).getResultatDe()) {
-				// troupe defenseur meurt
-			} else {// troupe attaquant meurt
+	public void resoudre(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
+		
+		if (listeDEF.size() < listeATT.size()) {
 
-			}
-		}
-		if (liste.size() < tDEF.listeUnites.size()) {
-			for (int i = 0; i < liste.size(); i++) {
-				if (liste.get(i).getResultatDe() > tDEF.listeUnites.get(i).getResultatDe()) {
-					// troupe defenseur meurt
-				} else {// troupe attaquant meurt
-
+			for (int i = 0; i < listeDEF.size(); i++) {
+				if (listeDEF.get(i).getResultatDe() >= listeATT.get(i).getResultatDe()) {
+					listeATT.remove(i);
+				} else {
+					listeDEF.remove(i);
 				}
 			}
+			
+		if (listeATT.size() < listeDEF.size()) {
+			for (int i = 0; i < listeATT.size(); i++) {
+				if (listeDEF.get(i).getResultatDe() < listeATT.get(i).getResultatDe()) {
+					listeDEF.remove(i);
+				} else {
+					listeATT.remove(i);
+				}
+			}
+		}
 		}
 	}
 
@@ -123,11 +126,14 @@ public class Combat {
 		 */
 
 		choisirDEF(uniteBatailleDEF);
-		lanceDe(uniteBatailleDEF);
-		trierDEF(uniteBatailleDEF);
 		
 		lanceDe(uniteBatailleATT);
+		lanceDe(uniteBatailleDEF);
+		
 		trierATT(uniteBatailleATT);
+		trierDEF(uniteBatailleDEF);
+		
+		resoudre(uniteBatailleATT,uniteBatailleDEF);
 
 	}
 
@@ -186,7 +192,7 @@ public class Combat {
  * listeGagnant.add(TerritoireDEF);
  * 
  * }
- * 
+
  * }
  * 
  * }
