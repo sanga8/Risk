@@ -143,33 +143,31 @@ public class Risk {
 		}
 	}
 
-
 	public void finPartie() {
 		// commentaire
 	}
 
 	public void ajoutAutoRenforts() {
 		int counter = 0;
-		for (int i = 0; i < listeJoueurs.size(); i++) {
-			if (listeJoueurs.get(i).getIdJoueur() == tour) {
-				for(int j =0 ; j<listeTerritoires.size() ; j++) {
-					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
-						counter++;
+		if (premierTour == false) {
+			for (int i = 0; i < listeJoueurs.size(); i++) {
+				if (listeJoueurs.get(i).getIdJoueur() == tour) {
+					for (int j = 0; j < listeTerritoires.size(); j++) {
+						if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
+							counter++;
+						}
 					}
 				}
-			}
-			System.out.println(counter);
-			for (int k=0 ; k < counter/3 ; k++) {
-				listeJoueurs.get(i).getRenforts().add(new Unite(0));
+				System.out.println(counter);
+				for (int k = 0; k < counter / 3; k++) {
+					listeJoueurs.get(i).getRenforts().add(new Unite(0));
+				}
+				counter = 0;
 			}
 		}
-		counter=0;
 	}
 
-
-
-	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE 
-
+	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
 
 	public void refreshSelection(JTextArea j) {
 		j.setText("Sélectionnez deux territoires");
@@ -311,10 +309,6 @@ public class Risk {
 		peutDeplacer = false;
 		return peutDeplacer = false;
 	}
-	
-	
-	
-	
 
 	public void deplacerSoldat(Territoire depart, Territoire destination) {
 		int c = 0;
