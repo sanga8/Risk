@@ -149,19 +149,21 @@ public class Risk {
 	}
 
 	public void ajoutAutoRenforts() {
+		int counter = 0;
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			if (listeJoueurs.get(i).getIdJoueur() == tour) {
 				for(int j =0 ; j<listeTerritoires.size() ; j++) {
-					int counter = 0;
 					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
 						counter++;
 					}
-					for (int k=0 ; k < counter/3 ; k++) {
-						listeJoueurs.get(i).getRenforts().add(new Unite(0));
-					}
 				}
 			}
+			System.out.println(counter);
+			for (int k=0 ; k < counter/3 ; k++) {
+				listeJoueurs.get(i).getRenforts().add(new Unite(0));
+			}
 		}
+		counter=0;
 	}
 
 
