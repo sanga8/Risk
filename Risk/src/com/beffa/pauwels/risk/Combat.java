@@ -76,15 +76,10 @@ public class Combat {
 		}
 	}
 
-	public void choisirDEF(ArrayList<Unite> liste) {
-		Collections.sort(liste, Comparator.comparing(Unite::getPrioriteDEF));
-		if (liste.size() > 2) {
-			for (int i = liste.size() - 1; i > 1; i--) {
-				liste.remove(i);
-			}
-		}
-	}
 
+	
+
+	
 	public void trierDEF(ArrayList<Unite> liste) {
 		if (liste.size() > 1) {
 			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
@@ -125,7 +120,7 @@ public class Combat {
 		 * les territoires réinitialiser les combats
 		 */
 
-		choisirDEF(uniteBatailleDEF);
+
 		
 		lanceDe(uniteBatailleATT);
 		lanceDe(uniteBatailleDEF);
