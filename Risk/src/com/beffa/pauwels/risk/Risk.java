@@ -300,6 +300,10 @@ public class Risk {
 		peutDeplacer = false;
 		return peutDeplacer = false;
 	}
+	
+	
+	
+	
 
 	public void deplacerSoldat(Territoire depart, Territoire destination) {
 		int c = 0;

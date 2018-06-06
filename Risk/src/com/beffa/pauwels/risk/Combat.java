@@ -9,6 +9,8 @@ import java.util.List;
 public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
+	ArrayList<Unite> uniteBatailleDEF = new ArrayList<Unite>();
+	
 	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;

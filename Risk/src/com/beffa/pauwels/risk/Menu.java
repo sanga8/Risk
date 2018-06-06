@@ -633,10 +633,6 @@ public class Menu extends JFrame implements MouseListener {
 						actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 						actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 						
-						for (int k=0;k<risk.listeTerritoires.get(i).territoiresAdjacents.length;k++){
-							System.out.println("Adjacents Depart:"+risk.listeTerritoires.get(i).territoiresAdjacents[k]);
-						}
-						
 						
 						if (risk.renfortTermine()) {
 							if (risk.getD() == null && risk.getA()==null) {
@@ -919,11 +915,19 @@ public class Menu extends JFrame implements MouseListener {
 		}
 
 		if (e.getSource() == action) {
-			risk.refreshSelection(indications);
+		
+			
+			
+			
+			
+			
+			
+			
+			/*
 			afficherNbUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
 			afficherNbUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
 			afficherNbUnite(combat.uniteBatailleATT);
-
+			*/
 		}
 		if (e.getSource() == refresh) {
 			risk.refreshSelection(indications);
