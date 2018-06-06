@@ -159,12 +159,10 @@ public class Risk {
 	public void ajoutAutoRenforts() {
 		
 		for (int i = 0; i < listeJoueurs.size(); i++) {
-			for (int j = 0; j < listeJoueurs.get(i).getTerritoiresPossedes().size(); j++) {
+			for (int j = 0; j < listeJoueurs.get(i).getTerritoiresPossedes().size()/3; j++) {
 				ajouterSoldatRenfort(listeJoueurs.get(i).getRenforts());
 			}
-
 		}
-
 	}
 
 
