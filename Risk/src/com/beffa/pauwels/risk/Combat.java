@@ -235,7 +235,7 @@ public class Combat {
 		 * choisir unités défenses lancer les dés trier les dés trier par prio
 		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
 		 * les territoires réinitialiser les combats
-		 */
+		 */ 
 
 		choisirDEF(tDEF, uniteBatailleDEF);
 
