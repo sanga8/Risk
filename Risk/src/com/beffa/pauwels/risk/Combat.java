@@ -10,7 +10,7 @@ public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
 	ArrayList<Unite> uniteBatailleDEF = new ArrayList<Unite>();
-
+	
 	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;
@@ -131,16 +131,16 @@ public class Combat {
 		if (listeDEF.size() < listeATT.size()) {
 
 			for (int i = 0; i < listeDEF.size(); i++) {
-				if (listeATT.get(i).getResultatDe() > listeDEF.get(i).getResultatDe()) {
-					listeDEF.remove(i);
-				} else {
+				if (listeDEF.get(i).getResultatDe() >= listeATT.get(i).getResultatDe()) {
 					listeATT.remove(i);
+				} else {
+					listeDEF.remove(i);
 				}
 			}
 			
 		if (listeATT.size() < listeDEF.size()) {
 			for (int i = 0; i < listeATT.size(); i++) {
-				if (listeATT.get(i).getResultatDe() > listeDEF.get(i).getResultatDe()) {
+				if (listeDEF.get(i).getResultatDe() < listeATT.get(i).getResultatDe()) {
 					listeDEF.remove(i);
 				} else {
 					listeATT.remove(i);
@@ -202,6 +202,13 @@ public class Combat {
 		this.resultatDe = resultatDe;
 	}
 
+	
+	
+	
+	
+	
+	
+	
 }
 
 /*
