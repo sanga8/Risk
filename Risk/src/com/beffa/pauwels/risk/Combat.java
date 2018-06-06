@@ -77,6 +77,49 @@ public class Combat {
 	}
 
 
+	public void choisirDEF(Territoire tDEF, ArrayList<Unite> uniteBatailleDEF) {
+
+		Collections.sort(tDEF.listeUnites, Comparator.comparing(Unite::getPrioriteDEF));
+		if(tDEF.listeUnites.size() > 1) {
+			
+			for(int i=0; i<2; i++) {
+				
+				if (tDEF.listeUnites.get(i).getType() == 0) {
+				tDEF.listeUnites.remove(i);
+				uniteBatailleDEF.add(new Unite(0));
+				}
+				
+				if (tDEF.listeUnites.get(i).getType() == 1) {
+					tDEF.listeUnites.remove(i);
+					uniteBatailleDEF.add(new Unite(1));
+				}
+				
+				if (tDEF.listeUnites.get(i).getType() == 2) {	
+				tDEF.listeUnites.remove(i);
+				uniteBatailleDEF.add(new Unite(2));
+				}
+			}
+		}
+		if (tDEF.listeUnites.size() == 1) {
+			
+			if (tDEF.listeUnites.get(0).getType() == 0) {
+				tDEF.listeUnites.remove(0);
+				uniteBatailleDEF.add(new Unite(0));
+				}
+				
+				if (tDEF.listeUnites.get(0).getType() == 1) {
+					tDEF.listeUnites.remove(0);
+					uniteBatailleDEF.add(new Unite(1));
+				}
+				
+				if (tDEF.listeUnites.get(0).getType() == 2) {	
+				tDEF.listeUnites.remove(0);
+				uniteBatailleDEF.add(new Unite(2));
+				}
+		}
+	}
+
+
 	
 
 	
@@ -120,8 +163,9 @@ public class Combat {
 		 * les territoires réinitialiser les combats
 		 */
 
+		choisirDEF(tDEF, uniteBatailleDEF);
 
-		
+
 		lanceDe(uniteBatailleATT);
 		lanceDe(uniteBatailleDEF);
 		
