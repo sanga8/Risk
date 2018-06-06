@@ -13,29 +13,26 @@ public class Risk {
 	int attribueroccupant;
 	boolean premierTour = true;
 	boolean peutDeplacer = false;
-	
-	
-	
-	
+
+	public int debug = 0;
+
 	private Territoire d;
 	private Territoire a;
-	
+
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
 	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
-
 	public Risk() {
 		creerTerritoires();
-		//attribuerTerritoires();
-		//distribuerRenfortsDebut();
-		//ajoutAutoRenforts();
-		
+		// attribuerTerritoires();
+		// distribuerRenfortsDebut();
+		// ajoutAutoRenforts();
 
 	}
 
 	/**
-	 * GESTION DE TOUR 
+	 * GESTION DE TOUR
 	 */
 	public void finDeTour() {
 		tour++;
@@ -49,7 +46,7 @@ public class Risk {
 				tour = 0;
 			}
 		}
-		
+
 	}
 
 	public boolean sonTour() {
@@ -79,13 +76,12 @@ public class Risk {
 		for (int i = 0; i < listeTerritoires.size(); i++) {
 			for (int j = 0; j < listeJoueurs.size(); j++) {
 				if (listeTerritoires.get(i).getOccupant().getIdJoueur() == j) {
-					return ("Jeton"+j+".png");
+					return ("Jeton" + j + ".png");
 				}
 			}
 		}
 		return null;
 	}
-
 
 	public void attribuerTerritoires() {
 		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
@@ -106,20 +102,20 @@ public class Risk {
 
 	public void distribuerRenfortsDebut() {
 		if (listeJoueurs.size() == 2) {
-			for (int i = 0; i < 40 - listeTerritoires.size()/2; i++) {
+			for (int i = 0; i < 19; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 			}
 		}
 		if (listeJoueurs.size() == 3) {
-			for (int i = 0; i < 35 - listeTerritoires.size()/3 ; i++) {
+			for (int i = 0; i < 21; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
 			}
 		}
 		if (listeJoueurs.size() == 4) {
-			for (int i = 0; i < 30 - listeTerritoires.size()/4; i++) {
+			for (int i = 0; i < 19; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -127,7 +123,7 @@ public class Risk {
 			}
 		}
 		if (listeJoueurs.size() == 5) {
-			for (int i = 0; i < 25 - listeTerritoires.size()/5; i++) {
+			for (int i = 0; i < 16; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -136,7 +132,7 @@ public class Risk {
 			}
 		}
 		if (listeJoueurs.size() == 6) {
-			for (int i = 0; i < 20 - listeTerritoires.size()/6; i++) {
+			for (int i = 0; i < 13; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -147,29 +143,34 @@ public class Risk {
 		}
 	}
 
-	public void debutDesTours() {
-		ajoutAutoRenforts();
-
-	}
 
 	public void finPartie() {
 		// commentaire
 	}
 
 	public void ajoutAutoRenforts() {
-		
 		for (int i = 0; i < listeJoueurs.size(); i++) {
-			for (int j = 0; j < listeJoueurs.get(i).getTerritoiresPossedes().size()/3; j++) {
-				ajouterSoldatRenfort(listeJoueurs.get(i).getRenforts());
+			if (listeJoueurs.get(i).getIdJoueur() == tour) {
+				for(int j =0 ; j<listeTerritoires.size() ; j++) {
+					int counter = 0;
+					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
+						counter++;
+					}
+					for (int k=0 ; k < counter/3 ; k++) {
+						listeJoueurs.get(i).getRenforts().add(new Unite(0));
+					}
+				}
 			}
 		}
 	}
 
 
+
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE 
 
+
 	public void refreshSelection(JTextArea j) {
-		j.setText("");
+		j.setText("Sélectionnez deux territoires");
 		d = null;
 		a = null;
 	}
@@ -275,49 +276,54 @@ public class Risk {
 	}
 
 	// DEPLACEMENT DE TROUPES
-	public void deplacer(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+	public void deplacer(Territoire depart, Territoire destination) {
 		if (peutDeplacer == true) {
-			for (int i = 0; i < depart.size(); i++) {
-				if (depart.get(i).getType() == 0) {
-					depart.remove(i);
-					destination.add(new Unite(0));
-				}
-				if (depart.get(i).getType() == 1) {
-					depart.remove(i);
-					destination.add(new Unite(1));
-				}
-				if (depart.get(i).getType() == 2) {
-					depart.remove(i);
-					destination.add(new Unite(2));
+			while (depart.getListeUnitesAction().size() > 0) {
+				for (int i = 0; i < depart.getListeUnitesAction().size(); i++) {
+					if (depart.getListeUnitesAction().get(i).getType() == 0) {
+						depart.getListeUnitesAction().remove(i);
+						destination.listeUnites.add(new Unite(0));
+					}
+					if (depart.getListeUnitesAction().get(i).getType() == 1) {
+						depart.getListeUnitesAction().remove(i);
+						destination.listeUnites.add(new Unite(1));
+					}
+					if (depart.getListeUnitesAction().get(i).getType() == 2) {
+						depart.getListeUnitesAction().remove(i);
+						destination.listeUnites.add(new Unite(2));
+					}
 				}
 			}
 		}
 	}
 
 	public boolean peutDeplacer(Territoire depart, Territoire destination) {
-		// m�me joueur ?
-		if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
-			for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
-				// adjacent ?
-				if (depart.territoiresAdjacents[i].equals(destination)) {
-					// au moins 2 troupes sur le territoire de d�part
-					if (depart.getListeUnites().size() > 1) {
-						return peutDeplacer = true;
-					}
+		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
+			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
+				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
+					peutDeplacer = true;
+					return peutDeplacer = true;
 				}
 			}
 		}
+		peutDeplacer = false;
 		return peutDeplacer = false;
-
 	}
-	/*
-	 * public void deplacerSoldat(Territoire depart, Territoire destination) {
-	 * int c = 0; for (int i = 0; i < depart.listeUnites.size(); i++) { if
-	 * (depart.listeUnites.get(i).getType() == 0) { c++; } }
-	 * depart.listeUnites.removeIf(p -> p.getType() == 0); for (int h = 0; h < c
-	 * - 1; h++) { depart.listeUnites.add(new Unite(0)); }
-	 * destination.listeUnites.add(new Unite(0)); return; } }
-	 */
+
+	public void deplacerSoldat(Territoire depart, Territoire destination) {
+		int c = 0;
+		for (int i = 0; i < depart.listeUnites.size(); i++) {
+			if (depart.listeUnites.get(i).getType() == 0) {
+				c++;
+			}
+		}
+		depart.listeUnites.removeIf(p -> p.getType() == 0);
+		for (int h = 0; h < c - 1; h++) {
+			depart.listeUnites.add(new Unite(0));
+		}
+		destination.listeUnites.add(new Unite(0));
+		return;
+	}
 
 	public void deplacerCavalier(Territoire depart, Territoire destination) {
 
