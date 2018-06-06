@@ -10,7 +10,7 @@ public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
 	ArrayList<Unite> uniteBatailleDEF = new ArrayList<Unite>();
-	
+
 	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;
@@ -68,7 +68,7 @@ public class Combat {
 					&& liste.get(i).getPrioriteATT() > liste.get(i + 1).getPrioriteATT()) {
 				Collections.swap(liste, i, i + 1);
 			}
-			if (liste.size() >= 3) {
+			if (liste.size() == 3) {
 				// EXCEPTION SI LES TROIS ONT LE MEME RESULTAT DE
 				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe()
 						&& liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
@@ -122,13 +122,45 @@ public class Combat {
 		 * les territoires réinitialiser les combats
 		 */
 
-		choisirDEF(tDEF.listeUnites);
-		lanceDe(tDEF.listeUnites);
-		trierDEF(tDEF.listeUnites);
+		choisirDEF(uniteBatailleDEF);
+		lanceDe(uniteBatailleDEF);
+		trierDEF(uniteBatailleDEF);
 
 		lanceDe(uniteBatailleATT);
 		trierATT(uniteBatailleATT);
 
+	}
+
+	public ArrayList<Unite> getUniteBatailleATT() {
+		return uniteBatailleATT;
+	}
+
+	public void setUniteBatailleATT(ArrayList<Unite> uniteBatailleATT) {
+		this.uniteBatailleATT = uniteBatailleATT;
+	}
+
+	public ArrayList<Unite> getUniteBatailleDEF() {
+		return uniteBatailleDEF;
+	}
+
+	public void setUniteBatailleDEF(ArrayList<Unite> uniteBatailleDEF) {
+		this.uniteBatailleDEF = uniteBatailleDEF;
+	}
+
+	public ArrayList<Territoire> getListeGagnant() {
+		return listeGagnant;
+	}
+
+	public void setListeGagnant(ArrayList<Territoire> listeGagnant) {
+		this.listeGagnant = listeGagnant;
+	}
+
+	public int getResultatDe() {
+		return resultatDe;
+	}
+
+	public void setResultatDe(int resultatDe) {
+		this.resultatDe = resultatDe;
 	}
 
 }
