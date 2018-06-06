@@ -30,6 +30,7 @@ public class Risk {
 		//attribuerTerritoires();
 		//distribuerRenfortsDebut();
 		//ajoutAutoRenforts();
+		
 
 	}
 
