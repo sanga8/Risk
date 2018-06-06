@@ -111,20 +111,20 @@ public class Risk {
 
 	public void distribuerRenfortsDebut() {
 		if (listeJoueurs.size() == 2) {
-			for (int i = 0; i < 40; i++) {
+			for (int i = 0; i < 40 - listeTerritoires.size()/2; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 			}
 		}
 		if (listeJoueurs.size() == 3) {
-			for (int i = 0; i < 35; i++) {
+			for (int i = 0; i < 35 - listeTerritoires.size()/3 ; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
 			}
 		}
 		if (listeJoueurs.size() == 4) {
-			for (int i = 0; i < 30; i++) {
+			for (int i = 0; i < 30 - listeTerritoires.size()/4; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -132,7 +132,7 @@ public class Risk {
 			}
 		}
 		if (listeJoueurs.size() == 5) {
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < 25 - listeTerritoires.size()/5; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -141,7 +141,7 @@ public class Risk {
 			}
 		}
 		if (listeJoueurs.size() == 6) {
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 20 - listeTerritoires.size()/6; i++) {
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
