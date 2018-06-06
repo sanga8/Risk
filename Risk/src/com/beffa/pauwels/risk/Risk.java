@@ -166,7 +166,7 @@ public class Risk {
 	}
 
 
-	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
+	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE 
 
 	public void refreshSelection(JTextArea j) {
 		j.setText("");
