@@ -25,6 +25,9 @@ public class Risk {
 
 	public Risk() {
 		creerTerritoires();
+		// attribuerTerritoires();
+		// distribuerRenfortsDebut();
+		// ajoutAutoRenforts();
 
 	}
 
@@ -78,16 +81,6 @@ public class Risk {
 			}
 		}
 		return null;
-	}
-
-	public void initialisation() {
-
-		tourplacementrenforts();
-
-	}
-
-	public void tourplacementrenforts() {
-
 	}
 
 	public void attribuerTerritoires() {
@@ -150,22 +143,18 @@ public class Risk {
 		}
 	}
 
-	public void debutDesTours() {
-		ajoutAutoRenforts();
-
-	}
 
 	public void finPartie() {
 		// commentaire
 	}
 
 	public void ajoutAutoRenforts() {
-		int nbDeRenforts = 0;
-		for (int i = 0; i < nbDeRenforts; i++) {
-			for (int j = 0; j < listeJoueurs.size(); j++) {
-				ajouterSoldatRenfort(listeJoueurs.get(j).getRenforts());
+		for (int i = 0; i < listeJoueurs.size(); i++) {
+			if (listeJoueurs.get(i).getIdJoueur() == tour) {
+				for (int j = 0; j < listeJoueurs.get(i).getTerritoiresPossedes().size() / 3; j++) {
+					listeJoueurs.get(i).getRenforts().add(new Unite(0));
+				}
 			}
-
 		}
 	}
 

@@ -758,6 +758,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == findutour) {
 			risk.finDeTour();
+			risk.ajoutAutoRenforts();
 			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
