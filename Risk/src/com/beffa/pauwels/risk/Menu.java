@@ -43,10 +43,10 @@ public class Menu extends JFrame implements MouseListener {
 
 	private JLabel action;
 	private JLabel mouvement;
-	
+
 	private JLabel mute;
 	private boolean isMute = false;
-	
+
 	private JLabel BtnplusSoldatRenfort;
 	private JLabel BtnplusCavalierRenfort;
 	private JLabel BtnplusCanonRenfort;
@@ -105,9 +105,9 @@ public class Menu extends JFrame implements MouseListener {
 	private JTextArea warning;
 
 	private JLabel commencer;
-	
+
 	private JLabel refresh;
-	
+
 	private JLabel off;
 
 	private JLabel jeton1;
@@ -131,8 +131,8 @@ public class Menu extends JFrame implements MouseListener {
 	public Combat combat;
 
 	public Menu() {
-		son = new Audio();
-		son.start();
+		// son = new Audio();
+		// son.start();
 		risk = new Risk();
 		combat = new Combat();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -282,14 +282,13 @@ public class Menu extends JFrame implements MouseListener {
 		background.setBounds(0, 0, 1920, 1080);
 		background.setIcon(new ImageIcon("Images/fondneutre.jpg"));
 		jeu.add(background);
-		
+
 		mute = new JLabel();
 		mute.setBounds(1870, 5, 50, 50);
 		mute.setIcon(new ImageIcon("Images/mute.png"));
 		mute.addMouseListener(this);
 		background.add(mute);
-		
-		
+
 		cadre = new JLabel();
 		cadre.setBounds(590, 925, 694, 146);
 		cadre.setIcon(new ImageIcon("Images/cadre.png"));
@@ -567,15 +566,13 @@ public class Menu extends JFrame implements MouseListener {
 		findutour.setIcon(new ImageIcon("Images/findutour.png"));
 		findutour.addMouseListener(this);
 		background.add(findutour);
-		
+
 		refresh = new JLabel();
 		refresh.setBounds(1340, 950, 100, 100);
 		refresh.setIcon(new ImageIcon("Images/refresh.png"));
 		refresh.addMouseListener(this);
 		background.add(refresh);
-		
-		
-		
+
 		off = new JLabel();
 		off.setBounds(-10, -10, 100, 100);
 		off.setIcon(new ImageIcon("Images/off.png"));
@@ -586,14 +583,14 @@ public class Menu extends JFrame implements MouseListener {
 		informations.setBounds(375, 925, 215, 145);
 		informations.setOpaque(false);
 		informations.setEditable(false);
-		informations.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		informations.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		background.add(informations);
 
 		indications = new JTextArea("Placez vos renforts");
 		indications.setBounds(630, 890, 900, 25);
 		indications.setOpaque(false);
 		indications.setEditable(false);
-		indications.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		indications.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		map.add(indications);
 
 		// CREATION HITBOXES
@@ -634,13 +631,20 @@ public class Menu extends JFrame implements MouseListener {
 						informations.setText(risk.listeTerritoires.get(i).getNom() + "\n" + "Joueur "
 								+ (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() + 1));
 						actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-
+						actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+						
+						for (int k=0;k<risk.listeTerritoires.get(i).territoiresAdjacents.length;k++){
+							System.out.println("Adjacents Depart:"+risk.listeTerritoires.get(i).territoiresAdjacents[k]);
+						}
+						
+						
 						if (risk.renfortTermine()) {
-							if (risk.getD() == null) {
+							if (risk.getD() == null && risk.getA()==null) {
 								risk.setD(risk.listeTerritoires.get(i));
 
-							} else if (risk.getA() == null) {
+							} else if (risk.getA() == null && risk.getD() !=null) {
 								risk.setA(risk.listeTerritoires.get(i));
+								
 							}
 						}
 						if (risk.getA() != null && risk.getD() != null) {
@@ -877,42 +881,55 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 
-		if (e.getSource() == mute){
+		if (e.getSource() == mute) {
 			son.stop();
 			mute.setIcon(new ImageIcon("Images/demute.png"));
-			if(isMute == true){
+			if (isMute == true) {
 				son.start();
 				mute.setIcon(new ImageIcon("Images/mute.png"));
 			}
-			isMute=true;
-			
+			isMute = true;
+
 		}
-		
-/////////////////////////////////////////
+
+		/////////////////////////////////////////
 
 		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
 			indications.setText("Selectionnez deux territoires");
-			if (risk.getA() != null && risk.getD() != null) {
-				mouvement.setVisible(true);
-				if (e.getSource() == mouvement) {
-					// if (risk.peutDeplacer(risk.getD(), risk.getA())) {
-					risk.deplacer(risk.getD().listeUnites, risk.getA().listeUnites);
+			mouvement.setVisible(true);
+			if (e.getSource() == mouvement) {
+				if (risk.peutDeplacer(risk.getD(), risk.getA())) {
+					risk.deplacer(risk.getD(), risk.getA());
+					mouvement.setVisible(false);
+					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-					mouvement.setVisible(false);
-					risk.refreshSelection(indications);
 				}
+				else{indications.setText("Vous ne pouvez pas vous déplacer sur ce territoire");}
+			}
+			if (risk.getA() == null || risk.getD() == null) {
+				indications.setText("Selectionnez deux territoires");
+			}
+			if(risk.debug==1){
+				System.out.println("Ce n'est pas le même joueur");
+			}
+			if(risk.debug==2){
+				System.out.println("Ce n'est pas un territoire adjacent");
 			}
 		}
-		
-		if (e.getSource() == action)
-		{
+
+		if (e.getSource() == action) {
 			risk.refreshSelection(indications);
 			afficherNbUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
 			afficherNbUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
 			afficherNbUnite(combat.uniteBatailleATT);
 
-
+		}
+		if (e.getSource() == refresh) {
+			risk.refreshSelection(indications);
+			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 		}
 		if (e.getSource() == deuxJ) {
 			nbJoueurs = 2;
@@ -1007,18 +1024,19 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusSoldatAction) {
-			risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), combat.uniteBatailleATT);
+			if(risk.listeTerritoires.get(ceTerritoire).getListeUnites().size()>1){
+			risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-
+			}
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
-			risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), combat.uniteBatailleATT);
+			risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 		}
 		if (e.getSource() == BtnplusCanonAction) {
-			risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), combat.uniteBatailleATT);
+			risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 		}
@@ -1117,10 +1135,14 @@ public class Menu extends JFrame implements MouseListener {
 		}
 	}
 
-	public void actualiserJTextFieldAction(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
-		textfield1.setText(afficherNbSoldat(combat.uniteBatailleATT));
-		textfield2.setText(afficherNbCavalier(combat.uniteBatailleATT));
-		textfield3.setText(afficherNbCanon(combat.uniteBatailleATT));
+	public void actualiserJTextFieldAction(JTextField textfield1, JTextField textfield2, JTextField textfield3){
+		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
+			if (risk.listeTerritoires.get(j).getId() == ceTerritoire) {
+				textfield1.setText(afficherNbSoldat(risk.listeTerritoires.get(j).getListeUnitesAction()));
+				textfield2.setText(afficherNbCavalier(risk.listeTerritoires.get(j).getListeUnitesAction()));
+				textfield3.setText(afficherNbCanon(risk.listeTerritoires.get(j).getListeUnitesAction()));
+			}
+		}
 	}
 
 	public void afficheJeton(int posX, int posY, int numeroJoueur) {

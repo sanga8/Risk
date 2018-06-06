@@ -11,9 +11,13 @@ public class Territoire {
 	private int id;
 	private String id2;
 	public String[] territoiresAdjacents;
+	
+	
 	private Joueur occupant;
 
 	ArrayList<Unite> listeUnites = new ArrayList<Unite>();
+	ArrayList<Unite> listeUnitesAction = new ArrayList<Unite>();
+	
 	public Territoire(String nom, String[] territoiresAdjacents, int id, String id2) {
 		this.nom = nom;
 		this.id2=id2;
@@ -45,6 +49,10 @@ public class Territoire {
 	
 	public ArrayList<Unite> getListeUnites() {
 		return listeUnites;
+
+	}
+	public ArrayList<Unite> getListeUnitesAction() {
+		return listeUnitesAction;
 
 	}
 	public String getNom() {
