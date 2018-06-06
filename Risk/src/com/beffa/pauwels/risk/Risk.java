@@ -149,16 +149,27 @@ public class Risk {
 	}
 
 	public void ajoutAutoRenforts() {
+		int counter = 0;
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			if (listeJoueurs.get(i).getIdJoueur() == tour) {
-				for (int j = 0; j < listeJoueurs.get(i).getTerritoiresPossedes().size() / 3; j++) {
-					listeJoueurs.get(i).getRenforts().add(new Unite(0));
+				for(int j =0 ; j<listeTerritoires.size() ; j++) {
+					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
+						counter++;
+					}
 				}
 			}
+			System.out.println(counter);
+			for (int k=0 ; k < counter/3 ; k++) {
+				listeJoueurs.get(i).getRenforts().add(new Unite(0));
+			}
 		}
+		counter=0;
 	}
 
-	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
+
+
+	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE 
+
 
 	public void refreshSelection(JTextArea j) {
 		j.setText("Sélectionnez deux territoires");
