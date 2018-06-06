@@ -153,7 +153,7 @@ public class Combat {
  * listeGagnant.add(TerritoireDEF);
  * 
  * }
- * 
+
  * }
  * 
  * }
