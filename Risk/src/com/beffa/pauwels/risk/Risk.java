@@ -304,12 +304,11 @@ public class Risk {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
 					peutDeplacer = true;
+					return peutDeplacer = true;
 				}
-			} else {
-				System.out.println("Adjacents Depart:" + depart.territoiresAdjacents[i]);
-				System.out.println("Nom Destination:" + destination.getNom());
 			}
 		}
+		peutDeplacer = false;
 		return peutDeplacer = false;
 	}
 

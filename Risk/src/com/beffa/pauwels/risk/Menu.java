@@ -660,7 +660,6 @@ public class Menu extends JFrame implements MouseListener {
 					}
 				}
 			}
-
 		}
 
 		@Override
