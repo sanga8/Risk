@@ -632,15 +632,14 @@ public class Menu extends JFrame implements MouseListener {
 								+ (risk.listeTerritoires.get(i).getOccupant().getIdJoueur() + 1));
 						actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 						actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-						
-						
+
 						if (risk.renfortTermine()) {
-							if (risk.getD() == null && risk.getA()==null) {
+							if (risk.getD() == null && risk.getA() == null) {
 								risk.setD(risk.listeTerritoires.get(i));
 
-							} else if (risk.getA() == null && risk.getD() !=null) {
+							} else if (risk.getA() == null && risk.getD() != null) {
 								risk.setA(risk.listeTerritoires.get(i));
-								
+
 							}
 						}
 						if (risk.getA() != null && risk.getD() != null) {
@@ -893,42 +892,48 @@ public class Menu extends JFrame implements MouseListener {
 		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
 			indications.setText("Selectionnez deux territoires");
 			mouvement.setVisible(true);
+			action.setVisible(true);
 			if (e.getSource() == mouvement) {
-				if (risk.peutDeplacer(risk.getD(), risk.getA())) {
+				if (risk.peutDeplacerAttaquer(risk.getD(), risk.getA())) {
 					risk.deplacer(risk.getD(), risk.getA());
 					mouvement.setVisible(false);
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+				} else {
+					indications.setText("Vous ne pouvez pas vous déplacer sur ce territoire");
 				}
-				else{indications.setText("Vous ne pouvez pas vous déplacer sur ce territoire");}
 			}
+			if (e.getSource() == action) {
+				if (risk.peutAttaquer == true) {
+					combat.setUniteBatailleATT(risk.getD().getListeUnitesAction());
+					combat.setUniteBatailleDEF(risk.getA().getListeUnites());
+					combat.combattre(risk.getD(), risk.getA());
+					mouvement.setVisible(false);
+					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+				} else {
+					indications.setText("Vous ne pouvez pas attaquer ce territoire");
+				}
+			}
+
 			if (risk.getA() == null || risk.getD() == null) {
 				indications.setText("Selectionnez deux territoires");
 			}
-			if(risk.debug==1){
+			if (risk.debug == 1) {
 				System.out.println("Ce n'est pas le même joueur");
 			}
-			if(risk.debug==2){
+			if (risk.debug == 2) {
 				System.out.println("Ce n'est pas un territoire adjacent");
 			}
 		}
 
-		if (e.getSource() == action) {
-		
-			
-			
-			
-			
-			
-			
-			
-			/*
-			afficherNbUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
-			afficherNbUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
-			afficherNbUnite(combat.uniteBatailleATT);
-			*/
-		}
+		/*
+		 * afficherNbUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
+		 * afficherNbUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
+		 * afficherNbUnite(combat.uniteBatailleATT);
+		 */
 		if (e.getSource() == refresh) {
 			risk.refreshSelection(indications);
 			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
@@ -1028,19 +1033,22 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusSoldatAction) {
-			if(risk.listeTerritoires.get(ceTerritoire).getListeUnites().size()>1){
-			risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
-			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1) {
+				risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
-			risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
+			risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
+					risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 		}
 		if (e.getSource() == BtnplusCanonAction) {
-			risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(), risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
+			risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
+					risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 		}
@@ -1139,7 +1147,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 	}
 
-	public void actualiserJTextFieldAction(JTextField textfield1, JTextField textfield2, JTextField textfield3){
+	public void actualiserJTextFieldAction(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
 			if (risk.listeTerritoires.get(j).getId() == ceTerritoire) {
 				textfield1.setText(afficherNbSoldat(risk.listeTerritoires.get(j).getListeUnitesAction()));

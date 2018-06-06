@@ -10,7 +10,7 @@ public class Combat {
 
 	ArrayList<Unite> uniteBatailleATT = new ArrayList<Unite>();
 	ArrayList<Unite> uniteBatailleDEF = new ArrayList<Unite>();
-	
+
 	ArrayList<Territoire> listeGagnant = new ArrayList<Territoire>();
 
 	int resultatDe;
@@ -126,7 +126,7 @@ public class Combat {
 		 */
 
 		choisirDEF(uniteBatailleDEF);
-		
+
 		lanceDe(uniteBatailleATT);
 		lanceDe(uniteBatailleDEF);
 		
@@ -135,6 +135,38 @@ public class Combat {
 		
 		resoudre(uniteBatailleATT,uniteBatailleDEF);
 
+	}
+
+	public ArrayList<Unite> getUniteBatailleATT() {
+		return uniteBatailleATT;
+	}
+
+	public void setUniteBatailleATT(ArrayList<Unite> uniteBatailleATT) {
+		this.uniteBatailleATT = uniteBatailleATT;
+	}
+
+	public ArrayList<Unite> getUniteBatailleDEF() {
+		return uniteBatailleDEF;
+	}
+
+	public void setUniteBatailleDEF(ArrayList<Unite> uniteBatailleDEF) {
+		this.uniteBatailleDEF = uniteBatailleDEF;
+	}
+
+	public ArrayList<Territoire> getListeGagnant() {
+		return listeGagnant;
+	}
+
+	public void setListeGagnant(ArrayList<Territoire> listeGagnant) {
+		this.listeGagnant = listeGagnant;
+	}
+
+	public int getResultatDe() {
+		return resultatDe;
+	}
+
+	public void setResultatDe(int resultatDe) {
+		this.resultatDe = resultatDe;
 	}
 
 }

@@ -13,6 +13,7 @@ public class Risk {
 	int attribueroccupant;
 	boolean premierTour = true;
 	boolean peutDeplacer = false;
+	boolean peutAttaquer = false;
 
 	public int debug = 0;
 
@@ -165,6 +166,7 @@ public class Risk {
 				counter = 0;
 			}
 		}
+
 	}
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
@@ -297,12 +299,15 @@ public class Risk {
 		}
 	}
 
-	public boolean peutDeplacer(Territoire depart, Territoire destination) {
+	public boolean peutDeplacerAttaquer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
 					peutDeplacer = true;
 					return peutDeplacer = true;
+				} else {
+					peutAttaquer = true;
+					return peutAttaquer = true;
 				}
 			}
 		}
