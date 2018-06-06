@@ -104,6 +104,7 @@ public class Combat {
 					listeATT.remove(i);
 				}
 			}
+			
 		if (listeATT.size() < listeDEF.size()) {
 			for (int i = 0; i < listeATT.size(); i++) {
 				if (listeATT.get(i).getResultatDe() > listeDEF.get(i).getResultatDe()) {
