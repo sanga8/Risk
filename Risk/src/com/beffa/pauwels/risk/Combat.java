@@ -15,7 +15,6 @@ public class Combat {
 
 	}
 
-	// METTRE ARMEE TERRITOIRE ACTION DANS ARMEE COMBAT
 
 	public void lanceDe(ArrayList<Unite> liste) {
 		for (int i = 0; i < liste.size(); i++) {
@@ -35,7 +34,40 @@ public class Combat {
 				tDEF.getListeUnitesBataille().remove(i);
 			}
 		}
-		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
+	}
+
+	public void choisirDEF(Territoire tDEF, ArrayList<Unite> uniteBatailleDEF) {
+		Collections.sort(tDEF.listeUnites, Comparator.comparing(Unite::getPrioriteDEF));
+		if (tDEF.listeUnites.size() > 1) {
+			System.out.println("Plusieurs unites en defense");
+			for (int i = 0; i < 2; i++) {
+				
+				Unite unit = tDEF.listeUnites.get(0);
+				tDEF.listeUnites.remove(0);
+				uniteBatailleDEF.add(unit);
+			}
+		}
+		if (tDEF.listeUnites.size() == 1) {
+			
+			System.out.println("Une unite en defense");
+			
+			Unite unit = tDEF.listeUnites.get(0);
+			tDEF.listeUnites.remove(0);
+			uniteBatailleDEF.add(unit);
+		}
+		System.out.println("Nb d'unite en def arene: " + uniteBatailleDEF.size());
+	}
+
+	public void choisirATT(Territoire tATT, ArrayList<Unite> uniteBatailleATT) {
+		if (tATT.getListeUnitesAction().size() > 0 && tATT.getListeUnitesAction().size() < 4) {
+			System.out.println("Nb d'unite en atq : " + tATT.getListeUnitesAction().size());
+			for (int i = 0; i < 3; i++) {
+				Unite unit = tATT.getListeUnitesAction().get(0);
+				tATT.getListeUnitesAction().remove(0);
+				uniteBatailleATT.add(unit);
+			}
+			System.out.println("Nb d'unite en atq arene: " + uniteBatailleATT.size());
+		}
 	}
 
 	public void trierDEF(ArrayList<Unite> liste) {
@@ -45,18 +77,6 @@ public class Combat {
 			}
 		}
 	}
-
-	/*
-	 * public void choisirATT(Territoire tATT, ArrayList<Unite>
-	 * uniteBatailleATT) { if (tATT.getListeUnitesAction().size() > 0 &&
-	 * tATT.getListeUnitesAction().size() < 4) {
-	 * System.out.println("Nb d'unite en atq : " +
-	 * tATT.getListeUnitesAction().size()); for (int i = 0; i < 3; i++) { Unite
-	 * unit = tATT.getListeUnitesAction().get(0);
-	 * tATT.getListeUnitesAction().remove(0); uniteBatailleATT.add(unit); }
-	 * System.out.println("Nb d'unite en atq arene: " +
-	 * uniteBatailleATT.size()); } }
-	 */
 
 	public void trierATT(Territoire t) {
 		Collections.sort(t.getListeUnitesBataille(), Comparator.comparing(Unite::getResultatDe));
@@ -100,15 +120,36 @@ public class Combat {
 
 	public void majCombat(Territoire tATT, Territoire tDEF) {
 		if (tDEF.getListeUnites().size() == 0) {
+
 			tDEF.setOccupant(tATT.getOccupant());
 			tDEF.getListeUnitesBataille().addAll(tATT.getListeUnitesBataille());
 		} else {
+
+			tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());
+			tATT.getListeUnitesBataille().clear();
+
+			System.out.println(tDEF.getListeUnites().size());
+
+			tDEF.getListeUnites().addAll(tDEF.getListeUnitesBataille());
+			tDEF.getListeUnitesBataille().clear();
+
+			System.out.println(tDEF.getListeUnitesBataille().size());
+			System.out.println(tDEF.getListeUnites().size());
+
+
 			tDEF.getListeUnitesBataille().clear();
 		}
+
 	}
 
 	// COMBATTRE
 	public void combattre(Territoire tATT, Territoire tDEF) {
+		/*
+		 * choisir unit�s défenses lancer les dés trier les dés trier par prio
+		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
+		 * les territoires réinitialiser les combats
+		 */
+
 		choisirDEF(tDEF);
 	
 		System.out.println("Lancement des dés attaque:");
@@ -117,6 +158,13 @@ public class Combat {
 		System.out.println("Lancement des dés defense:");
 		lanceDe(tDEF.getListeUnitesBataille());
 
+		lanceDe(tATT.getListeUnitesBataille());
+		lanceDe(tDEF.getListeUnitesBataille());
+
+		trierATT(tATT);
+		trierDEF(tDEF.getListeUnitesBataille());
+
+		resoudre(tATT, tDEF);
 
 		trierATT(tATT);
 		trierDEF(tDEF.getListeUnitesBataille());

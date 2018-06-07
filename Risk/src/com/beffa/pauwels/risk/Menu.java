@@ -131,8 +131,10 @@ public class Menu extends JFrame implements MouseListener {
 	public Combat combat;
 
 	public Menu() {
+		
 		son = new Audio();
 		son.start();
+		
 		risk = new Risk();
 		combat = new Combat();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -901,6 +903,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 			if (e.getSource() == action) {
 				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
+
 					System.out.println("Taille liste unite ACTION ATT" + risk.getD().getListeUnitesAction().size());
 					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
 					
