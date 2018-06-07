@@ -16,10 +16,10 @@ public class Combat {
 	int resultatDe;
 
 	public Combat() {
+		
 	}
 
 	// METTRE ARMEE TERRITOIRE ACTION DANS ARMEE COMBAT
-
 
 	public void prendreSoldatATT(Territoire p) {
 		int count = 0;
@@ -83,13 +83,16 @@ public class Combat {
 		if (tDEF.listeUnites.size() > 1) {
 			System.out.println("Plusieurs unites en defense");
 			for (int i = 0; i < 2; i++) {
+				
 				Unite unit = tDEF.listeUnites.get(0);
 				tDEF.listeUnites.remove(0);
 				uniteBatailleDEF.add(unit);
 			}
 		}
 		if (tDEF.listeUnites.size() == 1) {
+			
 			System.out.println("Une unite en defense");
+			
 			Unite unit = tDEF.listeUnites.get(0);
 			tDEF.listeUnites.remove(0);
 			uniteBatailleDEF.add(unit);
@@ -120,14 +123,9 @@ public class Combat {
 		int a = listeDEF.size();
 		int b = listeATT.size();
 
-<<<<<<< HEAD
 		if (a <= b) {
 			for (int i = a - 1; i >= 0; i--) {
-=======
-		if (listeDEF.size() <= listeATT.size()) {
-			
-			for (int i = 0; i < listeDEF.size(); i++) {
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
+
 				if (listeDEF.get(i).getResultatDe() >= listeATT.get(i).getResultatDe()) {
 					listeATT.remove(i);
 					System.out.println("Attaquant perd unite");
@@ -152,72 +150,38 @@ public class Combat {
 
 
 	public void majCombat(Territoire tATT, Territoire tDEF) {
-<<<<<<< HEAD
 
 		tATT.getListeUnites().addAll(uniteBatailleATT);
 		uniteBatailleATT.removeAll(tATT.getListeUnites());
 
 		System.out.println(uniteBatailleDEF.size());
 		System.out.println(tDEF.getListeUnites().size());
+		
 		tDEF.getListeUnites().addAll(uniteBatailleDEF);
+		
 		System.out.println(uniteBatailleDEF.size());
 		System.out.println(tDEF.getListeUnites().size());
-		// uniteBatailleDEF.removeAll(tDEF.getListeUnites());
+		
+		uniteBatailleDEF.removeAll(tDEF.getListeUnites());
+		
 		System.out.println(uniteBatailleDEF.size());
 		System.out.println(tDEF.getListeUnites().size());
 
-=======
-		tATT.getListeUnites().addAll(uniteBatailleATT);
-		uniteBatailleATT.clear();
-		
-		tDEF.getListeUnites().addAll(uniteBatailleDEF);
-		uniteBatailleATT.clear();
-	
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	}
 
 	public void majOccupant(Territoire tATT, Territoire tDEF) {
 		if (tDEF.listeUnites.size() == 0) {
 			tDEF.setOccupant(tATT.getOccupant());
 
-			for (int i = 0; i < uniteBatailleATT.size(); i++) {
 
-				if (uniteBatailleATT.get(i).getType() == 0) {
-
-					tDEF.listeUnites.add(new Unite(0));
-				}
-				if (uniteBatailleATT.get(i).getType() == 1) {
-
-					tDEF.listeUnites.add(new Unite(1));
-				}
-				if (uniteBatailleATT.get(i).getType() == 2) {
-
-					tDEF.listeUnites.add(new Unite(2));
-				}
-			}
 		}
+
 	}
 
-<<<<<<< HEAD
-=======
-	public void resetCombat(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
-
-		int a = listeATT.size();
-		
-		for (int i = 0; i < a; i++) {
-			listeATT.remove(0);
-		}
-
-		for (int i = 0; i < listeDEF.size(); i++) {
-			listeDEF.remove(i);
-		}
-	}
-
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	// COMBATTRE
 	public void combattre(Territoire tATT, Territoire tDEF) {
 		/*
-		 * choisir unités défenses lancer les dés trier les dés trier par prio
+		 * choisir unit�s défenses lancer les dés trier les dés trier par prio
 		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
 		 * les territoires réinitialiser les combats
 		 */
@@ -233,12 +197,10 @@ public class Combat {
 
 		resoudre(uniteBatailleATT, uniteBatailleDEF);
 
-<<<<<<< HEAD
-=======
 		majCombat(tATT, tDEF);
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
+
 		majOccupant(tATT, tDEF);
-		majCombat(tATT, tDEF);
+
 
 	}
 

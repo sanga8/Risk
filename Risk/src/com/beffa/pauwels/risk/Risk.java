@@ -291,7 +291,6 @@ public class Risk {
 			destination.listeUnites.addAll(depart.listeUnitesAction);
 			depart.listeUnitesAction.clear();
 		}
-
 	}
 
 	public boolean peutDeplacer(Territoire depart, Territoire destination) {
