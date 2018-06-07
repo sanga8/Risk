@@ -12,8 +12,7 @@ public class Risk {
 	int tour = 0;
 	int attribueroccupant;
 	boolean premierTour = true;
-	boolean peutDeplacer = false;
-	boolean peutAttaquer = false;
+
 
 	public int debug = 0;
 
@@ -246,6 +245,7 @@ public class Risk {
 	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE
 	// SELECTIONNE
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		int soldat = 0;
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 0) {
 				depart.remove(i);
@@ -253,9 +253,13 @@ public class Risk {
 				return;
 			}
 		}
+		for (int i=0; i<soldat; i++) {
+			depart.remove(i);
+		}
 	}
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		int cavalier = 0;
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 1) {
 				depart.remove(i);
@@ -263,9 +267,14 @@ public class Risk {
 				return;
 			}
 		}
+		for (int i=0; i<cavalier; i++) {
+			depart.remove(i);
+		}
+			
 	}
 
 	public void transfererCanon(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		int canon = 0;
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 2) {
 				depart.remove(i);
@@ -273,54 +282,54 @@ public class Risk {
 				return;
 			}
 		}
+		for (int i=0; i<canon; i++) {
+			depart.remove(i);
+		}
 	}
 
 	// DEPLACEMENT DE TROUPES
 	public void deplacer(Territoire depart, Territoire destination) {
-		if (peutDeplacer == true) {
-			while (depart.getListeUnitesAction().size() > 0) {
-				for (int i = 0; i < depart.getListeUnitesAction().size(); i++) {
+		if (peutDeplacer(depart,destination)==true) {
+			
+				for (int i = 0; i < depart.getListeUnitesAction().size()-i; i++) {
 					if (depart.getListeUnitesAction().get(i).getType() == 0) {
-						depart.getListeUnitesAction().remove(i);
+						//depart.getListeUnitesAction().remove(i);
 						destination.listeUnites.add(new Unite(0));
 					}
 					if (depart.getListeUnitesAction().get(i).getType() == 1) {
-						depart.getListeUnitesAction().remove(i);
+						//depart.getListeUnitesAction().remove(i);
 						destination.listeUnites.add(new Unite(1));
 					}
 					if (depart.getListeUnitesAction().get(i).getType() == 2) {
-						depart.getListeUnitesAction().remove(i);
+						//depart.getListeUnitesAction().remove(i);
 						destination.listeUnites.add(new Unite(2));
 					}
 				}
 			}
-		}
+		
+	
 	}
 
 	public boolean peutDeplacer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
-					peutDeplacer = true;
-					return peutDeplacer = true;
+					return true;
 				}
 			}
 		}
-		peutDeplacer = false;
-		return peutDeplacer = false;
+		return false;
 	}
 
 	public boolean peutAttaquer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() != destination.getOccupant().getIdJoueur()) {
-					peutAttaquer = true;
-					return peutAttaquer = true;
+					return true;
 				}
 			}
 		}
-		peutAttaquer = false;
-		return peutAttaquer = false;
+		return false;
 	}
 
 	public void deplacer2(Territoire depart, Territoire destination) {
@@ -338,14 +347,7 @@ public class Risk {
 		return;
 	}
 
-	public void deplacerCavalier(Territoire depart, Territoire destination) {
-
-	}
-
-	public void deplacerCanon(Territoire depart, Territoire destination) {
-
-	}
-
+	
 	public int nbTerritoirePossede(Joueur joueur) {
 		int conteur = 0;
 		for (int i = 0; i < listeTerritoires.size(); i++) {

@@ -131,8 +131,8 @@ public class Menu extends JFrame implements MouseListener {
 	public Combat combat;
 
 	public Menu() {
-		// son = new Audio();
-		// son.start();
+		son = new Audio();
+		son.start();
 		risk = new Risk();
 		combat = new Combat();
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
