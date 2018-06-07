@@ -289,7 +289,7 @@ public class Risk {
 
 		if (peutDeplacer(depart, destination) == true) {
 			destination.listeUnites.addAll(depart.listeUnitesAction);
-			depart.listeUnitesAction.clear();	
+			depart.listeUnitesAction.clear();
 		}
 
 	}

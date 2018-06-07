@@ -130,7 +130,7 @@ public class Combat {
 	public void resoudre(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
 
 		if (listeDEF.size() <= listeATT.size()) {
-
+			
 			for (int i = 0; i < listeDEF.size(); i++) {
 				if (listeDEF.get(i).getResultatDe() >= listeATT.get(i).getResultatDe()) {
 					listeATT.remove(i);
@@ -153,10 +153,10 @@ public class Combat {
 
 
 	public void majCombat(Territoire tATT, Territoire tDEF) {
-		uniteBatailleATT.addAll(tATT.getListeUnites());
+		tATT.getListeUnites().addAll(uniteBatailleATT);
 		uniteBatailleATT.clear();
 		
-		uniteBatailleDEF.addAll(tDEF.getListeUnites());
+		tDEF.getListeUnites().addAll(uniteBatailleDEF);
 		uniteBatailleATT.clear();
 	
 	}
@@ -218,7 +218,7 @@ public class Combat {
 		resoudre(uniteBatailleATT, uniteBatailleDEF);
 		resoudre(uniteBatailleATT, uniteBatailleDEF);
 
-		//majCombat(tATT, tDEF);
+		majCombat(tATT, tDEF);
 		majOccupant(tATT, tDEF);
 
 		resetCombat(uniteBatailleATT, uniteBatailleDEF);
