@@ -35,22 +35,6 @@ public class Combat {
 		}
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
-	public void choisirATT(Territoire tATT, ArrayList<Unite> uniteBatailleATT) {
-		if (tATT.getListeUnitesAction().size() > 0 && tATT.getListeUnitesAction().size() < 4) {
-			System.out.println("Nb d'unite en atq : " + tATT.getListeUnitesAction().size());
-			for (int i = 0; i < 3; i++) {
-				Unite unit = tATT.getListeUnitesAction().get(0);
-				tATT.getListeUnitesAction().remove(0);
-				uniteBatailleATT.add(unit);
-			}
-			System.out.println("Nb d'unite en atq arene: " + uniteBatailleATT.size());
-		}
-	}
-
 	public void trierDEF(ArrayList<Unite> liste) {
 		if (liste.size() > 1) {
 			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
@@ -60,15 +44,16 @@ public class Combat {
 	}
 
 	public void trierATT(Territoire t) {
+		System.out.println("WHahelle Bulle DÈbut" + t.getListeUnites().get(0).getResultatDe());
 		Collections.sort(t.getListeUnitesBataille(), Comparator.comparing(Unite::getResultatDe));
 		Collections.reverse(t.getListeUnitesBataille());
+		
 		for (int i = t.getListeUnitesBataille().size() - 1; i > 0; i--) {
+			System.out.println("WHahelle Bulle milieu" + t.getListeUnites().get(i).getResultatDe());
 			for (int j = 0; j < i; j++) {
-				if (t.getListeUnitesBataille().get(j + 1).getResultatDe() == t.getListeUnitesBataille().get(j)
-						.getResultatDe()
-						&& t.getListeUnitesBataille().get(j + 1).getPrioriteATT() < t.getListeUnitesBataille().get(j)
-								.getPrioriteATT()) {
+				if (t.getListeUnitesBataille().get(j + 1).getResultatDe() == t.getListeUnitesBataille().get(j) .getResultatDe() && t.getListeUnitesBataille().get(j + 1).getPrioriteATT() < t.getListeUnitesBataille().get(j).getPrioriteATT()) {
 					Collections.swap(t.getListeUnitesBataille(), j + 1, j);
+					System.out.println("WHahelle Bulle" + t.getListeUnites().get(i).getResultatDe());
 				}
 			}
 		}
@@ -76,9 +61,12 @@ public class Combat {
 
 	public void resoudre(Territoire tATT, Territoire tDEF) {
 		
+		System.out.println("WHahelle dÈbut rÈsoudre" + tATT.getListeUnites().get(0).getResultatDe());
+		
 		int petiteliste;
 		System.out.println(tATT.getListeUnitesBataille().size());
 		System.out.println(tDEF.getListeUnitesBataille().size());
+		
 		if (tATT.getListeUnitesBataille().size() < tDEF.getListeUnitesBataille().size()) {
 			petiteliste = tATT.getListeUnitesBataille().size();
 		} else {
@@ -88,12 +76,15 @@ public class Combat {
 		for (int i = 0; i < petiteliste; i++) {
 			System.out.println("for");
 			if (tDEF.getListeUnitesBataille().get(i).getResultatDe() >= tATT.getListeUnites().get(i).getResultatDe()) {
-				tATT.getListeUnitesBataille().remove(i);
 				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(i));
+				tATT.getListeUnitesBataille().remove(i);
+
+				System.out.println("WHahelle" + tATT.getListeUnites().get(i).getResultatDe());
 				System.out.println("Attaquant perd unite");
-			} else {
-				tDEF.getListeUnites().remove(i);
+			} 
+			else {
 				tDEF.getListeUnites().remove(tDEF.getListeUnitesBataille().get(i));
+				tDEF.getListeUnitesBataille().remove(i);
 				System.out.println("Defenseur perd unite");
 			}
 		}
@@ -104,23 +95,7 @@ public class Combat {
 
 			tDEF.setOccupant(tATT.getOccupant());
 			tDEF.getListeUnitesBataille().addAll(tATT.getListeUnitesBataille());
-		} else {
-
-			tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());
-			tATT.getListeUnitesBataille().clear();
-
-			System.out.println(tDEF.getListeUnites().size());
-
-			tDEF.getListeUnites().addAll(tDEF.getListeUnitesBataille());
-			tDEF.getListeUnitesBataille().clear();
-
-			System.out.println(tDEF.getListeUnitesBataille().size());
-			System.out.println(tDEF.getListeUnites().size());
-
-
-			tDEF.getListeUnitesBataille().clear();
-		}
-
+		} 
 	}
 
 	// COMBATTRE
@@ -138,8 +113,6 @@ public class Combat {
 		
 		System.out.println("Lancement des d√©s defense:");
 		lanceDe(tDEF.getListeUnitesBataille());
-
-		resoudre(tATT, tDEF);
 
 		trierATT(tATT);
 		trierDEF(tDEF.getListeUnitesBataille());
