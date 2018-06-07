@@ -88,11 +88,11 @@ public class Combat {
 			System.out.println("for");
 			if (tDEF.getListeUnitesBataille().get(i).getResultatDe() >= tATT.getListeUnites().get(i).getResultatDe()) {
 				tATT.getListeUnitesBataille().remove(i);
-				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(i));
+				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(0));
 				System.out.println("Attaquant perd unite");
 			} else {
 				tDEF.getListeUnites().remove(i);
-				tDEF.getListeUnites().remove(tDEF.getListeUnitesBataille().get(i));
+				tDEF.getListeUnites().remove(tDEF.getListeUnitesBataille().get(0));
 				System.out.println("Defenseur perd unite");
 			}
 		}
