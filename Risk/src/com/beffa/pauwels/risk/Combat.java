@@ -56,6 +56,7 @@ public class Combat {
 	public void lanceDe(ArrayList<Unite> liste) {
 		for (int i = 0; i < liste.size(); i++) {
 			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));
+			System.out.println("Resultats des " + liste.get(i).getResultatDe());
 		}
 	}
 
@@ -82,7 +83,7 @@ public class Combat {
 
 		Collections.sort(tDEF.listeUnites, Comparator.comparing(Unite::getPrioriteDEF));
 		if (tDEF.listeUnites.size() > 1) {
-
+			System.out.println("Plusieurs unites en defense");
 			for (int i = 0; i < 2; i++) {
 
 				if (tDEF.listeUnites.get(i).getType() == 0) {
@@ -102,7 +103,7 @@ public class Combat {
 			}
 		}
 		if (tDEF.listeUnites.size() == 1) {
-
+			System.out.println("Une seule unite en defense");
 			if (tDEF.listeUnites.get(0).getType() == 0) {
 				tDEF.listeUnites.remove(0);
 				uniteBatailleDEF.add(new Unite(0));
@@ -130,7 +131,7 @@ public class Combat {
 
 	public void resoudre(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
 
-		if (listeDEF.size() < listeATT.size()) {
+		if (listeDEF.size() <= listeATT.size()) {
 
 			for (int i = 0; i < listeDEF.size(); i++) {
 				if (listeDEF.get(i).getResultatDe() >= listeATT.get(i).getResultatDe()) {
@@ -153,9 +154,6 @@ public class Combat {
 	}
 
 	public void majCombat(Territoire tATT, Territoire tDEF) {
-		if(uniteBatailleATT.size()==0 || uniteBatailleDEF.size() == 0){
-			return;
-		}
 
 		for (int i = 0; i < uniteBatailleDEF.size(); i++) {
 
@@ -183,16 +181,19 @@ public class Combat {
 				uniteBatailleATT.remove(i);
 
 			}
+			/*
 			if (uniteBatailleATT.get(i).getType() == 1) {
 				tATT.listeUnites.add(new Unite(1));
 				uniteBatailleATT.remove(i);
 
 			}
+			
 			if (uniteBatailleATT.get(i).getType() == 2) {
 				tATT.listeUnites.add(new Unite(2));
 				uniteBatailleATT.remove(i);
 
 			}
+			*/
 		}
 
 	}
@@ -238,17 +239,22 @@ public class Combat {
 		 * les territoires réinitialiser les combats
 		 */
 
+
 		choisirDEF(tDEF, uniteBatailleDEF);
+
 
 		lanceDe(uniteBatailleATT);
 		lanceDe(uniteBatailleDEF);
+
 
 		trierATT(uniteBatailleATT);
 		trierDEF(uniteBatailleDEF);
 
 		resoudre(uniteBatailleATT, uniteBatailleDEF);
+		resoudre(uniteBatailleATT, uniteBatailleDEF);
 
-		//majCombat(tATT, tDEF);
+		majCombat(tATT, tDEF);
+		
 		majOccupant(tATT, tDEF);
 
 		resetCombat(uniteBatailleATT, uniteBatailleDEF);

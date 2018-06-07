@@ -51,11 +51,9 @@ public class Risk {
 	}
 
 	public boolean sonTour() {
-		for (int j = 0; j < listeJoueurs.size(); j++) {
-			if (listeJoueurs.get(j).getIdJoueur() == tour) {
+		for (int i = 0; i < listeJoueurs.size(); i++) {
+			if (listeJoueurs.get(i).getIdJoueur() == tour) {
 				return true;
-			} else {
-				return false;
 			}
 		}
 		return false;
@@ -311,11 +309,12 @@ public class Risk {
 		peutDeplacer = false;
 		return peutDeplacer = false;
 	}
+
 	public boolean peutAttaquer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() != destination.getOccupant().getIdJoueur()) {
-					peutAttaquer= true;
+					peutAttaquer = true;
 					return peutAttaquer = true;
 				}
 			}
@@ -324,7 +323,7 @@ public class Risk {
 		return peutAttaquer = false;
 	}
 
-	public void deplacerSoldat(Territoire depart, Territoire destination) {
+	public void deplacer2(Territoire depart, Territoire destination) {
 		int c = 0;
 		for (int i = 0; i < depart.listeUnites.size(); i++) {
 			if (depart.listeUnites.get(i).getType() == 0) {
