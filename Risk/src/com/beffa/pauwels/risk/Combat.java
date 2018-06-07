@@ -15,40 +15,7 @@ public class Combat {
 
 	}
 
-	// METTRE ARMEE TERRITOIRE ACTION DANS ARMEE COMBAT
 
-	public void prendreSoldatATT(Territoire p) {
-		int count = 0;
-		for (int i = 0; i < p.getListeUnites().size(); i++) {
-			if (p.getListeUnites().get(i).getType() == 0 && count == 0 && p.getListeUnites().size() > 0) {
-				p.getuniteBataille.add(p.getListeUnites().get(i));
-				p.getListeUnites().remove(i);
-				count++;
-			}
-		}
-	}
-
-	public void prendreCavalierATT(Territoire p) {
-		int count = 0;
-		for (int i = 0; i < p.getListeUnites().size(); i++) {
-			if (p.getListeUnites().get(i).getType() == 1 && count == 0 && p.getListeUnites().size() > 0) {
-				uniteBatailleATT.add(p.getListeUnites().get(i));
-				p.getListeUnites().remove(i);
-				count++;
-			}
-		}
-	}
-
-	public void prendreCanonATT(Territoire p) {
-		int count = 0;
-		for (int i = 0; i < p.getListeUnites().size(); i++) {
-			if (p.getListeUnites().get(i).getType() == 2 && count == 0 && p.getListeUnites().size() > 0) {
-				uniteBatailleATT.add(p.getListeUnites().get(i));
-				p.getListeUnites().remove(i);
-				count++;
-			}
-		}
-	}
 	public void lanceDe(ArrayList<Unite> liste) {
 		for (int i = 0; i < liste.size(); i++) {
 			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));
@@ -101,7 +68,6 @@ public class Combat {
 			}
 			System.out.println("Nb d'unite en atq arene: " + uniteBatailleATT.size());
 		}
-		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
 	}
 
 	public void trierDEF(ArrayList<Unite> liste) {
@@ -111,20 +77,6 @@ public class Combat {
 			}
 		}
 	}
-
-
-	public void resoudre(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
-		int a = listeDEF.size();
-		int b = listeATT.size();
-		if (a <= b) {
-			for (int i = a - 1; i >= 0; i--) {
-
-				if (listeDEF.get(i).getResultatDe() >= listeATT.get(i).getResultatDe()) {
-					listeATT.remove(i);
-					System.out.println("Attaquant perd unite");
-				} else {
-					listeDEF.remove(i);
-					System.out.println("Defenseur perd unite");
 
 	public void trierATT(Territoire t) {
 		Collections.sort(t.getListeUnitesBataille(), Comparator.comparing(Unite::getResultatDe));
@@ -173,16 +125,15 @@ public class Combat {
 			tDEF.getListeUnitesBataille().addAll(tATT.getListeUnitesBataille());
 		} else {
 
-			tATT.getListeUnites().addAll(uniteBatailleATT);
-			uniteBatailleATT.clear();
+			tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());
+			tATT.getListeUnitesBataille().clear();
 
-			System.out.println(uniteBatailleDEF.size());
 			System.out.println(tDEF.getListeUnites().size());
 
-			tDEF.getListeUnites().addAll(uniteBatailleDEF);
-			uniteBatailleDEF.clear();
+			tDEF.getListeUnites().addAll(tDEF.getListeUnitesBataille());
+			tDEF.getListeUnitesBataille().clear();
 
-			System.out.println(uniteBatailleDEF.size());
+			System.out.println(tDEF.getListeUnitesBataille().size());
 			System.out.println(tDEF.getListeUnites().size());
 
 
@@ -207,13 +158,13 @@ public class Combat {
 		System.out.println("Lancement des dés defense:");
 		lanceDe(tDEF.getListeUnitesBataille());
 
-		lanceDe(uniteBatailleATT);
-		lanceDe(uniteBatailleDEF);
+		lanceDe(tATT.getListeUnitesBataille());
+		lanceDe(tDEF.getListeUnitesBataille());
 
-		trierATT(uniteBatailleATT);
-		trierDEF(uniteBatailleDEF);
+		trierATT(tATT);
+		trierDEF(tDEF.getListeUnitesBataille());
 
-		resoudre(uniteBatailleATT, uniteBatailleDEF);
+		resoudre(tATT, tDEF);
 
 		trierATT(tATT);
 		trierDEF(tDEF.getListeUnitesBataille());

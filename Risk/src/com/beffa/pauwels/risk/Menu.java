@@ -903,19 +903,13 @@ public class Menu extends JFrame implements MouseListener {
 			}
 			if (e.getSource() == action) {
 				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
-<<<<<<< HEAD
-					System.out.println(risk.getD().getListeUnitesAction().size());
-					combat.setUniteBatailleATT(risk.getD().getListeUnitesAction());
-					System.out.println(combat.getUniteBatailleATT());
-					combat.setUniteBatailleDEF(risk.getA().getListeUnites());
-=======
+
 					System.out.println("Taille liste unite ACTION ATT" + risk.getD().getListeUnitesAction().size());
 					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
 					
 					risk.getD().setListeUnitesBataille(risk.getD().getListeUnitesAction());
 					
 					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
 					combat.combattre(risk.getD(), risk.getA());
 					System.out.println("Combat terminé");
 					attribuerCouleurs();
