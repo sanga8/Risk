@@ -906,7 +906,9 @@ public class Menu extends JFrame implements MouseListener {
 			}
 			if (e.getSource() == action) {
 				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
+					System.out.println(risk.getD().getListeUnitesAction().size());
 					combat.setUniteBatailleATT(risk.getD().getListeUnitesAction());
+					System.out.println(combat.getUniteBatailleATT());
 					combat.setUniteBatailleDEF(risk.getA().getListeUnites());
 					combat.combattre(risk.getD(), risk.getA());
 					System.out.println("Combat terminé");

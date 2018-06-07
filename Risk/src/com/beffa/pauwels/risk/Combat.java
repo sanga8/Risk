@@ -53,7 +53,6 @@ public class Combat {
 			}
 		}
 	}
-
 	public void lanceDe(ArrayList<Unite> liste) {
 		for (int i = 0; i < liste.size(); i++) {
 			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));
@@ -66,12 +65,14 @@ public class Combat {
 		Collections.reverse(liste);
 
 		for (int i = 0; i < liste.size() - 1; i++) {
-			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe() && liste.get(i).getPrioriteATT() > liste.get(i + 1).getPrioriteATT()) {
+			if (liste.get(i).getResultatDe() == liste.get(i + 1).getResultatDe()
+					&& liste.get(i).getPrioriteATT() > liste.get(i + 1).getPrioriteATT()) {
 				Collections.swap(liste, i, i + 1);
 			}
 			if (liste.size() == 3) {
 				// EXCEPTION SI LES TROIS ONT LE MEME RESULTAT DE
-				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe() && liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
+				if (liste.get(0).getResultatDe() == liste.get(1).getResultatDe()
+						&& liste.get(1).getResultatDe() == liste.get(2).getResultatDe()) {
 					Collections.sort(liste, Comparator.comparing(Unite::getPrioriteATT));
 				}
 			}
@@ -97,19 +98,20 @@ public class Combat {
 			tDEF.listeUnites.remove(0);
 			uniteBatailleDEF.add(unit);
 		}
+		System.out.println("Nb d'unite en def arene: " + uniteBatailleDEF.size());
 	}
-	
-	public void choisirATT(Territoire tATT, ArrayList<Unite> uniteBatailleATT){
-		if(tATT.getListeUnitesAction().size()>0 && tATT.getListeUnitesAction().size()<4){
-			System.out.println("Nb d'unite en atq : "+ tATT.getListeUnitesAction().size());
+
+	public void choisirATT(Territoire tATT, ArrayList<Unite> uniteBatailleATT) {
+		if (tATT.getListeUnitesAction().size() > 0 && tATT.getListeUnitesAction().size() < 4) {
+			System.out.println("Nb d'unite en atq : " + tATT.getListeUnitesAction().size());
 			for (int i = 0; i < 3; i++) {
 				Unite unit = tATT.getListeUnitesAction().get(0);
 				tATT.getListeUnitesAction().remove(0);
 				uniteBatailleATT.add(unit);
 			}
-		}	
+			System.out.println("Nb d'unite en atq arene: " + uniteBatailleATT.size());
+		}
 	}
-	
 
 	public void trierDEF(ArrayList<Unite> liste) {
 		if (liste.size() > 1) {
@@ -122,7 +124,6 @@ public class Combat {
 	public void resoudre(ArrayList<Unite> listeATT, ArrayList<Unite> listeDEF) {
 		int a = listeDEF.size();
 		int b = listeATT.size();
-
 		if (a <= b) {
 			for (int i = a - 1; i >= 0; i--) {
 
@@ -148,31 +149,23 @@ public class Combat {
 		}
 	}
 
-
 	public void majCombat(Territoire tATT, Territoire tDEF) {
-
-		tATT.getListeUnites().addAll(uniteBatailleATT);
-		uniteBatailleATT.removeAll(tATT.getListeUnites());
-
-		System.out.println(uniteBatailleDEF.size());
-		System.out.println(tDEF.getListeUnites().size());
-		
-		tDEF.getListeUnites().addAll(uniteBatailleDEF);
-		
-		System.out.println(uniteBatailleDEF.size());
-		System.out.println(tDEF.getListeUnites().size());
-		
-		uniteBatailleDEF.removeAll(tDEF.getListeUnites());
-		
-		System.out.println(uniteBatailleDEF.size());
-		System.out.println(tDEF.getListeUnites().size());
-
-	}
-
-	public void majOccupant(Territoire tATT, Territoire tDEF) {
 		if (tDEF.listeUnites.size() == 0) {
 			tDEF.setOccupant(tATT.getOccupant());
+			tDEF.getListeUnites().addAll(uniteBatailleATT);
+			uniteBatailleATT.clear();
+		} else {
+			tATT.getListeUnites().addAll(uniteBatailleATT);
+			uniteBatailleATT.clear();
 
+			System.out.println(uniteBatailleDEF.size());
+			System.out.println(tDEF.getListeUnites().size());
+
+			tDEF.getListeUnites().addAll(uniteBatailleDEF);
+			uniteBatailleDEF.clear();
+
+			System.out.println(uniteBatailleDEF.size());
+			System.out.println(tDEF.getListeUnites().size());
 
 		}
 
@@ -185,8 +178,8 @@ public class Combat {
 		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
 		 * les territoires réinitialiser les combats
 		 */
-		
-		choisirATT(tATT,uniteBatailleATT);
+
+		choisirATT(tATT, uniteBatailleATT);
 		choisirDEF(tDEF, uniteBatailleDEF);
 
 		lanceDe(uniteBatailleATT);
@@ -198,9 +191,6 @@ public class Combat {
 		resoudre(uniteBatailleATT, uniteBatailleDEF);
 
 		majCombat(tATT, tDEF);
-
-		majOccupant(tATT, tDEF);
-
 
 	}
 
