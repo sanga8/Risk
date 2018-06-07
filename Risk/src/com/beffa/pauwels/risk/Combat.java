@@ -25,8 +25,7 @@ public class Combat {
 
 	public void choisirDEF(Territoire tDEF) {
 		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
-		tDEF.getListeUnitesBataille().addAll(tDEF.getListeUnites());
-		//tDEF.setListeUnitesBataille(tDEF.getListeUnites());
+		tDEF.getListeUnitesBataille().addAll(tDEF.getListeUnites());		
 		Collections.sort(tDEF.getListeUnitesBataille(), Comparator.comparing(Unite::getPrioriteDEF));
 		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
 		if (tDEF.getListeUnitesBataille().size() > 2) {
@@ -36,27 +35,6 @@ public class Combat {
 		}
 	}
 
-	public void choisirDEF(Territoire tDEF, ArrayList<Unite> uniteBatailleDEF) {
-		Collections.sort(tDEF.listeUnites, Comparator.comparing(Unite::getPrioriteDEF));
-		if (tDEF.listeUnites.size() > 1) {
-			System.out.println("Plusieurs unites en defense");
-			for (int i = 0; i < 2; i++) {
-				
-				Unite unit = tDEF.listeUnites.get(0);
-				tDEF.listeUnites.remove(0);
-				uniteBatailleDEF.add(unit);
-			}
-		}
-		if (tDEF.listeUnites.size() == 1) {
-			
-			System.out.println("Une unite en defense");
-			
-			Unite unit = tDEF.listeUnites.get(0);
-			tDEF.listeUnites.remove(0);
-			uniteBatailleDEF.add(unit);
-		}
-		System.out.println("Nb d'unite en def arene: " + uniteBatailleDEF.size());
-	}
 
 	public void choisirATT(Territoire tATT, ArrayList<Unite> uniteBatailleATT) {
 		if (tATT.getListeUnitesAction().size() > 0 && tATT.getListeUnitesAction().size() < 4) {
@@ -108,11 +86,11 @@ public class Combat {
 			System.out.println("for");
 			if (tDEF.getListeUnitesBataille().get(i).getResultatDe() >= tATT.getListeUnites().get(i).getResultatDe()) {
 				tATT.getListeUnitesBataille().remove(i);
-				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(0));
+				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(i));
 				System.out.println("Attaquant perd unite");
 			} else {
 				tDEF.getListeUnites().remove(i);
-				tDEF.getListeUnites().remove(tDEF.getListeUnitesBataille().get(0));
+				tDEF.getListeUnites().remove(tDEF.getListeUnitesBataille().get(i));
 				System.out.println("Defenseur perd unite");
 			}
 		}
@@ -145,7 +123,7 @@ public class Combat {
 	// COMBATTRE
 	public void combattre(Territoire tATT, Territoire tDEF) {
 		/*
-		 * choisir unit�s défenses lancer les dés trier les dés trier par prio
+		 * choisir unit�s défenses lancer les dés trier les dés trier par prio
 		 * d'atq déterminer résultats mettre à jour les occupants et armées sur
 		 * les territoires réinitialiser les combats
 		 */
