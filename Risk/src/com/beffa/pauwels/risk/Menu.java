@@ -121,7 +121,7 @@ public class Menu extends JFrame implements MouseListener {
 
 	// private HashMap<String, JLabel> hitboxes;
 
-	//private boolean peutTransferer = false;
+	// private boolean peutTransferer = false;
 	private int ceTerritoire = 99;
 	private JTextArea informations;
 	private JTextArea indications;
@@ -636,17 +636,14 @@ public class Menu extends JFrame implements MouseListener {
 						actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 
 						if (risk.renfortTermine()) {
-							if (risk.getD() == null && risk.getA() == null) {
-								risk.setD(risk.listeTerritoires.get(i));
-
-							} else if (risk.getA() == null && risk.getD() != null) {
-								risk.setA(risk.listeTerritoires.get(i));
-
+							if (risk.getD() == null ) {
+								risk.setD(risk.listeTerritoires.get(ceTerritoire));	
+								indications.setText("Territoire départ: " + risk.getD().getNom());
+							} else if (risk.getA() == null) {
+								risk.setA(risk.listeTerritoires.get(ceTerritoire));
+								indications.setText("Territoire départ: " + risk.getD().getNom() + "   "
+										+ "Territoire arrivé: " + risk.getA().getNom());
 							}
-						}
-						if (risk.getA() != null && risk.getD() != null) {
-							indications.setText("Territoire départ: " + risk.getD().getNom() + "    "
-									+ "Territoire arrivé: " + risk.getA().getNom());
 						}
 					}
 				}
@@ -906,10 +903,19 @@ public class Menu extends JFrame implements MouseListener {
 			}
 			if (e.getSource() == action) {
 				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
+<<<<<<< HEAD
 					System.out.println(risk.getD().getListeUnitesAction().size());
 					combat.setUniteBatailleATT(risk.getD().getListeUnitesAction());
 					System.out.println(combat.getUniteBatailleATT());
 					combat.setUniteBatailleDEF(risk.getA().getListeUnites());
+=======
+					System.out.println("Taille liste unite ACTION ATT" + risk.getD().getListeUnitesAction().size());
+					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
+					
+					risk.getD().setListeUnitesBataille(risk.getD().getListeUnitesAction());
+					
+					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
+>>>>>>> branch 'master' of https://github.com/sanga8/Risk
 					combat.combattre(risk.getD(), risk.getA());
 					System.out.println("Combat terminé");
 					attribuerCouleurs();
@@ -1263,13 +1269,13 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-	
-	public boolean peutTransferer(){
+
+	public boolean peutTransferer() {
 		if (risk.listeTerritoires.get(ceTerritoire).getOccupant().getIdJoueur() == risk.tour) {
 			return true;
 
 		} else {
-			return  false;
+			return false;
 		}
 	}
 
