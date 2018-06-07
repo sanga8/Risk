@@ -242,36 +242,26 @@ public class Risk {
 	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE
 	// SELECTIONNE
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
-		int soldat = 0;
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 0) {
-				depart.remove(i);
+				depart.remove(0);
 				destination.add(new Unite(0));
 				return;
 			}
 		}
-		for (int i=0; i<soldat; i++) {
-			depart.remove(i);
-		}
 	}
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
-		int cavalier = 0;
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 1) {
 				depart.remove(i);
 				destination.add(new Unite(1));
 				return;
 			}
-		}
-		for (int i=0; i<cavalier; i++) {
-			depart.remove(i);
-		}
-			
+		}			
 	}
 
 	public void transfererCanon(ArrayList<Unite> depart, ArrayList<Unite> destination) {
-		int canon = 0;
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 2) {
 				depart.remove(i);
@@ -279,14 +269,10 @@ public class Risk {
 				return;
 			}
 		}
-		for (int i=0; i<canon; i++) {
-			depart.remove(i);
-		}
 	}
 
 	// DEPLACEMENT DE TROUPES
 	public void deplacer(Territoire depart, Territoire destination) {
-
 		if (peutDeplacer(depart, destination) == true) {
 			destination.listeUnites.addAll(depart.listeUnitesAction);
 			depart.listeUnitesAction.clear();
