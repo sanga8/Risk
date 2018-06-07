@@ -921,12 +921,6 @@ public class Menu extends JFrame implements MouseListener {
 			if (risk.getA() == null || risk.getD() == null) {
 				indications.setText("Selectionnez deux territoires");
 			}
-			if (risk.debug == 1) {
-				System.out.println("Ce n'est pas le même joueur");
-			}
-			if (risk.debug == 2) {
-				System.out.println("Ce n'est pas un territoire adjacent");
-			}
 		}
 
 		/*
