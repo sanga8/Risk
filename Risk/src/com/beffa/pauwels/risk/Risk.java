@@ -12,8 +12,6 @@ public class Risk {
 	int tour = 0;
 	int attribueroccupant;
 	boolean premierTour = true;
-	boolean peutDeplacer = false;
-	boolean peutAttaquer = false;
 
 	public int debug = 0;
 
@@ -277,23 +275,9 @@ public class Risk {
 
 	// DEPLACEMENT DE TROUPES
 	public void deplacer(Territoire depart, Territoire destination) {
-		if (peutDeplacer == true) {
-			while (depart.getListeUnitesAction().size() > 0) {
-				for (int i = 0; i < depart.getListeUnitesAction().size(); i++) {
-					if (depart.getListeUnitesAction().get(i).getType() == 0) {
-						depart.getListeUnitesAction().remove(i);
-						destination.listeUnites.add(new Unite(0));
-					}
-					if (depart.getListeUnitesAction().get(i).getType() == 1) {
-						depart.getListeUnitesAction().remove(i);
-						destination.listeUnites.add(new Unite(1));
-					}
-					if (depart.getListeUnitesAction().get(i).getType() == 2) {
-						depart.getListeUnitesAction().remove(i);
-						destination.listeUnites.add(new Unite(2));
-					}
-				}
-			}
+		if (peutDeplacer(depart, destination) == true) {
+			destination.listeUnites.addAll(depart.listeUnitesAction);
+			depart.listeUnitesAction.clear();	
 		}
 	}
 
@@ -301,26 +285,23 @@ public class Risk {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
-					peutDeplacer = true;
-					return peutDeplacer = true;
+					return true;
 				}
 			}
 		}
-		peutDeplacer = false;
-		return peutDeplacer = false;
+		return false;
 	}
 
 	public boolean peutAttaquer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
 			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
 				if (depart.getOccupant().getIdJoueur() != destination.getOccupant().getIdJoueur()) {
-					peutAttaquer = true;
-					return peutAttaquer = true;
+					return true;
 				}
 			}
 		}
-		peutAttaquer = false;
-		return peutAttaquer = false;
+
+		return false;
 	}
 
 	public void deplacer2(Territoire depart, Territoire destination) {

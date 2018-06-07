@@ -891,6 +891,10 @@ public class Menu extends JFrame implements MouseListener {
 				if (risk.peutDeplacer(risk.getD(), risk.getA())) {
 					risk.deplacer(risk.getD(), risk.getA());
 					mouvement.setVisible(false);
+					afficherNbUnite(risk.getD().listeUnites);
+					afficherNbUnite(risk.getD().listeUnitesAction);
+					afficherNbUnite(risk.getA().listeUnites);
+					afficherNbUnite(risk.getA().listeUnitesAction);
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
@@ -905,10 +909,10 @@ public class Menu extends JFrame implements MouseListener {
 					combat.combattre(risk.getD(), risk.getA());
 					System.out.println("Combat terminé");
 					attribuerCouleurs();
+					action.setVisible(false);
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-					action.setVisible(false);
 				} else {
 					indications.setText("Vous ne pouvez pas attaquer ce territoire");
 				}
@@ -932,6 +936,7 @@ public class Menu extends JFrame implements MouseListener {
 		 */
 		if (e.getSource() == refresh) {
 			risk.refreshSelection(indications);
+			attribuerCouleurs();
 			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
 			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);

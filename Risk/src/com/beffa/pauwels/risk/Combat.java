@@ -154,48 +154,12 @@ public class Combat {
 	}
 
 	public void majCombat(Territoire tATT, Territoire tDEF) {
-
-		for (int i = 0; i < uniteBatailleDEF.size(); i++) {
-
-			if (uniteBatailleDEF.get(i).getType() == 0) {
-				tDEF.listeUnites.add(new Unite(0));
-				uniteBatailleDEF.remove(i);
-
-			}
-			if (uniteBatailleDEF.get(i).getType() == 1) {
-				tDEF.listeUnites.add(new Unite(1));
-				uniteBatailleDEF.remove(i);
-
-			}
-			if (uniteBatailleDEF.get(i).getType() == 2) {
-				tDEF.listeUnites.add(new Unite(2));
-				uniteBatailleDEF.remove(i);
-
-			}
-		}
-
-		for (int i = 0; i < uniteBatailleATT.size(); i++) {
-
-			if (uniteBatailleATT.get(i).getType() == 0) {
-				tATT.listeUnites.add(new Unite(0));
-				uniteBatailleATT.remove(i);
-
-			}
-			/*
-			if (uniteBatailleATT.get(i).getType() == 1) {
-				tATT.listeUnites.add(new Unite(1));
-				uniteBatailleATT.remove(i);
-
-			}
-			
-			if (uniteBatailleATT.get(i).getType() == 2) {
-				tATT.listeUnites.add(new Unite(2));
-				uniteBatailleATT.remove(i);
-
-			}
-			*/
-		}
-
+		uniteBatailleATT.addAll(tATT.getListeUnites());
+		uniteBatailleATT.clear();
+		
+		uniteBatailleDEF.addAll(tDEF.getListeUnites());
+		uniteBatailleATT.clear();
+	
 	}
 
 	public void majOccupant(Territoire tATT, Territoire tDEF) {
