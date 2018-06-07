@@ -911,7 +911,6 @@ public class Menu extends JFrame implements MouseListener {
 
 					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
 					combat.combattre(risk.getD(), risk.getA());
-					System.out.println("Combat terminé");
 					attribuerCouleurs();
 					action.setVisible(false);
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
