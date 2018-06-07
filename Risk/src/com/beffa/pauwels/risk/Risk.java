@@ -13,9 +13,6 @@ public class Risk {
 	int attribueroccupant;
 	boolean premierTour = true;
 
-
-	public int debug = 0;
-
 	private Territoire d;
 	private Territoire a;
 
@@ -289,25 +286,12 @@ public class Risk {
 
 	// DEPLACEMENT DE TROUPES
 	public void deplacer(Territoire depart, Territoire destination) {
-		if (peutDeplacer(depart,destination)==true) {
-			
-				for (int i = 0; i < depart.getListeUnitesAction().size()-i; i++) {
-					if (depart.getListeUnitesAction().get(i).getType() == 0) {
-						//depart.getListeUnitesAction().remove(i);
-						destination.listeUnites.add(new Unite(0));
-					}
-					if (depart.getListeUnitesAction().get(i).getType() == 1) {
-						//depart.getListeUnitesAction().remove(i);
-						destination.listeUnites.add(new Unite(1));
-					}
-					if (depart.getListeUnitesAction().get(i).getType() == 2) {
-						//depart.getListeUnitesAction().remove(i);
-						destination.listeUnites.add(new Unite(2));
-					}
-				}
-			}
-		
-	
+
+		if (peutDeplacer(depart, destination) == true) {
+			destination.listeUnites.addAll(depart.listeUnitesAction);
+			depart.listeUnitesAction.clear();	
+		}
+
 	}
 
 	public boolean peutDeplacer(Territoire depart, Territoire destination) {

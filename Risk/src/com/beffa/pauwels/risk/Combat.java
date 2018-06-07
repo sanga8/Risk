@@ -151,6 +151,16 @@ public class Combat {
 		}
 	}
 
+
+	public void majCombat(Territoire tATT, Territoire tDEF) {
+		uniteBatailleATT.addAll(tATT.getListeUnites());
+		uniteBatailleATT.clear();
+		
+		uniteBatailleDEF.addAll(tDEF.getListeUnites());
+		uniteBatailleATT.clear();
+	
+	}
+
 	public void majOccupant(Territoire tATT, Territoire tDEF) {
 		if (tDEF.listeUnites.size() == 0) {
 			tDEF.setOccupant(tATT.getOccupant());
