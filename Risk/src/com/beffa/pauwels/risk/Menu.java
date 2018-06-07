@@ -883,7 +883,7 @@ public class Menu extends JFrame implements MouseListener {
 		/////////////////////////////////////////
 
 		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
-			indications.setText("Selectionnez deux territoires");
+			//indications.setText("Selectionnez deux territoires");
 			mouvement.setVisible(true);
 			action.setVisible(true);
 			if (e.getSource() == mouvement) {
@@ -898,7 +898,7 @@ public class Menu extends JFrame implements MouseListener {
 					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 				} else {
-					indications.setText("Vous ne pouvez pas vous déplacer sur ce territoire");
+					indications.setText("Vous ne pouvez pas vous deplacer sur ce territoire");
 				}
 			}
 			if (e.getSource() == action) {
@@ -908,9 +908,10 @@ public class Menu extends JFrame implements MouseListener {
 					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
 
 					risk.getD().setListeUnitesBataille(risk.getD().getListeUnitesAction());
-
+					
 					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
 					combat.combattre(risk.getD(), risk.getA());
+					risk.getD().getListeUnitesAction().clear();
 					attribuerCouleurs();
 					action.setVisible(false);
 					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
@@ -1031,7 +1032,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusSoldatAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true && risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size()<3) {
 				risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1039,7 +1040,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size()<3) {
 				risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1047,7 +1048,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusCanonAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size()<3) {
 				risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
