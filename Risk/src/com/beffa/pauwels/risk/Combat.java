@@ -33,7 +33,7 @@ public class Combat {
 		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
 	}
 	public void trierDEF(ArrayList<Unite> liste) {
-		System.out.println("Resultats des  premier attaquant avant trier def " + liste.get(0).getResultatDe());
+		//System.out.println("Resultats des  premier attaquant avant trier def " + liste.get(0).getResultatDe());
 		if (liste.size() > 1) {
 			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
 				Collections.swap(liste, 0, 1);
@@ -43,8 +43,6 @@ public class Combat {
 	}
 
 	public void trierATT(Territoire t) {
-
-		System.out.println("Resultats des  premier attaquant avant trier atq " + t.getListeUnitesBataille().get(0).getResultatDe());
 		Collections.sort(t.getListeUnitesBataille(), Comparator.comparing(Unite::getResultatDe));
 		Collections.reverse(t.getListeUnitesBataille());
 		
@@ -65,8 +63,6 @@ public class Combat {
 	}
 
 	public void resoudre(Territoire tATT, Territoire tDEF) {
-
-		System.out.println("Resultats des  premier attaquant avant resoudre " + tATT.getListeUnitesBataille().get(0).getResultatDe());
 		int petiteliste;
 
 		System.out.println("Nb attaquants:" + tATT.getListeUnitesBataille().size());
@@ -77,7 +73,9 @@ public class Combat {
 			petiteliste = tDEF.getListeUnitesBataille().size();
 		}
 		System.out.println("petite liste :" + petiteliste);
-		for (int i = 0; i < petiteliste; i++) {
+
+		for (int i = petiteliste-1; i >= 0; i--) {
+			System.out.println("Resultats des  premier attaquant avant resoudre " + tATT.getListeUnitesBataille().get(0).getResultatDe());
 			if (tDEF.getListeUnitesBataille().get(i).getResultatDe() >= tATT.getListeUnitesBataille().get(i).getResultatDe()) {
 				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(i));
 				tATT.getListeUnitesBataille().remove(i);
@@ -97,9 +95,10 @@ public class Combat {
 	public void majCombat(Territoire tATT, Territoire tDEF) {
 		if (tDEF.getListeUnites().size() == 0) {
 			tDEF.setOccupant(tATT.getOccupant());
-			tDEF.getListeUnitesBataille().addAll(tATT.getListeUnitesBataille());
 
+			tDEF.getListeUnites().addAll(tATT.getListeUnitesBataille());
 		}
+		else{tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());}
 	}
 
 	// COMBATTRE
