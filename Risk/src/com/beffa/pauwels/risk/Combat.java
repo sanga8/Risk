@@ -35,7 +35,10 @@ public class Combat {
 		}
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	public void choisirATT(Territoire tATT, ArrayList<Unite> uniteBatailleATT) {
 		if (tATT.getListeUnitesAction().size() > 0 && tATT.getListeUnitesAction().size() < 4) {
 			System.out.println("Nb d'unite en atq : " + tATT.getListeUnitesAction().size());
@@ -136,20 +139,19 @@ public class Combat {
 		System.out.println("Lancement des dés defense:");
 		lanceDe(tDEF.getListeUnitesBataille());
 
-		lanceDe(tATT.getListeUnitesBataille());
-		lanceDe(tDEF.getListeUnitesBataille());
-
-		trierATT(tATT);
-		trierDEF(tDEF.getListeUnitesBataille());
-
 		resoudre(tATT, tDEF);
 
 		trierATT(tATT);
 		trierDEF(tDEF.getListeUnitesBataille());
+		
 		System.out.println("ici");
+		
 		resoudre(tATT, tDEF);
+		
 		System.out.println("ici");
+		
 		majCombat(tATT, tDEF);
+		
 		tATT.getListeUnitesBataille().clear();
 		tDEF.getListeUnitesBataille().clear();
 
