@@ -1267,48 +1267,48 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	public void setBoundsHitboxes() {
-		hitboxes[0].setBounds(800, 150, 50, 50); // ISLANDE
-		hitboxes[1].setBounds(940, 160, 50, 50); // SCANDINAVIE
-		hitboxes[2].setBounds(770, 250, 50, 50); // GRANDE BRETAGNE
-		hitboxes[3].setBounds(820, 360, 50, 50); // EUROPE DE OUEST
-		hitboxes[4].setBounds(945, 355, 50, 50);// EUROPE DU SUD
-		hitboxes[5].setBounds(940, 270, 50, 50);// EUROPE DU NORD
+		hitboxes[0].setBounds(800, 115, 50, 50); // ISLANDE
+		hitboxes[1].setBounds(970, 105, 50, 50); // SCANDINAVIE
+		hitboxes[2].setBounds(760, 270, 50, 50); // GRANDE BRETAGNE
+		hitboxes[3].setBounds(830, 340, 50, 50); // EUROPE DE OUEST
+		hitboxes[4].setBounds(955, 380, 50, 50);// EUROPE DU SUD
+		hitboxes[5].setBounds(940, 230, 50, 50);// EUROPE DU NORD
 		hitboxes[6].setBounds(1100, 230, 50, 50);// UKRAINE
-		hitboxes[7].setBounds(1005, 495, 50, 50); // EGYPTE
-		hitboxes[8].setBounds(860, 505, 50, 50); // AFRIQUE DU NORD
-		hitboxes[9].setBounds(1100, 595, 50, 50); // AFRIQUE DE LEST
-		hitboxes[10].setBounds(1010, 640, 50, 50); // CONGO
-		hitboxes[11].setBounds(1030, 750, 50, 50); // AFRIQUE DU SUD
-		hitboxes[12].setBounds(1195, 760, 50, 50); // MADAGASCAR
+		hitboxes[7].setBounds(1005, 455, 50, 50); // EGYPTE
+		hitboxes[8].setBounds(855, 475, 50, 50); // AFRIQUE DU NORD
+		hitboxes[9].setBounds(1075, 565, 50, 50); // AFRIQUE DE LEST
+		hitboxes[10].setBounds(1010, 610, 50, 50); // CONGO
+		hitboxes[11].setBounds(1020, 780, 50, 50); // AFRIQUE DU SUD
+		hitboxes[12].setBounds(1210, 770, 50, 50); // MADAGASCAR
 		hitboxes[13].setBounds(1150, 450, 50, 50); // MOYEN ORIENT
-		hitboxes[14].setBounds(1360, 450, 50, 50); // INDE
-		hitboxes[15].setBounds(1260, 320, 50, 50); // AFGANISTAN
-		hitboxes[16].setBounds(1290, 190, 50, 50); // OURAL
-		hitboxes[17].setBounds(1390, 150, 50, 50); // SIBERIE
-		hitboxes[18].setBounds(1500, 480, 50, 50); // SIAM
-		hitboxes[19].setBounds(1500, 370, 50, 50); // CHINE
-		hitboxes[20].setBounds(1500, 90, 50, 50); // YAKOUTI
-		hitboxes[21].setBounds(1500, 290, 50, 50); // MONGOLIE
-		hitboxes[22].setBounds(1700, 290, 50, 50); // JAPON
-		hitboxes[23].setBounds(1650, 90, 50, 50); // KAMCHATKA
-		hitboxes[24].setBounds(1490, 190, 50, 50); // IRKUTSK
-		hitboxes[25].setBounds(140, 110, 50, 50); // ALASKA
-		hitboxes[26].setBounds(300, 110, 50, 50); // TERRITOIRE DU NORD
-		hitboxes[27].setBounds(290, 180, 50, 50); // ALBERTA
-		hitboxes[28].setBounds(400, 200, 50, 50); // ONTARIO
+		hitboxes[14].setBounds(1360, 470, 50, 50); // INDE
+		hitboxes[15].setBounds(1260, 335, 50, 50); // AFGANISTAN
+		hitboxes[16].setBounds(1270, 135, 50, 50); // OURAL
+		hitboxes[17].setBounds(1370, 90, 50, 50); // SIBERIE
+		hitboxes[18].setBounds(1520, 510, 50, 50); // SIAM
+		hitboxes[19].setBounds(1540, 375, 50, 50); // CHINE
+		hitboxes[20].setBounds(1515, 50, 50, 50); // YAKOUTI
+		hitboxes[21].setBounds(1515, 315, 50, 50); // MONGOLIE
+		hitboxes[22].setBounds(1700, 270, 50, 50); // JAPON
+		hitboxes[23].setBounds(1665, 70, 50, 50); // KAMCHATKA
+		hitboxes[24].setBounds(1500, 165, 50, 50); // IRKUTSK
+		hitboxes[25].setBounds(130, 80, 50, 50); // ALASKA
+		hitboxes[26].setBounds(300, 80, 50, 50); // TERRITOIRE DU NORD
+		hitboxes[27].setBounds(285, 210, 50, 50); // ALBERTA
+		hitboxes[28].setBounds(400, 160, 50, 50); // ONTARIO
 		hitboxes[29].setBounds(650, 90, 50, 50); // GROENLAND
-		hitboxes[30].setBounds(540, 200, 50, 50); // QUEBEC
-		hitboxes[31].setBounds(290, 290, 50, 50); // ETATS DE LOUEST
-		hitboxes[32].setBounds(440, 300, 50, 50); // ETATS DE LEST
-		hitboxes[33].setBounds(290, 370, 50, 50);// AMERIQUE CENTRALE
-		hitboxes[34].setBounds(430, 480, 50, 50);// VENEZUELA
-		hitboxes[35].setBounds(580, 550, 50, 50);// BRESIL
-		hitboxes[36].setBounds(470, 600, 50, 50);// PEROU
-		hitboxes[37].setBounds(490, 680, 50, 50);// ARGENTINE
-		hitboxes[38].setBounds(1550, 620, 50, 50);// INDONESIE
-		hitboxes[39].setBounds(1700, 600, 50, 50);// NOUVELLE GUINEE
-		hitboxes[40].setBounds(1620, 750, 50, 50); // AUSTRALIE DE LOUEST
-		hitboxes[41].setBounds(1780, 750, 50, 50); // AUSTRALIE DE LEST
+		hitboxes[30].setBounds(530, 160, 50, 50); // QUEBEC
+		hitboxes[31].setBounds(290, 310, 50, 50); // ETATS DE LOUEST
+		hitboxes[32].setBounds(415, 340, 50, 50); // ETATS DE LEST
+		hitboxes[33].setBounds(290, 400, 50, 50);// AMERIQUE CENTRALE
+		hitboxes[34].setBounds(430, 450, 50, 50);// VENEZUELA
+		hitboxes[35].setBounds(580, 525, 50, 50);// BRESIL
+		hitboxes[36].setBounds(400, 590, 50, 50);// PEROU
+		hitboxes[37].setBounds(480, 720, 50, 50);// ARGENTINE
+		hitboxes[38].setBounds(1500, 620, 50, 50);// INDONESIE
+		hitboxes[39].setBounds(1700, 550, 50, 50);// NOUVELLE GUINEE
+		hitboxes[40].setBounds(1620, 720, 50, 50); // AUSTRALIE DE LOUEST
+		hitboxes[41].setBounds(1770, 770, 50, 50); // AUSTRALIE DE LEST
 
 	}
 
