@@ -270,7 +270,7 @@ public class Risk {
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 1 && peutMouvement(depart)) {
+			if (depart.get(i).getType() == 1 ) {
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
@@ -281,8 +281,40 @@ public class Risk {
 
 	public void transfererCanon(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
+			if (depart.get(i).getType() == 2) {
+				Unite unite = depart.get(i);
+				destination.add(unite);
+				depart.remove(i);
+				return;
+			}
+		}
+	}
+	
+	public void transfererSoldatAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		for (int i = 0; i < depart.size(); i++) {
+			if (depart.get(i).getType() == 0) {
+				Unite unite = depart.get(i);
+				destination.add(unite);
+				depart.remove(i);
+				return;
+			}
+		}
+	}
+
+	public void transfererCavalierAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		for (int i = 0; i < depart.size(); i++) {
+			if (depart.get(i).getType() == 1 && peutMouvement(depart)) {
+				Unite unite = depart.get(i);
+				destination.add(unite);
+				depart.remove(i);
+				return;
+			}
+		}
+	}
+
+	public void transfererCanonAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
+		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 2 && peutMouvement(depart)) {
-				System.out.println("Whehelle mouvement cannon" + depart.get(i).getMouvement());
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);

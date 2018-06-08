@@ -1050,7 +1050,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == BtnplusSoldatAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true && risk.renfortTermine()) {
-				risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
+				risk.transfererSoldatAction(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
@@ -1059,7 +1059,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
-				risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
+				risk.transfererCavalierAction(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
@@ -1068,7 +1068,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		if (e.getSource() == BtnplusCanonAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
-				risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
+				risk.transfererCanonAction(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
