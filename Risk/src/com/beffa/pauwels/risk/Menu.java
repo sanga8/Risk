@@ -560,7 +560,6 @@ public class Menu extends JFrame implements MouseListener {
 		mouvement.setBounds(1620, 950, 100, 100);
 		mouvement.setIcon(new ImageIcon("Images/mouvement.png"));
 		mouvement.addMouseListener(this);
-		mouvement.setVisible(false);
 		background.add(mouvement);
 
 		findutour = new JLabel();
@@ -913,7 +912,6 @@ public class Menu extends JFrame implements MouseListener {
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 				} else {
 					indications.setText("Vous ne pouvez pas vous deplacer sur ce territoire");
-					mouvement.setVisible(false);
 				}
 			}
 			if (e.getSource() == action) {
@@ -944,11 +942,6 @@ public class Menu extends JFrame implements MouseListener {
 				}
 			}
 
-			if (risk.getA() == null || risk.getD() == null) {
-				indications.setText("Selectionnez deux territoires");
-				action.setVisible(false);
-				mouvement.setVisible(false);
-			}
 		}
 
 		/*
