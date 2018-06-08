@@ -17,7 +17,6 @@ public class Joueur {
 
 	private ArrayList<Unite> renforts = new ArrayList<Unite>();
 
-
 	/**
 	 * Instancie le nom et l'id des joueurs
 	 * 
@@ -29,7 +28,6 @@ public class Joueur {
 		this.idJoueur = idJoueur;
 	}
 
-	
 	// GETTERS ET SETTERS
 
 	public String getNom() {

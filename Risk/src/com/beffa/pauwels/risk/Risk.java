@@ -2,7 +2,6 @@ package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.swing.JTextArea;
 
 public class Risk {

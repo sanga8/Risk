@@ -2,29 +2,23 @@ package com.beffa.pauwels.risk;
 
 import java.awt.Dimension;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 import java.awt.Toolkit;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 /**
- * Cette classe gère l'affichage et les interactions utilisateurs-jeu
- * On utilise JavaSwing pour nos composants graphiques
+ * Cette classe gère l'affichage et les interactions utilisateurs-jeu On utilise
+ * JavaSwing pour nos composants graphiques
+ * 
  * @author vince
  *
  */
 
 public class Menu extends JFrame implements MouseListener {
-	
-	//Initialisation des paramètres
+
+	// Initialisation des paramètres
 	private JPanel menu;
 	private JPanel jeu;
 
@@ -134,8 +128,6 @@ public class Menu extends JFrame implements MouseListener {
 	public Audio son;
 	public Combat combat;
 
-	
-	
 	/**
 	 * Contructeur dans lequel on instancie les classes Risk, Combat et audio
 	 * Réglage de la JFrame
@@ -164,9 +156,11 @@ public class Menu extends JFrame implements MouseListener {
 		this.setVisible(true);
 
 	}
-	
+
 	/**
-	 * JPanel du menu, inclu les boutons jouer , quitter, et toute l'interface pour sélectionner le nombre de joueurs
+	 * JPanel du menu, inclu les boutons jouer , quitter, et toute l'interface pour
+	 * sélectionner le nombre de joueurs
+	 * 
 	 * @return
 	 */
 	private JPanel menu() {
@@ -289,9 +283,11 @@ public class Menu extends JFrame implements MouseListener {
 		menu.add(background);
 		return menu;
 	}
-	
+
 	/**
-	 * JPanel du jeu, avec la carte du jeu, le tableau d'unités et tout l'affichage présent en jeu
+	 * JPanel du jeu, avec la carte du jeu, le tableau d'unités et tout l'affichage
+	 * présent en jeu
+	 * 
 	 * @return
 	 */
 	private JPanel jeu() {
@@ -304,8 +300,8 @@ public class Menu extends JFrame implements MouseListener {
 		jeu.add(background);
 
 		mute = new JLabel();
-		//mute.setBounds(1870, 5, 50, 50);
-		//mute.setIcon(new ImageIcon("Images/mute.png"));
+		// mute.setBounds(1870, 5, 50, 50);
+		// mute.setIcon(new ImageIcon("Images/mute.png"));
 		mute.addMouseListener(this);
 		background.add(mute);
 
@@ -621,31 +617,30 @@ public class Menu extends JFrame implements MouseListener {
 			map.add(hitboxes[index]);
 		}
 		setBoundsHitboxes();
-		
-		
-		//ENLEVER BOUTONS DE TEST:
+
+		// ENLEVER BOUTONS DE TEST:
 		BtnplusSoldatRenfort.setVisible(false);
 		BtnmoinsSoldatRenfort.setVisible(false);
-		BtnmoinsSoldatTerritoire.setVisible(false);	
+		BtnmoinsSoldatTerritoire.setVisible(false);
 		BtnmoinsCavalierTerritoire.setVisible(false);
 		BtnmoinsCanonTerritoire.setVisible(false);
-		
-		
-		
+
 		jeu.repaint();
 		return jeu;
 	}
-	
+
 	/**
 	 * Renvoi le nombre de joueur selectionne
+	 * 
 	 * @return
 	 */
 	public int getNbJoueurs() {
 		return nbJoueurs;
 	}
-	
+
 	/**
 	 * Modifie le nombre de joueur
+	 * 
 	 * @param nbJoueurs
 	 */
 	public void setNbJoueurs(int nbJoueurs) {
@@ -707,7 +702,7 @@ public class Menu extends JFrame implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
-	
+
 	/**
 	 * Mettre en surbrillance les boutons lorsque la souris entre dans leur hitbox
 	 */
@@ -943,7 +938,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 			if (e.getSource() == action) {
 				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
-					if (risk.getD().getListeUnitesAction().size() <=3) {
+					if (risk.getD().getListeUnitesAction().size() <= 3) {
 
 						System.out.println("Taille liste unite ACTION ATT" + risk.getD().getListeUnitesAction().size());
 						System.out.println(
@@ -965,13 +960,13 @@ public class Menu extends JFrame implements MouseListener {
 					}
 				} else {
 					indications.setText("Vous ne pouvez pas attaquer ce territoire");
-				
+
 				}
 			}
 
 		}
 		/*
-		 *Actualiser les territoires selectionnes
+		 * Actualiser les territoires selectionnes
 		 */
 		if (e.getSource() == refresh) {
 			risk.refreshSelection(indications);
@@ -1026,10 +1021,9 @@ public class Menu extends JFrame implements MouseListener {
 			joueur5TextField.setVisible(true);
 			joueur6TextField.setVisible(true);
 		}
-		
-		
-		//BOUTONS DU TABLEAU : RENFORTS , TERRITOIRE , ACTION
-		
+
+		// BOUTONS DU TABLEAU : RENFORTS , TERRITOIRE , ACTION
+
 		if (e.getSource() == BtnplusSoldatRenfort) {
 			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
@@ -1076,58 +1070,70 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusSoldatAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true && risk.renfortTermine()) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true
+					&& risk.renfortTermine()) {
 				risk.transfererSoldatAction(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			} else {
+				indications.setText("Vous ne pouvez pas effectuer d'actions");
 			}
-			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true
+					&& risk.renfortTermine()) {
 				risk.transfererCavalierAction(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			} else {
+				indications.setText("Vous ne pouvez pas effectuer d'actions");
 			}
-			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnplusCanonAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true
+					&& risk.renfortTermine()) {
 				risk.transfererCanonAction(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			} else {
+				indications.setText("Vous ne pouvez pas effectuer d'actions");
 			}
-			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnmoinsSoldatAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true
+					&& risk.renfortTermine()) {
 				risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			} else {
+				indications.setText("Vous ne pouvez pas effectuer d'actions");
 			}
-			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnmoinsCavalierAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true
+					&& risk.renfortTermine()) {
 				risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			} else {
+				indications.setText("Vous ne pouvez pas effectuer d'actions");
 			}
-			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnmoinsCanonAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true
+					&& risk.renfortTermine()) {
 				risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			} else {
+				indications.setText("Vous ne pouvez pas effectuer d'actions");
 			}
-			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 
 	}
@@ -1139,6 +1145,7 @@ public class Menu extends JFrame implements MouseListener {
 	// VERIFICATIONS
 	/**
 	 * Verifie qu'il y a au moins deux joueurs
+	 * 
 	 * @param nj
 	 * @return
 	 */
@@ -1148,9 +1155,10 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return verifNbJoueurMin = true;
 	}
-	
+
 	/**
 	 * Verifie que la taille des noms n'est pas trop grande
+	 * 
 	 * @param j
 	 * @return
 	 */
@@ -1166,6 +1174,7 @@ public class Menu extends JFrame implements MouseListener {
 	// AFFICHE EN CONSOLE LES UNITES DUNE LISTE
 	/**
 	 * Affiche en console le nombre d'unites différentes d'une liste d'unite
+	 * 
 	 * @param l
 	 */
 	public void afficherNbUnite(ArrayList<Unite> l) {
@@ -1189,7 +1198,9 @@ public class Menu extends JFrame implements MouseListener {
 
 	// RENVOI UN STRING DU NOMBRE DE TROUPES
 	/**
-	 * Compter les soldats et convertir le nombre de soldats en string pour pouvoir l'afficher
+	 * Compter les soldats et convertir le nombre de soldats en string pour pouvoir
+	 * l'afficher
+	 * 
 	 * @param l
 	 * @return
 	 */
@@ -1202,9 +1213,11 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return Integer.toString(soldat);
 	}
-	
+
 	/**
-	 * Compter les cavaliers et convertir le nombre de soldats en string pour pouvoir l'afficher
+	 * Compter les cavaliers et convertir le nombre de soldats en string pour
+	 * pouvoir l'afficher
+	 * 
 	 * @param l
 	 * @return
 	 */
@@ -1217,9 +1230,11 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return Integer.toString(cavalier);
 	}
-	
+
 	/**
-	 * Compter les canons et convertir le nombre de soldats en string pour pouvoir l'afficher
+	 * Compter les canons et convertir le nombre de soldats en string pour pouvoir
+	 * l'afficher
+	 * 
 	 * @param l
 	 * @return
 	 */
@@ -1232,7 +1247,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return Integer.toString(canon);
 	}
-	
+
 	/**
 	 * Actualiser les textfields du tableau d'unites renforts (affichage)
 	 */
@@ -1245,7 +1260,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-	
+
 	/**
 	 * Actualiser les textfields du tableau d'unites territoire (affichage)
 	 */
@@ -1258,7 +1273,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-	
+
 	/**
 	 * Actualiser les textfields du tableau d'unites action (affichage)
 	 */
@@ -1271,7 +1286,6 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-	
 
 	/**
 	 * Affichage des hitboxes des territoires
@@ -1321,7 +1335,7 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[41].setBounds(1770, 770, 50, 50); // AUSTRALIE DE LEST
 
 	}
-	
+
 	/**
 	 * Attribuer les couleurs en fonction de l'occupant du territoire
 	 */
@@ -1334,9 +1348,10 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-	
+
 	/**
 	 * Verifie si un joueur peut transferer ses unites sur un territoire
+	 * 
 	 * @return
 	 */
 	public boolean peutTransferer() {

@@ -17,10 +17,10 @@ public class Unite {
 		this.type = type;
 		// SOLDAT
 		if (type == 0) {
-			this.puissance = 1;		//La puissance de l'unité
-			this.prioriteATT = 2;	//La priorité d'attaque de l'unité
-			this.prioriteDEF = 1;	//La priorité de défense de l'unité
-			this.mouvement = 2;		//Le nombre de points de mouvement de l'unité
+			this.puissance = 1; // La puissance de l'unité
+			this.prioriteATT = 2; // La priorité d'attaque de l'unité
+			this.prioriteDEF = 1; // La priorité de défense de l'unité
+			this.mouvement = 2; // Le nombre de points de mouvement de l'unité
 
 		}
 		// CAVALIER
