@@ -23,9 +23,8 @@ public class Risk {
 	public Risk() {
 		creerTerritoires();
 
-
 	}
-	
+
 	public void attribuerTerritoires() {
 		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
 		for (int i = 0; i < listeTerritoires.size(); i++) {
@@ -68,8 +67,8 @@ public class Risk {
 					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
 						counter++;
 					}
-					if(counter == 42) {
-						System.out.println("Joueur "+listeJoueurs.get(i).getIdJoueur()+" a gagné");
+					if (counter == 42) {
+						System.out.println("Joueur " + listeJoueurs.get(i).getIdJoueur() + " a gagné");
 						System.exit(0);
 					}
 				}
@@ -126,8 +125,6 @@ public class Risk {
 		return null;
 	}
 
-	
-
 	public void distribuerRenfortsDebut() {
 		if (listeJoueurs.size() == 2) {
 			for (int i = 0; i < 19; i++) {
@@ -170,7 +167,6 @@ public class Risk {
 			}
 		}
 	}
-
 
 	public void ajoutAutoRenforts() {
 		int counter = 0;
@@ -427,7 +423,8 @@ public class Risk {
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
 		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
-		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec","Groenland" };
+		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec",
+				"Groenland" };
 		String[] listeGR = { "Ontario", "Territoires du Nord", "Quebec", "Island" };
 		String[] listeQU = { "Etats de L'Est", "Ontario", "Groenland" };
 		String[] listeEDO = { "Etats de L'Est", "Amerique Centrale", "Ontario", "Alberta" };

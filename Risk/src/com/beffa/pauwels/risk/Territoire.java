@@ -1,6 +1,5 @@
 package com.beffa.pauwels.risk;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class Territoire {
@@ -8,26 +7,26 @@ public class Territoire {
 	private int id;
 	private String id2;
 	public String[] territoiresAdjacents;
-	
+
 	private Joueur occupant;
-	public  ArrayList<Unite> listeUnites;
-	public  ArrayList<Unite> listeUnitesAction;
-	public  ArrayList<Unite> listeUnitesBataille;
-	
+	public ArrayList<Unite> listeUnites;
+	public ArrayList<Unite> listeUnitesAction;
+	public ArrayList<Unite> listeUnitesBataille;
+
 	public Territoire(String nom, String[] territoiresAdjacents, int id, String id2) {
 		this.nom = nom;
-		this.id2=id2;
+		this.id2 = id2;
 		this.id = id;
 		this.territoiresAdjacents = territoiresAdjacents;
 
-		 ArrayList<Unite> u = new ArrayList<Unite>();
-		 this.listeUnites=u;
-		 ArrayList<Unite> ua = new ArrayList<Unite>();
-		 this.listeUnitesAction=ua;
-		 ArrayList<Unite> ub = new ArrayList<Unite>();
-		 this.listeUnitesBataille=ub;
-			
-		 listeUnites.add(new Unite(0));
+		ArrayList<Unite> u = new ArrayList<Unite>();
+		this.listeUnites = u;
+		ArrayList<Unite> ua = new ArrayList<Unite>();
+		this.listeUnitesAction = ua;
+		ArrayList<Unite> ub = new ArrayList<Unite>();
+		this.listeUnitesBataille = ub;
+
+		listeUnites.add(new Unite(0));
 	}
 
 	public String[] getTerritoiresAdjacents() {
@@ -49,19 +48,22 @@ public class Territoire {
 	public void addUnite(Unite u) {
 		listeUnites.add(u);
 	}
-	
+
 	public ArrayList<Unite> getListeUnites() {
 		return listeUnites;
 
 	}
+
 	public ArrayList<Unite> getListeUnitesAction() {
 		return listeUnitesAction;
 
 	}
+
 	public ArrayList<Unite> getListeUnitesBataille() {
 		return listeUnitesAction;
 
 	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -73,6 +75,7 @@ public class Territoire {
 	public int getId() {
 		return id;
 	}
+
 	public String getId2() {
 		return id2;
 	}
@@ -80,7 +83,5 @@ public class Territoire {
 	public void setListeUnitesBataille(ArrayList<Unite> listeUnitesBataille) {
 		this.listeUnitesBataille = listeUnitesBataille;
 	}
-	
-
 
 }
