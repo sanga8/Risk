@@ -17,8 +17,6 @@ import javax.swing.*;
 
 public class Menu extends JFrame implements MouseListener {
 
-	private JFrame f;
-
 	private JPanel menu;
 	private JPanel jeu;
 
@@ -118,8 +116,6 @@ public class Menu extends JFrame implements MouseListener {
 	private JLabel jeton6;
 
 	private JLabel[] hitboxes;
-
-	// private HashMap<String, JLabel> hitboxes;
 
 	// private boolean peutTransferer = false;
 	private int ceTerritoire = 99;
