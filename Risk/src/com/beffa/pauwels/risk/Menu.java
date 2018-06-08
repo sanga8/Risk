@@ -1062,7 +1062,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
-			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
@@ -1071,7 +1071,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
-			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnplusCanonAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
@@ -1080,7 +1080,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
-			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnmoinsSoldatAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
@@ -1089,7 +1089,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
-			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnmoinsCavalierAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
@@ -1098,7 +1098,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
-			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 		if (e.getSource() == BtnmoinsCanonAction) {
 			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
@@ -1107,7 +1107,7 @@ public class Menu extends JFrame implements MouseListener {
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
-			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+			else{indications.setText("Vous ne pouvez pas effectuer d'actions");}
 		}
 
 	}
