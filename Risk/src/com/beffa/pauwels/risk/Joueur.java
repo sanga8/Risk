@@ -2,43 +2,39 @@ package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
 
+/**
+ * Classe joueur qui représente les utilisateurs Les joueurs possedents une
+ * liste d'unite de renforts à placer au debut de chaque tour Ils possedent
+ * aussi une liste de territoire
+ * 
+ * @author vince
+ *
+ */
 public class Joueur {
 
 	private String nom;
 	private int idJoueur;
 
 	private ArrayList<Unite> renforts = new ArrayList<Unite>();
+<<<<<<< HEAD
 	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
 	
+=======
+>>>>>>> branch 'master' of https://github.com/sanga8/Risk
 
+	/**
+	 * Instancie le nom et l'id des joueurs
+	 * 
+	 * @param nom
+	 * @param idJoueur
+	 */
 	public Joueur(String nom, int idJoueur) {
 		this.nom = nom;
 		this.idJoueur = idJoueur;
 	}
 
-	public boolean perdu() {
-		if (this.territoiresPossedes.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean gagne() {
-		if (this.territoiresPossedes.size() == 42) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public void ajouterTerritoirePossede(Territoire territoire) {
-		this.territoiresPossedes.add(territoire);
-	}
-
-	public void supprimerTerritoirePossede(Territoire territoire) {
-		this.territoiresPossedes.remove(territoire);
-	}
+	
+	// GETTERS ET SETTERS
 
 	public String getNom() {
 		return nom;
@@ -48,6 +44,7 @@ public class Joueur {
 		return idJoueur;
 	}
 
+<<<<<<< HEAD
 	public ArrayList<Territoire> getTerritoiresPossedes() {
 		return territoiresPossedes;
 	}
@@ -56,6 +53,8 @@ public class Joueur {
 		this.territoiresPossedes = territoiresPossedes;
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	public ArrayList<Unite> getRenforts() {
 		return renforts;
 	}
@@ -67,6 +66,5 @@ public class Joueur {
 	public void setIdJoueur(int idJoueur) {
 		this.idJoueur = idJoueur;
 	}
-	
 
 }

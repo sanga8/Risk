@@ -18,6 +18,10 @@ public class Risk {
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/sanga8/Risk
 
 	public Risk() {
 		creerTerritoires();	//Creer la liste de Territoires
@@ -553,6 +557,7 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Nouvelle Guinee", listeNG, 39, "39")); // h40
 		this.listeTerritoires.add(new Territoire("Australie de l'Ouest", listeADO, 40, "40")); // h41
 		this.listeTerritoires.add(new Territoire("Australie de l'Est", listeADE, 41, "41")); // h42
+<<<<<<< HEAD
 
 		// Continents
 		ArrayList<Territoire> c1 = new ArrayList<Territoire>();
@@ -584,6 +589,8 @@ public class Risk {
 		for (int i = 38; i < 42; i++) {
 			c6.add(this.listeTerritoires.get(i));
 		}
+=======
+>>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	}
 
 	public Territoire getD() {
