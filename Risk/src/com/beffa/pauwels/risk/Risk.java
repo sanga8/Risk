@@ -32,6 +32,7 @@ public class Risk {
 	 * GESTION DE TOUR
 	 */
 	public void finDeTour() {
+		verifVictoire();
 		tour++;
 		majMouvement();
 		if (tour >= listeJoueurs.size()) {
@@ -42,6 +43,24 @@ public class Risk {
 			tour++;
 			if (tour >= listeJoueurs.size()) {
 				tour = 0;
+			}
+		}
+
+	}
+
+	public void verifVictoire() {
+		int counter = 0;
+		for (int i = 0; i < listeJoueurs.size(); i++) {
+			if (listeJoueurs.get(i).getIdJoueur() == tour) {
+				for (int j = 0; j < listeTerritoires.size(); j++) {
+					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
+						counter++;
+					}
+					if(counter == 42) {
+						System.out.println("Joueur "+listeJoueurs.get(i).getIdJoueur()+" a gagné");
+						System.exit(0);
+					}
+				}
 			}
 		}
 
@@ -270,7 +289,7 @@ public class Risk {
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 1 ) {
+			if (depart.get(i).getType() == 1) {
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
@@ -289,10 +308,11 @@ public class Risk {
 			}
 		}
 	}
-	
+
 	public void transfererSoldatAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 0) {
+				System.out.println("Point de mouvement des soldats :" + depart.get(i).getMouvement());
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
@@ -304,6 +324,7 @@ public class Risk {
 	public void transfererCavalierAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 1 && peutMouvement(depart)) {
+				System.out.println("Point de mouvement des cavaliers :" + depart.get(i).getMouvement());
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
@@ -315,6 +336,7 @@ public class Risk {
 	public void transfererCanonAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 2 && peutMouvement(depart)) {
+				System.out.println("Point de mouvement des canons :" + depart.get(i).getMouvement());
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
