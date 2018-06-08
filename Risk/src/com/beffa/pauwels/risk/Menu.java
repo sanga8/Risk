@@ -560,7 +560,6 @@ public class Menu extends JFrame implements MouseListener {
 		mouvement.setBounds(1620, 950, 100, 100);
 		mouvement.setIcon(new ImageIcon("Images/mouvement.png"));
 		mouvement.addMouseListener(this);
-		mouvement.setVisible(false);
 		background.add(mouvement);
 
 		findutour = new JLabel();
@@ -609,7 +608,7 @@ public class Menu extends JFrame implements MouseListener {
 		//ENLEVER BOUTONS DE TEST:
 		BtnplusSoldatRenfort.setVisible(false);
 		BtnmoinsSoldatRenfort.setVisible(false);
-		BtnmoinsSoldatTerritoire.setVisible(false);
+		BtnmoinsSoldatTerritoire.setVisible(false);	
 		BtnmoinsCavalierTerritoire.setVisible(false);
 		BtnmoinsCanonTerritoire.setVisible(false);
 		
@@ -884,7 +883,7 @@ public class Menu extends JFrame implements MouseListener {
 		}
 
 		if (e.getSource() == mute) {
-			son.stop();
+			
 			mute.setIcon(new ImageIcon("Images/demute.png"));
 			if (isMute == true) {
 				son.start();

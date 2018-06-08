@@ -33,6 +33,7 @@ public class Risk {
 	 */
 	public void finDeTour() {
 		tour++;
+		majMouvement();
 		if (tour >= listeJoueurs.size()) {
 			tour = 0;
 			premierTour = false;
@@ -44,6 +45,22 @@ public class Risk {
 			}
 		}
 
+	}
+
+	public void majMouvement() {
+		for (int i = 0; i < listeTerritoires.size(); i++) {
+			for (int j = 0; j < listeTerritoires.get(i).getListeUnites().size(); j++) {
+				if (listeTerritoires.get(i).getListeUnites().get(j).getType() == 0) {
+					listeTerritoires.get(i).getListeUnites().get(j).setMouvement(2);
+					if (listeTerritoires.get(i).getListeUnites().get(j).getType() == 1) {
+						listeTerritoires.get(i).getListeUnites().get(j).setMouvement(3);
+						if (listeTerritoires.get(i).getListeUnites().get(j).getType() == 2) {
+							listeTerritoires.get(i).getListeUnites().get(j).setMouvement(1);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public boolean sonTour() {
@@ -243,9 +260,10 @@ public class Risk {
 	// SELECTIONNE
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 0) {
-				depart.remove(0);
-				destination.add(new Unite(0));
+			if (depart.get(i).getType() == 0 && peutMouvement(depart)) {
+				Unite unite = depart.get(i);
+				destination.add(unite);
+				depart.remove(i);
 				return;
 			}
 		}
@@ -253,19 +271,22 @@ public class Risk {
 
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 1) {
+			if (depart.get(i).getType() == 1 && peutMouvement(depart)) {
+				Unite unite = depart.get(i);
+				destination.add(unite);
 				depart.remove(i);
-				destination.add(new Unite(1));
 				return;
 			}
-		}			
+		}
 	}
 
 	public void transfererCanon(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 2) {
+			if (depart.get(i).getType() == 2 && peutMouvement(depart)) {
+				System.out.println("Whehelle mouvement cannon" + depart.get(i).getMouvement());
+				Unite unite = depart.get(i);
+				destination.add(unite);
 				depart.remove(i);
-				destination.add(new Unite(2));
 				return;
 			}
 		}
@@ -273,7 +294,12 @@ public class Risk {
 
 	// DEPLACEMENT DE TROUPES
 	public void deplacer(Territoire depart, Territoire destination) {
+
 		if (peutDeplacer(depart, destination) == true) {
+			for (int j = 0; j < depart.getListeUnitesAction().size(); j++) {
+				depart.getListeUnitesAction().get(j)
+						.setMouvement(depart.getListeUnitesAction().get(j).getMouvement() - 1);
+			}
 			destination.listeUnites.addAll(depart.listeUnitesAction);
 			depart.listeUnitesAction.clear();
 		}
@@ -285,6 +311,16 @@ public class Risk {
 				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
 					return true;
 				}
+			}
+		}
+		return false;
+	}
+	// CONDITION DEPLACEMENT
+
+	public boolean peutMouvement(ArrayList<Unite> liste) {
+		for (int i = 0; i < liste.size(); i++) {
+			if (liste.get(i).getMouvement() > 0) {
+				return true;
 			}
 		}
 		return false;
@@ -301,22 +337,6 @@ public class Risk {
 		return false;
 	}
 
-	public void deplacer2(Territoire depart, Territoire destination) {
-		int c = 0;
-		for (int i = 0; i < depart.listeUnites.size(); i++) {
-			if (depart.listeUnites.get(i).getType() == 0) {
-				c++;
-			}
-		}
-		depart.listeUnites.removeIf(p -> p.getType() == 0);
-		for (int h = 0; h < c - 1; h++) {
-			depart.listeUnites.add(new Unite(0));
-		}
-		destination.listeUnites.add(new Unite(0));
-		return;
-	}
-
-	
 	public int nbTerritoirePossede(Joueur joueur) {
 		int conteur = 0;
 		for (int i = 0; i < listeTerritoires.size(); i++) {
