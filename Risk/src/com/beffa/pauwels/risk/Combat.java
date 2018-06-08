@@ -122,19 +122,18 @@ public class Combat {
 		System.out.println("petite liste :" + petiteliste); //La petite liste correspond au plus faible nombre de combats réalisés par l'attaquant et le défenseur
 
 		for (int i = petiteliste - 1; i >= 0; i--) {
-			System.out.println("Resultats des  premier attaquant avant resoudre "
-					+ tATT.getListeUnitesBataille().get(0).getResultatDe());
-			if (tDEF.getListeUnitesBataille().get(i).getResultatDe() >= tATT.getListeUnitesBataille().get(i)
-					.getResultatDe()) {
+			System.out.println("Resultats des  premier attaquant avant resoudre "+ tATT.getListeUnitesBataille().get(0).getResultatDe());
+			
+			if (tDEF.getListeUnitesBataille().get(i).getResultatDe() >= tATT.getListeUnitesBataille().get(i).getResultatDe()) {
 				tATT.getListeUnites().remove(tATT.getListeUnitesBataille().get(i));
-				tATT.getListeUnitesBataille().remove(i);
+				tATT.getListeUnitesBataille().remove(i); //Si la defense gagne, on enlève l'attaquant de la liste clonée et dans le territoire
 
 				System.out.println("Attaquant perd unite");
 
 			} else {
 
 				tDEF.getListeUnites().remove(tDEF.getListeUnitesBataille().get(i));
-				tDEF.getListeUnitesBataille().remove(i);
+				tDEF.getListeUnitesBataille().remove(i);	//Si l'attaquant gagne, on enlève le defenseur de la liste clonée et dans le territoire
 				System.out.println("Defenseur perd unite");
 			}
 		}
@@ -142,14 +141,14 @@ public class Combat {
 
 	public void majCombat(Territoire tATT, Territoire tDEF) {
 		for (int i = 0; i < tATT.getListeUnitesBataille().size(); i++) {
-			tATT.listeUnitesBataille.get(i).setMouvement(tATT.listeUnitesBataille.get(i).getMouvement() - 1);
+			tATT.listeUnitesBataille.get(i).setMouvement(tATT.listeUnitesBataille.get(i).getMouvement() - 1);	//On retire un point de mouvement aux unités qui ont combatu
 		}
 		if (tDEF.getListeUnites().size() == 0) {
-			tDEF.setOccupant(tATT.getOccupant());
+			tDEF.setOccupant(tATT.getOccupant());	//S'il n'y a plus d'unités dans le territoire qui défend, l'attaquant en prend le controle
 
-			tDEF.getListeUnites().addAll(tATT.getListeUnitesBataille());
+			tDEF.getListeUnites().addAll(tATT.getListeUnitesBataille());	//Puis on déplace les unités d'attaque qui ont survécu sur le nouveau térritoire
 		} else {
-			tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());
+			tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());	//Sinon les unités d'attaque qui ont survécu retournent dans leurs térritoire de départ
 		}
 	}
 
