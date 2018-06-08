@@ -18,7 +18,7 @@ public class Risk {
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
-	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
+
 
 	public Risk() {
 		creerTerritoires();
@@ -486,45 +486,6 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Nouvelle Guinee", listeNG, 39, "39")); // h40
 		this.listeTerritoires.add(new Territoire("Australie de l'Ouest", listeADO, 40, "40")); // h41
 		this.listeTerritoires.add(new Territoire("Australie de l'Est", listeADE, 41, "41")); // h42
-
-		// Continents
-		ArrayList<Territoire> c1 = new ArrayList<Territoire>();
-		for (int i = 0; i < 7; i++) {
-			c1.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c2 = new ArrayList<Territoire>();
-		for (int i = 7; i < 13; i++) {
-			c2.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c3 = new ArrayList<Territoire>();
-		for (int i = 13; i < 25; i++) {
-			c3.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c4 = new ArrayList<Territoire>();
-		for (int i = 25; i < 34; i++) {
-			c4.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c5 = new ArrayList<Territoire>();
-		for (int i = 34; i < 38; i++) {
-			c5.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c6 = new ArrayList<Territoire>();
-		for (int i = 38; i < 42; i++) {
-			c6.add(this.listeTerritoires.get(i));
-		}
-
-		this.listeContinents.add(new Continent(0, c1));// Europe
-		this.listeContinents.add(new Continent(1, c2));// Afrique
-		this.listeContinents.add(new Continent(2, c3));// Asie
-		this.listeContinents.add(new Continent(3, c4));// Amerique du Nord
-		this.listeContinents.add(new Continent(4, c5));// Amerique du Sud
-		this.listeContinents.add(new Continent(5, c6));// Oceanie
-
 	}
 
 	public Territoire getD() {

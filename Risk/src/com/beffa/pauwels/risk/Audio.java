@@ -3,7 +3,12 @@ package com.beffa.pauwels.risk;
 import  java.io.*;
 import javax.sound.sampled.*;
  
- 
+/**
+ * Cette classe a été prise sur un forum. 
+ * Elle permet d'ajouter une ambiance sonore au jeu
+ * @author internet
+ *
+ */
 public class Audio extends Thread{
      
      

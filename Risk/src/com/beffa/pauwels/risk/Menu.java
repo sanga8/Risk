@@ -15,8 +15,16 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 
-public class Menu extends JFrame implements MouseListener {
+/**
+ * Cette classe gère l'affichage et les interactions utilisateurs-jeu
+ * On utilise JavaSwing pour nos composants graphiques
+ * @author vince
+ *
+ */
 
+public class Menu extends JFrame implements MouseListener {
+	
+	//Initialisation des paramètres
 	private JPanel menu;
 	private JPanel jeu;
 
@@ -126,6 +134,12 @@ public class Menu extends JFrame implements MouseListener {
 	public Audio son;
 	public Combat combat;
 
+	
+	
+	/**
+	 * Contructeur dans lequel on instancie les classes Risk, Combat et audio
+	 * Réglage de la JFrame
+	 */
 	public Menu() {
 
 		son = new Audio();
@@ -150,7 +164,11 @@ public class Menu extends JFrame implements MouseListener {
 		this.setVisible(true);
 
 	}
-
+	
+	/**
+	 * JPanel du menu, inclu les boutons jouer , quitter, et toute l'interface pour sélectionner le nombre de joueurs
+	 * @return
+	 */
 	private JPanel menu() {
 		menu = new JPanel();
 		menu.setLayout(null);
@@ -271,7 +289,11 @@ public class Menu extends JFrame implements MouseListener {
 		menu.add(background);
 		return menu;
 	}
-
+	
+	/**
+	 * JPanel du jeu, avec la carte du jeu, le tableau d'unités et tout l'affichage présent en jeu
+	 * @return
+	 */
 	private JPanel jeu() {
 		jeu = new JPanel();
 		jeu.setLayout(null);
@@ -613,11 +635,19 @@ public class Menu extends JFrame implements MouseListener {
 		jeu.repaint();
 		return jeu;
 	}
-
+	
+	/**
+	 * Renvoi le nombre de joueur selectionne
+	 * @return
+	 */
 	public int getNbJoueurs() {
 		return nbJoueurs;
 	}
-
+	
+	/**
+	 * Modifie le nombre de joueur
+	 * @param nbJoueurs
+	 */
 	public void setNbJoueurs(int nbJoueurs) {
 		this.nbJoueurs = nbJoueurs;
 	}
@@ -625,6 +655,9 @@ public class Menu extends JFrame implements MouseListener {
 	// EVENT MOUSE LISTENER
 
 	// JETON MOUSE LISTENER
+	/**
+	 * Mouse Listener uniquement pour gérer les cliques sur les territoires
+	 */
 	MouseListener m = new MouseListener() {
 		public void mouseClicked(MouseEvent e) {
 		}
@@ -674,7 +707,10 @@ public class Menu extends JFrame implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
-
+	
+	/**
+	 * Mettre en surbrillance les boutons lorsque la souris entre dans leur hitbox
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
@@ -706,6 +742,9 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * Enlever la surbrillance des boutons lorsqu'on est pas dessus
+	 */
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() == jouer) {
 			jouer.setIcon(new ImageIcon("Images/Jouer.png"));
@@ -734,6 +773,9 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	@Override
+	/**
+	 * Gestion des evenements de souris sur les boutons
+	 */
 	public void mousePressed(MouseEvent e) {
 
 		if (e.getSource() == jouer) {
@@ -879,23 +921,9 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		/*
-		if (e.getSource() == mute) {
-			
-			mute.setIcon(new ImageIcon("Images/demute.png"));
-			if (isMute == true) {
-				
-				son.stop();
-				
-				mute.setIcon(new ImageIcon("Images/mute.png"));
-			}
-			isMute = true;
-
-		}
-		*/
-		/////////////////////////////////////////
-
+		 * Gestion des evenements attaquer et deplacer
+		 */
 		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
-			// indications.setText("Selectionnez deux territoires");
 			mouvement.setVisible(true);
 			action.setVisible(true);
 			if (e.getSource() == mouvement) {
@@ -942,11 +970,8 @@ public class Menu extends JFrame implements MouseListener {
 			}
 
 		}
-
 		/*
-		 * afficherNbUnite(risk.listeJoueurs.get(risk.tour).getRenforts());
-		 * afficherNbUnite(risk.listeTerritoires.get(ceTerritoire).listeUnites);
-		 * afficherNbUnite(combat.uniteBatailleATT);
+		 *Actualiser les territoires selectionnes
 		 */
 		if (e.getSource() == refresh) {
 			risk.refreshSelection(indications);
@@ -1001,7 +1026,10 @@ public class Menu extends JFrame implements MouseListener {
 			joueur5TextField.setVisible(true);
 			joueur6TextField.setVisible(true);
 		}
-
+		
+		
+		//BOUTONS DU TABLEAU : RENFORTS , TERRITOIRE , ACTION
+		
 		if (e.getSource() == BtnplusSoldatRenfort) {
 			risk.ajouterSoldatRenfort(risk.listeJoueurs.get(risk.tour).getRenforts());
 			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
@@ -1109,13 +1137,23 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	// VERIFICATIONS
+	/**
+	 * Verifie qu'il y a au moins deux joueurs
+	 * @param nj
+	 * @return
+	 */
 	public boolean verifNbJoueurMin(int nj) {
 		if (nj < 2) {
 			return verifNbJoueurMin = false;
 		}
 		return verifNbJoueurMin = true;
 	}
-
+	
+	/**
+	 * Verifie que la taille des noms n'est pas trop grande
+	 * @param j
+	 * @return
+	 */
 	public boolean verifNom(ArrayList<JTextField> j) {
 		for (int i = 0; i < j.size(); i++) {
 			if (j.get(i).getText().length() >= 10) {
@@ -1126,6 +1164,10 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	// AFFICHE EN CONSOLE LES UNITES DUNE LISTE
+	/**
+	 * Affiche en console le nombre d'unites différentes d'une liste d'unite
+	 * @param l
+	 */
 	public void afficherNbUnite(ArrayList<Unite> l) {
 		int soldat = 0;
 		int cavalier = 0;
@@ -1146,6 +1188,11 @@ public class Menu extends JFrame implements MouseListener {
 	}
 
 	// RENVOI UN STRING DU NOMBRE DE TROUPES
+	/**
+	 * Compter les soldats et convertir le nombre de soldats en string pour pouvoir l'afficher
+	 * @param l
+	 * @return
+	 */
 	public String afficherNbSoldat(ArrayList<Unite> l) {
 		int soldat = 0;
 		for (int i = 0; i < l.size(); i++) {
@@ -1155,7 +1202,12 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return Integer.toString(soldat);
 	}
-
+	
+	/**
+	 * Compter les cavaliers et convertir le nombre de soldats en string pour pouvoir l'afficher
+	 * @param l
+	 * @return
+	 */
 	public String afficherNbCavalier(ArrayList<Unite> l) {
 		int cavalier = 0;
 		for (int i = 0; i < l.size(); i++) {
@@ -1165,7 +1217,12 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return Integer.toString(cavalier);
 	}
-
+	
+	/**
+	 * Compter les canons et convertir le nombre de soldats en string pour pouvoir l'afficher
+	 * @param l
+	 * @return
+	 */
 	public String afficherNbCanon(ArrayList<Unite> l) {
 		int canon = 0;
 		for (int i = 0; i < l.size(); i++) {
@@ -1175,7 +1232,10 @@ public class Menu extends JFrame implements MouseListener {
 		}
 		return Integer.toString(canon);
 	}
-
+	
+	/**
+	 * Actualiser les textfields du tableau d'unites renforts (affichage)
+	 */
 	public void actualiserJTextFieldRenfort(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeJoueurs.size(); j++) {
 			if (risk.listeJoueurs.get(j).getIdJoueur() == risk.tour) {
@@ -1185,7 +1245,10 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-
+	
+	/**
+	 * Actualiser les textfields du tableau d'unites territoire (affichage)
+	 */
 	public void actualiserJTextFieldTerritoire(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
 			if (risk.listeTerritoires.get(j).getId() == ceTerritoire) {
@@ -1195,7 +1258,10 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-
+	
+	/**
+	 * Actualiser les textfields du tableau d'unites action (affichage)
+	 */
 	public void actualiserJTextFieldAction(JTextField textfield1, JTextField textfield2, JTextField textfield3) {
 		for (int j = 0; j < risk.listeTerritoires.size(); j++) {
 			if (risk.listeTerritoires.get(j).getId() == ceTerritoire) {
@@ -1205,59 +1271,11 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
+	
 
-	public void afficheJeton(int posX, int posY, int numeroJoueur) {
-		if (numeroJoueur == 0) {
-			jeton1 = new JLabel();
-			jeton1.setBounds(posX, posY, 35, 35);
-			jeton1.setIcon(new ImageIcon("Images/test.png"));
-			jeton1.addMouseListener(this);
-			map.add(jeton1);
-		}
-		if (numeroJoueur == 1) {
-			jeton1 = new JLabel();
-			jeton1.setBounds(posX, posY, 35, 35);
-			jeton1.setIcon(new ImageIcon("Images/test.png"));
-			jeton1.addMouseListener(this);
-			map.add(jeton1);
-		}
-		if (numeroJoueur == 2) {
-			jeton2 = new JLabel();
-			jeton2.setBounds(posX, posY, 35, 35);
-			jeton2.setIcon(new ImageIcon("Images/test.png"));
-			jeton2.addMouseListener(this);
-			map.add(jeton1);
-		}
-		if (numeroJoueur == 3) {
-			jeton3 = new JLabel();
-			jeton3.setBounds(posX, posY, 35, 35);
-			jeton1.setIcon(new ImageIcon("Images/test.png"));
-			jeton1.addMouseListener(this);
-			map.add(jeton1);
-		}
-		if (numeroJoueur == 4) {
-			jeton4 = new JLabel();
-			jeton4.setBounds(posX, posY, 35, 35);
-			jeton4.setIcon(new ImageIcon("Images/test.png"));
-			jeton4.addMouseListener(this);
-			map.add(jeton1);
-		}
-		if (numeroJoueur == 5) {
-			jeton5 = new JLabel();
-			jeton5.setBounds(posX, posY, 35, 35);
-			jeton5.setIcon(new ImageIcon("Images/test.png"));
-			jeton5.addMouseListener(this);
-			map.add(jeton1);
-		}
-		if (numeroJoueur == 6) {
-			jeton6 = new JLabel();
-			jeton6.setBounds(posX, posY, 35, 35);
-			jeton6.setIcon(new ImageIcon("Images/test.png"));
-			jeton6.addMouseListener(this);
-			map.add(jeton1);
-		}
-	}
-
+	/**
+	 * Affichage des hitboxes des territoires
+	 */
 	public void setBoundsHitboxes() {
 		hitboxes[0].setBounds(800, 115, 50, 50); // ISLANDE
 		hitboxes[1].setBounds(970, 105, 50, 50); // SCANDINAVIE
@@ -1303,7 +1321,10 @@ public class Menu extends JFrame implements MouseListener {
 		hitboxes[41].setBounds(1770, 770, 50, 50); // AUSTRALIE DE LEST
 
 	}
-
+	
+	/**
+	 * Attribuer les couleurs en fonction de l'occupant du territoire
+	 */
 	public void attribuerCouleurs() {
 		for (int i = 0; i < risk.listeTerritoires.size(); i++) {
 			for (int j = 0; j < risk.listeJoueurs.size(); j++) {
@@ -1313,7 +1334,11 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 	}
-
+	
+	/**
+	 * Verifie si un joueur peut transferer ses unites sur un territoire
+	 * @return
+	 */
 	public boolean peutTransferer() {
 		if (risk.listeTerritoires.get(ceTerritoire).getOccupant().getIdJoueur() == risk.tour) {
 			return true;
