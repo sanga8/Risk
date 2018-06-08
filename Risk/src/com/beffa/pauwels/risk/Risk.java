@@ -387,7 +387,7 @@ public class Risk {
 				}
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public int nbTerritoirePossede(Joueur joueur) {

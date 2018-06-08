@@ -104,9 +104,6 @@ public class Combat {
 		for (int i = 0; i < tATT.getListeUnitesBataille().size(); i++) {
 			tATT.listeUnitesBataille.get(i).setMouvement(tATT.listeUnitesBataille.get(i).getMouvement() - 1);
 		}
-		for (int j = 0; j < tDEF.getListeUnitesBataille().size(); j++) {
-			tDEF.listeUnitesBataille.get(j).setMouvement(tDEF.listeUnitesBataille.get(j).getMouvement() - 1);
-		}
 		if (tDEF.getListeUnites().size() == 0) {
 			tDEF.setOccupant(tATT.getOccupant());
 
