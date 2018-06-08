@@ -128,8 +128,8 @@ public class Menu extends JFrame implements MouseListener {
 
 	public Menu() {
 
-		// son = new Audio();
-		// son.start();
+		son = new Audio();
+		son.start();
 
 		risk = new Risk();
 		combat = new Combat();
@@ -282,8 +282,8 @@ public class Menu extends JFrame implements MouseListener {
 		jeu.add(background);
 
 		mute = new JLabel();
-		mute.setBounds(1870, 5, 50, 50);
-		mute.setIcon(new ImageIcon("Images/mute.png"));
+		//mute.setBounds(1870, 5, 50, 50);
+		//mute.setIcon(new ImageIcon("Images/mute.png"));
 		mute.addMouseListener(this);
 		background.add(mute);
 
@@ -809,6 +809,7 @@ public class Menu extends JFrame implements MouseListener {
 			} else if (verifNom == false) {
 				warning.removeAll();
 				warning.setText("Réduisez la taille de vos noms");
+				warning.setForeground(Color.WHITE);
 				warning.setVisible(true);
 				return;
 			} else {
@@ -877,18 +878,20 @@ public class Menu extends JFrame implements MouseListener {
 
 			}
 		}
-
+		/*
 		if (e.getSource() == mute) {
 			
 			mute.setIcon(new ImageIcon("Images/demute.png"));
 			if (isMute == true) {
-				son.start();
+				
+				son.stop();
+				
 				mute.setIcon(new ImageIcon("Images/mute.png"));
 			}
 			isMute = true;
 
 		}
-
+		*/
 		/////////////////////////////////////////
 
 		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
