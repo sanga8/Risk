@@ -22,15 +22,27 @@ public class Risk {
 
 	public Risk() {
 		creerTerritoires();
-		// attribuerTerritoires();
-		// distribuerRenfortsDebut();
-		// ajoutAutoRenforts();
+
 
 	}
+	
+	public void attribuerTerritoires() {
+		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
+		for (int i = 0; i < listeTerritoires.size(); i++) {
+			listeTerritoiresRandom.add(new Integer(i));
+		}
+		Collections.shuffle(listeTerritoiresRandom);
+		int index = 0;
+		for (int i = 0; i < listeTerritoires.size(); i++) {
+			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(listeJoueurs.get(index));
 
-	/**
-	 * GESTION DE TOUR
-	 */
+			index++;
+			if (index >= this.listeJoueurs.size()) {
+				index = 0;
+			}
+		}
+	}
+
 	public void finDeTour() {
 		verifVictoire();
 		tour++;
@@ -114,22 +126,7 @@ public class Risk {
 		return null;
 	}
 
-	public void attribuerTerritoires() {
-		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
-		for (int i = 0; i < listeTerritoires.size(); i++) {
-			listeTerritoiresRandom.add(new Integer(i));
-		}
-		Collections.shuffle(listeTerritoiresRandom);
-		int index = 0;
-		for (int i = 0; i < listeTerritoires.size(); i++) {
-			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(listeJoueurs.get(index));
-
-			index++;
-			if (index >= this.listeJoueurs.size()) {
-				index = 0;
-			}
-		}
-	}
+	
 
 	public void distribuerRenfortsDebut() {
 		if (listeJoueurs.size() == 2) {
@@ -174,9 +171,6 @@ public class Risk {
 		}
 	}
 
-	public void finPartie() {
-		// commentaire
-	}
 
 	public void ajoutAutoRenforts() {
 		int counter = 0;
@@ -433,8 +427,7 @@ public class Risk {
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
 		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
-		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec",
-				"Groenland" };
+		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec","Groenland" };
 		String[] listeGR = { "Ontario", "Territoires du Nord", "Quebec", "Island" };
 		String[] listeQU = { "Etats de L'Est", "Ontario", "Groenland" };
 		String[] listeEDO = { "Etats de L'Est", "Amerique Centrale", "Ontario", "Alberta" };
