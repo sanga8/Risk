@@ -16,11 +16,7 @@ public class Joueur {
 	private int idJoueur;
 
 	private ArrayList<Unite> renforts = new ArrayList<Unite>();
-<<<<<<< HEAD
-	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
-	
-=======
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
+
 
 	/**
 	 * Instancie le nom et l'id des joueurs
@@ -44,17 +40,6 @@ public class Joueur {
 		return idJoueur;
 	}
 
-<<<<<<< HEAD
-	public ArrayList<Territoire> getTerritoiresPossedes() {
-		return territoiresPossedes;
-	}
-
-	public void setTerritoiresPossedes(ArrayList<Territoire> territoiresPossedes) {
-		this.territoiresPossedes = territoiresPossedes;
-	}
-
-=======
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	public ArrayList<Unite> getRenforts() {
 		return renforts;
 	}

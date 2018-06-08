@@ -18,10 +18,6 @@ public class Risk {
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
 
 	public Risk() {
 		creerTerritoires();	//Creer la liste de Territoires
@@ -413,19 +409,25 @@ public class Risk {
 	 */
 	public void deplacer(Territoire depart, Territoire destination) {
 
-		if (peutDeplacer(depart, destination) == true) {
+		if (peutDeplacer(depart, destination) == true) {	//Vérifie si l'on peut déplace de ce départ à cette destination
 			for (int j = 0; j < depart.getListeUnitesAction().size(); j++) {
-				depart.getListeUnitesAction().get(j).setMouvement(depart.getListeUnitesAction().get(j).getMouvement() - 1);
+				depart.getListeUnitesAction().get(j).setMouvement(depart.getListeUnitesAction().get(j).getMouvement() - 1);		//L'unite perd un point de mouvement
 			}
 			destination.listeUnites.addAll(depart.listeUnitesAction);
 			depart.listeUnitesAction.clear();
 		}
 	}
 
+	/**
+	 * Return true si l'on peut déplacer de départ à destination
+	 * @param depart
+	 * @param destination
+	 * @return
+	 */
 	public boolean peutDeplacer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
-			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
-				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {
+			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {							//Si les territoires sont adjacents
+				if (depart.getOccupant().getIdJoueur() == destination.getOccupant().getIdJoueur()) {	//Si les territoires appartiennent bien au joueur
 					return true;
 				}
 			}
@@ -433,7 +435,11 @@ public class Risk {
 		return false;
 	}
 	// CONDITION DEPLACEMENT
-
+	/**
+	 * Return true s'il reste des points de mouvement à une unité
+	 * @param liste
+	 * @return
+	 */
 	public boolean peutMouvement(ArrayList<Unite> liste) {
 		for (int i = 0; i < liste.size(); i++) {
 			if (liste.get(i).getMouvement() > 0) {
@@ -443,10 +449,16 @@ public class Risk {
 		return false;
 	}
 
+	/**
+	 * Return true si l'on peut attaquer la destination depuis le départ
+	 * @param depart
+	 * @param destination
+	 * @return
+	 */
 	public boolean peutAttaquer(Territoire depart, Territoire destination) {
 		for (int i = 0; i < depart.getTerritoiresAdjacents().length; i++) {
-			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {
-				if (depart.getOccupant().getIdJoueur() != destination.getOccupant().getIdJoueur()) {
+			if (depart.territoiresAdjacents[i].equals(destination.getNom())) {	//Si les territoires sont adjacents
+				if (depart.getOccupant().getIdJoueur() != destination.getOccupant().getIdJoueur()) { ///Si le territoire destination appartient à un adversaire
 					return true;
 				}
 			}
@@ -454,6 +466,11 @@ public class Risk {
 		return true;
 	}
 
+	/**
+	 * Renvoie un entier correstpondant au nombre de territoires possédés par le joueur entré en argument
+	 * @param joueur
+	 * @return
+	 */
 	public int nbTerritoirePossede(Joueur joueur) {
 		int conteur = 0;
 		for (int i = 0; i < listeTerritoires.size(); i++) {
@@ -497,8 +514,7 @@ public class Risk {
 		String[] listeAL = { "Kamchatka", "Alberta", "Territoires du Nord" };
 		String[] listeTN = { "Ontario", "Alberta", "Alaska", "Groenland" };
 		String[] listeALB = { "Alaska", "Territoires du Nord", "Ontario", "Etats de L'Ouest" };
-		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec",
-				"Groenland" };
+		String[] listeON = { "Territoires du Nord", "Alberta", "Etats de L'Ouest", "Etats de L'Est", "Quebec","Groenland" };
 		String[] listeGR = { "Ontario", "Territoires du Nord", "Quebec", "Island" };
 		String[] listeQU = { "Etats de L'Est", "Ontario", "Groenland" };
 		String[] listeEDO = { "Etats de L'Est", "Amerique Centrale", "Ontario", "Alberta" };
@@ -557,42 +573,7 @@ public class Risk {
 		this.listeTerritoires.add(new Territoire("Nouvelle Guinee", listeNG, 39, "39")); // h40
 		this.listeTerritoires.add(new Territoire("Australie de l'Ouest", listeADO, 40, "40")); // h41
 		this.listeTerritoires.add(new Territoire("Australie de l'Est", listeADE, 41, "41")); // h42
-<<<<<<< HEAD
-
-		// Continents
-		ArrayList<Territoire> c1 = new ArrayList<Territoire>();
-		for (int i = 0; i < 7; i++) {
-			c1.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c2 = new ArrayList<Territoire>();
-		for (int i = 7; i < 13; i++) {
-			c2.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c3 = new ArrayList<Territoire>();
-		for (int i = 13; i < 25; i++) {
-			c3.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c4 = new ArrayList<Territoire>();
-		for (int i = 25; i < 34; i++) {
-			c4.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c5 = new ArrayList<Territoire>();
-		for (int i = 34; i < 38; i++) {
-			c5.add(this.listeTerritoires.get(i));
-		}
-
-		ArrayList<Territoire> c6 = new ArrayList<Territoire>();
-		for (int i = 38; i < 42; i++) {
-			c6.add(this.listeTerritoires.get(i));
-		}
-=======
->>>>>>> branch 'master' of https://github.com/sanga8/Risk
 	}
-
 	public Territoire getD() {
 		return d;
 	}

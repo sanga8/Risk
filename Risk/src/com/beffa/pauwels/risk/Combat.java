@@ -13,9 +13,15 @@ public class Combat {
 	}
 
 	// COMBATTRE
+	/**
+	 * Effectue un combat
+	 * @param tATT
+	 * @param tDEF
+	 */
 	public void combattre(Territoire tATT, Territoire tDEF) {
 		System.out.println("Choisir défense:");
 
+		//L'attaquant choisis ses propres attaquants
 		choisirDEF(tDEF);
 		System.out.println("Lancement des dés attaque:");
 
@@ -41,11 +47,14 @@ public class Combat {
 
 	}
 
+	/**
+	 * Choisis les bonnes unités du territoire defenseur qui vont défendre
+	 * @param tDEF
+	 */
 	public void choisirDEF(Territoire tDEF) {
-		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
-		tDEF.getListeUnitesBataille().addAll(tDEF.getListeUnites());
-		Collections.sort(tDEF.getListeUnitesBataille(), Comparator.comparing(Unite::getPrioriteDEF));
-		if (tDEF.getListeUnitesBataille().size() > 2) {
+		tDEF.getListeUnitesBataille().addAll(tDEF.getListeUnites());		//On créé une liste clonée de la liste de defense
+		Collections.sort(tDEF.getListeUnitesBataille(), Comparator.comparing(Unite::getPrioriteDEF));	//On trie cette nouvelle liste en fonction des priorités
+		if (tDEF.getListeUnitesBataille().size() > 2) {		//On prend les 2 premières unités de cette liste triée pour défendre contre les attaquants
 			for (int i = tDEF.getListeUnitesBataille().size() - 1; i > 1; i--) {
 				tDEF.getListeUnitesBataille().remove(i);
 			}
@@ -62,22 +71,19 @@ public class Combat {
 		}
 	}
 
+	/**
+	 * Permet de trier les résultats des attaquants en fonction de leurs lancé de dé puis de leurs priorités en cas d'égalité
+	 * @param t
+	 */
 	public void trierATT(Territoire t) {
-		Collections.sort(t.getListeUnitesBataille(), Comparator.comparing(Unite::getResultatDe));
-		Collections.reverse(t.getListeUnitesBataille());
+		Collections.sort(t.getListeUnitesBataille(), Comparator.comparing(Unite::getResultatDe));	//On trie en fonction des résultats des dés la liste des attaquants
+		Collections.reverse(t.getListeUnitesBataille());	//On inverse cette liste afin d'avoir les scores les plus élevés en premier
 
 		for (int i = t.getListeUnitesBataille().size() - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
-				if (t.getListeUnitesBataille().get(j + 1).getResultatDe() == t.getListeUnitesBataille().get(j)
-						.getResultatDe()
-						&& t.getListeUnitesBataille().get(j + 1).getPrioriteATT() < t.getListeUnitesBataille().get(j)
-								.getPrioriteATT()) {
-					Collections.swap(t.getListeUnitesBataille(), j + 1, j);
-					System.out.println("WHahelle Bulle" + t.getListeUnites().get(i).getResultatDe());
-					if (t.getListeUnitesBataille().get(j + 1).getResultatDe() == t.getListeUnitesBataille().get(j)
-							.getResultatDe()
-							&& t.getListeUnitesBataille().get(j + 1).getPrioriteATT() < t.getListeUnitesBataille()
-									.get(j).getPrioriteATT()) {
+				if (t.getListeUnitesBataille().get(j + 1).getResultatDe() == t.getListeUnitesBataille().get(j).getResultatDe() && t.getListeUnitesBataille().get(j + 1).getPrioriteATT() < t.getListeUnitesBataille().get(j).getPrioriteATT()) {
+					Collections.swap(t.getListeUnitesBataille(), j + 1, j); //Si 2 résultats sont identiques, On compare leurs priorités puis on échange leurs odre dans la liste si nécessaire
+					if (t.getListeUnitesBataille().get(j + 1).getResultatDe() == t.getListeUnitesBataille().get(j).getResultatDe() && t.getListeUnitesBataille().get(j + 1).getPrioriteATT() < t.getListeUnitesBataille().get(j).getPrioriteATT()) {
 						Collections.swap(t.getListeUnitesBataille(), j + 1, j);
 					}
 				}
@@ -85,28 +91,35 @@ public class Combat {
 		}
 	}
 
+	/**
+	 * Trie la liste des défenseurs par ordre décroissant
+	 * La priorité des défenseurs est faite lors de la sélection des unités qui doivent défendre
+	 * @param liste
+	 */
 	public void trierDEF(ArrayList<Unite> liste) {
-		// System.out.println("Resultats des premier attaquant avant trier def " +
-		// liste.get(0).getResultatDe());
 		if (liste.size() > 1) {
 			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
-				Collections.swap(liste, 0, 1);
+				Collections.swap(liste, 0, 1); //On échange les 2 résultats si nécessaire
 			}
 		}
-		System.out.println("ok");
 	}
-
+	/**
+	 * Compare les résultats des dés des attaquants et des défenseurs
+	 * @param tATT
+	 * @param tDEF
+	 */
 	public void resoudre(Territoire tATT, Territoire tDEF) {
 		int petiteliste;
 
 		System.out.println("Nb attaquants:" + tATT.getListeUnitesBataille().size());
 		System.out.println("Nb defenseurs" + tDEF.getListeUnitesBataille().size());
+		
 		if (tATT.getListeUnitesBataille().size() < tDEF.getListeUnitesBataille().size()) {
 			petiteliste = tATT.getListeUnitesBataille().size();
 		} else {
 			petiteliste = tDEF.getListeUnitesBataille().size();
 		}
-		System.out.println("petite liste :" + petiteliste);
+		System.out.println("petite liste :" + petiteliste); //La petite liste correspond au plus faible nombre de combats réalisés par l'attaquant et le défenseur
 
 		for (int i = petiteliste - 1; i >= 0; i--) {
 			System.out.println("Resultats des  premier attaquant avant resoudre "
