@@ -16,9 +16,7 @@ public class Combat {
 
 	public void lanceDe(ArrayList<Unite> liste) {
 		for (int i = 0; i < liste.size(); i++) {
-			
-			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));
-			
+			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));	
 			System.out.println("Resultats des " + liste.get(i).getResultatDe());
 		}
 	}
