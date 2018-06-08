@@ -912,7 +912,6 @@ public class Menu extends JFrame implements MouseListener {
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 				} else {
 					indications.setText("Vous ne pouvez pas vous deplacer sur ce territoire");
-					mouvement.setVisible(false);
 				}
 			}
 			if (e.getSource() == action) {
@@ -943,11 +942,6 @@ public class Menu extends JFrame implements MouseListener {
 				}
 			}
 
-			if (risk.getA() == null || risk.getD() == null) {
-				indications.setText("Selectionnez deux territoires");
-				action.setVisible(false);
-				mouvement.setVisible(false);
-			}
 		}
 
 		/*

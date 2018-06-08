@@ -177,7 +177,6 @@ public class Risk {
 				counter = 0;
 			}
 		}
-
 	}
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
