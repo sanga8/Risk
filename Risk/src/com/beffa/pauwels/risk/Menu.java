@@ -604,7 +604,17 @@ public class Menu extends JFrame implements MouseListener {
 			map.add(hitboxes[index]);
 		}
 		setBoundsHitboxes();
-
+		
+		
+		//ENLEVER BOUTONS DE TEST:
+		BtnplusSoldatRenfort.setVisible(false);
+		BtnmoinsSoldatRenfort.setVisible(false);
+		BtnmoinsSoldatTerritoire.setVisible(false);
+		BtnmoinsCavalierTerritoire.setVisible(false);
+		BtnmoinsCanonTerritoire.setVisible(false);
+		
+		
+		
 		jeu.repaint();
 		return jeu;
 	}
@@ -745,37 +755,41 @@ public class Menu extends JFrame implements MouseListener {
 			System.exit(0);
 		}
 		if (e.getSource() == findutour) {
-			risk.finDeTour();
-			risk.ajoutAutoRenforts();
-			actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
-			actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-			actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
-			if (risk.tour == 0) {
-				contour.setBounds(40, 900, 210, 95);
-				contour.setIcon(new ImageIcon("Contour/contourRouge.png"));
-			}
-			if (risk.tour == 1) {
-				contour.setBounds(40, 950, 210, 95);
-				contour.setIcon(new ImageIcon("Contour/contourBleu.png"));
-			}
+			if (risk.renfortTermine() == true) {
+				risk.finDeTour();
+				risk.ajoutAutoRenforts();
+				actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+				if (risk.tour == 0) {
+					contour.setBounds(40, 900, 210, 95);
+					contour.setIcon(new ImageIcon("Contour/contourRouge.png"));
+				}
+				if (risk.tour == 1) {
+					contour.setBounds(40, 950, 210, 95);
+					contour.setIcon(new ImageIcon("Contour/contourBleu.png"));
+				}
 
-			if (risk.tour == 2) {
-				contour.setBounds(40, 1000, 210, 95);
-				contour.setIcon(new ImageIcon("Contour/contourVert.png"));
-			}
+				if (risk.tour == 2) {
+					contour.setBounds(40, 1000, 210, 95);
+					contour.setIcon(new ImageIcon("Contour/contourVert.png"));
+				}
 
-			if (risk.tour == 3) {
-				contour.setBounds(220, 900, 210, 95);
-				contour.setIcon(new ImageIcon("Contour/contourOrange.png"));
-			}
+				if (risk.tour == 3) {
+					contour.setBounds(220, 900, 210, 95);
+					contour.setIcon(new ImageIcon("Contour/contourOrange.png"));
+				}
 
-			if (risk.tour == 4) {
-				contour.setBounds(220, 950, 210, 95);
-				contour.setIcon(new ImageIcon("Contour/contourViolet.png"));
-			}
-			if (risk.tour == 5) {
-				contour.setBounds(220, 1000, 210, 95);
-				contour.setIcon(new ImageIcon("Contour/contourBlanc.png"));
+				if (risk.tour == 4) {
+					contour.setBounds(220, 950, 210, 95);
+					contour.setIcon(new ImageIcon("Contour/contourViolet.png"));
+				}
+				if (risk.tour == 5) {
+					contour.setBounds(220, 1000, 210, 95);
+					contour.setIcon(new ImageIcon("Contour/contourBlanc.png"));
+				}
+			} else {
+				indications.setText("Placez d'abord vos renforts !");
 			}
 		}
 		if (e.getSource() == commencer) {
@@ -883,7 +897,7 @@ public class Menu extends JFrame implements MouseListener {
 		/////////////////////////////////////////
 
 		if (risk.sonTour() == true && risk.premierTour == false && risk.renfortTermine() == true) {
-			//indications.setText("Selectionnez deux territoires");
+			// indications.setText("Selectionnez deux territoires");
 			mouvement.setVisible(true);
 			action.setVisible(true);
 			if (e.getSource() == mouvement) {
@@ -899,31 +913,41 @@ public class Menu extends JFrame implements MouseListener {
 					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 				} else {
 					indications.setText("Vous ne pouvez pas vous deplacer sur ce territoire");
+					mouvement.setVisible(false);
 				}
 			}
 			if (e.getSource() == action) {
 				if (risk.peutAttaquer(risk.getD(), risk.getA())) {
+					if (risk.getD().getListeUnitesAction().size() <=3) {
 
-					System.out.println("Taille liste unite ACTION ATT" + risk.getD().getListeUnitesAction().size());
-					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
+						System.out.println("Taille liste unite ACTION ATT" + risk.getD().getListeUnitesAction().size());
+						System.out.println(
+								"Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
 
-					risk.getD().setListeUnitesBataille(risk.getD().getListeUnitesAction());
-					
-					System.out.println("Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
-					combat.combattre(risk.getD(), risk.getA());
-					risk.getD().getListeUnitesAction().clear();
-					attribuerCouleurs();
-					action.setVisible(false);
-					actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
-					actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
-					actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+						risk.getD().setListeUnitesBataille(risk.getD().getListeUnitesAction());
+
+						System.out.println(
+								"Taille liste unite BATAILLE ATT" + risk.getD().getListeUnitesBataille().size());
+						combat.combattre(risk.getD(), risk.getA());
+						risk.getD().getListeUnitesAction().clear();
+						attribuerCouleurs();
+						action.setVisible(false);
+						actualiserJTextFieldRenfort(SoldatRenfort, CavalierRenfort, CanonRenfort);
+						actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+						actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+					} else {
+						indications.setText("Placez au maximum 3 unites dans action");
+					}
 				} else {
 					indications.setText("Vous ne pouvez pas attaquer ce territoire");
+				
 				}
 			}
 
 			if (risk.getA() == null || risk.getD() == null) {
 				indications.setText("Selectionnez deux territoires");
+				action.setVisible(false);
+				mouvement.setVisible(false);
 			}
 		}
 
@@ -1016,7 +1040,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusCavalierTerritoire) {
-			if (peutTransferer() == true) {
+			if (peutTransferer()) {
 				risk.transfererCavalier(risk.listeJoueurs.get(risk.tour).getRenforts(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1024,7 +1048,7 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusCanonTerritoire) {
-			if (peutTransferer() == true) {
+			if (peutTransferer()) {
 				risk.transfererCanon(risk.listeJoueurs.get(risk.tour).getRenforts(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
@@ -1032,28 +1056,58 @@ public class Menu extends JFrame implements MouseListener {
 			}
 		}
 		if (e.getSource() == BtnplusSoldatAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true && risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size()<3) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true && risk.renfortTermine()) {
 				risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
+			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
 		}
 		if (e.getSource() == BtnplusCavalierAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size()<3) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
 				risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
+			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
 		}
 		if (e.getSource() == BtnplusCanonAction) {
-			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size()<3) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnites().size() > 1 && peutTransferer() == true&& risk.renfortTermine()) {
 				risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnites(),
 						risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction());
 				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
 				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
 			}
+			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+		}
+		if (e.getSource() == BtnmoinsSoldatAction) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
+				risk.transfererSoldat(risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			}
+			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+		}
+		if (e.getSource() == BtnmoinsCavalierAction) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
+				risk.transfererCavalier(risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			}
+			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
+		}
+		if (e.getSource() == BtnmoinsCanonAction) {
+			if (risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction().size() > 0 && peutTransferer() == true&& risk.renfortTermine()) {
+				risk.transfererCanon(risk.listeTerritoires.get(ceTerritoire).getListeUnitesAction(),
+						risk.listeTerritoires.get(ceTerritoire).getListeUnites());
+				actualiserJTextFieldTerritoire(SoldatTerritoire, CavalierTerritoire, CanonTerritoire);
+				actualiserJTextFieldAction(SoldatAction, CavalierAction, CanonAction);
+			}
+			else{indications.setText("Vous ne pouvez pas encore effectuer d'actions");}
 		}
 
 	}
