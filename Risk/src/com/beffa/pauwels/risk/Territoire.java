@@ -1,6 +1,5 @@
 package com.beffa.pauwels.risk;
 
-import java.sql.Time;
 import java.util.ArrayList;
 /**
  * Classe des territoires. Ils possedent 3 listes :
@@ -15,7 +14,7 @@ public class Territoire {
 	private int id;
 	private String id2;
 	public String[] territoiresAdjacents;
-	
+
 	private Joueur occupant;
 	public  ArrayList<Unite> listeUnites;
 	public  ArrayList<Unite> listeUnitesAction;
@@ -28,11 +27,13 @@ public class Territoire {
 	 * @param id
 	 * @param id2
 	 */
+
 	public Territoire(String nom, String[] territoiresAdjacents, int id, String id2) {
 		this.nom = nom;
-		this.id2=id2;
+		this.id2 = id2;
 		this.id = id;
 		this.territoiresAdjacents = territoiresAdjacents;
+
 
 		 ArrayList<Unite> u = new ArrayList<Unite>();
 		 this.listeUnites=u;
@@ -41,8 +42,9 @@ public class Territoire {
 		 ArrayList<Unite> ub = new ArrayList<Unite>();
 		 this.listeUnitesBataille=ub;
 			
-		 //Une unite de base sur tous les territoires
-		 listeUnites.add(new Unite(0));
+		//Une unite de base sur tous les territoires
+		listeUnites.add(new Unite(0));
+
 	}
 	
 	
@@ -66,19 +68,22 @@ public class Territoire {
 	public void addUnite(Unite u) {
 		listeUnites.add(u);
 	}
-	
+
 	public ArrayList<Unite> getListeUnites() {
 		return listeUnites;
 
 	}
+
 	public ArrayList<Unite> getListeUnitesAction() {
 		return listeUnitesAction;
 
 	}
+
 	public ArrayList<Unite> getListeUnitesBataille() {
 		return listeUnitesAction;
 
 	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -90,6 +95,7 @@ public class Territoire {
 	public int getId() {
 		return id;
 	}
+
 	public String getId2() {
 		return id2;
 	}
@@ -97,7 +103,5 @@ public class Territoire {
 	public void setListeUnitesBataille(ArrayList<Unite> listeUnitesBataille) {
 		this.listeUnitesBataille = listeUnitesBataille;
 	}
-	
-
 
 }

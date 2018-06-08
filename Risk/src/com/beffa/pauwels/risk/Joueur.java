@@ -1,7 +1,6 @@
 package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Classe joueur qui représente les utilisateurs Les joueurs possedents une

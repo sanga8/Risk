@@ -1,6 +1,6 @@
 package com.beffa.pauwels.risk;
 
-import  java.io.*;
+import java.io.*;
 import javax.sound.sampled.*;
  
 /**

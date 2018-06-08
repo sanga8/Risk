@@ -1,10 +1,8 @@
 package com.beffa.pauwels.risk;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 public class Combat {
 
@@ -14,11 +12,33 @@ public class Combat {
 
 	}
 
-	public void lanceDe(ArrayList<Unite> liste) {
-		for (int i = 0; i < liste.size(); i++) {
-			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));	
-			System.out.println("Resultats des " + liste.get(i).getResultatDe());
-		}
+	// COMBATTRE
+	public void combattre(Territoire tATT, Territoire tDEF) {
+		System.out.println("Choisir défense:");
+
+		choisirDEF(tDEF);
+		System.out.println("Lancement des dés attaque:");
+
+		lanceDe(tATT.getListeUnitesBataille());
+		System.out.println("Lancement des dés defense:");
+		lanceDe(tDEF.getListeUnitesBataille());
+		System.out.println("Trier attaque:");
+
+		trierATT(tATT);
+		System.out.println("Trier défense:");
+		trierDEF(tDEF.getListeUnitesBataille());
+		System.out.println("Resoudre:");
+
+		resoudre(tATT, tDEF);
+		System.out.println("MajCombat:");
+
+		majCombat(tATT, tDEF);
+		System.out.println("Clear");
+
+		tATT.getListeUnitesBataille().clear();
+		tDEF.getListeUnitesBataille().clear();
+		System.out.println("Combat termine");
+
 	}
 
 	public void choisirDEF(Territoire tDEF) {
@@ -33,15 +53,13 @@ public class Combat {
 		System.out.println("Nb d'unite en def arene  : " + tDEF.getListeUnitesBataille().size());
 	}
 
-	public void trierDEF(ArrayList<Unite> liste) {
-		// System.out.println("Resultats des premier attaquant avant trier def " +
-		// liste.get(0).getResultatDe());
-		if (liste.size() > 1) {
-			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
-				Collections.swap(liste, 0, 1);
-			}
+	public void lanceDe(ArrayList<Unite> liste) {
+		for (int i = 0; i < liste.size(); i++) {
+
+			liste.get(i).setResultatDe((int) (Math.random() * 6 + liste.get(i).getPuissance()));
+
+			System.out.println("Resultats des " + liste.get(i).getResultatDe());
 		}
-		System.out.println("ok");
 	}
 
 	public void trierATT(Territoire t) {
@@ -65,6 +83,17 @@ public class Combat {
 				}
 			}
 		}
+	}
+
+	public void trierDEF(ArrayList<Unite> liste) {
+		// System.out.println("Resultats des premier attaquant avant trier def " +
+		// liste.get(0).getResultatDe());
+		if (liste.size() > 1) {
+			if (liste.get(0).getResultatDe() < liste.get(1).getResultatDe()) {
+				Collections.swap(liste, 0, 1);
+			}
+		}
+		System.out.println("ok");
 	}
 
 	public void resoudre(Territoire tATT, Territoire tDEF) {
@@ -109,35 +138,6 @@ public class Combat {
 		} else {
 			tATT.getListeUnites().addAll(tATT.getListeUnitesBataille());
 		}
-	}
-
-	// COMBATTRE
-	public void combattre(Territoire tATT, Territoire tDEF) {
-		System.out.println("Choisir défense:");
-
-		choisirDEF(tDEF);
-		System.out.println("Lancement des dés attaque:");
-
-		lanceDe(tATT.getListeUnitesBataille());
-		System.out.println("Lancement des dés defense:");
-		lanceDe(tDEF.getListeUnitesBataille());
-		System.out.println("Trier attaque:");
-
-		trierATT(tATT);
-		System.out.println("Trier défense:");
-		trierDEF(tDEF.getListeUnitesBataille());
-		System.out.println("Resoudre:");
-
-		resoudre(tATT, tDEF);
-		System.out.println("MajCombat:");
-
-		majCombat(tATT, tDEF);
-		System.out.println("Clear");
-
-		tATT.getListeUnitesBataille().clear();
-		tDEF.getListeUnitesBataille().clear();
-		System.out.println("Combat termine");
-
 	}
 
 	public ArrayList<Territoire> getListeGagnant() {
