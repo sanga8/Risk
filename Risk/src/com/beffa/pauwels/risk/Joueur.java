@@ -9,7 +9,6 @@ public class Joueur {
 
 	private ArrayList<Unite> renforts = new ArrayList<Unite>();
 	private ArrayList<Territoire> territoiresPossedes = new ArrayList<Territoire>();
-	private ArrayList<Continent> continentsPossedes = new ArrayList<Continent>();
 	
 
 	public Joueur(String nom, int idJoueur) {
@@ -55,14 +54,6 @@ public class Joueur {
 
 	public void setTerritoiresPossedes(ArrayList<Territoire> territoiresPossedes) {
 		this.territoiresPossedes = territoiresPossedes;
-	}
-
-	public ArrayList<Continent> getContinentsPossedes() {
-		return continentsPossedes;
-	}
-
-	public void setContinentsPossedes(ArrayList<Continent> continentsPossedes) {
-		this.continentsPossedes = continentsPossedes;
 	}
 
 	public ArrayList<Unite> getRenforts() {

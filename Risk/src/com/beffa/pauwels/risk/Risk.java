@@ -18,22 +18,23 @@ public class Risk {
 
 	public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	public ArrayList<Territoire> listeTerritoires = new ArrayList<Territoire>();
-	public ArrayList<Continent> listeContinents = new ArrayList<Continent>();
 
 	public Risk() {
-		creerTerritoires();
+		creerTerritoires();	//Creer la liste de Territoires
 
 	}
-
+	/**
+	 * Attribue les territoires à chaques joueurs au début de la partie
+	 */
 	public void attribuerTerritoires() {
 		ArrayList<Integer> listeTerritoiresRandom = new ArrayList<Integer>();
 		for (int i = 0; i < listeTerritoires.size(); i++) {
-			listeTerritoiresRandom.add(new Integer(i));
+			listeTerritoiresRandom.add(new Integer(i)); //On créé une liste cloné de la liste de territoires
 		}
-		Collections.shuffle(listeTerritoiresRandom);
+		Collections.shuffle(listeTerritoiresRandom);	//On mélange la liste cloné
 		int index = 0;
 		for (int i = 0; i < listeTerritoires.size(); i++) {
-			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(listeJoueurs.get(index));
+			listeTerritoires.get(listeTerritoiresRandom.get(i)).setOccupant(listeJoueurs.get(index));	//On attribu un occupant à chaque territoire
 
 			index++;
 			if (index >= this.listeJoueurs.size()) {
@@ -42,10 +43,13 @@ public class Risk {
 		}
 	}
 
+	/**
+	 * Methode appelé lorsqu'on appuye sur le bouton fin de tour
+	 */
 	public void finDeTour() {
-		verifVictoire();
-		tour++;
-		majMouvement();
+		verifVictoire();		//On vérifie si un joueur n'a pas gagné
+		tour++;					//On itére le tour
+		majMouvement();			//On remet aux troupes leurs nombre correcte de points de mouvement
 		if (tour >= listeJoueurs.size()) {
 			tour = 0;
 			premierTour = false;
@@ -58,16 +62,18 @@ public class Risk {
 		}
 
 	}
-
+	/**
+	 * Méthode qui vérifie si un joueur n'a pas gagné
+	 */
 	public void verifVictoire() {
 		int counter = 0;
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			if (listeJoueurs.get(i).getIdJoueur() == tour) {
 				for (int j = 0; j < listeTerritoires.size(); j++) {
 					if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
-						counter++;
+						counter++;			//On ajoute +1 au counter à chaque fois qu'un même joueur countrole un territoire
 					}
-					if (counter == 42) {
+					if (counter == 42) {	//Si un joueur possède 42 territoires, il gagne la partie
 						System.out.println("Joueur " + listeJoueurs.get(i).getIdJoueur() + " a gagné");
 						System.exit(0);
 					}
@@ -76,7 +82,9 @@ public class Risk {
 		}
 
 	}
-
+	/**
+	 * Pour chaque Unite dans chaque territoire, on remet au bon chiffre leurs nombre de points de mouvements.
+	 */
 	public void majMouvement() {
 		for (int i = 0; i < listeTerritoires.size(); i++) {
 			for (int j = 0; j < listeTerritoires.get(i).getListeUnites().size(); j++) {
@@ -92,7 +100,10 @@ public class Risk {
 			}
 		}
 	}
-
+	/**
+	 * Methode qui renvoie true si c'est le bien au tour du joueur en cours
+	 * @return
+	 */
 	public boolean sonTour() {
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			if (listeJoueurs.get(i).getIdJoueur() == tour) {
@@ -102,6 +113,10 @@ public class Risk {
 		return false;
 	}
 
+	/**
+	 * Methode qui renvoie true s'il n'y a plus de renforts à placer
+	 * @return
+	 */
 	public boolean renfortTermine() {
 		for (int i = 0; i < listeJoueurs.size(); i++) {
 			if (listeJoueurs.get(i).getIdJoueur() == tour) {
@@ -113,6 +128,10 @@ public class Risk {
 		return false;
 	}
 
+	/**
+	 * Change la couleur de la pastille du territoire
+	 * @return
+	 */
 	public String changerCouleurTerritoire() {
 
 		for (int i = 0; i < listeTerritoires.size(); i++) {
@@ -125,22 +144,25 @@ public class Risk {
 		return null;
 	}
 
+	/**
+	 * Distribue un nombre fixe de renforts selon le nombre de joueurs
+	 */
 	public void distribuerRenfortsDebut() {
-		if (listeJoueurs.size() == 2) {
-			for (int i = 0; i < 19; i++) {
+		if (listeJoueurs.size() == 2) {		
+			for (int i = 0; i < 19; i++) {		//19 renforts par joueurs pour 2 joueurs
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 			}
 		}
 		if (listeJoueurs.size() == 3) {
-			for (int i = 0; i < 21; i++) {
+			for (int i = 0; i < 21; i++) {		//21 renforts par joueur pour 3 joueurs
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
 			}
 		}
 		if (listeJoueurs.size() == 4) {
-			for (int i = 0; i < 19; i++) {
+			for (int i = 0; i < 19; i++) {		//19 renforts par joueur pour 4 joueurs
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -148,7 +170,7 @@ public class Risk {
 			}
 		}
 		if (listeJoueurs.size() == 5) {
-			for (int i = 0; i < 16; i++) {
+			for (int i = 0; i < 16; i++) {		//16 renforts par joueur pour 5 joueurs
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -157,7 +179,7 @@ public class Risk {
 			}
 		}
 		if (listeJoueurs.size() == 6) {
-			for (int i = 0; i < 13; i++) {
+			for (int i = 0; i < 13; i++) {		//13 renforts par joueur pour 6 joueurs
 				ajouterSoldatRenfort(listeJoueurs.get(0).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(1).getRenforts());
 				ajouterSoldatRenfort(listeJoueurs.get(2).getRenforts());
@@ -167,21 +189,23 @@ public class Risk {
 			}
 		}
 	}
-
+	/**
+	 * Cette méthode rajoute à chaque joueur les renforts qu'ils en mérite méritent
+	 */
 	public void ajoutAutoRenforts() {
 		int counter = 0;
-		if (premierTour == false) {
+		if (premierTour == false) {		//On ne fait pas le calcul et le rajout au premier tour (les renforts sont fixes au premier tour)
 			for (int i = 0; i < listeJoueurs.size(); i++) {
 				if (listeJoueurs.get(i).getIdJoueur() == tour) {
 					for (int j = 0; j < listeTerritoires.size(); j++) {
 						if (listeTerritoires.get(j).getOccupant().getIdJoueur() == listeJoueurs.get(i).getIdJoueur()) {
-							counter++;
+							counter++; 	//Counter du nombre de territoires appartenant à un même joueur
 						}
 					}
 				}
 				System.out.println(counter);
 				for (int k = 0; k < counter / 3; k++) {
-					listeJoueurs.get(i).getRenforts().add(new Unite(0));
+					listeJoueurs.get(i).getRenforts().add(new Unite(0));	//On ajoute 1 renfort pour 3 territoires possédés
 				}
 				counter = 0;
 			}
@@ -190,6 +214,10 @@ public class Risk {
 
 	// BOUTONS DE L'INTERFACE DE CONVERSION ET TRANSFERE D'UNITE
 
+	/**
+	 * Cette méthode remet la sélection des territoires à 0
+	 * @param j
+	 */
 	public void refreshSelection(JTextArea j) {
 		j.setText("Sélectionnez deux territoires");
 		d = null;
@@ -197,10 +225,17 @@ public class Risk {
 	}
 
 	// CONVERSION DUNITE
+	/**
+	 * Méthode ajoutant un soldat aux renforts
+	 * @param l
+	 */
 	public void ajouterSoldatRenfort(ArrayList<Unite> l) {
 		l.add(new Unite(0));
 	}
-
+	/**
+	 * Permet d'échanger un soldat contre un cavalier
+	 * @param l
+	 */
 	public void echangerSoldatContreCavalier(ArrayList<Unite> l) {
 		if (sonTour() == true) {
 			int c = 0;
@@ -209,7 +244,7 @@ public class Risk {
 					c++;
 				}
 			}
-			if (c >= 3) {
+			if (c >= 3) {		//Un cavalier coûte 3 soldats
 				l.removeIf(p -> p.getType() == 0);
 				for (int h = 0; h < c - 3; h++) {
 					l.add(new Unite(0));
@@ -220,15 +255,19 @@ public class Risk {
 		}
 	}
 
+	/**
+	 * Permet d'échanger un soldat contre un canon
+	 * @param l
+	 */
 	public void echangerSoldatContreCanon(ArrayList<Unite> l) {
-		if (sonTour() == true) {
+		if (sonTour() == true) {	//On vérifie c'est c'est au tour du bon joueur
 			int c = 0;
 			for (int i = 0; i < l.size(); i++) {
 				if (l.get(i).getType() == 0) {
 					c++;
 				}
 			}
-			if (c >= 7) {
+			if (c >= 7) {	//Un canon coûte 7 soldats
 				l.removeIf(p -> p.getType() == 0);
 				for (int h = 0; h < c - 7; h++) {
 					l.add(new Unite(0));
@@ -238,7 +277,11 @@ public class Risk {
 			}
 		}
 	}
-
+	
+	/**
+	 * Permet d'échanger un cavalier contre un soldat
+	 * @param l
+	 */
 	public void echangerCavalierContreSoldat(ArrayList<Unite> l) {
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 1) {
@@ -252,6 +295,10 @@ public class Risk {
 
 	}
 
+	/**
+	 * Permet d'échanger un canon contre un soldat
+	 * @param l
+	 */
 	public void echangerCanonContreSoldat(ArrayList<Unite> l) {
 		for (int i = 0; i < l.size(); i++) {
 			if (l.get(i).getType() == 2) {
@@ -264,11 +311,16 @@ public class Risk {
 		}
 	}
 
-	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE
-	// SELECTIONNE
+	// TRANSFERER UNITE DUNE LISTE DES RENFORTS A LA LISTE D'UNITE DU TERRITOIRE ELECTIONNE
+	
+	/**
+	 * Méthode transférant un soldat d'une liste de départ à une liste d'arrivé
+	 * @param depart
+	 * @param destination
+	 */
 	public void transfererSoldat(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 0 && peutMouvement(depart)) {
+			if (depart.get(i).getType() == 0) {	//Si c'est un soldat et que l'unité a asser de points de mouvements
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
@@ -277,6 +329,11 @@ public class Risk {
 		}
 	}
 
+	/**
+	 * Méthode transférant un cavalier d'une liste de départ à une liste d'arrivé
+	 * @param depart
+	 * @param destination
+	 */
 	public void transfererCavalier(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 1) {
@@ -288,6 +345,11 @@ public class Risk {
 		}
 	}
 
+	/**
+	 * Méthode transférant un canon d'une liste de départ à une liste d'arrivé
+	 * @param depart
+	 * @param destination
+	 */
 	public void transfererCanon(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
 			if (depart.get(i).getType() == 2) {
@@ -299,10 +361,14 @@ public class Risk {
 		}
 	}
 
+	/**
+	 * 
+	 * @param depart
+	 * @param destination
+	 */
 	public void transfererSoldatAction(ArrayList<Unite> depart, ArrayList<Unite> destination) {
 		for (int i = 0; i < depart.size(); i++) {
-			if (depart.get(i).getType() == 0) {
-				System.out.println("Point de mouvement des soldats :" + depart.get(i).getMouvement());
+			if (depart.get(i).getType() == 0 && peutMouvement(depart)) {
 				Unite unite = depart.get(i);
 				destination.add(unite);
 				depart.remove(i);
@@ -336,12 +402,16 @@ public class Risk {
 	}
 
 	// DEPLACEMENT DE TROUPES
+	/**
+	 * Cette méthode déplace une liste d'unité d'un territoire départ à une destination
+	 * @param depart
+	 * @param destination
+	 */
 	public void deplacer(Territoire depart, Territoire destination) {
 
 		if (peutDeplacer(depart, destination) == true) {
 			for (int j = 0; j < depart.getListeUnitesAction().size(); j++) {
-				depart.getListeUnitesAction().get(j)
-						.setMouvement(depart.getListeUnitesAction().get(j).getMouvement() - 1);
+				depart.getListeUnitesAction().get(j).setMouvement(depart.getListeUnitesAction().get(j).getMouvement() - 1);
 			}
 			destination.listeUnites.addAll(depart.listeUnitesAction);
 			depart.listeUnitesAction.clear();
@@ -514,14 +584,6 @@ public class Risk {
 		for (int i = 38; i < 42; i++) {
 			c6.add(this.listeTerritoires.get(i));
 		}
-
-		this.listeContinents.add(new Continent(0, c1));// Europe
-		this.listeContinents.add(new Continent(1, c2));// Afrique
-		this.listeContinents.add(new Continent(2, c3));// Asie
-		this.listeContinents.add(new Continent(3, c4));// Amerique du Nord
-		this.listeContinents.add(new Continent(4, c5));// Amerique du Sud
-		this.listeContinents.add(new Continent(5, c6));// Oceanie
-
 	}
 
 	public Territoire getD() {

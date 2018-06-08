@@ -1,5 +1,9 @@
 package com.beffa.pauwels.risk;
 
+/**
+ * Cette classe permet de créer les unités et leurs arguments.
+ *
+ */
 public class Unite {
 
 	private int puissance;
@@ -13,10 +17,10 @@ public class Unite {
 		this.type = type;
 		// SOLDAT
 		if (type == 0) {
-			this.puissance = 1;
-			this.prioriteATT = 2;
-			this.prioriteDEF = 1;
-			this.mouvement = 2;
+			this.puissance = 1;		//La puissance de l'unité
+			this.prioriteATT = 2;	//La priorité d'attaque de l'unité
+			this.prioriteDEF = 1;	//La priorité de défense de l'unité
+			this.mouvement = 2;		//Le nombre de points de mouvement de l'unité
 
 		}
 		// CAVALIER
